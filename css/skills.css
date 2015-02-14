@@ -1,5 +1,23 @@
-
+.skills_categories_list{
+	text-align:center;
+	color:white;
+}
 .skills_categories_list .sewing {
 	background-color: #95C11E;
-	text-align:center;
+	
+}
+
+.skills_categories_list .animation {
+	background-color: #AE5199;
+	
+}
+
+.skills_categories_list .graphic_design {
+	background-color: #E88801;
+	
+}
+
+.skills_categories_list .css {
+	background-color: #4859A4;
+	
 }
