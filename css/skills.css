@@ -26,8 +26,17 @@
  
 }
 
+.search-box .search-icon{
+  position: absolute;
+  top: 50%;
+  margin-left: 17px;
+  margin-top: 17px;
+  z-index: 1;
+  color: #4f5b66;
+}
+
 /* Styles colour and text from the skills shown in main page. Colours should repeat in a loop in this order -php?
-This is because number of skills don't have a limit as users will make more (no personalized color for each skill)*/
+This is because number of skills doesn't have a limit as users will make more(no personalized color for each skill)*/
 
 .skills_categories_list{
 	text-align:center;

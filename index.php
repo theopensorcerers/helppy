@@ -5,8 +5,8 @@
       <div class="container">
          <div class="search-container">
           <div class="search-box">
-              <span class="search-icon"><img src="images/search-icon.png" alt="some_text"></span>
               <input type="search" id="input-search" placeholder="" />
+              <span class="search-icon"><img src="images/search-icon.png" alt="some_text"></span>
           </div>
         </div>       
         <h1>Hello, world!</h1>
