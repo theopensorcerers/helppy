@@ -1,6 +1,7 @@
 .skills_categories_list{
 	text-align:center;
 	color:white;
+	text-transform: uppercase;
 }
 .skills_categories_list .sewing {
 	background-color: #95C11E;
@@ -21,3 +22,21 @@
 	background-color: #4859A4;
 	
 }
+
+.jumbotron{
+	background-color:white;
+	margin-top:60px;}
+
+.container{
+	margin:auto;
+	text-align:center;}
+	
+.search-form{
+	display:block;
+	margin:auto;
+	}
+	
+.search-input{
+	width:300px;
+	height:500px:
+	}
