@@ -27,7 +27,6 @@
 }
 
 .search-box .search-icon{
-  position: absolute;
   top: 50%;
   margin-left: 17px;
   margin-top: 17px;
@@ -72,4 +71,10 @@ This is because number of skills doesn't have a limit as users will make more(no
 	background-color: #3C2673;
 	
 }
+
+.skills_categories_list .filter-menus{
+	display:block;
+	box-sizing:border-box;
+	margin:auto;
+	}
 
