@@ -1,28 +1,3 @@
-.skills_categories_list{
-	text-align:center;
-	color:white;
-	text-transform: uppercase;
-}
-.skills_categories_list .sewing {
-	background-color: #95C11E;
-	
-}
-
-.skills_categories_list .animation {
-	background-color: #AE5199;
-	
-}
-
-.skills_categories_list .graphic_design {
-	background-color: #E88801;
-	
-}
-
-.skills_categories_list .css {
-	background-color: #4859A4;
-	
-}
-
 .jumbotron{
 	background-color:white;
 	margin-top:60px;}
@@ -31,12 +6,61 @@
 	margin:auto;
 	text-align:center;}
 	
-.search-form{
-	display:block;
-	margin:auto;
-	}
+.search-container{
+  margin: 100px auto;
+  height: 100x;}
+  
+.search-box{
+	position: relative;}
+  
+.search-box input#input-search{
+  width: 300px;
+  height: 50px;
+  border-style:solid;
+  border-color:#333333;
+  border-width:0,25px;
+  font-size: 10pt;
+  color: #63717f;
+  padding-left: 5px;
+  padding-right: 45px;
+ 
+}
+
+/* Styles colour and text from the skills shown in main page. Colours should repeat in a loop in this order -php?
+This is because number of skills don't have a limit as users will make more (no personalized color for each skill)*/
+
+.skills_categories_list{
+	text-align:center;
+	color:white;
+	text-transform: uppercase;
+}
+.skills_categories_list .green {
+	background-color: #95C11E;
 	
-.search-input{
-	width:300px;
-	height:500px:
-	}
+}
+
+.skills_categories_list .purple {
+	background-color: #AE5199;
+	
+}
+
+.skills_categories_list .orange {
+	background-color: #E88801;
+	
+}
+
+.skills_categories_list .blue {
+	background-color: #4859A4;
+	
+}
+
+.skills_categories_list .red {
+	background-color: #E84234;
+	
+}
+
+.skills_categories_list .darkpp {
+	background-color: #3C2673;
+	
+}
+
