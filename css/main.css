@@ -1,5 +1,5 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
+/*@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
 
 /* Tried adding google fonts - did not work */
 h1 { 
@@ -11,6 +11,11 @@ h2 {
 	font-family: 'Roboto Slab', serif;
 	font-weight:400;
 	}
+
+h3 { 
+	font-family: 'Roboto Slab', serif;
+	font-weight:100;
+	}	
 
 p{
 	font-family:'Roboto Slab',serif;
