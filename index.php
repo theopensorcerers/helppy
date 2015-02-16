@@ -15,23 +15,25 @@
       
     </div>
     
-    <div class="container skills_categories_list">
-    
-   <ul class="nav nav-tabs">
-  <li class="active"><a href="#">Filters</a></li>
-  <li class="dropdown">
-    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Skills
-    <span class="caret"></span></a>
-    <ul class="dropdown-menu">
-      <li><a href="#">Animation</a></li>
-      <li><a href="#">CSS</a></li>
-      <li><a href="#">Photoshop</a></li> 
+     <div class="container filter-tabs"> 
+     	<h3>Filters</h3>
+       <ul class="nav nav-tabs">
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Skills
+        <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li class="active"><a href="#">Animation</a></li>
+          <li><a href="#">CSS</a></li>
+          <li><a href="#">Photoshop</a></li> 
+        </ul>
+      </li>
+      <li><a href="#">Categories</a></li>
+      <li><a href="#">Level</a></li>
     </ul>
-  </li>
-  <li><a href="#">Categories</a></li>
-  <li><a href="#">Level</a></li>
-</ul>
+    </div>
     
+        <div class="container skills_categories_list">
+
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-3 green">
