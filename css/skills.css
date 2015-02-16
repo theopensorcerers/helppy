@@ -76,5 +76,17 @@ This is because number of skills doesn't have a limit as users will make more(no
 	display:block;
 	box-sizing:border-box;
 	margin:auto;
+	color:#333;
 	}
+	
+.filter-menus{
+	display:block;
+	text-align:left;
+	}
+	
+.filters .ul .li{
+	float:left;
+	}
+	
+
 

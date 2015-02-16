@@ -9,18 +9,29 @@
               <span class="search-icon"><img src="images/search-icon.png" alt="some_text"></span>
           </div>
         </div>       
-        <h1>Hello, world!</h1>
+        <h1>Welcome to helppy!</h1>
         <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
       </div>
       
     </div>
     
     <div class="container skills_categories_list">
-    	<!-- start of filter menus -->
-	<div class="filter-menus">
-    	<h2>Filters</h2>
-    </div>
-    	<!-- end of filter menus -->
+    
+   <ul class="nav nav-tabs">
+  <li class="active"><a href="#">Filters</a></li>
+  <li class="dropdown">
+    <a class="dropdown-toggle" data-toggle="dropdown" href="#">Skills
+    <span class="caret"></span></a>
+    <ul class="dropdown-menu">
+      <li><a href="#">Animation</a></li>
+      <li><a href="#">CSS</a></li>
+      <li><a href="#">Photoshop</a></li> 
+    </ul>
+  </li>
+  <li><a href="#">Categories</a></li>
+  <li><a href="#">Level</a></li>
+</ul>
+    
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-3 green">

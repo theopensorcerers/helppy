@@ -17,6 +17,9 @@ p{
 	font-weight:300;
 	}
 	
-.navbar navbar-inverse navbar-fixed-top .container{
-	background-color:white:
-	}
+
+.navbar-inverse{
+background-image:none;
+background-color:#fff;
+}
+
