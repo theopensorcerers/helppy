@@ -9,7 +9,7 @@
             </a> 
             <p>
               <br>
-              HELPPY is a free platform to collaborate, offer and receive skills
+              A free platform to collaborate, offer and receive skills
               <p> <strong> FIND </strong> the skills you are missing <br>
                     <strong> GET </strong> the help needed <br>
                     <strong> FOSTER </strong> collaboration <br>
@@ -57,10 +57,13 @@
 
       <!-- Example row of columns -->
       <div class="row">
-        <div class="col-md-3 green">
-          <h2>Sewing</h2>
-          <p></p>
-        </div>
+        <span class="results-btn">
+        	<a href="#">
+                <div class="col-md-3 green">
+                    <h2>Sewing</h2>   
+              <p></p>
+            </div>
+        </a></span>
         <div class="col-md-3 purple">
           <h2>Heading</h2>
           <p></p>
