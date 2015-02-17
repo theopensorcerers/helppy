@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
 
-    <title>Helppy</title>
+    <title>Helppy-profile</title>
 	  <!-- VENDOR -->
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -32,16 +32,19 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-             <li>
-                <a href="../navbar-static-top/">Sign Up</a>
+              <li>
+                <button class="btn btn-primary" href="../navbar-static-top/" type="button">My name</button>
               </li>
               <li>
-                <a href="profile.php">Login<span class="sr-only">(current)</span></a>
+                <button class="messagerie-logo" type="button"><i class="fa fa-envelope-o fa-3x"></i></button>
+                <span class="badge">4</span>
               </li>
             </ul>
         </div> 
       </div>
     </nav>
 
+
+   </body>
 
     
