@@ -12,6 +12,7 @@
     
     <!-- CUSTOM -->
     <link href="css/main.css" rel="stylesheet">
+    <link href="css/header-profile.css" rel="stylesheet">
     
   </head>
 

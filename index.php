@@ -4,14 +4,18 @@
     <div class="jumbotron">
       <div class="container">
          <div class="search-container">
-          <div class="search-box">
-            <div class="input-group search-container">
-              <input type="text" class="form-control" placeholder="Search for...">
-              <span class="input-group-btn">
-                <button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
-              </span>
+          <div class="space">
+            <div class="search-box">
+              <div class="input-group search-container">
+                <input type="text" class="form-control" placeholder="Search for...">
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
+                </span>
+              </div>
             </div>
-          </div>
+            <div class="space">
+            </div>
+          </div> 
         </div>
         <div class="text-center">
           <h1>Welcome to helppy!</h1>
@@ -43,7 +47,7 @@
     </div>
     
         <div class="container skills_categories_list">
-<i class="fa fa-envelope-o fa-6x"></i>
+
       <!-- Example row of columns -->
       <div class="row">
         <div class="col-md-3 green">

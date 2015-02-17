@@ -2,6 +2,7 @@
 	background-color:white;
 	margin-top:60px;
 }
+
 	
 .search-container{
   width: 300px;
@@ -11,4 +12,8 @@
 
 .form-control{
    height: 43px;
+}
+
+.space {
+	margin-top: 70px;
 }

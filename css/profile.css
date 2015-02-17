@@ -1,0 +1,16 @@
+.progress-bar {
+	height: 100%;
+}
+
+.progress {
+	height: 50px;
+}
+
+.received {
+	background-color: #873a7e;
+}
+
+.offered {
+	background-color: #74b533;
+}
+
