@@ -5,13 +5,23 @@
       <div class="container">
          <div class="search-container">
           <div class="search-box">
-              <input type="search" id="input-search" placeholder="" />
-              <span class="search-icon"><img src="images/search-icon.png" alt="some_text"></span>
+            <div class="input-group search-container">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button"><i class="fa fa-search fa-3"></i></button>
+              </span>
+            </div>
           </div>
+        </div>
+        <div class="text-center">
+          <h1>Welcome to helppy!</h1>
+          <p>
+            This is a template for a simple marketing or informational website. 
+            It includes a large callout called a jumbotron and three supporting pieces of content. 
+            Use it as a starting point to create something more unique.
+          </p>
         </div>       
-        <h1>Welcome to helppy!</h1>
-        <p>This is a template for a simple marketing or informational website. It includes a large callout called a jumbotron and three supporting pieces of content. Use it as a starting point to create something more unique.</p>
-      </div>
+       </div>
       
     </div>
     
