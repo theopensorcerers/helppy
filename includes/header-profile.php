@@ -32,11 +32,23 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
+                <li class="search-box">
+                  <li class="input-group search-container">
+                    <input type="text" class="form-control-header" placeholder="Search for...">
+                    <li class="input-group-btn">
+                      <li>
+                        <button class="research-logo" type="button"><i class="fa fa-search fa-2x"></i></button>
+                      </li>
+                    </li>
+                </li>
+              </li>
               <li>
                 <button class="btn btn-primary" href="../navbar-static-top/" type="button">My name</button>
               </li>
               <li>
                 <button class="messagerie-logo" type="button"><i class="fa fa-envelope-o fa-3x"></i></button>
+              </li>
+              <li>
                 <span class="badge">4</span>
               </li>
             </ul>

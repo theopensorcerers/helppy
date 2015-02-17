@@ -39,7 +39,7 @@
 .badge {
 	margin-right: 10px; 
 	margin-left: -31px;
-	margin-top: -9px;
+	margin-top: 23px;
 	background-color: #74b533;
 	font-weight: 500;
 }
@@ -47,6 +47,26 @@
 .messagerie-logo {
 	border-color: transparent;
 	background-color: transparent;
+}
+
+.form-control-header{
+   height: 35px;
+   width: 300px;
+   padding-top: 2px;
+   padding-right: 12px;
+   padding-left: 8px;
+}
+
+.research-logo {
+	border-color: transparent;
+	background-color: transparent;
+}
+
+.fa-search {
+	height: 20px;
+	margin-right: 34px; 
+	margin-left: -50px;
+	margin-top: -2px;
 }
 
 
