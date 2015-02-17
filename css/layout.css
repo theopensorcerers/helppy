@@ -13,11 +13,12 @@
    height: 43px;
 }
 
-
 .logo img {
     width: 50%;
     height: auto;
 }
+
+
 
 
 
@@ -43,6 +44,3 @@
 }
 
 
-.table {
-	border-color: transparent;
-}
