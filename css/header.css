@@ -1,0 +1,13 @@
+.navbar-brand img{
+    max-height: 57px;
+    margin-top: -7px;
+}
+
+.navbar-default {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.navbar-nav.navbar-right > li > a {
+	text-transform: uppercase;
+}

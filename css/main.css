@@ -1,25 +1,15 @@
 @charset "UTF-8";
-/*@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
 
-/* Tried adding google fonts - did not work */
-h1 { 
-	font-family: 'Roboto Slab', serif;
-	font-weight:700;
-	}
-	
-h2 { 
-	font-family: 'Roboto Slab', serif;
-	font-weight:400;
-	}
+/* VENDOR */
+@import 'vendor/bootstrap-3.3.2/css/bootstrap.min.css';
 
-h3 { 
-	font-family: 'Roboto Slab', serif;
-	font-weight:100;
-	}	
+@import url(http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,700);
 
-p{
-	font-family:'Roboto Slab',serif;
-	font-weight:300;
-	}
-	
+/* CUSTOM */
+@import 'fonts.css';
 
+@import 'layout.css';
+
+@import 'skills.css';
+
+@import 'header.css';
