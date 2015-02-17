@@ -4,7 +4,7 @@
 }
 
 .navbar-default {
-	background-color: transparent;
+	background-color: #fff;
 	border-color: transparent;
 }
 
@@ -15,4 +15,6 @@
 	color: black;
 }
 
-
+.navbar navbar-default navbar-fixed-top {
+	background-color:#fff;
+}
