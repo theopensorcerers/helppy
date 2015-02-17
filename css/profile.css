@@ -3,7 +3,7 @@
 }
 
 .progress {
-	height: 50px;
+	height: 40px;
 }
 
 .received {
@@ -11,6 +11,27 @@
 }
 
 .offered {
+	background-color: #344485;
+}
+
+.green {
 	background-color: #74b533;
+}
+
+.thumbnail{
+	padding: 0px;
+	border: 0px;
+}
+
+.fa-leaf {
+	color:#74b533;
+	margin-left: 10px;
+	display:inline;
+}
+
+.fa-leaf.black {
+	color:#000000;
+	margin-left: 10px;
+	display:inline;
 }
 

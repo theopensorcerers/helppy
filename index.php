@@ -4,7 +4,7 @@
     <div class="jumbotron">
       <div class="container">
          <div class="search-container">
-          <div class="space">
+          <div class="space70">
             <div class="search-box">
               <div class="input-group search-container">
                 <input type="text" class="form-control" placeholder="Search for...">
@@ -13,16 +13,28 @@
                 </span>
               </div>
             </div>
-            <div class="space">
+            <div class="space70">
             </div>
           </div> 
         </div>
         <div class="text-center">
-          <h1>Welcome to helppy!</h1>
+          <a class="logo"> 
+            <img src="images/logo.png" >
+          </a> 
           <p>
-            This is a template for a simple marketing or informational website. 
-            It includes a large callout called a jumbotron and three supporting pieces of content. 
-            Use it as a starting point to create something more unique.
+           
+              <br>
+              HELPPY is a free platform to collaborate, offer and receive skills
+                 
+                  <p> <strong> FIND </strong> the skills you are missing <br>
+                  <strong> GET </strong> the help needed <br>
+                  <strong> FOSTER </strong> collaboration <br>
+                  <strong> CREATE </strong> great projects </p>
+                 
+               
+            
+
+
           </p>
         </div>       
        </div>

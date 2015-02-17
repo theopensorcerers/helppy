@@ -2,7 +2,6 @@
 	background-color:white;
 	margin-top:60px;
 }
-
 	
 .search-container{
   width: 300px;
@@ -14,6 +13,36 @@
    height: 43px;
 }
 
-.space {
+
+.logo img {
+    width: 50%;
+    height: auto;
+}
+
+
+
+
+.space70 {
 	margin-top: 70px;
+}
+
+.space90 {
+	margin-top:90px;
+}
+
+.space20 {
+	margin-top:20px;
+}
+
+.space50 {
+	margin-top:50px;
+}
+
+.space10 {
+	margin-top:10px;
+}
+
+
+.table {
+	border-color: transparent;
 }
