@@ -30,50 +30,53 @@
 	text-transform: uppercase;
 }
 
-.fa-envelope-o {
-	height: 20px;
-	margin-right: 10px; 
-	margin-left: 10px;
-	margin-top: -9px;
-}
-
 .badge {
 	margin-right: 10px; 
-	margin-left: -31px;
-	margin-top: 23px;
+	margin-left: -20px;
+	margin-top: 25px;
 	background-color: #74b533;
 	font-weight: 500;
 }
 
-.messagerie-logo {
+.navbar-nav .search-container {
+	width:auto;
+	top: -3px;
+	position: relative;
+}
+
+.navbar-nav .search-container .fa-search {
+	top: 4px;
+	position: relative;
+}
+
+.navbar-nav .messagerie-logo {
 	border-color: transparent;
 	background-color: transparent;
+	top: -5px;
+	position: relative;
+
 }
 
 .form-control-header{
    height: 35px;
    width: 300px;
-   padding-top: 2px;
-   padding-right: 12px;
-   padding-left: 8px;
 }
 
-.research-logo {
+.navbar-nav .research-logo {
 	border-color: transparent;
 	background-color: transparent;
 }
 
-.fa-search {
-	height: 20px;
-	margin-right: 34px; 
-	margin-left: -50px;
-	margin-top: -2px;
-}
-
 @media (min-width: 768px) {
 	#mainNavbar .navbar-nav>li>a {
-	padding-top: 10px;
-	padding-bottom: 10px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+}
+
+@media (max-width: 999px) {
+	.navbar .container {
+		border-bottom: 1px solid #eee;
 	}
 }
 

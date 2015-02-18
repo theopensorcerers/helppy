@@ -33,22 +33,16 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="search-box">
-                  <li class="input-group search-container">
-                    <input type="text" class="form-control-header showOnScreen" placeholder="Search for...">
-                    <li class="input-group-btn">
-                    <li>
-                      <button class="research-logo showOnScreen" type="button"><i class="fa fa-search fa-2x"></i></button>
-                    </li>
-                    </li>
+                <li class="input-group search-container">
+                  <input type="text" class="form-control-header showOnScreen" placeholder="Search for..."/>
+                  <button class="research-logo showOnScreen" type="button"><i class="fa fa-search fa-2x"></i></button>
                 </li>
-              </li>
               <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Name <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                   <li><a href="#">My Profile</a></li>
-                   <li class="divider"></li>
-                   <li><a href="#">Log out</a></li>
+                  <li><a href="#">My Profile</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Log out</a></li>
                  </ul>
               </li>
               <li>
