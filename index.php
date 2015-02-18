@@ -35,23 +35,46 @@
        </div>
     </div>
     
+    <!-- new filter navbar -->
+    
+    <nav class="navbar navbar-default" role="navigation">
+    	  <div class="container">
+		    <!-- Brand and toggle get grouped for better mobile display -->
+		    <div class="navbar-header">
+		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
+		        <span class="sr-only">Toggle navigation</span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		        <span class="icon-bar"></span>
+		      </button>
+		    </div>
 
-     <div class="container filter-tabs"> 
-     	<h3>Filters</h3>
-       <ul class="nav nav-tabs">
-      <li class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">Skills
-        <span class="caret"></span></a>
-        <ul class="dropdown-menu">
-          <li class="active"><a href="#">Animation</a></li>
-          <li><a href="#">CSS</a></li>
-          <li><a href="#">Photoshop</a></li> 
-        </ul>
-      </li>
-      <li><a href="#">Categories</a></li>
-      <li><a href="#">Level</a></li>
-    </ul>
-    </div>
+		    <!-- Start of filter navbar -->
+            
+		    <div class="collapse navbar-collapse">
+            
+		      <ul class="nav navbar-nav">
+		        <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Fashion Design</a></li>
+                    <li><a href="#">Graphic Design</a></li>
+                    <li><a href="#">Animation</a></li>
+                    <li><a href="#">Multimedia</a></li>
+                    <li><a href="#">Fine Arts</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Skills</a></li>
+
+		      </ul>
+		      <ul class="nav navbar-nav navbar-right">
+		        <li><a href="#">Link</a></li>
+		        <li><a href="#">Link</a></li>
+		        	        
+		      </ul>
+		    </div><!-- /.navbar-collapse -->
+		  </div><!-- /.container-fluid -->
+		</nav>
     
         <div class="container skills_categories_list">
 
