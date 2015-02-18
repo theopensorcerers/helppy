@@ -106,6 +106,19 @@
 	#mainNavbar .showOnScreen {
 		display: none;
 	}
+
+	#mainNavbar .nav.navbar-right {
+		float: none!important;
+	}
+
+	#mainNavbar .nav>li {
+		float: none;
+	}
+	#mainNavbar .nav>li>a {
+		position: relative;
+		display: block;
+		padding: 10px 15px;
+	}
 }
 
 
