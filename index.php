@@ -51,7 +51,7 @@
 
 		    <!-- Start of filter navbar -->
             
-		    <div class="collapse navbar-collapse"id="filter-bar">
+		    <div class="collapse navbar-collapse" id="filter-bar">
             
 		      <ul class="nav navbar-nav">
 		        <li class="dropdown">
@@ -109,5 +109,7 @@
       </div>
 
       <hr>
+
+      </div>
 
 <?php include "includes/footer.html" ?>
