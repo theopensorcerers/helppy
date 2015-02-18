@@ -4,7 +4,8 @@
 }
 
 .navbar-default {
-	background-color: transparent;
+	height:70px;
+	background-color: #fff;
 	border-color: transparent;
 }
 

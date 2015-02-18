@@ -4,6 +4,7 @@
 }
 
 .navbar-default {
+	height:70px;
 	background-color: #fff;
 	border-color: transparent;
 }
@@ -18,3 +19,7 @@
 .navbar navbar-default navbar-fixed-top {
 	background-color:#fff;
 }
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #333;
+    color: #fff;
