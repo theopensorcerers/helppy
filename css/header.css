@@ -16,10 +16,11 @@
 	color: black;
 }
 
-.navbar navbar-default navbar-fixed-top {
+.navbar .navbar-default .navbar-fixed-top {
 	background-color:#fff;
 }
 
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
     background-color: #333;
     color: #fff;
+}

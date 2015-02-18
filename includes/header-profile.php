@@ -18,7 +18,7 @@
 
   <body>
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav id="mainNavbar" class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -35,22 +35,28 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="search-box">
                   <li class="input-group search-container">
-                    <input type="text" class="form-control-header" placeholder="Search for...">
+                    <input type="text" class="form-control-header showOnScreen" placeholder="Search for...">
                     <li class="input-group-btn">
-                      <li>
-                        <button class="research-logo" type="button"><i class="fa fa-search fa-2x"></i></button>
-                      </li>
+                    <li>
+                      <button class="research-logo showOnScreen" type="button"><i class="fa fa-search fa-2x"></i></button>
+                    </li>
                     </li>
                 </li>
               </li>
               <li>
-                <button class="btn btn-primary" href="../navbar-static-top/" type="button">My name</button>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Name <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                   <li><a href="#">My Profile</a></li>
+                   <li class="divider"></li>
+                   <li><a href="#">Log out</a></li>
+                 </ul>
               </li>
               <li>
-                <button class="messagerie-logo" type="button"><i class="fa fa-envelope-o fa-3x"></i></button>
+                <a href="#" class="showOnMobile">Inbox</a>
+                <button class="messagerie-logo showOnScreen" type="button"><i class="fa fa-envelope-o fa-3x"></i></button>
               </li>
               <li>
-                <span class="badge">4</span>
+                <span class="badge showOnScreen">4</span>
               </li>
             </ul>
         </div> 
@@ -58,6 +64,6 @@
     </nav>
 
 
-   </body>
+<!--    </body> -->
 
     

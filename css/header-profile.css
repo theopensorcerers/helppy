@@ -70,4 +70,42 @@
 	margin-top: -2px;
 }
 
+@media (min-width: 768px) {
+	#mainNavbar .navbar-nav>li>a {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	}
+}
+
+@media (min-width: 1000px) {
+	#mainNavbar .showOnMobile {
+		display: none;
+	}
+}
+
+/*overwriting bootstrap*/
+@media (max-width: 1000px) {
+	#mainNavbar .collapse > .nav {
+		display: none;
+	}
+
+	#mainNavbar .navbar-header .navbar-toggle {
+		display: inline-block;
+		float: right;
+	}
+
+	#mainNavbar .navbar-header {
+		float: none;
+	}
+
+	#mainNavbar .collapse.in > .nav{
+		display: block;
+		visibility: visible;
+	}
+
+	#mainNavbar .showOnScreen {
+		display: none;
+	}
+}
+
 
