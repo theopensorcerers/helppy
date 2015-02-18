@@ -51,7 +51,7 @@
 
 		    <!-- Start of filter navbar -->
             
-		    <div class="collapse navbar-collapse">
+		    <div class="collapse navbar-collapse"id="filter-bar">
             
 		      <ul class="nav navbar-nav">
 		        <li class="dropdown">
