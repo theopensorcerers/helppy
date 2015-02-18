@@ -21,7 +21,7 @@
             <div class="space70">
               <div class="search-box">
                 <div class="input-group search-container">
-                  <input type="text" class="form-control" placeholder="Search for...">
+                  <input type="text" class="form-control" placeholder="I need help in...">
                   <span class="input-group-btn">
                     <button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
                   </span>
@@ -57,25 +57,32 @@
 
       <!-- Example row of columns -->
       <div class="row">
-        <span class="results-btn">
         	<a href="#">
                 <div class="col-md-3 green">
                     <h2>Sewing</h2>   
               <p></p>
             </div>
-        </a></span>
-        <div class="col-md-3 purple">
-          <h2>Heading</h2>
-          <p></p>
-        </div>
-        <div class="col-md-3 orange">
-          <h2>Heading</h2>
-          <p></p>
-       </div>
-        <div class="col-md-3 blue">
-          <h2>Heading</h2>
-          <p></p>
-        </div>
+        </a>
+        	<a href="#">
+                <div class="col-md-3 purple">
+                  <h2>Heading</h2>
+                  <p></p>
+                </div>
+             </a>
+        <span class="results-btn">
+        	<a href="#">
+                <div class="col-md-3 orange">
+                  <h2>Heading</h2>
+                  <p></p>
+               </div>
+             </a></span> 
+        <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 blue">
+                  <h2>Heading</h2>
+                  <p></p>
+                </div>
+             </a></span> 
       </div>
 
       <hr>

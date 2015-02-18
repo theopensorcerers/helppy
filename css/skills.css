@@ -9,33 +9,52 @@ This is because number of skills doesn't have a limit as users will make more (n
 
 .skills_categories_list .green {
 	background-color: #95C11E;
-	
+}
+
+.skills_categories_list .green:hover {
+	background-color: #333;
 }
 
 
 .skills_categories_list .purple {
 	background-color: #AE5199;
-	
+}
+
+.skills_categories_list .purple:hover {
+	background-color: #333;
 }
 
 .skills_categories_list .orange {
 	background-color: #E88801;
-	
+}
+
+.skills_categories_list .orange:hover {
+	background-color: #333;
 }
 
 .skills_categories_list .blue {
 	background-color: #4859A4;
-	
+}
+
+.skills_categories_list .blue:hover {
+	background-color: #333;
 }
 
 .skills_categories_list .red {
-	background-color: #E84234;
-	
+	background-color: #E84234;	
+}
+
+.skills_categories_list .red:hover {
+	background-color: #333;	
 }
 
 .skills_categories_list .darkpp {
 	background-color: #3C2673;
 	
+}
+
+.skills_categories_list .darkpp:hover {
+	background-color: #333;s
 }
 
 .container .filter-tabs{
@@ -44,22 +63,40 @@ This is because number of skills doesn't have a limit as users will make more (n
 	text-align:left;
 }
 
-
 .square {
     border: 0px;
+}
+
+.search-container{
+	width:400px;
 }
 
 .form-control{
 	border-color:#333;
 	border-radius:0px;
 	border-width:0,25px;
+	border-right:0px;
 }
-	
+
+.form-control:focus{
+	background-color:#333;
+	color:#fff;
+	box-shadow:none;
+	border-color:#333;
+}
+
 .btn-default{
 	border-color:#333;
 	border-radius:0px;
 	border-width:0,25px;
+	border-left:0px;
 }
+
+.btn-default:hover{
+	background-color:#333;
+	color:#fff;
+}
+
 
 .row a{
 	text-decoration:none;
@@ -74,6 +111,6 @@ This is because number of skills doesn't have a limit as users will make more (n
   	left: 0;
 }
 
-results-btn:hover{
-	background-color:#333;
-}
+
+	
+
