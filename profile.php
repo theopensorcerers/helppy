@@ -34,8 +34,14 @@
 					</div>
 					<div class="space20">
 				 		<div class="align-right">
-	                		<button style="background-color: #74b533" class="btn btn-primary " type="button">send green</button>
-	                		<i class="fa fa-leaf fa-2x"></i><i class="fa fa-leaf fa-2x"></i><i class="fa fa-leaf fa-2x"></i><i class="fa fa-leaf fa-2x black"></i><i class="fa fa-leaf fa-2x black"></i>
+	                		<ul class="list-inline rating">
+	                			<li><button style="background-color: #74b533" class="btn btn-primary " type="button">send green</button></li>
+	                			<li><i class="fa fa-leaf fa-2x"></i></li>
+	                			<li><i class="fa fa-leaf fa-2x"></i></li>
+	                			<li><i class="fa fa-leaf fa-2x"></i></li>
+	                			<li><i class="fa fa-leaf fa-2x black"></i></li>
+	                			<li><i class="fa fa-leaf fa-2x black"></i></li>
+	                		</ul>
 	  					</div>
 					</div>
 				</div>

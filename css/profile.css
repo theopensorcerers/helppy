@@ -43,3 +43,13 @@
   left: 50px;
   color:#ffffff;
 }
+
+.rating li:first-child > i {
+	top: 0px;
+	position: relative;
+}
+
+.rating li > i{
+	top: 5px;
+	position: relative;
+}
