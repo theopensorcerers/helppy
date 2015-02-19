@@ -25,6 +25,6 @@
         </a>
       </form>
 
-    </div> <!-- /container -->    
+    </div> <!-- /container hola -->    
 
 <?php include "includes/footer.html" ?>
