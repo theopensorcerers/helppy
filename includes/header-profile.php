@@ -40,7 +40,7 @@
               <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Name <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">My Profile</a></li>
+                  <li><a href="profile.php">My Profile</a></li>
                   <li class="divider"></li>
                   <li><a href="#">Log out</a></li>
                  </ul>
