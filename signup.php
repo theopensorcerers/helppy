@@ -1,57 +1,30 @@
-<?php include "sql/includes/header.html" ?>
+<?php include "includes/header.html" ?>
 
-<div class="container-fluid">
-    <section class="container">
-		<div class="container-page">				
-			<div class="col-md-6">
-				<h2 class="form-signin-heading">Sign up</h2>
-				
-				<div class="form-group col-lg-12">
-					<label>Name and Surname</label>
-					<input type="" name="" class="form-control" id="" value="">
-				</div>
-                <div class="form-group col-lg-12">
-					<label>*Username</label>
-					<input type="" name="" class="form-control" id="" value="">
-				</div>
-				
-				<div class="form-group col-lg-6">
-					<label>*Password</label>
-					<input type="password" name="" class="form-control" id="" value="">
-				</div>
-				
-				<div class="form-group col-lg-6">
-					<label>*Repeat Password</label>
-					<input type="password" name="" class="form-control" id="" value="">
-				</div>
-								
-				<div class="form-group col-lg-12">
-					<label>Email Address</label>
-					<input type="" name="" class="form-control" id="" value="">
-				</div>
-				
-			</div>
-		
-			<div class="col-md-6">
-				<h3 class="dark-grey">Terms and Conditions</h3>
-				<p>
-					By clicking on "Register" you agree to The Company's' Terms and Conditions
-				</p>
-				<p>
-					While rare, prices are subject to change based on exchange rate fluctuations - 
-					should such a fluctuation happen, we may request an additional payment. You have the option to request a full refund or to pay the new price. (Paragraph 13.5.8)
-				</p>
-				<p>
-					Should there be an error in the description or pricing of a product, we will provide you with a full refund (Paragraph 13.5.6)
-				</p>
-				<p>
-					Acceptance of an order by us is dependent on our suppliers ability to provide the product. (Paragraph 13.5.6)
-				</p>
-				
-				<button type="submit" class="btn btn-primary">Register</button>
-			</div>
-		</div>
-	</section>
-</div>
+<div class="container">
 
-<?php include "sql/includes/footer.html" ?>
+      <form class="form-signin">
+        <h2 class="form-signin-heading">Sign up</h2>
+        <label for="inputName" class="sr-only">name</label>
+        <input type="text" id="inputName" class="form-control" placeholder="Name" autofocus>
+        <label for="inputUsername" class="sr-only">username</label>
+        <input type="text" id="inputUsername" class="form-control" placeholder="*Username" autofocus>
+        <label for="inputPassword" class="sr-only">password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="*Password" autofocus>
+        <label for="inputPassword" class="sr-only">password</label>
+        <input type="password" id="inputPassword" class="form-control" placeholder="*Repeat Password" autofocus>
+        <div class="checkbox">
+        <label for="inputDescription" class="sr-only">password</label>
+        <textarea rows="6" autofocus="autofocus" class="form-control" id="inputDescription" placeholder="Tell us about your skills"></textarea>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+        </div>
+        <a href="home-login.php">
+        <button class="btn btn-lg btn-primary btn-block" type="submit">LOG IN</button>
+        </a>
+      </form>
+
+    </div> <!-- /container -->    
+
+<?php include "includes/footer.html" ?>
