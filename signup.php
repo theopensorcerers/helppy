@@ -1,8 +1,51 @@
-<?php include "includes/header.html" ?>
+<?php include "includes/header.html";
 
+if(isset($_POST['Submit'])) {
+include 'includes/connection.php';
+   
+$username=$connection->real_escape_string($_POST['username']);
+$forename=$connection->real_escape_string($_POST['forename']);
+$surname=$connection->real_escape_string($_POST['surname']);
+$email=$connection->real_escape_string($_POST['email']);
+$password=md5($_POST['password']);
+$passwordcheck=md5($_POST['passwordcheck']);
+$description=$connection->real_escape_string($_POST['description']);
+
+If ($password != $passwordcheck) 
+{$regerror="your passwords do not match";}
+
+If($_REQUEST['username']=='' || $_REQUEST['forename']=='' ||$_REQUEST['surname']=='' ||$_REQUEST['email']=='' || $_REQUEST['password']==''|| $_REQUEST['passwordcheck']=='')
+{
+$regerror="please fill the empty field.";
+
+
+}
+
+
+If (isset($regerror)) {echo ($regerror);}
+
+Else
+{
+$stmt="INSERT INTO users (username, forename, surname, email, password, description) VALUES ('$username','$forename','$surname','$email','$password','$description')";
+
+if ( $connection->query($stmt) ){
+Echo "Record successfully inserted";
+$hideform=true;
+}
+
+Else
+{
+Echo "There is some problem in inserting record";
+}
+
+}
+}
+if (empty($hideform))
+
+{ ?>
 <div class="container">
 
-        <form class="form-signin" form action="includes/submitreg.php" method=post>
+        <form class="form-signin" form action="" method="post">
         <h2 class="form-signin-heading">Sign up</h2>
         <label for="forename" class="sr-only">name</label>
         <input type="text" input name="forename" id="forename" class="form-control" placeholder="First Name" autofocus>
@@ -26,10 +69,23 @@
         </div>
         
         <a>        
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="submit" >SIGN UP</button>
+        <button class="btn btn-lg btn-primary btn-block" input name='Submit' type="submit" value="Submit" >SIGN UP</button>
         </a>
-      </form>
- <p> <?php if (isset($regerror)) {printf ($regerror);} ?> </p>
-    </div> <!-- /container -->    
+      </form> <?php ;} 
+	  else
+	  {echo "Thank you for registering";} ?>
+      
 
-<?php include "includes/footer.html" ?>
+    
+    
+    </div> <!-- /container -->
+    
+     <p> <?php if (isset($regerror)) {printf ($regerror);} 
+ 			?> </p>
+        
+<?php
+
+
+
+
+include "includes/footer.html" ?>
