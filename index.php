@@ -110,6 +110,6 @@
 
       <hr>
 
-      </div>
+    </div>
 
 <?php include "includes/footer.html" ?>
