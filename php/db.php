@@ -5,7 +5,7 @@
 
 error_reporting(E_ALL);
 
-require_once '../defines.php';
+require_once 'defines.php';
 
 $db = mysqli_init();
 if (!$db) {
