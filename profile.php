@@ -1,4 +1,4 @@
-<?php include "includes/header-profile.php" ?>
+<?php include "includes/header.html" ?>
 
 
 <!-- Profile picure and progress bars -->
