@@ -57,11 +57,25 @@
 		        <li class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<span class="caret"></span></a>
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Fashion Design</a></li>
-                    <li><a href="#">Graphic Design</a></li>
                     <li><a href="#">Animation</a></li>
-                    <li><a href="#">Multimedia</a></li>
-                    <li><a href="#">Fine Arts</a></li>
+                    <li><a href="#">Arhitecture</a></li>
+                    <li><a href="#">Graphic Design</a></li>
+                    <li><a href="#">Film & TV</a></li>
+                    <li><a href="#">Fashion</a></li>
+                    <li><a href="#">Crafts</a></li>
+					<li><a href="#">Culinary Arts</a></li>
+                    <li><a href="#">Photography</a></li>
+                    <li><a href="#">Drawing & Illustration</a></li>
+                    <li><a href="#">Printing</a></li>
+                    <li><a href="#">Engineering</a></li>
+                    <li><a href="#">Interior Design</a></li>
+                    <li><a href="#">Music & Sound</a></li>
+                    <li><a href="#">Product Design</a></li>
+                    <li><a href="#">Art</a></li>
+                    <li><a href="#">UX/UI</a></li>
+                    <li><a href="#">Web Design</a></li>
+                    <li><a href="#">Programming</a></li>
+                    <li><a href="#">Writing</a></li>
                   </ul>
                 </li>
                 <li><a href="#">Skills</a></li>
@@ -82,30 +96,142 @@
       <div class="row">
         	<a href="#">
                 <div class="col-md-3 green">
-                    <h2>Sewing</h2>   
+                    <h2>Animation</h2>   
               <p></p>
             </div>
         </a>
         	<a href="#">
                 <div class="col-md-3 purple">
-                  <h2>Heading</h2>
+                  <h2>Architecture</h2>
                   <p></p>
                 </div>
              </a>
         <span class="results-btn">
         	<a href="#">
                 <div class="col-md-3 orange">
-                  <h2>Heading</h2>
+                  <h2>Graphic Design</h2>
                   <p></p>
                </div>
              </a></span> 
         <span class="results-btn">
         	<a href="#"> 
                 <div class="col-md-3 blue">
-                  <h2>Heading</h2>
+                  <h2>Film & TV</h2>
                   <p></p>
                 </div>
              </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 red">
+                  <h2>Fashion</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 darkpp">
+                  <h2>Crafts</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 green">
+                  <h2>Culinary Art</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 purple">
+                  <h2>Photography</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 orange">
+                  <h2>Drawing & Illustration</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 blue">
+                  <h2>Printing</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 red">
+                  <h2>Engineering</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 darkpp">
+                  <h2>Interior Design</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 green">
+                  <h2>Interaction Design</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 purple">
+                  <h2>Music & Sound</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 orange">
+                  <h2>Product Design</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 blue">
+                  <h2>Art</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 red">
+                  <h2>UX/UI</h2>
+                  <p></p>
+                </div>
+             </a></span> 
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 darkpp">
+                  <h2>Web Design</h2>
+                  <p></p>
+                </div>
+             </a></span>
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 green">
+                  <h2>Programming</h2>
+                  <p></p>
+                </div>
+             </a></span>
+              <span class="results-btn">
+        	<a href="#"> 
+                <div class="col-md-3 purple">
+                  <h2>Writting</h2>
+                  <p></p>
+                </div>
+             </a></span>   
       </div>
 
       <hr>
