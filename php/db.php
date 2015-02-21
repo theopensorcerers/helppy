@@ -3,7 +3,7 @@
 * Opens a connection to the database
 */
 
-error_reporting(E_ALL);
+error_reporting(0);
 
 require_once '../defines.php';
 
