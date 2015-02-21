@@ -1,3 +1,4 @@
+<?php session_start();?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -29,6 +30,8 @@
             <img class="img-responsive" src="images/logo.png" >
           </a> 
         </div>
+        <?php 
+        if (!isset($_COOKIE['userID']) && empty($_COOKIE['userID'])) : ?>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
              <li class="dropdown">
@@ -51,17 +54,37 @@
                   <form method="post" action="./php/users/login.php" accept-charset="UTF-8">
                     <input type="text" id="username" name="username" class="form-control" placeholder="Username" autofocus>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Password" >
-                    <div class="checkbox">
-                      <label>
-                        <input id="remember-me" type="checkbox"> Remember me
-                      </label>
-                    </div>
                     <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
                   </form>
                 </div>
               </li>
             </ul>
+        </div>
+        <?php else : ?>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right loggedin">
+                <li class="input-group search-container">
+                  <input type="text" class="form-control-header showOnScreen" placeholder="Search for..."/>
+                  <button class="research-logo showOnScreen" type="button"><i class="fa fa-search fa-2x"></i></button>
+                </li>
+              <li>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Name <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                  <li><a href="profile.php">My Profile</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Log out</a></li>
+                 </ul>
+              </li>
+              <li>
+                <a href="#" class="showOnMobile">Inbox</a>
+                <button class="messagerie-logo showOnScreen" type="button"><i class="fa fa-envelope-o fa-3x"></i></button>
+              </li>
+              <li>
+                <span class="badge showOnScreen">4</span>
+              </li>
+            </ul>
         </div> 
+        <?php endif; ?>
       </div>
     </nav>
 

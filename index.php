@@ -1,3 +1,4 @@
+<?php $page = 'home'; ?>
 <?php include "includes/header.html" ?>
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
