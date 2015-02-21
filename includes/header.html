@@ -30,8 +30,7 @@
             <img class="img-responsive" src="images/logo.png" >
           </a> 
         </div>
-        <?php 
-        if (!isset($_COOKIE['userID']) && empty($_COOKIE['userID'])) : ?>
+        <?php if (!isset($_COOKIE['userID']) && !isset($_SESSION['userID'])) : ?>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
              <li class="dropdown">
@@ -68,11 +67,14 @@
                   <button class="research-logo showOnScreen" type="button"><i class="fa fa-search fa-2x"></i></button>
                 </li>
               <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">My Name <b class="caret"></b></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <?php echo (isset($_COOKIE['username']) ? $_SESSION['username'] : $_SESSION['username'])
+                ?> 
+                <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li><a href="profile.php">My Profile</a></li>
                   <li class="divider"></li>
-                  <li><a href="#">Log out</a></li>
+                  <li><a href="./php/users/logout.php">Log out</a></li>
                  </ul>
               </li>
               <li>

@@ -6,7 +6,7 @@
 require '../db.php';
 
 // "hybrid" variables can take both GET and POST for more flexibility
-$username = ($_GET['username']) ? $_GET['username'] : $_POST['username'];
+$username = $_GET['username'] ? $_GET['username'] : $_POST['username'];
 $password = md5($_GET['password'] ? $_GET['password'] : $_POST['password']);
 
 if($username == '') {
@@ -25,7 +25,7 @@ if($username == '') {
 				$_SESSION['username']=$row['username'];
 				$_SESSION['email']=$row['email'];
 			}
-			echo "You are now logged in";
+			header('location:../../index.php');
 		} else {
 			echo "Invalid credentials";
 		}
