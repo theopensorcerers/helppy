@@ -16,14 +16,14 @@
 	border-color:#333;
 }
 
-.btn-default{
+.search-box .btn-default{
 	border-color:#333;
 	border-radius:0px;
 	border-width:0,25px;
 	border-left:0px;
 }
 
-.btn-default:hover{
+.search-box .btn-default:hover{
 	background-color:#333;
 	color:#fff;
 }
