@@ -43,8 +43,9 @@ if ($result = $db->query($query)) {
     $result->close();
 }
 
-$query = "INSERT INTO users (username, forename, surname, email, password, description) VALUES ('$username','$forename','$surname','$email','$password','$description')";
+$query = "INSERT INTO users (username, email, password) VALUES ('$username','$email','$password')";
 if ($result = $db->query($query)) {
+    $db->commit();
     echo "Account created";
     
     /* free result set */
