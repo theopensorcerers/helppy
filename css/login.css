@@ -1,25 +1,27 @@
-.form-signin{
+#LoginRegister .form-signin{
 	margin-top:100px;
 	width:30%;
 	margin-left:auto;
 	margin-right:auto;
 }
 
-.form-signin-heading{
+#LoginRegister .form-signin-heading{
 	text-transform:uppercase;
 	font-size:20px;
-	}
+}
 	
 #inputEmail .form-control{
 	margin-bottom:none;
 	margin-right:0,25px;
-	}
+	border-right: -1px;
+}
 	
-.btn-primary{
+#LoginRegister .btn-primary{
 	background-color:#333;
-	border-radius:0px;}
+	border-radius:0px;
+}
 	
-.btn-primary:hover{
+#LoginRegister .btn-primary:hover{
 	background-color:#fff;
 	color:#333;
 	text-decoration:none;
@@ -27,5 +29,5 @@
 	
 #inputPassword{
 	border-top:0px;
-	}
+}
 	

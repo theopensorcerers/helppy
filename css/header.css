@@ -25,3 +25,13 @@
     color: #fff;
 }
 
+.navbar .dropdown-menu.form-group {
+	width: 300px;
+	padding: 10px;
+
+}
+
+.navbar .dropdown-menu.form-group .form-control {
+	margin-bottom: 5px;
+	
+}
