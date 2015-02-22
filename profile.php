@@ -253,7 +253,7 @@ if ($result = $db->query($query)) {
 
 			<div class="space20"></div>
 		<? endif; ?>
-			<p class="text-left" ><strong>Skills</strong></p>
+			<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Skills</strong></p>
 			<div class="row skills_categories_list user_skills_list" >
 				<div class="row">
 				<?php foreach ($userSkills as $key => $skill) { ?>
