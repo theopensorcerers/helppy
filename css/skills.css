@@ -2,7 +2,7 @@
 This is because number of skills doesn't have a limit as users will make more (no personalized color for each skill)*/
 
 .skills_categories_list .skill {
-	min-height: 100px;
+	min-height: 120px;
 }
 
 .skills_categories_list{

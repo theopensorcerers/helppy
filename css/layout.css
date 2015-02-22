@@ -44,3 +44,6 @@
 }
 
 
+.select2-results li.select2-result-with-children > .select2-result-label {
+	text-transform: uppercase;
+}

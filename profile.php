@@ -13,6 +13,9 @@ $username = $_GET['username'] ? $_GET['username'] : (isset($_COOKIE['username'])
 $my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
 $userDetails = [];
 
+// User details
+$userDetails = [];
+
 $query = "SELECT * FROM users WHERE username='$username'";
 if ($result = $db->query($query)) {
 	if ($row = $result->fetch_assoc()) {
@@ -26,37 +29,120 @@ if ($result = $db->query($query)) {
 	echo 'Unable to connect to the database';
 }
 
+
+// User skills
 $userSkills = [];
 $query = <<<EOF
 SELECT 
-    skills.skillID AS `skillID`,
-    skill_categories.categoryID AS `categoryID`,
-    user_skills.levelID AS `levelID`,
-    skills.name AS `skill_name`,
-    categories.name AS `category_name`,
-    categories.description AS `category_description`,
-    categories.color AS `category_color`,
-    level.name AS `level_name`
+	skills.skillID AS `skillID`,
+	skill_categories.categoryID AS `categoryID`,
+	user_skills.levelID AS `levelID`,
+	skills.name AS `skill_name`,
+	categories.name AS `category_name`,
+	categories.description AS `category_description`,
+	categories.color AS `category_color`,
+	level.name AS `level_name`
 FROM
-    users
-        INNER JOIN
-    user_skills USING (userID)
-        INNER JOIN
-    skills USING (skillID)
-        INNER JOIN
-    skill_categories USING (skillID)
-        INNER JOIN
-    categories USING (categoryID)
+	users
 		INNER JOIN
-    level USING (levelID)
+	user_skills USING (userID)
+		INNER JOIN
+	skills USING (skillID)
+		INNER JOIN
+	skill_categories USING (skillID)
+		INNER JOIN
+	categories USING (categoryID)
+		INNER JOIN
+	level USING (levelID)
 WHERE
-    username  = '$username'
+	username  = '$username'
 GROUP BY user_skills.skillID
 EOF;
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
 		$row['machine_name'] = strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $row['skill_name']));
 		array_push($userSkills, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
+
+// Categories
+$categories = [];
+$query = <<<EOF
+SELECT 
+    count(skills.skillID) AS `skillIs_count`,
+    categories.categoryID AS `categoryID`,
+    categories.name AS `category_name`,
+    categories.color AS `category_color`,
+    categories.description AS `category_description`
+FROM
+    skills
+        INNER JOIN
+    skill_categories USING (skillID)
+        INNER JOIN
+    categories USING (categoryID)
+GROUP BY categories.categoryID;
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+		$row['machine_name'] = strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $row['category_name']));
+		array_push($categories, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
+// Add a skills aray to the categories array
+foreach ($categories as $key => $category) {
+	$categories[$key]['skills'] = [];
+	$categoryID = $category['categoryID'];
+	$query = <<<EOF
+SELECT 
+    skills.skillID AS `skillID`, 
+    skills.name AS `skill_name`
+FROM
+    skills
+        INNER JOIN
+    skill_categories USING (skillID)
+        INNER JOIN
+    categories USING (categoryID)
+        LEFT JOIN
+    user_skills ON (user_skills.skillID = skills.skillID)
+WHERE
+    categories.categoryID = $categoryID
+GROUP BY skills.skillID;
+EOF;
+	if ($result = $db->query($query)) {
+		while ($row = $result->fetch_assoc()) {
+			array_push($categories[$key]['skills'], $row);
+		}
+		/* free result set */
+		$result->close();
+	} else {
+		echo 'Unable to connect to the database';
+	}
+}
+
+// Skills levels
+$levels = [];
+$query = <<<EOF
+SELECT 
+    level.levelID AS `levelID`,
+    level.name AS `level_name`,
+    level.description AS `level_description`
+FROM
+    level
+GROUP BY level.levelID;
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+		array_push($levels, $row);
 	}
 	/* free result set */
 	$result->close();
@@ -124,7 +210,7 @@ if ($result = $db->query($query)) {
 			
 		<?php if ($my_profile) : ?>
 			<div class="row personal_details" >
-				<p><strong>Personal Details</strong></p> <br>
+				<p class="text-left" ><strong>Personal Details</strong></p>
 				<div class="row">
 					<form method="post" action="./php/users/update.php" accept-charset="UTF-8">
 						<div class="col-xs-12 col-md-8">
@@ -167,9 +253,8 @@ if ($result = $db->query($query)) {
 
 			<div class="space20"></div>
 		<? endif; ?>
-
+			<p class="text-left" ><strong>Skills</strong></p>
 			<div class="row skills_categories_list user_skills_list" >
-				<p><strong>Skills</strong></p> <br>
 				<div class="row">
 				<?php foreach ($userSkills as $key => $skill) { ?>
 					<div class="col-xs-6 col-md-3 skill <?php echo $skill['category_color'];?>">
@@ -177,47 +262,43 @@ if ($result = $db->query($query)) {
 							<h3><?php echo $skill['skill_name'];?>
 							<small><br><?php echo $skill['level_name'];?></small></h3>
 						</a>
-				  	</div>
+					</div>
 				<? } ?>
-		    </div>
-                  </div>
-                   Add new skill <br> <br>
-                  <div>
-                  <form id="login_form" method="post" action="./php/users/addskill.php" accept-charset="UTF-8">
-								<select name="skillId" id="skillId" method="post">
-                                <option value=""> Select skill </option>
-                          		<option value="Photoshop">Photoshop</option>
-								<option value="Photography">Photography</option>
-								<option value="Indesign">Indesign</option>
-								<option value="Sewing">Sewing</option>
-                                <option value="Modelmaking">Modelmaking</option>
-                                <option value="CSS">CSS</option>
-                                </select>
-<br> <br>
-
-						Skill level <br> <br>
-							<div class="form-group">
-							  <select name="levelId" id="levelId" method="post">
-                          		<option value=""> Select skill level </option>
-								<option value="1">Beginner</option>
-								<option value="3">Intermediate</option>
-								<option value="3">Advanced</option>
-                                </select> </div>
-                                 
-                                 
-                    <input type="submit" id="submit" value="Add skill" > </form>
-								
-                                
-								
-				
+				</div>
 			</div>
 
-
-
-
-
-			
-		  
+		<?php if ($my_profile) : ?>
+			<div class="space20"></div>
+			<p class="text-left" ><strong>Add Skills</strong></p>
+			<div class="row skills_categories_list user_skills_list" >				
+				<form id="addskills_form" method="post" action="./php/users/addskill.php" accept-charset="UTF-8">
+					<div class="form-group col-xs-4 col-md-4">
+						<select name="skillID" data-placeholder="Select a skill">
+							<!-- Loop through the categories -->
+						<?php foreach ($categories as $key => $category) { ?>
+							<optgroup label="<?php echo $category['category_name']; ?>">
+							<!-- For each category, add the associated skills -->
+							<?php foreach ($category['skills'] as $key => $skill) { ?>
+								<option value="<?php echo $skill['skillID']; ?>"><?php echo $skill['skill_name']; ?></option>
+							<? } ?>
+							</optgroup>
+						<? } ?>
+						</select>
+					</div>
+					
+					<div class="form-group col-xs-2 col-md-2">
+						<select name="levelID" data-placeholder="Select a skill level">
+						<?php foreach ($levels as $key => $level) { ?>
+							<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+						<? } ?>
+						</select> 
+					</div>
+					<div class="form-group col-xs-1 col-md-1">
+						<button type="submit" class="btn btn-default">Add Skill</button>
+					</div>
+				</form>
+			</div>
+		<? endif; ?>
 		</div>  
 	</div>
 </div>

@@ -1,103 +1,6 @@
 <?php $page = 'home'; ?>
 <?php include "includes/header.html" ?>
 
-<<<<<<< HEAD
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-     
-          <div class="text-center">
-            <a class="logo"> 
-              <img src="images/logo.png" >
-            </a> 
-            <p>
-              <br>
-              A free platform to collaborate, offer and receive skills
-              <p> <strong> FIND </strong> the skills you are missing <br>
-                    <strong> GET </strong> the help needed <br>
-                    <strong> FOSTER </strong> collaboration <br>
-                    <strong> CREATE </strong> great projects 
-              </p>
-            </p>
-             <div class="container">
-           <div class="search-container">
-            <div class="space70">
-              <div class="search-box">
-                <div class="input-group search-container">
-                  <input type="text" class="form-control" placeholder="I need help in...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
-                  </span>
-                </div>
-              </div>
-              <div class="space70">
-              </div>
-            </div> 
-          </div>
-          </div>       
-       </div>
-    </div>
-    
-
-    <div class="container index_filters">
-        <div class="btn-group">
-  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-    Categories
-   
-  </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Animation</a></li>
-                    <li><a href="#">Arhitecture</a></li>
-                    <li><a href="#">Graphic Design</a></li>
-                    <li><a href="#">Film & TV</a></li>
-                    <li><a href="#">Fashion</a></li>
-                    <li><a href="#">Crafts</a></li>
-					<li><a href="#">Culinary Arts</a></li>
-                    <li><a href="#">Photography</a></li>
-                    <li><a href="#">Drawing & Illustration</a></li>
-                    <li><a href="#">Printing</a></li>
-                    <li><a href="#">Engineering</a></li>
-                    <li><a href="#">Interior Design</a></li>
-                    <li><a href="#">Music & Sound</a></li>
-                    <li><a href="#">Product Design</a></li>
-                    <li><a href="#">Art</a></li>
-                    <li><a href="#">UX/UI</a></li>
-                    <li><a href="#">Web Design</a></li>
-                    <li><a href="#">Programming</a></li>
-                    <li><a href="#">Writing</a></li>
-  </ul>
-</div>
-<div class="btn-group">
-  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-    Skills
-  </a>
-  <ul class="dropdown-menu">
-    <li><a href="#">Arhitecture</a></li>
-                    <li><a href="#">Photoshop</a></li>
-                    <li><a href="#">Indesign</a></li>
-                    <li><a href="#">Illustrator</a></li>
-                    <li><a href="#">After Effects</a></li>
-					<li><a href="#">Cinema 4d</a></li>
-                    
-  </ul>
-</div>
-    </div>
-		
-                  </ul>
-                </li>
-                <li><a href="#">Skills</a></li>
-
-		      </ul>
-		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="#">Link</a></li>
-		        <li><a href="#">Link</a></li>
-		        	        
-		      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-		</nav>
-    
-        <div class="container skills_categories_list">
-=======
 <?php
 /**
  * Get user details based on a username 
@@ -236,8 +139,7 @@ if ($result = $db->query($query)) {
 			</div>
 		</nav>
 		
-				<div class="container skills_categories_list">
->>>>>>> 718289f21c445a418c9ab5cda0169c3f566dbe44
+		<div class="container skills_categories_list">
 
 			<!-- Example row of columns -->
 			<div class="row">
