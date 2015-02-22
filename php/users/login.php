@@ -4,15 +4,18 @@
 */
 
 require '../db.php';
+header('Content-type: application/json');
 
 // "hybrid" variables can take both GET and POST for more flexibility
 $username = $_GET['username'] ? $_GET['username'] : $_POST['username'];
 $password = md5($_GET['password'] ? $_GET['password'] : $_POST['password']);
 
 if($username == '') {
-	echo 'Username did not reach the server';
+	echo json_encode(array("success" => false, "msg" => "Username did not reach the server"));
+	return false;
 } else if($password == '') {
-	echo 'Password did not reach the server';
+	echo json_encode(array("success" => false, "msg" => "Password did not reach the server"));
+	return false;
 } else {
 	$query = "SELECT userID, username, email FROM users WHERE (password='$password' AND username='$username')";
 	if ($result = $db->query($query)) {
@@ -25,15 +28,17 @@ if($username == '') {
 				$_SESSION['username']=$row['username'];
 				$_SESSION['email']=$row['email'];
 			}
-			header('location:../../index.php');
+			echo json_encode(array("success" => true, "msg" => "Logged in", "href" => "./index.php"));
+			return true;
 		} else {
-			echo "Invalid credentials";
+			echo json_encode(array("success" => false, "msg" => "Invalid credentials"));
+			return false;
 		}
 		/* free result set */
 	    $result->close();
-	    return false;
 	} else {
-		echo 'Unable to check credentials';
+		echo json_encode(array("success" => false, "msg" => "Unable to check credentials"));
+		return false;
 	}
 }
 ?>

@@ -1,3 +1,7 @@
+#mainNavbar {
+	border-bottom: 1px solid #eee;
+}
+
 .navbar-brand img{
     max-height: 57px;
     margin-top: -7px;
@@ -95,7 +99,7 @@
 
 @media (max-width: 999px) {
 	.navbar .container {
-		border-bottom: 1px solid #eee;
+		
 	}
 }
 
@@ -144,3 +148,6 @@
 }
 
 
+#alerts {
+	margin-top: 10px;
+}

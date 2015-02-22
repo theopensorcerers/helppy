@@ -35,7 +35,7 @@ if ($result = $db->query($query)) {
 			<div class="row">
 				<div class="col-xs-6 col-md-4">
 						<div class="thumbnail">
-							<img src="images/profile picture.png" src="images/profile picture.png">
+							<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($userDetails['email'])))?>?s=360&d=mm">
 								<div class="caption">
 									<h3><strong><?php echo $userDetails['username'] ?></strong></h3>
 								</div>
@@ -89,7 +89,7 @@ if ($result = $db->query($query)) {
 				<p><strong>Personnal Details</strong></p> <br>
 				<div class="row">
 					<form method="post" action="./php/users/update.php" accept-charset="UTF-8">
-						<div class="col-xs-12 col-md-6">
+						<div class="col-xs-12 col-md-8">
 							<div class="form-group">
 								<label for="forename">Forename</label>
 								<input type="text" name="forename" class="form-control" placeholder="Forename" value="<? echo $userDetails['forename'] ?>">
@@ -102,15 +102,11 @@ if ($result = $db->query($query)) {
 								<label for="email">Email address</label>
 								<input type="email" name="email" class="form-control" placeholder="Enter email" value="<? echo $userDetails['email'] ?>">
 							</div>
-							<div class="form-group">
-								<label for="avatar">Avatar</label>
-								<input type="file" id="avatar">
-							</div>
 						</div>
-						<div class="col-xs-12 col-md-6">
+						<div class="col-xs-12 col-md-4">
 							<div class="form-group">
-								<label for="new_password">Current Password</label>
-								<input type="password" name="new_password" class="form-control" placeholder="Current Password">
+								<label for="current_password">Current Password</label>
+								<input type="password" name="current_password" class="form-control" placeholder="Current Password">
 							</div>
 							<div class="form-group">
 								<label for="new_password">New Password</label>
@@ -120,6 +116,11 @@ if ($result = $db->query($query)) {
 								<label for="new_password2">Confirm New Password</label>
 								<input type="password" name="new_password2" class="form-control" placeholder="New Password">
 							</div>
+						</div>
+						<div class="col-xs-12 col-md-12">
+							<label for="description">Bio</label>
+							<textarea name="description" class="form-control" rows="5" placeholder="A few words about you"><? echo $userDetails['description'] ?></textarea>
+							<div class="space10"></div>
 							<button type="submit" class="btn btn-default pull-right">Update details</button>
 						</div>
 					</form>
@@ -172,13 +173,6 @@ if ($result = $db->query($query)) {
 				  </div>
 				</div>
 			</div>
-
-
-
-
-
-			
-		  
 		</div>  
 	</div>
 </div>
