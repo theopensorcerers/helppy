@@ -26,6 +26,42 @@ if ($result = $db->query($query)) {
 	echo 'Unable to connect to the database';
 }
 
+$userSkills = [];
+$query = <<<EOF
+SELECT 
+    skills.skillID AS `skillID`,
+    skill_categories.categoryID AS `categoryID`,
+    user_skills.levelID AS `levelID`,
+    skills.name AS `skill_name`,
+    categories.name AS `category_name`,
+    categories.description AS `category_description`,
+    level.name AS `level_name`
+FROM
+    users
+        INNER JOIN
+    user_skills USING (userID)
+        INNER JOIN
+    skills USING (skillID)
+        INNER JOIN
+    skill_categories USING (skillID)
+        INNER JOIN
+    categories USING (categoryID)
+		INNER JOIN
+    level USING (levelID)
+WHERE
+    username  = '$username'
+GROUP BY user_skills.skillID
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+		array_push($userSkills, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
 ?>
 
 <!-- Profile picure and progress bars -->
@@ -130,47 +166,17 @@ if ($result = $db->query($query)) {
 			<div class="space20"></div>
 		<? endif; ?>
 
-			<div class="row user_skills_list" >
+			<div class="row skills_categories_list user_skills_list" >
 				<p><strong>Skills</strong></p> <br>
 				<div class="row">
-				  <div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail">
-						<img alt="images/blue.png" src="images/blue.png" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;" > 
-							<span class="thumbnail-label"><h3>Photoshop</h3></span>
-					</a>
-				  </div>
-				  <div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail">
-						<img alt="images/green.png" src="images/green.png" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
-						<span class="thumbnail-label"><h3>Photography</h3></span>
-					</a>
-				  </div>
-				  <div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail">
-						<img alt="images/blue.png" src="images/blue.png" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
-						<span class="thumbnail-label"><h3>InDesign</h3></span>
-					</a>
-				  </div>
-				  <div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail">
-						<img alt="images/purple.png" src="images/purple.png" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
-						<span class="thumbnail-label"><h3>CSS</h3></span>
-					</a>
-				  </div>
-				</div>
-				<div class="row">
-				  <div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail">
-						<img alt="images/orange.png" src="images/orange.png" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
-						<span class="thumbnail-label"><h3>Model making</h3></span>
-					</a>
-				  </div>
-				  <div class="col-xs-6 col-md-3">
-					<a href="#" class="thumbnail">
-						<img alt="images/deepblue.png" src="images/deepblue.png" data-holder-rendered="true" style="height: 180px; width: 100%; display: block;">
-						<span class="thumbnail-label"><h3>Sewing</h3></span>
-					</a>
-				  </div>
+				<?php foreach ($userSkills as $key => $value) { ?>
+					<div class="col-xs-6 col-md-3 skill default">
+						<a href="./skill/<?php echo $value['skillID']; ?>" >
+							<h3><?php echo $value['skill_name'];?>
+							<small><br><?php echo $value['level_name'];?></small></h3>
+						</a>
+				  	</div>
+				<? } ?>
 				</div>
 			</div>
 		</div>  

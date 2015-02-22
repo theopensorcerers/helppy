@@ -35,15 +35,6 @@
 	display:inline;
 }
 
-
-.thumbnail-label {
-  position: absolute;      
-  bottom: 90px;
-  right: 50px;
-  left: 50px;
-  color:#ffffff;
-}
-
 .rating {
 	height: 35px;
 }
