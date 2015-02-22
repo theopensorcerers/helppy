@@ -67,7 +67,7 @@ if ($result = $db->query($query)) {
 <!-- Profile picure and progress bars -->
 <div class="jumbotron">
 	<div class="container">
-		<div class="space70">
+  <div class="space70">
 			<div class="row">
 				<div class="col-xs-6 col-md-4">
 						<div class="thumbnail">
@@ -177,11 +177,48 @@ if ($result = $db->query($query)) {
 						</a>
 				  	</div>
 				<? } ?>
-				</div>
+		    </div>
+                  </div>
+                   Add new skill <br> <br>
+                  <div class="form-group">
+								<select name="addskill">
+                                <option value=""></option>
+                          		<option value="Photoshop">Photoshop</option>
+								<option value="Photography">Photography</option>
+								<option value="Indesign">Indesign</option>
+								<option value="Sewing">Sewing</option>
+                                <option value="Modelmaking">Modelmaking</option>
+                                <option value="CSS">CSS</option>
+                                
+								</select>
+<br> <br>
+</form>
+						Skill level <br> <br>
+							<div class="form-group">
+							  <select name="skilllevel">
+                          		<option value=""></option>
+								<option value="1">Beginner</option>
+								<option value="3">Intermediate</option>
+								<option value="3">Advanced</option>
+                                </select>
+                                
+                                </div> <br> <input type="submit" id="Skillsubmit" value="Add Skill">
+</form></div>
+								
+                                
+								
+				
 			</div>
+
+
+
+
+
+			
+		  
 		</div>  
 	</div>
 </div>
 
-<?php include "includes/footer.html" ?>
-	
+
+<?php include "includes/footer.html"  ?>
