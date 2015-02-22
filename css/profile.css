@@ -67,6 +67,12 @@
 	position: relative;
 }
 
+.user_skills_list button.close {
+	color: white;
+	margin-top: 3px;
+	margin-right: -5px;
+}
+
 #addskills_form .select2-container {
 	width: 100%;
 	text-align: left;

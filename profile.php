@@ -10,6 +10,7 @@
 require 'php/db.php';
 
 $username = $_GET['username'] ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
+$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 $my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
 $userDetails = [];
 
@@ -258,6 +259,14 @@ if ($result = $db->query($query)) {
 				<div class="row">
 				<?php foreach ($userSkills as $key => $skill) { ?>
 					<div class="col-xs-6 col-md-3 skill <?php echo $skill['category_color'];?>">
+					<?php if ($my_profile) : ?>
+						<form id="remove_skills_form" method="post" action="./php/users/remove_skill.php" accept-charset="UTF-8">
+							<input type="hidden" name="skillID" value="<?php echo $skill['skillID']; ?>">
+							<input type="hidden" name="levelID" value="<?php echo $skill['levelID']; ?>">
+							<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+							<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
+						</form>
+					<? endif; ?>
 						<a href="./skill/<?php echo $skill['machine_name']; ?>" >
 							<h3><?php echo $skill['skill_name'];?>
 							<small><br><?php echo $skill['level_name'];?></small></h3>
