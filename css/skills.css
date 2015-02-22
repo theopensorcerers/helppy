@@ -1,10 +1,18 @@
 /* Styles colour and text from the skills shown in main page. Colours should repeat in a loop in this order -php?
 This is because number of skills doesn't have a limit as users will make more (no personalized color for each skill)*/
 
+.skills_categories_list .skill {
+	min-height: 150px;
+}
+
 .skills_categories_list{
 	text-align:center;
 	color:white;
 	text-transform: uppercase;
+}
+
+.skills_categories_list .default {
+	background-color: lightgray;
 }
 
 .skills_categories_list .green {
@@ -60,7 +68,8 @@ This is because number of skills doesn't have a limit as users will make more (n
 .skills_categories_list .row a{
 	text-decoration:none;
 	color:#fff;
-	background-color:#333;
+	margin-top: auto;
+	margin-bottom: auto;
 }
 
 .container .filter-tabs{
