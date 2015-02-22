@@ -73,12 +73,12 @@
 	margin-right: -5px;
 }
 
-#addskills_form .select2-container {
+.form-group .select2-container {
 	width: 100%;
 	text-align: left;
 }
 
-#addskills_form .select2-container .select2-choice {
+.form-group .select2-container .select2-choice {
 	height: 34px;
 	padding-top: 3px;
 }

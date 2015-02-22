@@ -279,9 +279,9 @@ if ($result = $db->query($query)) {
 		<?php if ($my_profile) : ?>
 			<div class="space20"></div>
 			<p class="text-left" ><strong>Add Skills</strong></p>
-			<div class="row skills_categories_list user_skills_list" >				
+			<div class="row" >
 				<form id="addskills_form" method="post" action="./php/users/addskill.php" accept-charset="UTF-8">
-					<div class="form-group col-xs-4 col-md-4">
+					<div class="form-group col-xs-12 col-md-4">
 						<select name="skillID" data-placeholder="Select a skill">
 							<!-- Loop through the categories -->
 						<?php foreach ($categories as $key => $category) { ?>
@@ -295,14 +295,35 @@ if ($result = $db->query($query)) {
 						</select>
 					</div>
 					
-					<div class="form-group col-xs-2 col-md-2">
+					<div class="form-group col-xs-12 col-md-2">
 						<select name="levelID" data-placeholder="Select a skill level">
 						<?php foreach ($levels as $key => $level) { ?>
 							<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
 						<? } ?>
 						</select> 
 					</div>
-					<div class="form-group col-xs-1 col-md-1">
+					<div class="form-group col-xs-12 col-md-1">
+						<button type="submit" class="btn btn-default">Add Skill</button>
+					</div>
+				</form>
+			</div>
+			<div class="row" >
+			<p>Not finding a skill? You can add one</p>
+				<form id="create_skills_form" method="post" action="./php/skills/addskill.php" accept-charset="UTF-8">
+					<div class="form-group col-xs-12 col-md-2">
+						<select name="categoryID" data-placeholder="Select a category">
+						<?php foreach ($categories as $key => $category) { ?>
+							<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
+						<? } ?>
+						</select>
+					</div>
+					<div class="form-group col-xs-12 col-md-4">
+						<input type="text" name="skill_name" class="form-control" placeholder="Skill name">
+					</div>
+					<div class="form-group col-xs-12 col-md-6">
+						<input type="text" name="skill_description" class="form-control" placeholder="Description">
+					</div>
+					<div class="form-group col-xs-12 col-md-1">
 						<button type="submit" class="btn btn-default">Add Skill</button>
 					</div>
 				</form>
