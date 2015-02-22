@@ -1,14 +1,4 @@
-	
-#filter-bar .navbar-nav{
-	margin-left:-30px;
-	}	
-    
-#filter-bar .navbar>.container .navbar-brand-centered, 
-#filter-bar .navbar>.container-fluid .navbar-brand-centered {
-        margin-left: 0px;
-}
-
-#filter-bar .navbar-default .navbar-nav>li>a{
+#filter-bar .dropdown-toggle{
 	color:#333;
 	text-transform:uppercase;
 	font-family:inherit;
