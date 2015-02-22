@@ -36,29 +36,14 @@
        </div>
     </div>
     
-    <!-- new filter navbar -->
-    
-    <nav class="navbar navbar-default" role="navigation">
-    	  <div class="container">
-		    <!-- Brand and toggle get grouped for better mobile display -->
-		    <div class="navbar-header">
-		      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-brand-centered">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		    </div>
-
-		    <!-- Start of filter navbar -->
-            
-		    <div class="collapse navbar-collapse" id="filter-bar">
-            
-		      <ul class="nav navbar-nav">
-		        <li class="dropdown">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories<span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#">Animation</a></li>
+    <div class="container index_filters">
+        <div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    Categories
+   
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="#">Animation</a></li>
                     <li><a href="#">Arhitecture</a></li>
                     <li><a href="#">Graphic Design</a></li>
                     <li><a href="#">Film & TV</a></li>
@@ -77,19 +62,24 @@
                     <li><a href="#">Web Design</a></li>
                     <li><a href="#">Programming</a></li>
                     <li><a href="#">Writing</a></li>
-                  </ul>
-                </li>
-                <li><a href="#">Skills</a></li>
-
-		      </ul>
-		      <ul class="nav navbar-nav navbar-right">
-		        <li><a href="#">Link</a></li>
-		        <li><a href="#">Link</a></li>
-		        	        
-		      </ul>
-		    </div><!-- /.navbar-collapse -->
-		  </div><!-- /.container-fluid -->
-		</nav>
+  </ul>
+</div>
+<div class="btn-group">
+  <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+    Skills
+  </a>
+  <ul class="dropdown-menu">
+    <li><a href="#">Arhitecture</a></li>
+                    <li><a href="#">Photoshop</a></li>
+                    <li><a href="#">Indesign</a></li>
+                    <li><a href="#">Illustrator</a></li>
+                    <li><a href="#">After Effects</a></li>
+					<li><a href="#">Cinema 4d</a></li>
+                    
+  </ul>
+</div>
+    </div>
+		
     
         <div class="container skills_categories_list">
 
