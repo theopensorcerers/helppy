@@ -122,7 +122,7 @@ if ($result = $db->query($query)) {
 			
 		<?php if ($my_profile) : ?>
 			<div class="row personal_details" >
-				<p><strong>Personnal Details</strong></p> <br>
+				<p><strong>Personal Details</strong></p> <br>
 				<div class="row">
 					<form method="post" action="./php/users/update.php" accept-charset="UTF-8">
 						<div class="col-xs-12 col-md-8">
@@ -180,30 +180,30 @@ if ($result = $db->query($query)) {
 		    </div>
                   </div>
                    Add new skill <br> <br>
-                  <div class="form-group">
-								<select name="addskill">
-                                <option value=""></option>
+                  <div>
+                  <form id="login_form" method="post" action="./php/users/addskill.php" accept-charset="UTF-8">
+								<select name="skillId" id="skillId" method="post">
+                                <option value=""> Select skill </option>
                           		<option value="Photoshop">Photoshop</option>
 								<option value="Photography">Photography</option>
 								<option value="Indesign">Indesign</option>
 								<option value="Sewing">Sewing</option>
                                 <option value="Modelmaking">Modelmaking</option>
                                 <option value="CSS">CSS</option>
-                                
-								</select>
+                                </select>
 <br> <br>
-</form>
+
 						Skill level <br> <br>
 							<div class="form-group">
-							  <select name="skilllevel">
-                          		<option value=""></option>
+							  <select name="levelId" id="levelId" method="post">
+                          		<option value=""> Select skill level </option>
 								<option value="1">Beginner</option>
 								<option value="3">Intermediate</option>
 								<option value="3">Advanced</option>
-                                </select>
-                                
-                                </div> <br> <input type="submit" id="Skillsubmit" value="Add Skill">
-</form></div>
+                                </select> </div>
+                                 
+                                 
+                    <input type="submit" id="submit" value="Add skill" > </form>
 								
                                 
 								
