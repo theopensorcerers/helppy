@@ -4,7 +4,14 @@ RewriteEngine On
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
-RewriteRule ^profile/(\d+)*$ ./profile.php?username=$1 [L]
-RewriteRule  ^skill(.*)$ /skill.php?id=$1  [L]
+
+RewriteRule ^profile/(.+)*$ ./profile.php?username=$1
+RewriteRule ^helper/(.+)*$ ./profile.php?username=$1
+
+RewriteRule ^skill/(.+)*$ ./skill.php?skillID=$1
+RewriteRule ^skills/(.+)*$ ./skill.php?skillID=$1
+
+RewriteRule ^category/(.+)*$ ./category.php?categoryID=$1
+RewriteRule ^categories/(.+)*$ ./category.php?categoryID=$1
 
 ErrorDocument 404 /404.php
