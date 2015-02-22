@@ -20,19 +20,21 @@ $(document).ready(function () {
         })
         .done(function(data, textStatus, jqXHR) {
             if (data.success == true) {
-                $("#alerts").html('<div class="alert alert-success alert-dismissible" role="alert">'
+                $("#alerts").html('<div class="alert alert-success alert-dismissible" role="alert"><strong>'
                     +data.msg
-                    +'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    +'</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             } else if (data.success == false) {
-                $("#alerts").html('<div class="alert alert-danger alert-dismissible" role="alert">'
+                $("#alerts").html('<div class="alert alert-danger alert-dismissible" role="alert"><strong>'
                     +data.msg
-                    +'<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+                    +'</strong><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
             }
             if (data.href) {
-                window.location = data.href;
+                $("#alerts div").append("<br><em>You will be redirected in 2 seconds</em>");
+                setTimeout(function() {
+                    window.location = data.href; 
+                }, 2500);
             }
             if (data.post_to && data.post_data) {
-                console.log(data.post_data);
                 for (input_id in data.post_data) {
                     console.log(input_id, data.post_data[input_id]);
                     $(input_id).val(data.post_data[input_id]);
