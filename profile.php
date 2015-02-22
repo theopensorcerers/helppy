@@ -35,6 +35,7 @@ SELECT
     skills.name AS `skill_name`,
     categories.name AS `category_name`,
     categories.description AS `category_description`,
+    categories.color AS `category_color`,
     level.name AS `level_name`
 FROM
     users
@@ -54,6 +55,7 @@ GROUP BY user_skills.skillID
 EOF;
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
+		$row['machine_name'] = strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $row['skill_name']));
 		array_push($userSkills, $row);
 	}
 	/* free result set */
@@ -169,11 +171,11 @@ if ($result = $db->query($query)) {
 			<div class="row skills_categories_list user_skills_list" >
 				<p><strong>Skills</strong></p> <br>
 				<div class="row">
-				<?php foreach ($userSkills as $key => $value) { ?>
-					<div class="col-xs-6 col-md-3 skill default">
-						<a href="./skill/<?php echo $value['skillID']; ?>" >
-							<h3><?php echo $value['skill_name'];?>
-							<small><br><?php echo $value['level_name'];?></small></h3>
+				<?php foreach ($userSkills as $key => $skill) { ?>
+					<div class="col-xs-6 col-md-3 skill <?php echo $skill['category_color'];?>">
+						<a href="./skill/<?php echo $skill['machine_name']; ?>" >
+							<h3><?php echo $skill['skill_name'];?>
+							<small><br><?php echo $skill['level_name'];?></small></h3>
 						</a>
 				  	</div>
 				<? } ?>

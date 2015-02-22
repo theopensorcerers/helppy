@@ -2,7 +2,7 @@
 This is because number of skills doesn't have a limit as users will make more (no personalized color for each skill)*/
 
 .skills_categories_list .skill {
-	min-height: 150px;
+	min-height: 100px;
 }
 
 .skills_categories_list{
@@ -28,12 +28,21 @@ This is because number of skills doesn't have a limit as users will make more (n
 	background-color: #AE5199;
 }
 
+.skills_categories_list .purple small{
+	color: lightgray;
+}
+
+
 .skills_categories_list .purple:hover {
 	background-color: #333;
 }
 
 .skills_categories_list .orange {
 	background-color: #E88801;
+}
+
+.skills_categories_list .orange small{
+	color: lightgray;
 }
 
 .skills_categories_list .orange:hover {
@@ -50,6 +59,10 @@ This is because number of skills doesn't have a limit as users will make more (n
 
 .skills_categories_list .red {
 	background-color: #E84234;	
+}
+
+.skills_categories_list .red small{
+	color: lightgray;
 }
 
 .skills_categories_list .red:hover {
