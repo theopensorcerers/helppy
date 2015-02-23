@@ -1,18 +1,257 @@
-		/* style for message page temporarily here*/
-	
-.inbox{
-	margin-top:100px;
-	
-	border-color:#333;
-	
-	}
-	
-.inbox .requests{
-		
-		border-color:#333;
-		height:400px;
-		}
-.inbox .conversations{
-		background-color: #333;
-		height:400px;
-		}
+.contacts {
+    margin-top: 100px;
+/*    margin-left:100px;*/
+	position: relative;
+    
+}
+
+.sidebar-brand{
+	text-transform: uppercase;
+	font-family: inherit;
+	color:#333;
+}
+
+#wrapper.toggled {
+    padding-left: 250px;
+}
+
+#sidebar-wrapper {
+    z-index: 1000;
+   /* position: fixed;  was before, if used somewhere else, change it for message to absolute*/
+    right: 0px;
+    height: 100%;
+    margin-left: 0px;
+    overflow-y: auto;
+    background: #fff;
+    border-color: #333;
+    color:#333;
+    width: 30%;
+    float: right;
+	margin-right: 0;
+}
+
+#sidebar-wrapper > .sidebar-nav {
+	position: relative;
+	rig
+}
+
+#wrapper.toggled #sidebar-wrapper {
+    width: 30%;
+}
+
+#page-content-wrapper {
+    width: 70%;
+    position: absolute;
+    padding: 15px;
+}
+
+#wrapper.toggled #page-content-wrapper {
+    position: absolute;
+    margin-right: -250px;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 250px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border:solid:0,25px;
+}
+
+.sidebar-nav li {
+    text-indent: 20px;
+    line-height: 40px;
+	border-color: #333;
+
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+    background-color: #333;
+
+}
+
+.sidebar-nav li:nth-child(even) {
+    background: #CBC9CA;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background-color:#333;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+
+
+.sidebar-nav > .sidebar-brand a {
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #333;
+    background:#fff;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 250px;
+    }
+
+    #wrapper.toggled {
+        padding-left: 0;
+    }
+
+    #sidebar-wrapper {
+        width: 250px;
+    }
+
+    #wrapper.toggled #sidebar-wrapper {
+        width: 0;
+    }
+
+    #page-content-wrapper {
+        padding: 20px;
+        position: relative;
+    }
+
+    #wrapper.toggled #page-content-wrapper {
+        position: relative;
+        margin-right: 0;
+    }
+
+    /* Requests styles */
+
+
+    #reply_btn{
+    	background-color: #333;
+    	color:#fff;
+    	border-radius: 0px;
+    	text-transform: uppercase;
+    	width:90px;
+    	border-color:#333;
+    	margin-left:50px;
+    	margin-bottom: 20px;
+    }
+
+    #reply_btn:hover{
+    	background-color: #fff;
+    	color:#333;
+    }
+
+    .request{
+    	height:150px;
+
+    }
+
+    .request h1{
+    	display:inline-block;
+    }
+
+    .request_details{
+    	display:inline-block;
+    	margin-right: 20px;
+
+
+    }
+
+    .request_details p{
+    	margin:auto;
+    }
+
+    #yesno_btn{
+    	background-color: #fff;
+    	color:#333;
+    	border-radius: 0px;
+    	border-color:#333;
+    	margin-left:10px;
+    	margin-bottom: 30px;
+    }
+
+    #yesno_btn:hover{
+    	background-color: #CBC9CA;
+    	color:#333;
+    	
+    }
+
+    .request hr{
+    	height:1px;
+    	color:#333;
+    }
+
+    .message_history{
+    	min-height:300px;
+    	border:solid,1px;
+    	border-color: #333;
+    	margin-left: -15px;
+    }
+
+    .message{
+    	display: inline-block;
+    	min-height: 50px;
+    	margin-top: 10px;
+    	margin-bottom: 10px;
+    }
+
+    .own_message{
+    	display: block;
+    	min-height: 50px;
+    	margin-top: 10px;
+    	margin-bottom: 10px;
+    	background-color:#CBC9CA;
+    }
+
+    .message_history .message, .own_message p{
+    	padding-left:10px;
+    	padding-top:10px;
+    	padding-bottom: 10px;
+
+    }
+
+    .write_message{
+
+    	height:300px;
+    	padding-left: 0px;
+    }
+
+    .write_message .form-control{
+    	display:block;
+    	border-radius: 0px;
+    	border-color: #333;
+    }
+
+    #send_btn{
+    	width:30%;
+    	background-color: #333;
+    	color:#fff;
+    	border-radius: 0px;
+    	margin-top: 5px;
+    	float:right;
+    	text-transform: uppercase;
+    }
+
+    #send_btn:hover{
+    	background-color: #fff;
+    	color:#333;
+    	
+    }
+
+
+
