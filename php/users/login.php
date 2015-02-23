@@ -28,7 +28,7 @@ if($username == '') {
 				$_SESSION['username']=$row['username'];
 				$_SESSION['email']=$row['email'];
 			}
-			echo json_encode(array("success" => true, "msg" => "Logged in", "href" => "./index.php"));
+			echo json_encode(array("success" => true, "msg" => "Logged in", "href" => "window.location"));
 			return true;
 		} else {
 			echo json_encode(array("success" => false, "msg" => "Invalid credentials"));

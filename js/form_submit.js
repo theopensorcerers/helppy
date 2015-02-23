@@ -30,6 +30,9 @@ $(document).ready(function () {
             }
             if (data.href) {
                 $("#alerts div").append("<br><em>You will be redirected in 2 seconds</em>");
+                if (data.href == "window.location") {
+                    data.href = window.location;
+                }
                 setTimeout(function() {
                     window.location = data.href; 
                 }, 2500);

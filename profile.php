@@ -184,16 +184,13 @@ if ($result = $db->query($query)) {
 						<div class="progress-bar green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
 						</div>
 					</div>
+				<?php if (!$my_profile) : ?>
 					<div class="space20">
 						<div class="align-right">
 							<form method="post" action="/php/users/update.php" accept-charset="UTF-8">
 								<ul class="list-inline rating">
 									<li>
-									<?php if (!$my_profile) : ?>
 										<button class="btn btn-green" type="submit">send green</button>
-									<? else : ?>
-										<div>How do I rank?</div>
-									<? endif; ?>
 									</li>
 									<li><i class="fa fa-leaf fa-2x"></i></li>
 									<li><i class="fa fa-leaf fa-2x"></i></li>
@@ -204,6 +201,7 @@ if ($result = $db->query($query)) {
 							</form>
 						</div>
 					</div>
+				<? endif; ?>
 				</div>
 			</div>
 
@@ -253,6 +251,25 @@ if ($result = $db->query($query)) {
 			</div>
 
 			<div class="space20"></div>
+		<? else : ?>
+
+			<div class="row personal_details" >
+				<p class="text-left" ><strong>Personal Details</strong></p>
+				<div class="row">
+						<div class="col-xs-12 col-md-3">
+							<p class="lead">
+								<? echo $userDetails['forename']; ?>
+								<? echo substr($userDetails['surname'], 0, 1); ?>.
+							</p>
+						</div>
+						<div class="col-xs-12 col-md-9">
+							<p class="lead"><? echo $userDetails['description']; ?></p>
+						</div>
+				</div>
+			</div>
+
+			<div class="space20"></div>
+
 		<? endif; ?>
 			<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Skills</strong></p>
 			<div class="row skills_categories_list user_skills_list" >
