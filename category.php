@@ -75,12 +75,34 @@ if ($result = $db->query($query)) {
 
 ?>
 		<!-- Main jumbotron for a primary marketing message or call to action -->
-		<div class="jumbotron">
-			<h3><?php echo $category['category_name'];?>
-				<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo s;?>)</small>
-			</h3>
-		</div>
-		
+		<div id="category" class="jumbotron">
+
+			<div class="container">
+				 <div class="search-container">
+					<div class="space70">
+						<div class="search-box">
+							<div class="input-group search-container">
+								<input type="text" class="form-control" placeholder="I need help in...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
+								</span>
+							</div>
+						</div>
+						<div class="space70"></div>
+					</div> 
+				</div>
+			</div> 
+			<div class="col-xs-12 col-md-1">
+			</div>
+			<div class="col-xs-12 col-md-10">
+			<div class="col-xs-12 col-md-10<?php echo $category['category_color'];?>">
+				<h2><?php echo $category['category_name'];?>
+					<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo s;?>)</small><br>
+					<br>
+					<p><?php echo $category['category_description'];?></p>
+				</h2>
+			</div>
+	
 		
 		<div class="container">
 
@@ -94,5 +116,10 @@ if ($result = $db->query($query)) {
 			</div>
 
 		</div>
+
+			<div class="col-xs-12 col-md-1">	
+			</div>
+		</div>
+		
 
 <?php include "includes/footer.html" ?>
