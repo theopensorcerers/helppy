@@ -96,6 +96,7 @@ This is because number of skills doesn't have a limit as users will make more (n
 }
 
 
+
 .square {
     border: 0px;
 }
@@ -115,22 +116,4 @@ This is because number of skills doesn't have a limit as users will make more (n
 .index_filters .dropdown-menu :hover{
 	background-color:#333;
 	color:#fff;
-	}
-		/* style for message page temporarily here*/
-	
-.inbox{
-	margin-top:100px;
-	
-	border-color:#333;
-	
-	}
-	
-.inbox .requests{
-		
-		border-color:#333;
-		height:400px;
-		}
-.inbox .conversations{
-		background-color: #333;
-		height:400px;
-		}
+}

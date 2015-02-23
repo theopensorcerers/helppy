@@ -47,3 +47,28 @@
 .select2-results li.select2-result-with-children > .select2-result-label {
 	text-transform: uppercase;
 }
+
+.green {
+	background-color: #74b533;
+}
+
+
+.purple {
+	background-color: #AE5199;
+}
+
+.orange {
+	background-color: #E88801;
+}
+
+.blue {
+	background-color: #4859A4;
+}
+
+.red {
+	background-color: #E84234;	
+}
+
+.darkpp {
+	background-color: #3C2673;
+}

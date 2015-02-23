@@ -186,7 +186,7 @@ if ($result = $db->query($query)) {
 					</div>
 					<div class="space20">
 						<div class="align-right">
-							<form method="post" action="./php/users/update.php" accept-charset="UTF-8">
+							<form method="post" action="/php/users/update.php" accept-charset="UTF-8">
 								<ul class="list-inline rating">
 									<li>
 									<?php if (!$my_profile) : ?>
@@ -213,7 +213,7 @@ if ($result = $db->query($query)) {
 			<div class="row personal_details" >
 				<p class="text-left" ><strong>Personal Details</strong></p>
 				<div class="row">
-					<form method="post" action="./php/users/update.php" accept-charset="UTF-8">
+					<form method="post" action="/php/users/update.php" accept-charset="UTF-8">
 						<div class="col-xs-12 col-md-8">
 							<div class="form-group">
 								<label for="forename">Forename</label>
@@ -260,14 +260,14 @@ if ($result = $db->query($query)) {
 				<?php foreach ($userSkills as $key => $skill) { ?>
 					<div class="col-xs-6 col-md-3 skill <?php echo $skill['category_color'];?>">
 					<?php if ($my_profile) : ?>
-						<form id="remove_skills_form" method="post" action="./php/users/remove_skill.php" accept-charset="UTF-8">
+						<form id="remove_skills_form" method="post" action="/php/users/remove_skill.php" accept-charset="UTF-8">
 							<input type="hidden" name="skillID" value="<?php echo $skill['skillID']; ?>">
 							<input type="hidden" name="levelID" value="<?php echo $skill['levelID']; ?>">
 							<input type="hidden" name="userID" value="<?php echo $userID; ?>">
 							<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
 						</form>
 					<? endif; ?>
-						<a href="./skill/<?php echo $skill['machine_name']; ?>" >
+						<a href="/skill/<?php echo $skill['machine_name']; ?>" >
 							<h3><?php echo $skill['skill_name'];?>
 							<small><br><?php echo $skill['level_name'];?></small></h3>
 						</a>
@@ -280,7 +280,7 @@ if ($result = $db->query($query)) {
 			<div class="space20"></div>
 			<p class="text-left" ><strong>Add Skills</strong></p>
 			<div class="row" >
-				<form id="addskills_form" method="post" action="./php/users/addskill.php" accept-charset="UTF-8">
+				<form id="addskills_form" method="post" action="/php/users/addskill.php" accept-charset="UTF-8">
 					<div class="form-group col-xs-12 col-md-4">
 						<select name="skillID" data-placeholder="Select a skill">
 							<!-- Loop through the categories -->
@@ -309,7 +309,7 @@ if ($result = $db->query($query)) {
 			</div>
 			<div class="row" >
 			<p>Not finding a skill? You can add one</p>
-				<form id="create_skills_form" method="post" action="./php/skills/addskill.php" accept-charset="UTF-8">
+				<form id="create_skills_form" method="post" action="/php/skills/addskill.php" accept-charset="UTF-8">
 					<div class="form-group col-xs-12 col-md-2">
 						<select name="categoryID" data-placeholder="Select a category">
 						<?php foreach ($categories as $key => $category) { ?>

@@ -31,7 +31,7 @@ if ($result = $db->query($query)) {
 $query = "INSERT INTO user_skills (userID, skillID, levelID) VALUES ($userID, $skillID, $levelID)";
 if ($result = $db->query($query)) {
     $db->commit();
-    echo json_encode(array("success" => true, "msg" => "Skill added", "href" => "./profile.php"));
+    echo json_encode(array("success" => true, "msg" => "Skill added", "href" => "/profile/"));
     return true;
     /* free result set */
     $result->close();

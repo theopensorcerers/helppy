@@ -16,16 +16,15 @@
 
 @import 'skills.css';
 
-@import 'category.css';
-
 @import 'home.css';
 
 @import 'header.css';
 
 @import 'profile.css';
 
+@import 'category.css';
+
 @import 'filter-navbar.css';
 
 @import 'login.css';
 
-@import 'message.css';

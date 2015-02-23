@@ -19,7 +19,7 @@ SELECT
     categories.categoryID AS `categoryID`,
     skills.name AS `skill_name`,
     skills.description AS `skill_description`,
-    COUNT(userID) AS `count_users`
+    COUNT(DISTINCT userID) AS `count_users`
 FROM
     skills
         INNER JOIN
@@ -30,10 +30,10 @@ FROM
     user_skills USING (skillID)
 WHERE
     skills.skillID = $skillID
-GROUP BY skills.skillID;
+GROUP BY user_skills.skillID;
 EOF;
 if ($result = $db->query($query)) {
-	while ($row = $result->fetch_assoc()) {
+	if ($row = $result->fetch_assoc()) {
 		$row['machine_name'] = strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $row['skill_name']));
 		$skill = $row;
 	}
@@ -43,26 +43,85 @@ if ($result = $db->query($query)) {
 	echo 'Unable to connect to the database';
 }
 
+// User
 $users = [];
+$query = <<<EOF
+SELECT 
+    skills.skillID AS `skillID`,
+    users.userID AS `userID`,
+    users.username AS `username`,
+    users.description AS `user_description`,
+    level.levelID AS `levelID`,
+    level.name AS `level_name`
+FROM
+    users
+        INNER JOIN
+    user_skills USING (userID)
+        INNER JOIN
+    skills USING (skillID)
+        INNER JOIN
+    level USING (levelID)
+        INNER JOIN
+    skill_categories USING (skillID)
+        INNER JOIN
+    categories USING (categoryID)
+WHERE
+    user_skills.skillID = $skillID
+GROUP BY user_skills.userID
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+
+		array_push($users, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
 
 ?>
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
-			<h3><?php echo $skill['skill_name'];?>
-				<small>(<?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo s;?>)</small>
-			</h3>
-			<p><?php echo $skill['skill_description'];?></p>
-		</div>
-		
-		
-		<div class="container">
 
-			<div class="row">
+			<div class="container">
+
+				 <div class="search-container">
+						<div class="search-box">
+							<div class="input-group search-container">
+								<input type="text" class="form-control" placeholder="I need help in...">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
+								</span>
+							</div>
+						</div>
+				</div>
+				<div class="space70"></div>
+
+						
+				<h2><small>They can help you with </small><?php echo $skill['skill_name'];?></strong>
+					<small>(<?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?>)</small><br>
+					<br>
+					<p><?php echo $skill['skill_description'];?></p>
+				</h2>
+
+				<div class="space70"></div>
+
 				<?php foreach ($users as $key => $user) { ?>
-					
+					<div class="thumbnail">
+						<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=360&d=mm">
+							<div class="caption">
+								<h3><strong><?php echo $user['username'] ?></strong></h3>
+							</div>
+					</div>
+					<h3><a href="/user/<?php echo $user['userID']; ?>" ><?php echo $user['username'];?></a>
+						<small><?php echo $user['level_name'];?></small>
+					</h3>
+					<p><?php echo $user['user_description'];?></p>
 				<? } ?>
 			</div>
-
 		</div>
+
 
 <?php include "includes/footer.html" ?>
