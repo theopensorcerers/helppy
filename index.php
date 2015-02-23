@@ -106,7 +106,7 @@ if ($result = $db->query($query)) {
 				<div class="col-xs-6 col-md-3 skill <?php echo $category['category_color'];?>">
 					<a href="./category/<?php echo $category['categoryID']; ?>" >
 						<h3><?php echo $category['category_name'];?>
-						<small><br>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo s;?>)</small></h3>
+						<small><br>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small></h3>
 					</a>
 					</div>
 				<? } ?>
