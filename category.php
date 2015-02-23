@@ -78,6 +78,7 @@ if ($result = $db->query($query)) {
 		<div id="category" class="jumbotron">
 
 			<div class="container">
+
 				 <div class="search-container">
 					<div class="space70">
 						<div class="search-box">
@@ -88,38 +89,45 @@ if ($result = $db->query($query)) {
 								</span>
 							</div>
 						</div>
-						<div class="space70"></div>
+						<div class="space70">
+						</div>
 					</div> 
 				</div>
-			</div> 
-			<div class="col-xs-12 col-md-1">
-			</div>
-			<div class="col-xs-12 col-md-10">
-			<div class="col-xs-12 col-md-10<?php echo $category['category_color'];?>">
-				<h2><?php echo $category['category_name'];?>
-					<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo s;?>)</small><br>
-					<br>
-					<p><?php echo $category['category_description'];?></p>
-				</h2>
-			</div>
-	
-		
-		<div class="container">
+				<div class="row">
+					<div class="container">
+					
+						<div class=" col-xs-12 col-md-2 skill <?php echo $category['category_color'];?>">
+						</div>
+					
+						<div class="col-xs-12 col-md-1">	
+						</div>
 
-			<div class="row">
-				<?php foreach ($skills as $key => $skill) { ?>
-					<h3><a href="/skill/<?php echo $skill['skillID']; ?>" ><?php echo $skill['skill_name'];?></a>
-						<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo s;?></small>
-					</h3>
-					<p><?php echo $skill['skill_description'];?></p>
-				<? } ?>
+						<div class="col-xs-12 col-md-9">
+							<h2><?php echo $category['category_name'];?>
+								<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small><br>
+								<br>
+								<p><?php echo $category['category_description'];?></p>
+							</h2>
+
+							<div class="space70">
+							</div>
+
+							<div class="row">
+								<?php foreach ($skills as $key => $skill) { ?>
+									<h3><a href="/skill/<?php echo $skill['skillID']; ?>" ><?php echo $skill['skill_name'];?></a>
+										<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo s;?></small>
+									</h3>
+									<p><?php echo $skill['skill_description'];?></p>
+								<? } ?>
+							</div>
+						</div>
+
+					</div>
+				</div>
+
 			</div>
 
-		</div>
-
-			<div class="col-xs-12 col-md-1">	
-			</div>
-		</div>
+		</div> 
 		
 
 <?php include "includes/footer.html" ?>

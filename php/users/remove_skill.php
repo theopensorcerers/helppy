@@ -37,7 +37,7 @@ if ($result = $db->query($query)) {
 $query = "DELETE FROM user_skills WHERE userID = $userID AND skillID = $skillID AND levelID = $levelID";
 if ($result = $db->query($query)) {
     $db->commit();
-    echo json_encode(array("success" => true, "msg" => "Skill deleted", "href" => "./profile.php"));
+    echo json_encode(array("success" => true, "msg" => "Skill deleted", "href" => "/profile/"));
     return true;
     /* free result set */
     $result->close();
