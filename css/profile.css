@@ -67,12 +67,18 @@
 	position: relative;
 }
 
-#addskills_form .select2-container {
+.user_skills_list button.close {
+	color: white;
+	margin-top: 3px;
+	margin-right: -5px;
+}
+
+.form-group .select2-container {
 	width: 100%;
 	text-align: left;
 }
 
-#addskills_form .select2-container .select2-choice {
+.form-group .select2-container .select2-choice {
 	height: 34px;
 	padding-top: 3px;
 }

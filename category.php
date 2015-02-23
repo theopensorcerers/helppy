@@ -9,7 +9,9 @@
  */
 require 'php/db.php';
 
-$categories = [];
+$categoryID = $_GET['categoryID'] ? $_GET['categoryID'] : $_POST['categoryID'];
+
+$category = [];
 $query = <<<EOF
 SELECT 
     count(skills.skillID) AS `skillIs_count`,
@@ -23,12 +25,14 @@ FROM
     skill_categories USING (skillID)
         INNER JOIN
     categories USING (categoryID)
+WHERE
+    categories.categoryID = $categoryID
 GROUP BY categories.categoryID;
 EOF;
 if ($result = $db->query($query)) {
-	while ($row = $result->fetch_assoc()) {
+	if ($row = $result->fetch_assoc()) {
 		$row['machine_name'] = strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $row['category_name']));
-		array_push($categories, $row);
+		$category = $row;
 	}
 	/* free result set */
 	$result->close();
@@ -37,20 +41,25 @@ if ($result = $db->query($query)) {
 }
 
 
+// User skills
 $skills = [];
 $query = <<<EOF
 SELECT 
     skills.skillID AS `skillID`,
-    skill_categories.categoryID AS `categoryID`,
+    categories.categoryID AS `categoryID`,
     skills.name AS `skill_name`,
-    categories.color AS `category_color`,
-    categories.name AS `category_name`
+    skills.description AS `skill_description`,
+    COUNT(userID) AS `count_users`
 FROM
     skills
         INNER JOIN
     skill_categories USING (skillID)
         INNER JOIN
     categories USING (categoryID)
+        LEFT JOIN
+    user_skills USING (skillID)
+WHERE
+    categories.categoryID = $categoryID
 GROUP BY skills.skillID;
 EOF;
 if ($result = $db->query($query)) {
@@ -67,52 +76,22 @@ if ($result = $db->query($query)) {
 ?>
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
-			<div class="text-center">
-				<a class="logo"> 
-					<img src="images/logo.png" >
-				</a> 
-				<p>
-					<br>
-					A free platform to collaborate, offer and receive skills
-					<p> <strong> FIND </strong> the skills you are missing <br>
-						<strong> GET </strong> the help needed <br>
-						<strong> FOSTER </strong> collaboration <br>
-						<strong> CREATE </strong> great projects 
-					</p>
-				</p>
-			 	<div class="container">
-					 <div class="search-container">
-						<div class="space70">
-							<div class="search-box">
-								<div class="input-group search-container">
-									<input type="text" class="form-control" placeholder="I need help in...">
-									<span class="input-group-btn">
-										<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
-									</span>
-								</div>
-							</div>
-							<div class="space20"></div>
-						</div> 
-					</div>
-				</div> 
-			 </div>
+			<h3><?php echo $category['category_name'];?>
+				<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo s;?>)</small>
+			</h3>
 		</div>
 		
-		<div class="container skills_categories_list">
+		
+		<div class="container">
 
-			<!-- Example row of columns -->
 			<div class="row">
-				<?php foreach ($categories as $key => $category) { ?>
-				<div class="col-xs-6 col-md-3 skill <?php echo $category['category_color'];?>">
-					<a href="./category/<?php echo $category['categoryID']; ?>" >
-						<h3><?php echo $category['category_name'];?>
-						<small><br>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo s;?>)</small></h3>
-					</a>
-					</div>
+				<?php foreach ($skills as $key => $skill) { ?>
+					<h3><a href="/skill/<?php echo $skill['skillID']; ?>" ><?php echo $skill['skill_name'];?></a>
+						<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo s;?></small>
+					</h3>
+					<p><?php echo $skill['skill_description'];?></p>
 				<? } ?>
 			</div>
-
-			<hr>
 
 		</div>
 

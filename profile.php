@@ -10,6 +10,7 @@
 require 'php/db.php';
 
 $username = $_GET['username'] ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
+$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 $my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
 $userDetails = [];
 
@@ -258,6 +259,14 @@ if ($result = $db->query($query)) {
 				<div class="row">
 				<?php foreach ($userSkills as $key => $skill) { ?>
 					<div class="col-xs-6 col-md-3 skill <?php echo $skill['category_color'];?>">
+					<?php if ($my_profile) : ?>
+						<form id="remove_skills_form" method="post" action="./php/users/remove_skill.php" accept-charset="UTF-8">
+							<input type="hidden" name="skillID" value="<?php echo $skill['skillID']; ?>">
+							<input type="hidden" name="levelID" value="<?php echo $skill['levelID']; ?>">
+							<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+							<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
+						</form>
+					<? endif; ?>
 						<a href="./skill/<?php echo $skill['machine_name']; ?>" >
 							<h3><?php echo $skill['skill_name'];?>
 							<small><br><?php echo $skill['level_name'];?></small></h3>
@@ -270,9 +279,9 @@ if ($result = $db->query($query)) {
 		<?php if ($my_profile) : ?>
 			<div class="space20"></div>
 			<p class="text-left" ><strong>Add Skills</strong></p>
-			<div class="row skills_categories_list user_skills_list" >				
+			<div class="row" >
 				<form id="addskills_form" method="post" action="./php/users/addskill.php" accept-charset="UTF-8">
-					<div class="form-group col-xs-4 col-md-4">
+					<div class="form-group col-xs-12 col-md-4">
 						<select name="skillID" data-placeholder="Select a skill">
 							<!-- Loop through the categories -->
 						<?php foreach ($categories as $key => $category) { ?>
@@ -286,14 +295,35 @@ if ($result = $db->query($query)) {
 						</select>
 					</div>
 					
-					<div class="form-group col-xs-2 col-md-2">
+					<div class="form-group col-xs-12 col-md-2">
 						<select name="levelID" data-placeholder="Select a skill level">
 						<?php foreach ($levels as $key => $level) { ?>
 							<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
 						<? } ?>
 						</select> 
 					</div>
-					<div class="form-group col-xs-1 col-md-1">
+					<div class="form-group col-xs-12 col-md-1">
+						<button type="submit" class="btn btn-default">Add Skill</button>
+					</div>
+				</form>
+			</div>
+			<div class="row" >
+			<p>Not finding a skill? You can add one</p>
+				<form id="create_skills_form" method="post" action="./php/skills/addskill.php" accept-charset="UTF-8">
+					<div class="form-group col-xs-12 col-md-2">
+						<select name="categoryID" data-placeholder="Select a category">
+						<?php foreach ($categories as $key => $category) { ?>
+							<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
+						<? } ?>
+						</select>
+					</div>
+					<div class="form-group col-xs-12 col-md-4">
+						<input type="text" name="skill_name" class="form-control" placeholder="Skill name">
+					</div>
+					<div class="form-group col-xs-12 col-md-6">
+						<input type="text" name="skill_description" class="form-control" placeholder="Description">
+					</div>
+					<div class="form-group col-xs-12 col-md-1">
 						<button type="submit" class="btn btn-default">Add Skill</button>
 					</div>
 				</form>
