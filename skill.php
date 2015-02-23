@@ -50,6 +50,7 @@ SELECT
     skills.skillID AS `skillID`,
     users.userID AS `userID`,
     users.username AS `username`,
+    users.email AS `email`,
     users.description AS `user_description`,
     level.levelID AS `levelID`,
     level.name AS `level_name`
@@ -100,25 +101,33 @@ if ($result = $db->query($query)) {
 				<div class="space70"></div>
 
 						
-				<h2><small>They can help you with </small><?php echo $skill['skill_name'];?></strong>
-					<small>(<?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?>)</small><br>
+				<h2><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?><small> can help you with </small><?php echo $skill['skill_name'];?></strong>
 					<br>
-					<p><?php echo $skill['skill_description'];?></p>
+					<p><?php echo substr($skill['skill_description'], 200, 0);?></p>
 				</h2>
 
 				<div class="space70"></div>
 
 				<?php foreach ($users as $key => $user) { ?>
-					<div class="thumbnail">
-						<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=360&d=mm">
-							<div class="caption">
-								<h3><strong><?php echo $user['username'] ?></strong></h3>
-							</div>
+					<div class="row">
+						<div class="col-xs-12 col-md-2">
+							<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=mm">
+						</div>
+						<div class="col-xs-12 col-md-1"></div>
+						<div class="col-xs-12 col-md-9">
+							<h3>
+								<a href="/user/<?php echo $user['userID']; ?>" ><?php echo $user['username'];?></a>
+								<small><?php echo $user['level_name'];?></small>
+							</h3>
+							<p>
+								<?php echo substr($user['user_description'],0 ,500);?> ...
+							</p>
+							<p class="text-right">
+								<a href="/user/<?php echo $user['userID']; ?>">see <?php echo $user['username'];?> profile</a>
+						</p>
+						</div>
 					</div>
-					<h3><a href="/user/<?php echo $user['userID']; ?>" ><?php echo $user['username'];?></a>
-						<small><?php echo $user['level_name'];?></small>
-					</h3>
-					<p><?php echo $user['user_description'];?></p>
+					<hr>
 				<? } ?>
 			</div>
 		</div>
