@@ -116,14 +116,14 @@ if ($result = $db->query($query)) {
 						<div class="col-xs-12 col-md-1"></div>
 						<div class="col-xs-12 col-md-9">
 							<h3>
-								<a href="/user/<?php echo $user['userID']; ?>" ><?php echo $user['username'];?></a>
+								<a href="/helper/<?php echo $user['username']; ?>" ><?php echo $user['username'];?></a>
 								<small><?php echo $user['level_name'];?></small>
 							</h3>
 							<p>
 								<?php echo substr($user['user_description'],0 ,500);?> ...
 							</p>
 							<p class="text-right">
-								<a href="/user/<?php echo $user['userID']; ?>">see <?php echo $user['username'];?> profile</a>
+								<a href="/helper/<?php echo $user['username']; ?>">see <?php echo $user['username'];?> profile</a>
 						</p>
 						</div>
 					</div>

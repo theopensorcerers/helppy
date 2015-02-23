@@ -14,4 +14,7 @@ RewriteRule ^skills/(.+)*$ ./skill.php?skillID=$1
 RewriteRule ^category/(.+)*$ ./category.php?categoryID=$1
 RewriteRule ^categories/(.+)*$ ./category.php?categoryID=$1
 
+RewriteRule ^message/(.+)*$ ./message.php?requestID=$1
+RewriteRule ^messages/(.+)*$ ./message.php?requestID=$1
+
 ErrorDocument 404 /404.php
