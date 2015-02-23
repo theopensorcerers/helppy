@@ -49,7 +49,7 @@ require_once 'php/defines.php';
              <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign Up</a>
                 <div class="dropdown-menu form-group">
-                  <form method="post" action="/php/users/signup.php" accept-charset="UTF-8">
+                  <form method="post" action="<?php echo $baseurl; ?>/php/users/signup.php" accept-charset="UTF-8">
                     <input type="text" id="register_username" name="username" class="form-control" placeholder="Username" autofocus>
                     <input type="email" id="register_email" name="email" class="form-control" placeholder="Email">
                     <input type="password" id="register_password" name="password" class="form-control" placeholder="Password">
@@ -59,11 +59,11 @@ require_once 'php/defines.php';
                 </div>
               </li>
               <li class="dropdown">
-                <a href="login.php" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Login <span class="sr-only">(current)</span>
                 </a>
                 <div class="dropdown-menu form-group">
-                  <form id="login_form" method="post" action="/php/users/login.php" accept-charset="UTF-8">
+                  <form id="login_form" method="post" action="<?php echo $baseurl; ?>/php/users/login.php" accept-charset="UTF-8">
                     <input type="text" id="username" name="username" class="form-control" placeholder="Username" autofocus>
                     <input type="password" id="password" name="password" class="form-control" placeholder="Password" >
                     <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
@@ -85,14 +85,14 @@ require_once 'php/defines.php';
                 ?> 
                 <b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li><a href="<?php echo $baseurl; ?>/profile/">My Profile</a></li>
+                  <li><a href="<?php echo $baseurl; ?>/profile.php">My Profile</a></li>
                   <li class="divider"></li>
                   <li><a href="<?php echo $baseurl; ?>/php/users/logout.php">Log out</a></li>
                  </ul>
               </li>
               <li>
                 <a href="<?php echo $baseurl; ?>/message.php" class="showOnMobile">Inbox</a>
-                <button class="messagerie-logo showOnScreen" type="button" onclick="window.location = '/messages/';"><i class="fa fa-envelope-o fa-3x"></i></button>
+                <button class="messagerie-logo showOnScreen" type="button" onclick="window.location = '<?php echo $baseurl; ?>/message.php';"><i class="fa fa-envelope-o fa-3x"></i></button>
               </li>
               <li>
                 <span class="badge showOnScreen">4</span>
