@@ -29,7 +29,9 @@ if ($result = $db->query($query)) {
 } 
 
 $skillID;
-$query = "INSERT INTO skills (name, description) VALUES ('$skill_name', '$skill_description')";
+$machine_name = strtolower(preg_replace('/[^A-Za-z0-9-]+/', '-', $row['skill_name']));
+
+$query = "INSERT INTO skills (name, description, machine_name) VALUES ('$skill_name', '$skill_description', '$machine_name')";
 if ($result = $db->query($query)) {    
     $skillID = $db->insert_id;
     // defer commit, do not return success yet
