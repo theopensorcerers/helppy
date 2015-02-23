@@ -9,7 +9,7 @@
  */
 require 'php/db.php';
 
-$categories = [];
+$categories = array();
 $query = <<<EOF
 SELECT 
     count(skills.skillID) AS `skillIs_count`,
@@ -37,7 +37,7 @@ if ($result = $db->query($query)) {
 }
 
 
-$skills = [];
+$skills = array();
 $query = <<<EOF
 SELECT 
     skills.skillID AS `skillID`,

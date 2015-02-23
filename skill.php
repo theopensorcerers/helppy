@@ -12,7 +12,7 @@ require 'php/db.php';
 $skillID = $_GET['skillID'] ? $_GET['skillID'] : $_POST['skillID'];
 
 // User skills
-$skill = [];
+$skill = array();
 $query = <<<EOF
 SELECT 
     skills.skillID AS `skillID`,
@@ -44,7 +44,7 @@ if ($result = $db->query($query)) {
 }
 
 // User
-$users = [];
+$users = array();
 $query = <<<EOF
 SELECT 
     skills.skillID AS `skillID`,
@@ -112,21 +112,21 @@ if ($result = $db->query($query)) {
 					<div class="row">
 						<div class="col-xs-12 col-md-2">
 							<div class="space50"></div>
-							<a href="/helper/<?php echo $user['username']; ?>" >
+							<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" >
 								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=mm">
 							</a>
 						</div>
 						<div class="col-xs-12 col-md-1"></div>
 						<div class="col-xs-12 col-md-9">
 							<h3>
-								<a href="/helper/<?php echo $user['username']; ?>" ><?php echo $user['username'];?></a>
+								<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" ><?php echo $user['username'];?></a>
 								<small><?php echo $user['level_name'];?></small>
 							</h3>
 							<p>
 								<?php echo substr($user['user_description'],0 ,500);?> ...
 							</p>
 							<p class="text-right">
-								<a href="/helper/<?php echo $user['username']; ?>">see <?php echo $user['username'];?> profile</a>
+								<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>">see <?php echo $user['username'];?> profile</a>
 						</p>
 						</div>
 					</div>

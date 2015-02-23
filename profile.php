@@ -12,10 +12,10 @@ require 'php/db.php';
 $username = $_GET['username'] ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 $my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
-$userDetails = [];
+$userDetails = array();
 
 // User details
-$userDetails = [];
+$userDetails = array();
 
 $query = "SELECT * FROM users WHERE username='$username'";
 if ($result = $db->query($query)) {
@@ -32,7 +32,7 @@ if ($result = $db->query($query)) {
 
 
 // User skills
-$userSkills = [];
+$userSkills = array();
 $query = <<<EOF
 SELECT 
 	skills.skillID AS `skillID`,
@@ -72,7 +72,7 @@ if ($result = $db->query($query)) {
 
 
 // Categories
-$categories = [];
+$categories = array();
 $query = <<<EOF
 SELECT 
     count(skills.skillID) AS `skillIs_count`,
@@ -101,7 +101,7 @@ if ($result = $db->query($query)) {
 
 // Add a skills aray to the categories array
 foreach ($categories as $key => $category) {
-	$categories[$key]['skills'] = [];
+	$categories[$key]['skills'] = array();
 	$categoryID = $category['categoryID'];
 	$query = <<<EOF
 SELECT 
@@ -131,7 +131,7 @@ EOF;
 }
 
 // Skills levels
-$levels = [];
+$levels = array();
 $query = <<<EOF
 SELECT 
     level.levelID AS `levelID`,
@@ -284,7 +284,7 @@ if ($result = $db->query($query)) {
 							<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
 						</form>
 					<? endif; ?>
-						<a href="/skill/<?php echo $skill['machine_name']; ?>" >
+						<a href="<?php echo $baseurl; ?>/skill/<?php echo $skill['machine_name']; ?>" >
 							<h3><?php echo $skill['skill_name'];?>
 							<small><br><?php echo $skill['level_name'];?></small></h3>
 						</a>

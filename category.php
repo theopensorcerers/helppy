@@ -11,7 +11,7 @@ require 'php/db.php';
 
 $categoryID = $_GET['categoryID'] ? $_GET['categoryID'] : $_POST['categoryID'];
 
-$category = [];
+$category = array();
 $query = <<<EOF
 SELECT 
     count(skills.skillID) AS `skillIs_count`,
@@ -42,7 +42,7 @@ if ($result = $db->query($query)) {
 
 
 // User skills
-$skills = [];
+$skills = array();
 $query = <<<EOF
 SELECT 
     skills.skillID AS `skillID`,
@@ -114,7 +114,7 @@ if ($result = $db->query($query)) {
 
 							<div class="row">
 								<?php foreach ($skills as $key => $skill) { ?>
-									<h3><a href="/skill/<?php echo $skill['skillID']; ?>" ><?php echo $skill['skill_name'];?></a>
+									<h3><a href="<?php echo $baseurl; ?>/skill/<?php echo $skill['skillID']; ?>" ><?php echo $skill['skill_name'];?></a>
 										<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo s;?></small>
 									</h3>
 									<p><?php echo $skill['skill_description'];?></p>
