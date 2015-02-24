@@ -7,8 +7,8 @@ require '../db.php';
 header('Content-type: application/json');
 
 // "hybrid" variables can take both GET and POST for more flexibility
-$username = $_GET['username'] ? $_GET['username'] : $_POST['username'];
-$password = md5($_GET['password'] ? $_GET['password'] : $_POST['password']);
+$username = isset($_GET['username']) ? $_GET['username'] : $_POST['username'];
+$password = md5(isset($_GET['password']) ? $_GET['password'] : $_POST['password']);
 
 if($username == '') {
 	echo json_encode(array("success" => false, "msg" => "Username did not reach the server"));

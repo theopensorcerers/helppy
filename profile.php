@@ -9,7 +9,7 @@
  */
 require 'php/db.php';
 
-$username = $_GET['username'] ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
+$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 $my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
 $userDetails = array();
@@ -284,7 +284,7 @@ if ($result = $db->query($query)) {
 							<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
 						</form>
 					<? endif; ?>
-						<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['machine_name']; ?>" >
+						<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" >
 							<h3><?php echo $skill['skill_name'];?>
 							<small><br><?php echo $skill['level_name'];?></small></h3>
 						</a>

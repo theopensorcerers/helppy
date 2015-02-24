@@ -8,9 +8,9 @@ require '../db.php';
 //header('Content-type: application/json');
 
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
-$categoryID = $db->real_escape_string($_GET['categoryID'] ? $_GET['categoryID'] : $_POST['categoryID']);
-$skill_name = $db->real_escape_string(trim($_GET['skill_name'] ? $_GET['skill_name'] : $_POST['skill_name']));
-$skill_description = $db->real_escape_string(trim($_GET['skill_description'] ? $_GET['skill_description'] : $_POST['skill_description']));
+$categoryID = $db->real_escape_string(isset($_GET['categoryID']) ? $_GET['categoryID'] : $_POST['categoryID']);
+$skill_name = $db->real_escape_string(trim(isset($_GET['skill_name']) ? $_GET['skill_name'] : $_POST['skill_name']));
+$skill_description = $db->real_escape_string(trim(isset($_GET['skill_description']) ? $_GET['skill_description'] : $_POST['skill_description']));
 
 if ($categoryID == '' || $skill_name == '' || $skill_description == '') {
     echo json_encode(array("success" => false, "msg" => "Please provide all the required fields"));

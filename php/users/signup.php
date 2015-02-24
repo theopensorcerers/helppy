@@ -7,10 +7,10 @@
 require '../db.php';
 header('Content-type: application/json');
 
-$username = $db->real_escape_string($_GET['username'] ? $_GET['username'] : $_POST['username']);
-$email = $db->real_escape_string($_GET['email'] ? $_GET['email'] : $_POST['email']);
-$password = md5($_GET['password'] ? $_GET['password'] : $_POST['password']);
-$passwordcheck = md5($_GET['passwordcheck'] ? $_GET['passwordcheck'] : $_POST['passwordcheck']);
+$username = $db->real_escape_string(isset($_GET['username']) ? $_GET['username'] : $_POST['username']);
+$email = $db->real_escape_string(isset($_GET['email']) ? $_GET['email'] : $_POST['email']);
+$password = md5(isset($_GET['password']) ? $_GET['password'] : $_POST['password']);
+$passwordcheck = md5(isset($_GET['passwordcheck']) ? $_GET['passwordcheck'] : $_POST['passwordcheck']);
 
 if ($password != $passwordcheck) {
     echo json_encode(array("success" => false, "msg" => "Your passwords do not match"));

@@ -8,8 +8,8 @@ require '../db.php';
 //header('Content-type: application/json');
 
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
-$skillID = $db->real_escape_string($_GET['skillID'] ? $_GET['skillID'] : $_POST['skillID']);
-$levelID = $db->real_escape_string($_GET['levelID'] ? $_GET['levelID'] : $_POST['levelID']);
+$skillID = $db->real_escape_string(isset($_GET['skillID']) ? $_GET['skillID'] : $_POST['skillID']);
+$levelID = $db->real_escape_string(isset($_GET['levelID']) ? $_GET['levelID'] : $_POST['levelID']);
 
 if ($skillID == '' || $levelID == '') {
     echo json_encode(array("success" => false, "msg" => "Please provide all the required fields"));
@@ -31,7 +31,7 @@ if ($result = $db->query($query)) {
 $query = "INSERT INTO user_skills (userID, skillID, levelID) VALUES ($userID, $skillID, $levelID)";
 if ($result = $db->query($query)) {
     $db->commit();
-    echo json_encode(array("success" => true, "msg" => "Skill added", "href" => "/profile/"));
+    echo json_encode(array("success" => true, "msg" => "Skill added", "href" => "window.location"));
     return true;
     /* free result set */
     $result->close();

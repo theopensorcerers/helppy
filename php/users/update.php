@@ -6,13 +6,13 @@
 require '../db.php';
 header('Content-type: application/json');
 
-$forename = $db->real_escape_string($_GET['forename'] ? $_GET['forename'] : $_POST['forename']);
-$surname = $db->real_escape_string($_GET['surname'] ? $_GET['surname'] : $_POST['surname']);
-$email = $db->real_escape_string($_GET['email'] ? $_GET['email'] : $_POST['email']);
-$current_password = md5($_GET['current_password'] ? $_GET['current_password'] : $_POST['current_password']);
-$new_password = md5($_GET['new_password'] ? $_GET['new_password'] : $_POST['new_password']);
-$new_password2 = md5($_GET['new_password2'] ? $_GET['new_password2'] : $_POST['new_password2']);
-$description = $db->real_escape_string($_GET['description'] ? $_GET['description'] : $_POST['description']);
+$forename = $db->real_escape_string(isset($_GET['forename']) ? $_GET['forename'] : $_POST['forename']);
+$surname = $db->real_escape_string(isset($_GET['surname']) ? $_GET['surname'] : $_POST['surname']);
+$email = $db->real_escape_string(isset($_GET['email']) ? $_GET['email'] : $_POST['email']);
+$current_password = md5(isset($_GET['current_password']) ? $_GET['current_password'] : $_POST['current_password']);
+$new_password = md5(isset($_GET['new_password']) ? $_GET['new_password'] : $_POST['new_password']);
+$new_password2 = md5(isset($_GET['new_password2']) ? $_GET['new_password2'] : $_POST['new_password2']);
+$description = $db->real_escape_string(isset($_GET['description']) ? $_GET['description'] : $_POST['description']);
 
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 
@@ -68,9 +68,7 @@ if ($current_password && ($new_password == $new_password2)) {
 $query = "UPDATE users SET forename='$forename', surname='$surname', email='$email', description='$description' WHERE userID='$userID'";
 if ($result = $db->query($query)) {
     $db->commit();
-    echo json_encode(array("success" => true, "msg" => "Details updated"));
-    /* free result set */
-    $result->close();
+    echo json_encode(array("success" => true, "msg" => "Details updated", "href" => "window.location"));
     return true;
 } else {
     echo json_encode(array("success" => true, "msg" => "Failed to update details"));

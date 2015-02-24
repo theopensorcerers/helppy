@@ -9,7 +9,7 @@
  */
 require 'php/db.php';
 
-$categoryID = $_GET['categoryID'] ? $_GET['categoryID'] : $_POST['categoryID'];
+$categoryID = isset($_GET['categoryID']) ? $_GET['categoryID'] : $_POST['categoryID'];
 
 $category = array();
 $query = <<<EOF

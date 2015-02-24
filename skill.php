@@ -9,7 +9,7 @@
  */
 require 'php/db.php';
 
-$skillID = $_GET['skillID'] ? $_GET['skillID'] : $_POST['skillID'];
+$skillID = isset($_GET['skillID']) ? $_GET['skillID'] : $_POST['skillID'];
 
 // User skills
 $skill = array();
