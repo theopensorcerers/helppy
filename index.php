@@ -101,7 +101,7 @@ if ($result = $db->query($query)) {
 		<div class="container skills_categories_list">
 
 			<!-- Example row of columns -->
-			<div class="row">
+			<div class="row category">
 				<?php foreach ($categories as $key => $category) { ?>
 				<div class="col-xs-6 col-md-3 skill <?php echo $category['category_color'];?>">
 					<a href="<?php echo $baseurl; ?>/category.php?categoryID=<?php echo $category['categoryID']; ?>" >

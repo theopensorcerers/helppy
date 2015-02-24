@@ -110,7 +110,7 @@ if ($result = $db->query($query)) {
 				<div class="space70"></div>
 
 				<?php foreach ($users as $key => $user) { ?>
-					<div class="row">
+					<div class="row user">
 						<div class="col-xs-12 col-md-2">
 							<div class="space50"></div>
 							<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" >
@@ -121,7 +121,7 @@ if ($result = $db->query($query)) {
 						<div class="col-xs-12 col-md-9">
 							<h3>
 								<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $user['username']; ?>" ><?php echo $user['username'];?></a>
-								<small><?php echo $user['level_name'];?></small>
+								<small class="level_<?php echo $user['level_color'];?>"><?php echo $user['level_name'];?></small>
 							</h3>
 							<p>
 								<?php echo substr($user['user_description'],0 ,500);?> ...

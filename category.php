@@ -93,7 +93,7 @@ if ($result = $db->query($query)) {
 						</div>
 					</div> 
 				</div>
-				<div class="row">
+				<div class="row category">
 					<div class="container">
 					
 						<div class=" col-xs-12 col-md-2 skill <?php echo $category['category_color'];?>">

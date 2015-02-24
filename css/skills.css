@@ -95,7 +95,25 @@ This is because number of skills doesn't have a limit as users will make more (n
 	margin-bottom: auto;
 }
 
+.level_purple{
+	color: #AE5199;
+}
 
+.level_green{
+	color: #688715;
+}
+
+.level_orange{
+	color: #E88801;
+}
+
+.level_red{
+	color: #E84234;
+}
+
+.level_blue{
+	color: #4859A4;
+}
 
 .square {
     border: 0px;
