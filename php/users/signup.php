@@ -59,11 +59,8 @@ if ($result = $db->query($query)) {
     echo json_encode(array("success" => true, "msg" => "Account created, you can now loggin", 
                             "post_to" => "#login_form", 
                             "post_data" => array("#username" => $username,
-                                                 "#password" => $_GET['password'] ? $_GET['password'] : $_POST['password'])));
+                                                 "#password" => isset($_GET['password']) ? $_GET['password'] : $_POST['password'])));
     return true;
-    
-    /* free result set */
-    $result->close();
 } else {
     echo json_encode(array("success" => false, "msg" => "Failed to create user in database"));
     return false;
