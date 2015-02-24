@@ -281,8 +281,7 @@ if ($result = $db->query($query)) {
 				<div class="row">
 				<?php foreach ($userSkills as $key => $skill) { ?>
 					<div class="<?php echo 'col-xs-6 col-md-3 skill ' . $skill['level_color']; ?>">
-<!-- 					<div class="col-xs-6 col-md-3 skill <?php echo $skill['level_name'];?>">
- -->					<?php if ($my_profile) : ?>
+					<?php if ($my_profile) : ?>
 						<form id="remove_skills_form" method="post" action="<?php echo $baseurl; ?>/php/users/remove_skill.php" accept-charset="UTF-8">
 							<input type="hidden" name="skillID" value="<?php echo $skill['skillID']; ?>">
 							<input type="hidden" name="levelID" value="<?php echo $skill['levelID']; ?>">

@@ -53,7 +53,8 @@ SELECT
     users.email AS `email`,
     users.description AS `user_description`,
     level.levelID AS `levelID`,
-    level.name AS `level_name`
+    level.name AS `level_name`,
+    level.color AS `level_color`
 FROM
     users
         INNER JOIN
