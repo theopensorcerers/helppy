@@ -1,6 +1,6 @@
 <?php include "includes/header.html" ?>
 
-
+<div class="jumbotron">
 <div class="container contacts">
 
         <!-- Sidebar contacts/other users-->
@@ -41,7 +41,7 @@
                     <div class="col-lg-12 reply_request">
                         <h1>Can you help User 1?</h1>
                         
-                        <a href="#menu-toggle" class="btn btn-default" id="reply_btn">Reply</a>
+                        
                     </div>
 
                     <div class="col-lg-12 reply_request">
@@ -57,6 +57,11 @@
                         <div class="request_details">
                             <a href="#menu-toggle" class="btn btn-default" id="yesno_btn"><h4>no</h4></a>
                         </div> <!-- end of no button-->
+
+                        <!--Only active after the button Yes has been pushed and sends a review request to other user-->
+                        <div class="request_details">
+                        <a href="#menu-toggle" class="btn btn-default" id="yesno_btn"><h4>Help completed!</h4></a>
+                        </div> <!-- end of help completed button-->
                     </div>
                     <hr></hr>
                 </div>
@@ -78,7 +83,6 @@
 
     </div>
     <!-- /#wrapper -->
-
-    
+</div>
 
 </body>
