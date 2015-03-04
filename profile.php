@@ -347,6 +347,13 @@ if ($result = $db->query($query)) {
 					<div class="form-group col-xs-12 col-md-4">
 						<input type="text" name="skill_name" class="form-control" placeholder="Skill name">
 					</div>
+					<div class="form-group col-xs-12 col-md-2">
+						<select name="levelID" data-placeholder="Select a skill level">
+						<?php foreach ($levels as $key => $level) { ?>
+							<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+						<? } ?>
+						</select> 
+					</div>
 					<div class="form-group col-xs-12 col-md-6">
 						<input type="text" name="skill_description" class="form-control" placeholder="Description">
 					</div>
