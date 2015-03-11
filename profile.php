@@ -363,7 +363,7 @@ if ($result = $db->query($query)) {
 				</form>
 			</div>
 		<? endif; ?>
-
+		<div class="space70"></div>
 		<div id="map-canvas"></div>
 
 		</div>  
