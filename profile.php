@@ -351,6 +351,9 @@ if ($result = $db->query($query)) {
 				</form>
 			</div>
 		<? endif; ?>
+
+		<div id="map-canvas"></div>
+
 		</div>  
 	</div>
 </div>
