@@ -168,8 +168,13 @@ if ($result = $db->query($query)) {
 							<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($userDetails['email'])))?>?s=360&d=mm">
 								<div class="caption">
 									<h3><strong><?php echo $userDetails['username'] ?></strong></h3>
+
 								</div>
 						</div>
+						<?php if (!$my_profile) : ?>
+							<a href="#menu-toggle" class="btn btn-default" id="request_skill_btn"><h4>Request a skill</h4></a>
+						<? endif; ?>
+
 				</div>
 				<div class="col-xs-12 col-md-1">
 				</div>
@@ -341,6 +346,13 @@ if ($result = $db->query($query)) {
 					</div>
 					<div class="form-group col-xs-12 col-md-4">
 						<input type="text" name="skill_name" class="form-control" placeholder="Skill name">
+					</div>
+					<div class="form-group col-xs-12 col-md-2">
+						<select name="levelID" data-placeholder="Select a skill level">
+						<?php foreach ($levels as $key => $level) { ?>
+							<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+						<? } ?>
+						</select> 
 					</div>
 					<div class="form-group col-xs-12 col-md-6">
 						<input type="text" name="skill_description" class="form-control" placeholder="Description">

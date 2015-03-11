@@ -116,6 +116,8 @@ if ($result = $db->query($query)) {
 							<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" >
 								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=mm">
 							</a>
+							<a href="#menu-toggle" class="btn btn-default" id="request_skill_btn"><h4>Request a skill</h4></a>
+
 						</div>
 						<div class="col-xs-12 col-md-1"></div>
 						<div class="col-xs-12 col-md-9">
@@ -129,6 +131,7 @@ if ($result = $db->query($query)) {
 							<p class="text-right">
 								<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $user['username']; ?>">see <?php echo $user['username'];?> profile</a>
 						</p>
+
 						</div>
 					</div>
 					<hr>

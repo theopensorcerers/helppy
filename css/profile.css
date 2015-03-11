@@ -79,3 +79,18 @@
 	height: 34px;
 	padding-top: 3px;
 }
+
+#request_skill_btn{
+    	background-color: #fff;
+    	color:#333;
+    	border-radius: 0px;
+    	border-color:#333;
+    	margin-left:10px;
+    	margin-bottom: 30px;
+    	width:100%;
+    }
+
+#request_skill_btn:hover{
+    	background-color: #333;
+    	color:#fff;
+    }
