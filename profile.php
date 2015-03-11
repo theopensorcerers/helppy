@@ -161,14 +161,16 @@ if ($result = $db->query($query)) {
 <!-- Profile picure and progress bars -->
 <div class="jumbotron">
 	<div class="container">
-  <div class="space70">
+  		<div class="space70">
 			<div class="row">
 				<div class="col-xs-6 col-md-4">
 						<div class="thumbnail">
 							<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($userDetails['email'])))?>?s=360&d=mm">
 								<div class="caption">
 									<h3><strong><?php echo $userDetails['username'] ?></strong></h3>
-
+										<?php if ($my_profile) : ?>
+										Use <a href="http://en.gravatar.com to add a profile picture">Gravatar</a> to add a profile picture
+										<? endif; ?>
 								</div>
 						</div>
 						<?php if (!$my_profile) : ?>
@@ -215,156 +217,183 @@ if ($result = $db->query($query)) {
 				</div>
 			</div>
 
-			<div class="space20"></div>
+			<div class="space50"></div>
 			
-		<?php if ($my_profile) : ?>
-			<div class="row personal_details" >
-				<p class="text-left" ><strong>Personal Details</strong></p>
-				<div class="row">
-					<form method="post" action="<?php echo $baseurl; ?>/php/users/update.php" accept-charset="UTF-8">
-						<div class="col-xs-12 col-md-8">
-							<div class="form-group">
-								<label for="forename">Forename</label>
-								<input type="text" name="forename" class="form-control" placeholder="Forename" value="<? echo $userDetails['forename'] ?>">
+			<?php if ($my_profile) : ?>
+				<div class="row personal_details" >
+					<p class="text-left" ><strong>Personal Details</strong></p>
+					<div class="row">
+						<form method="post" action="<?php echo $baseurl; ?>/php/users/update.php" accept-charset="UTF-8">
+							<div class="col-xs-12 col-md-8">
+								<div class="form-group">
+									<label for="forename">Forename</label>
+									<input type="text" name="forename" class="form-control" placeholder="Forename" value="<? echo $userDetails['forename'] ?>">
+								</div>
+								<div class="form-group">
+									<label for="surname">Surname</label>
+									<input type="text" name="surname" class="form-control" placeholder="Surname" value="<? echo $userDetails['surname'] ?>">
+								</div>
+								<div class="form-group">
+									<label for="email">Email address</label>
+									<input type="email" name="email" class="form-control" placeholder="Enter email" value="<? echo $userDetails['email'] ?>">
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="surname">Surname</label>
-								<input type="text" name="surname" class="form-control" placeholder="Surname" value="<? echo $userDetails['surname'] ?>">
+							<div class="col-xs-12 col-md-4">
+								<div class="form-group">
+									<label for="current_password">Current Password</label>
+									<input type="password" name="current_password" class="form-control" placeholder="Current Password">
+								</div>
+								<div class="form-group">
+									<label for="new_password">New Password</label>
+									<input type="password" name="new_password" class="form-control" placeholder="New Password">
+								</div>
+								<div class="form-group">
+									<label for="new_password2">Confirm New Password</label>
+									<input type="password" name="new_password2" class="form-control" placeholder="New Password">
+								</div>
 							</div>
-							<div class="form-group">
-								<label for="email">Email address</label>
-								<input type="email" name="email" class="form-control" placeholder="Enter email" value="<? echo $userDetails['email'] ?>">
+							<div class="col-xs-12 col-md-12">
+								<label for="description">Bio</label>
+								<textarea name="description" class="form-control" rows="5" placeholder="A few words about you"><? echo $userDetails['description'] ?></textarea>
+								<div class="space10"></div>
+								<button type="submit" id='add' class="btn btn-default pull-right">Update details</button>
 							</div>
+						</form>
+					</div>
+				</div>
+
+				<div class="space20"></div>
+			<? else : ?>
+
+				<div class="row personal_details" >
+					<p class="text-left" ><strong>Personal Details</strong></p>
+					<div class="row">
+							<div class="col-xs-12 col-md-3">
+								<p class="lead">
+									<? echo $userDetails['forename']; ?>
+									<? echo substr($userDetails['surname'], 0, 1); ?>.
+								</p>
+							</div>
+							<div class="col-xs-12 col-md-9">
+								<p class="lead"><? echo $userDetails['description']; ?></p>
+							</div>
+					</div>
+				</div>
+
+				<div class="space20"></div>
+
+			<? endif; ?>
+				<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Skills</strong></p>
+				<div class="row skills_categories_list user_skills_list" >
+					<div class="row skill">
+					<?php foreach ($userSkills as $key => $skill) { ?>
+						<div class="col-xs-6 col-md-3 skill <?php echo $skill['level_color']; ?>">
+						<?php if ($my_profile) : ?>
+							<form id="remove_skills_form" method="post" action="<?php echo $baseurl; ?>/php/users/remove_skill.php" accept-charset="UTF-8">
+								<input type="hidden" name="skillID" value="<?php echo $skill['skillID']; ?>">
+								<input type="hidden" name="levelID" value="<?php echo $skill['levelID']; ?>">
+								<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+								<button type="submit" id='add' class="close"><span aria-hidden="true">&times;</span></button>
+							</form>
+						<? endif; ?>
+							<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" >
+								<h3><?php echo $skill['skill_name'];?>
+								<small><br><?php echo $skill['level_name'];?></small></h3>
+							</a>
 						</div>
-						<div class="col-xs-12 col-md-4">
-							<div class="form-group">
-								<label for="current_password">Current Password</label>
-								<input type="password" name="current_password" class="form-control" placeholder="Current Password">
-							</div>
-							<div class="form-group">
-								<label for="new_password">New Password</label>
-								<input type="password" name="new_password" class="form-control" placeholder="New Password">
-							</div>
-							<div class="form-group">
-								<label for="new_password2">Confirm New Password</label>
-								<input type="password" name="new_password2" class="form-control" placeholder="New Password">
-							</div>
+					<? } ?>
+					</div>
+				</div>
+
+			<?php if ($my_profile) : ?>
+				<div class="space50"></div>
+				<p class="text-left" ><strong>Add Skills</strong></p>
+				<div class="row" >
+					<form id="addskills_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
+						<div class="form-group col-xs-12 col-md-4">
+							<select name="skillID" data-placeholder="Select a skill">
+								<!-- Loop through the categories -->
+							<?php foreach ($categories as $key => $category) { ?>
+								<optgroup label="<?php echo $category['category_name']; ?>">
+								<!-- For each category, add the associated skills -->
+								<?php foreach ($category['skills'] as $key => $skill) { ?>
+									<option value="<?php echo $skill['skillID']; ?>"><?php echo $skill['skill_name']; ?></option>
+								<? } ?>
+								</optgroup>
+							<? } ?>
+							</select>
 						</div>
-						<div class="col-xs-12 col-md-12">
-							<label for="description">Bio</label>
-							<textarea name="description" class="form-control" rows="5" placeholder="A few words about you"><? echo $userDetails['description'] ?></textarea>
-							<div class="space10"></div>
-							<button type="submit" class="btn btn-default pull-right">Update details</button>
+						
+						<div class="form-group col-xs-12 col-md-2">
+							<select name="levelID" data-placeholder="Select a skill level">
+							<?php foreach ($levels as $key => $level) { ?>
+								<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+							<? } ?>
+							</select> 
+						</div>
+						<div class="form-group col-xs-12 col-md-1">
+							<button type="submit" id='add' class="btn btn-default">Add Skill</button>
 						</div>
 					</form>
 				</div>
-			</div>
-
-			<div class="space20"></div>
-		<? else : ?>
-
-			<div class="row personal_details" >
-				<p class="text-left" ><strong>Personal Details</strong></p>
-				<div class="row">
-						<div class="col-xs-12 col-md-3">
-							<p class="lead">
-								<? echo $userDetails['forename']; ?>
-								<? echo substr($userDetails['surname'], 0, 1); ?>.
-							</p>
-						</div>
-						<div class="col-xs-12 col-md-9">
-							<p class="lead"><? echo $userDetails['description']; ?></p>
-						</div>
-				</div>
-			</div>
-
-			<div class="space20"></div>
-
-		<? endif; ?>
-			<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Skills</strong></p>
-			<div class="row skills_categories_list user_skills_list" >
-				<div class="row skill">
-				<?php foreach ($userSkills as $key => $skill) { ?>
-					<div class="col-xs-6 col-md-3 skill <?php echo $skill['level_color']; ?>">
-					<?php if ($my_profile) : ?>
-						<form id="remove_skills_form" method="post" action="<?php echo $baseurl; ?>/php/users/remove_skill.php" accept-charset="UTF-8">
-							<input type="hidden" name="skillID" value="<?php echo $skill['skillID']; ?>">
-							<input type="hidden" name="levelID" value="<?php echo $skill['levelID']; ?>">
-							<input type="hidden" name="userID" value="<?php echo $userID; ?>">
-							<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
-						</form>
-					<? endif; ?>
-						<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" >
-							<h3><?php echo $skill['skill_name'];?>
-							<small><br><?php echo $skill['level_name'];?></small></h3>
-						</a>
-					</div>
-				<? } ?>
-				</div>
-			</div>
-
-		<?php if ($my_profile) : ?>
-			<div class="space20"></div>
-			<p class="text-left" ><strong>Add Skills</strong></p>
-			<div class="row" >
-				<form id="addskills_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
-					<div class="form-group col-xs-12 col-md-4">
-						<select name="skillID" data-placeholder="Select a skill">
-							<!-- Loop through the categories -->
-						<?php foreach ($categories as $key => $category) { ?>
-							<optgroup label="<?php echo $category['category_name']; ?>">
-							<!-- For each category, add the associated skills -->
-							<?php foreach ($category['skills'] as $key => $skill) { ?>
-								<option value="<?php echo $skill['skillID']; ?>"><?php echo $skill['skill_name']; ?></option>
+				<div class="row" >
+					<p>Not finding a skill? You can add one</p>
+					<form id="create_skills_form" method="post" action="<?php echo $baseurl; ?>/php/skills/addskill.php" accept-charset="UTF-8">
+						<div class="form-group col-xs-12 col-md-2">
+							<select name="categoryID" data-placeholder="Select a category">
+							<?php foreach ($categories as $key => $category) { ?>
+								<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
 							<? } ?>
-							</optgroup>
-						<? } ?>
-						</select>
-					</div>
-					
-					<div class="form-group col-xs-12 col-md-2">
-						<select name="levelID" data-placeholder="Select a skill level">
-						<?php foreach ($levels as $key => $level) { ?>
-							<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
-						<? } ?>
-						</select> 
-					</div>
-					<div class="form-group col-xs-12 col-md-1">
-						<button type="submit" class="btn btn-default">Add Skill</button>
-					</div>
-				</form>
-			</div>
-			<div class="row" >
-			<p>Not finding a skill? You can add one</p>
-				<form id="create_skills_form" method="post" action="<?php echo $baseurl; ?>/php/skills/addskill.php" accept-charset="UTF-8">
-					<div class="form-group col-xs-12 col-md-2">
-						<select name="categoryID" data-placeholder="Select a category">
-						<?php foreach ($categories as $key => $category) { ?>
-							<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
-						<? } ?>
-						</select>
-					</div>
-					<div class="form-group col-xs-12 col-md-4">
-						<input type="text" name="skill_name" class="form-control" placeholder="Skill name">
-					</div>
-					<div class="form-group col-xs-12 col-md-2">
-						<select name="levelID" data-placeholder="Select a skill level">
-						<?php foreach ($levels as $key => $level) { ?>
-							<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
-						<? } ?>
-						</select> 
-					</div>
-					<div class="form-group col-xs-12 col-md-6">
-						<input type="text" name="skill_description" class="form-control" placeholder="Description">
-					</div>
-					<div class="form-group col-xs-12 col-md-1">
-						<button type="submit" class="btn btn-default">Add Skill</button>
-					</div>
-				</form>
-			</div>
-		<? endif; ?>
-		<div class="space70"></div>
-		<div id="map-canvas"></div>
+							</select>
+						</div>
+						<div class="form-group col-xs-12 col-md-4">
+							<input type="text" name="skill_name" class="form-control" placeholder="Skill name">
+						</div>
+						<div class="form-group col-xs-12 col-md-4">
+							<input type="text" name="skill_description" class="form-control" placeholder="Description">
+						</div>
+						<div class="form-group col-xs-12 col-md-2">
+							<select name="levelID" data-placeholder="Select a skill level">
+							<?php foreach ($levels as $key => $level) { ?>
+								<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+							<? } ?>
+							</select> 
+						</div>
+						<div class="form-group col-xs-12 col-md-1">
+							<button type="submit" id='add' class="btn btn-default">Add Skill</button>
+						</div>
+					</form>
+				</div>
+			<? endif; ?>
+
+			<div class="space70"></div>
+
+		    <?php if ($my_profile) : ?>
+		      <div class="row personal_details" >
+		        <p class="text-left" ><strong>My Location</strong></p>
+		        <div id="map-canvas"></div>
+		        <div class="space20"></div>
+		        <div class="form-group col-xs-12 col-md-4">
+					<input type="text" name="postcode" class="form-control" placeholder="Postcode">
+				</div>
+				<div class="form-group col-xs-12 col-md-1">
+					<button type="submit" id='add' class="btn btn-default">Add Location</button>
+				</div>
+				
+		      </div>
+
+		      <div class="space20"></div>
+
+		    <? else : ?>
+
+		      <div class="row personal_details" >
+		        <p class="text-left" ><strong>Location</strong></p>
+		        <div id="map-canvas"></div>
+		      </div>
+
+		      <div class="space20"></div>
+
+		    <? endif; ?>
 
 		</div>  
 	</div>

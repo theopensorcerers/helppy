@@ -75,7 +75,7 @@
 	text-align: left;
 }
 
-.form-group .select2-container .select2-choice {
+#equest_skill_btn .form-group .select2-container .select2-choice {
 	height: 34px;
 	padding-top: 3px;
 }
@@ -94,3 +94,14 @@
     	background-color: #333;
     	color:#fff;
     }
+
+ .form-group .select2-container .select2-choice {
+	padding-top: 10px;
+  	padding-bottom: 10px;
+  	height: 43px;
+  	line-height: 22px; 
+}
+
+#add {
+	  height: 43px;
+}
