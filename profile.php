@@ -79,17 +79,17 @@ if ($result = $db->query($query)) {
 $categories = array();
 $query = <<<EOF
 SELECT 
-    count(skills.skillID) AS `skillIs_count`,
-    categories.categoryID AS `categoryID`,
-    categories.name AS `category_name`,
-    categories.color AS `category_color`,
-    categories.description AS `category_description`
+	count(skills.skillID) AS `skillIs_count`,
+	categories.categoryID AS `categoryID`,
+	categories.name AS `category_name`,
+	categories.color AS `category_color`,
+	categories.description AS `category_description`
 FROM
-    skills
-        INNER JOIN
-    skill_categories USING (skillID)
-        INNER JOIN
-    categories USING (categoryID)
+	skills
+		INNER JOIN
+	skill_categories USING (skillID)
+		INNER JOIN
+	categories USING (categoryID)
 GROUP BY categories.categoryID;
 EOF;
 if ($result = $db->query($query)) {
@@ -109,18 +109,18 @@ foreach ($categories as $key => $category) {
 	$categoryID = $category['categoryID'];
 	$query = <<<EOF
 SELECT 
-    skills.skillID AS `skillID`, 
-    skills.name AS `skill_name`
+	skills.skillID AS `skillID`, 
+	skills.name AS `skill_name`
 FROM
-    skills
-        INNER JOIN
-    skill_categories USING (skillID)
-        INNER JOIN
-    categories USING (categoryID)
-        LEFT JOIN
-    user_skills ON (user_skills.skillID = skills.skillID)
+	skills
+		INNER JOIN
+	skill_categories USING (skillID)
+		INNER JOIN
+	categories USING (categoryID)
+		LEFT JOIN
+	user_skills ON (user_skills.skillID = skills.skillID)
 WHERE
-    categories.categoryID = $categoryID
+	categories.categoryID = $categoryID
 GROUP BY skills.skillID;
 EOF;
 	if ($result = $db->query($query)) {
@@ -138,12 +138,12 @@ EOF;
 $levels = array();
 $query = <<<EOF
 SELECT 
-    level.levelID AS `levelID`,
-    level.name AS `level_name`,
-    level.description AS `level_description`,
-    level.color AS `level_color`
+	level.levelID AS `levelID`,
+	level.name AS `level_name`,
+	level.description AS `level_description`,
+	level.color AS `level_color`
 FROM
-    level
+	level
 GROUP BY level.levelID;
 EOF;
 if ($result = $db->query($query)) {
@@ -156,12 +156,40 @@ if ($result = $db->query($query)) {
 	echo 'Unable to connect to the database';
 }
 
+// User locations
+$userLocations = array();
+$query = <<<EOF
+SELECT 
+	locations.locationID AS `locationID`,
+	locations.name AS `location_name`,
+	locations.`spatial` AS `spatial`,
+    locations.point AS `point`
+FROM
+	users
+		INNER JOIN
+	user_locations USING (userID)
+		INNER JOIN
+	locations USING (locationID)
+WHERE
+	username  = '$username'
+GROUP BY user_locations.locationID
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+		array_push($userLocations, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
 ?>
 
 <!-- Profile picure and progress bars -->
 <div class="jumbotron">
 	<div class="container">
-  		<div class="space70">
+		<div class="space70">
 			<div class="row">
 				<div class="col-xs-6 col-md-4">
 						<div class="thumbnail">
@@ -363,41 +391,46 @@ if ($result = $db->query($query)) {
 							<button type="submit" id='add' class="btn btn-default">Add Skill</button>
 						</div>
 					</form>
+					<form id="create_skills_callback_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
+						<input type="hidden" name="skillID" value="">
+						<input type="hidden" name="levelID" value="">
+						<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+					</form>
 				</div>
 			<? endif; ?>
 
 			<div class="space70"></div>
-
-		    <?php if ($my_profile) : ?>
-		      <div class="row personal_details" >
-		        <p class="text-left" ><strong>My Location</strong></p>
-		        <div id="map-canvas"></div>
-		        <div class="space20"></div>
-		        <div class="form-group col-xs-12 col-md-4">
-					<input type="text" name="postcode" class="form-control" placeholder="Postcode">
-				</div>
-				<div class="form-group col-xs-12 col-md-1">
-					<button type="submit" id='add' class="btn btn-default">Add Location</button>
-				</div>
-				
-		      </div>
-
-		      <div class="space20"></div>
-
-		    <? else : ?>
-
-		      <div class="row personal_details" >
-		        <p class="text-left" ><strong>Location</strong></p>
-		        <div id="map-canvas"></div>
-		      </div>
-
-		      <div class="space20"></div>
-
-		    <? endif; ?>
+			<div class="row personal_details" >
+				<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Location</strong></p>
+				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOJOQG01-hx1Ik41Zw41Lb2oizvdK7RE"></script>
+				<script src="/js/geocode_users.js"></script>
+				<script type="text/javascript">
+					<?php foreach ($userLocations as $key => $location) { ?>
+						// Add the GeoJSON objects to the locations array
+						locations.push(<?php echo $location['spatial']; ?>);
+					<? } ?>
+				</script>
+				<div id="map-canvas"></div>
+			<?php if ($my_profile) : ?>
+				<div id="map-canvas"></div>
+				<div class="space20"></div>
+				<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
+					<div class="form-group col-xs-12 col-md-4">
+						<input type="text" name="name" class="form-control" placeholder="Name of the location" >
+						<input type="text" id="postcode" name="postcode" class="form-control" placeholder="Postcode" >
+						<input type="hidden" id="spatial" name="spatial">
+						<input type="hidden" id="point" name="point">
+					</div>
+					<div class="form-group col-xs-12 col-md-1">
+						<button type="button" id='add' class="btn btn-default" onclick="codeAddress()">Add Location</button>
+					</div>
+				</form>
+			<? endif; ?>
+			</div>
+			<div class="space20"></div>
 
 		</div>  
 	</div>
 </div>
-
 
 <?php include "includes/footer.html"  ?>
