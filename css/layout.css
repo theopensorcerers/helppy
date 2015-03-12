@@ -9,8 +9,9 @@
   margin-right: auto;
 }
 
-.form-control{
+.details{
    height: 43px;
+   border-radius: 0px;
 }
 
 .logo img {
@@ -71,4 +72,24 @@
 
 .darkpp {
 	background-color: #3C2673;
+}
+
+.thumbnail .username{
+	padding: 0px;
+}
+
+.details{
+	border-color: #333;
+	border-radius: 0px;
+	height:43px;
+	background-color: transparent;
+
+}
+
+.details:focus{
+	color:#fff;
+}
+
+#create_skills_form{
+	border-radius: 0px;
 }

@@ -194,7 +194,7 @@ if ($result = $db->query($query)) {
 				<div class="col-xs-6 col-md-4">
 						<div class="thumbnail">
 							<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($userDetails['email'])))?>?s=360&d=mm">
-								<div class="caption">
+								<div class="caption username">
 									<h3><strong><?php echo $userDetails['username'] ?></strong></h3>
 										<?php if ($my_profile) : ?>
 										Use <a href="http://en.gravatar.com to add a profile picture">Gravatar</a> to add a profile picture
@@ -255,34 +255,34 @@ if ($result = $db->query($query)) {
 							<div class="col-xs-12 col-md-8">
 								<div class="form-group">
 									<label for="forename">Forename</label>
-									<input type="text" name="forename" class="form-control" placeholder="Forename" value="<? echo $userDetails['forename'] ?>">
+									<input type="text" name="forename" class="form-control details" placeholder="Forename" value="<? echo $userDetails['forename'] ?>">
 								</div>
 								<div class="form-group">
 									<label for="surname">Surname</label>
-									<input type="text" name="surname" class="form-control" placeholder="Surname" value="<? echo $userDetails['surname'] ?>">
+									<input type="text" name="surname" class="form-control details" placeholder="Surname" value="<? echo $userDetails['surname'] ?>">
 								</div>
 								<div class="form-group">
 									<label for="email">Email address</label>
-									<input type="email" name="email" class="form-control" placeholder="Enter email" value="<? echo $userDetails['email'] ?>">
+									<input type="email" name="email" class="form-control details" placeholder="Enter email" value="<? echo $userDetails['email'] ?>">
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-4">
 								<div class="form-group">
 									<label for="current_password">Current Password</label>
-									<input type="password" name="current_password" class="form-control" placeholder="Current Password">
+									<input type="password" name="current_password" class="form-control details" placeholder="Current Password">
 								</div>
 								<div class="form-group">
 									<label for="new_password">New Password</label>
-									<input type="password" name="new_password" class="form-control" placeholder="New Password">
+									<input type="password" name="new_password" class="form-control details" placeholder="New Password">
 								</div>
 								<div class="form-group">
 									<label for="new_password2">Confirm New Password</label>
-									<input type="password" name="new_password2" class="form-control" placeholder="New Password">
+									<input type="password" name="new_password2" class="form-control details" placeholder="New Password">
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-12">
 								<label for="description">Bio</label>
-								<textarea name="description" class="form-control" rows="5" placeholder="A few words about you"><? echo $userDetails['description'] ?></textarea>
+								<textarea name="description" class="form-control details" rows="5" placeholder="A few words about you"><? echo $userDetails['description'] ?></textarea>
 								<div class="space10"></div>
 								<button type="submit" id='add' class="btn btn-default pull-right">Update details</button>
 							</div>
@@ -335,86 +335,93 @@ if ($result = $db->query($query)) {
 
 			<?php if ($my_profile) : ?>
 				<div class="space50"></div>
-				<p class="text-left" ><strong>Add Skills</strong></p>
-				<div class="row" >
-					<form id="addskills_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
-						<div class="form-group col-xs-12 col-md-4">
-							<select name="skillID" data-placeholder="Select a skill">
-								<!-- Loop through the categories -->
-							<?php foreach ($categories as $key => $category) { ?>
-								<optgroup label="<?php echo $category['category_name']; ?>">
-								<!-- For each category, add the associated skills -->
-								<?php foreach ($category['skills'] as $key => $skill) { ?>
-									<option value="<?php echo $skill['skillID']; ?>"><?php echo $skill['skill_name']; ?></option>
+				<div class="col-xs-12 col-md-6 add-skills">
+					<p class="text-left" ><strong>Add Skills</strong></p>
+					<div class="row personal_details" >
+						<form id="addskills_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
+							<div class="form-group">
+								<select name="skillID" data-placeholder="Select a skill">
+									<!-- Loop through the categories -->
+								<?php foreach ($categories as $key => $category) { ?>
+									<optgroup label="<?php echo $category['category_name']; ?>">
+									<!-- For each category, add the associated skills -->
+									<?php foreach ($category['skills'] as $key => $skill) { ?>
+										<option value="<?php echo $skill['skillID']; ?>"><?php echo $skill['skill_name']; ?></option>
+									<? } ?>
+									</optgroup>
 								<? } ?>
-								</optgroup>
-							<? } ?>
-							</select>
-						</div>
-						
-						<div class="form-group col-xs-12 col-md-2">
-							<select name="levelID" data-placeholder="Select a skill level">
-							<?php foreach ($levels as $key => $level) { ?>
-								<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
-							<? } ?>
-							</select> 
-						</div>
-						<div class="form-group col-xs-12 col-md-1">
-							<button type="submit" id='add' class="btn btn-default">Add Skill</button>
-						</div>
-					</form>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<select name="levelID" data-placeholder="Select a skill level">
+								<?php foreach ($levels as $key => $level) { ?>
+									<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+								<? } ?>
+								</select> 
+							</div>
+							<div class="form-group">
+								<button type="submit" id='add' class="btn btn-default">Add Skill</button>
+							</div>
+						</form>
+					</div>
 				</div>
-				<div class="row" >
-					<p>Not finding a skill? You can add one</p>
-					<form id="create_skills_form" method="post" action="<?php echo $baseurl; ?>/php/skills/addskill.php" accept-charset="UTF-8">
-						<div class="form-group col-xs-12 col-md-2">
-							<select name="categoryID" data-placeholder="Select a category">
-							<?php foreach ($categories as $key => $category) { ?>
-								<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
-							<? } ?>
-							</select>
-						</div>
-						<div class="form-group col-xs-12 col-md-4">
-							<input type="text" name="skill_name" class="form-control" placeholder="Skill name">
-						</div>
-						<div class="form-group col-xs-12 col-md-4">
-							<input type="text" name="skill_description" class="form-control" placeholder="Description">
-						</div>
-						<div class="form-group col-xs-12 col-md-2">
-							<select name="levelID" data-placeholder="Select a skill level">
-							<?php foreach ($levels as $key => $level) { ?>
-								<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
-							<? } ?>
-							</select> 
-						</div>
-						<div class="form-group col-xs-12 col-md-1">
-							<button type="submit" id='add' class="btn btn-default">Add Skill</button>
-						</div>
-					</form>
-					<form id="create_skills_callback_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
-						<input type="hidden" name="skillID" value="">
-						<input type="hidden" name="levelID" value="">
-						<input type="hidden" name="userID" value="<?php echo $userID; ?>">
-					</form>
+				<div class="col-xs-12 col-md-6">
+					<div class="row new-skill" >
+						<p>Not finding a skill? You can add one</p>
+						<form id="create_skills_form" method="post" action="<?php echo $baseurl; ?>/php/skills/addskill.php" accept-charset="UTF-8">
+							<div class="form-group">
+								<select name="categoryID" data-placeholder="Select a category">
+								<?php foreach ($categories as $key => $category) { ?>
+									<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
+								<? } ?>
+								</select>
+							</div>
+							<div class="form-group">
+								<input type="text" name="skill_name" class="form-control details" placeholder="Skill name">
+							</div>
+							<div class="form-group">
+								<input type="text" name="skill_description" class="form-control details" placeholder="Description">
+							</div>
+							<div class="form-group">
+								<select name="levelID" data-placeholder="Select a skill level">
+								<?php foreach ($levels as $key => $level) { ?>
+									<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+								<? } ?>
+								</select> 
+							</div>
+							<div class="form-group">
+								<button type="submit" id='add' class="btn btn-default">Add Skill</button>
+							</div>
+						</form>
+						<form id="create_skills_callback_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
+							<input type="hidden" name="skillID" value="">
+							<input type="hidden" name="levelID" value="">
+							<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+						</form>
+					</div>
 				</div>
 			<? endif; ?>
 
 			<div class="space70"></div>
 			<div class="row personal_details" >
-				<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Location</strong></p>
-				<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOJOQG01-hx1Ik41Zw41Lb2oizvdK7RE"></script>
-				<script src="/js/geocode_users.js"></script>
-				<script type="text/javascript">
-					<?php foreach ($userLocations as $key => $location) { ?>
-						// Add the GeoJSON objects to the locations array
-						locations.push(<?php echo $location['spatial']; ?>);
-					<? } ?>
-				</script>
-				<div id="map-canvas"></div>
-			<?php if ($my_profile) : ?>
-				<div id="map-canvas"></div>
-				<div class="space20"></div>
-				<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
+				<div class="col-xs-12 col-md-8">
+
+					<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Location</strong></p>
+					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOJOQG01-hx1Ik41Zw41Lb2oizvdK7RE"></script>
+					<script src="/js/geocode_users.js"></script>
+					<script type="text/javascript">
+						<?php foreach ($userLocations as $key => $location) { ?>
+							// Add the GeoJSON objects to the locations array
+							locations.push(<?php echo $location['spatial']; ?>);
+						<? } ?>
+					</script>
+					<div id="map-canvas"></div>
+				<?php if ($my_profile) : ?>
+					<div id="map-canvas"></div>
+					<div class="space20"></div>
+					<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
+				</div>
 					<div class="form-group col-xs-12 col-md-4">
 						<input type="text" name="name" class="form-control" placeholder="Name of the location" >
 						<input type="text" id="postcode" name="postcode" class="form-control" placeholder="Postcode" >
