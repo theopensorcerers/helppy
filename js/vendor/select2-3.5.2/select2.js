@@ -3537,5 +3537,8 @@ the specific language governing permissions and limitations under the Apache Lic
             "multi": MultiSelect2
         }
     };
+          // Allows to edit the css in dropdown menus in the profile page
+
+   
 
 }(jQuery));

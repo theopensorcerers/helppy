@@ -371,7 +371,7 @@ if ($result = $db->query($query)) {
 						<p>Not finding a skill? You can add one</p>
 						<form id="create_skills_form" method="post" action="<?php echo $baseurl; ?>/php/skills/addskill.php" accept-charset="UTF-8">
 							<div class="form-group">
-								<select name="categoryID" data-placeholder="Select a category">
+								<select class="add-skill-dropdown" name="categoryID" data-placeholder="Select a category">
 								<?php foreach ($categories as $key => $category) { ?>
 									<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
 								<? } ?>
