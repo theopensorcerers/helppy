@@ -151,3 +151,12 @@
 #alerts {
 	margin-top: 10px;
 }
+
+#header_search{
+	border-color: #333;
+	outline: none;
+  -webkit-box-shadow: none !important;
+  -moz-box-shadow: none !important;
+  box-shadow: none !important;
+}
+}
