@@ -35,8 +35,6 @@
                 <div class="col-xs-12 col-md-8 inbox">
                     <div class="col-lg-12 reply_request">
                         <h1>Can you help User 1?</h1>
-                        
-                        
                     </div>
 
                     <div class="col-lg-12 reply_request">
@@ -57,22 +55,19 @@
                         <div class="request_details">
                         <a href="#menu-toggle" class="btn btn-default" id="yesno_btn"><h4>Help completed!</h4></a>
                         </div> <!-- end of help completed button-->
+                    </div>                
+                    <div class="col-lg-12 message_history">
+                        <div class="message"><p>Hello could you help me with the frontend design of my website?</p></div>
+                        <div class="own_message"><p>Hi there, when do you need it for?</p></div>
+                        <div class="message"><p>I need it for next month</p></div>
+                        <div class="own_message"><p>That sounds like enought time to do it</p></div>
+
+
                     </div>
-                    <hr></hr>
-                </div>
-                <div class="col-lg-12 message_history">
-                    <div class="message"><p>Hello could you help me with the frontend design of my website?</p></div>
-                    <div class="own_message"><p>Hi there, when do you need it for?</p></div>
-                    <div class="message"><p>I need it for next month</p></div>
-                    <div class="own_message"><p>That sounds like enought time to do it</p></div>
-
-
-                </div>
-                <div class="col-lg-12 write_message">
-                <textarea class="form-control" rows="6"></textarea>
-                <a href="#menu-toggle" class="btn btn-default" id="send_btn">Send message</a>
-                </div>
-            </div>
+                        <div class="col-lg-12 write_message">
+                        <textarea class="form-control" rows="6"></textarea>
+                        <a href="#menu-toggle" class="btn btn-default" id="send_btn">Send message</a>
+                    </div>
                 </div>
             </div> <!--row-->
     </div><!--container-->
