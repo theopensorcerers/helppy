@@ -161,7 +161,7 @@ $userLocations = array();
 $query = <<<EOF
 SELECT 
 	locations.locationID AS `locationID`,
-	locations.name AS `location_name`,
+	user_locations.name AS `location_name`,
 	locations.`spatial` AS `spatial`,
     locations.point AS `point`
 FROM
@@ -189,7 +189,8 @@ if ($result = $db->query($query)) {
 <!-- Profile picure and progress bars -->
 <div class="jumbotron">
 	<div class="container">
-		<div class="space70">
+
+		<div class="space70"></div>
 			<div class="row">
 				<div class="col-xs-6 col-md-4">
 						<div class="thumbnail">
@@ -404,8 +405,9 @@ if ($result = $db->query($query)) {
 			<? endif; ?>
 
 			<div class="space70"></div>
+			
 			<div class="row personal_details" >
-				<div class="col-xs-12 col-md-8">
+				<div class="col-xs-12 col-md-6">
 
 					<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Location</strong></p>
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOJOQG01-hx1Ik41Zw41Lb2oizvdK7RE"></script>
@@ -417,27 +419,57 @@ if ($result = $db->query($query)) {
 						<? } ?>
 					</script>
 					<div id="map-canvas"></div>
-				<?php if ($my_profile) : ?>
-					<div id="map-canvas"></div>
-					<div class="space20"></div>
-					<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
-				</div>
-					<div class="form-group col-xs-12 col-md-4">
-						<input type="text" name="name" class="form-control" placeholder="Name of the location" >
-						<input type="text" id="postcode" name="postcode" class="form-control" placeholder="Postcode" >
-						<input type="hidden" id="spatial" name="spatial">
-						<input type="hidden" id="point" name="point">
-					</div>
-					<div class="form-group col-xs-12 col-md-1">
-						<button type="button" id='add' class="btn btn-default" onclick="codeAddress()">Add Location</button>
-					</div>
-				</form>
-			<? endif; ?>
-			</div>
-			<div class="space20"></div>
 
-		</div>  
+					<?php if ($my_profile) : ?>
+
+						<div class="space20"></div>
+
+						<div class="row">
+							<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
+						
+								<div class="form-group col-xs-12 col-md-4">
+									<input type="text" name="name" class="form-control" placeholder="Name of the location" >
+									<input type="text" id="postcode" name="postcode" class="form-control" placeholder="Postcode" >
+									<input type="hidden" id="spatial" name="spatial">
+									<input type="hidden" id="point" name="point">
+								</div>
+
+								<div class="form-group col-xs-12 col-md-1">
+									<button type="button" id='add' class="btn btn-default" onclick="codeAddress()">Add Location</button>
+								</div>
+							</form>
+						</div>
+
+						<div class="row">
+						<ul class="unstyled">
+						<?php foreach ($userLocations as $key => $location) { ?>
+							<li>
+							<?php if ($my_profile) : ?>
+								<form id="remove_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/remove_location.php" accept-charset="UTF-8">
+									<input type="hidden" name="locationID" value="<?php echo $location['locationID']; ?>">
+									<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+									<button type="submit" id='add' class="close"><span aria-hidden="true">&times;</span></button>
+								</form>
+							<? endif; ?>
+							
+								<a href="<?php echo $baseurl; ?>/location.php?locationID=<?php echo $location['locationID']; ?>" >
+									<h3><?php echo $location['location_name'];?>
+								</a>
+							</li>
+						<? } ?>
+						</ul>
+						</div>
+					<? endif; ?>
+				</div>	
+			</div>
+			
+				
 	</div>
+
+	<div class="space20"></div>
+
+		 
 </div>
+
 
 <?php include "includes/footer.html"  ?>

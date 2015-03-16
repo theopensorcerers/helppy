@@ -29,7 +29,7 @@ if ($result = $db->query($query)) {
   $result->close();
 } 
 else {
-	$query = "INSERT INTO locations (`name`, `postcode`, `spatial`, `point`) VALUES ('$name', '$postcode', '$spatial', GeomFromText( '$point'))";
+	$query = "INSERT INTO locations (`postcode`, `spatial`, `point`) VALUES ('$postcode', '$spatial', GeomFromText( '$point'))";
 	if ($result = $db->query($query)) {    
 	    $locationID = $db->insert_id;
 	    // defer commit, do not return success yet
@@ -42,7 +42,7 @@ else {
 }
 
 
-$query = "INSERT INTO user_locations (userID, locationID) VALUES ($userID, $locationID)";
+$query = "INSERT INTO user_locations (userID, locationID, `name`) VALUES ($userID, $locationID, '$name')";
 if ($result = $db->query($query)) {
     $db->commit();
     // commit both inserts
