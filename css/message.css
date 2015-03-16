@@ -1,3 +1,9 @@
+.conversations{
+    border-color: #333;
+    border-width: 1px;
+    min-height: 600px;
+}
+
 .contacts {
     margin-top: 100px;
 /*    margin-left:100px;*/
@@ -53,19 +59,19 @@
 /* Sidebar Styles */
 
 .sidebar-nav {
-    position: absolute;
     top: 0;
     width: 250px;
     margin: 0;
     padding: 0;
     list-style: none;
-    border:solid:0,25px;
+    border:solid;
+    border-color: #333;
+    border-width: 1px;
 }
 
 .sidebar-nav li {
     text-indent: 20px;
     line-height: 40px;
-	border-color: #333;
 
 }
 
@@ -78,7 +84,7 @@
 }
 
 .sidebar-nav li:nth-child(even) {
-    background: #CBC9CA;
+    background: #d0d0cf;
 }
 
 .sidebar-nav li a {
@@ -258,5 +264,9 @@
     	
     }
 
-
+.inbox{
+    border:solid;
+    border-color: #333;
+    border-width:1px;
+}
 

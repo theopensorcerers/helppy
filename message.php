@@ -1,49 +1,38 @@
 <?php include "includes/header.html" ?>
 
-
-
-
-
 <div class="jumbotron">
-<div class="container contacts">
+    <div class="container ">
 
-
-
-        <!-- Sidebar contacts/other users-->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                        Conversations
-                    </a>
-                </li>
-                <li>
-                    <a href="#">User 1</a>
-                </li>
-                <li>
-                    <a href="#">User 2</a>
-                </li>
-                <li>
-                    <a href="#">User 3</a>
-                </li>
-                <li>
-                    <a href="#">User 4</a>
-                </li>
-                <li>
-                    <a href="#">User 5</a>
-                </li>
-                <li>
-                    <a href="#">User 6 </a>
-                </li>
-                
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row request">
+        <div class="space70"></div>
+             <div class="row ">
+                <div class="col-xs-12 col-md-4 conversations">
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-brand">
+                            <a href="#">
+                                Conversations
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">User 1</a>
+                        </li>
+                        <li>
+                            <a href="#">User 2</a>
+                        </li>
+                        <li>
+                            <a href="#">User 3</a>
+                        </li>
+                        <li>
+                            <a href="#">User 4</a>
+                        </li>
+                        <li>
+                            <a href="#">User 5</a>
+                        </li>
+                        <li>
+                            <a href="#">User 6 </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-xs-12 col-md-8 inbox">
                     <div class="col-lg-12 reply_request">
                         <h1>Can you help User 1?</h1>
                         
@@ -84,11 +73,8 @@
                 <a href="#menu-toggle" class="btn btn-default" id="send_btn">Send message</a>
                 </div>
             </div>
-        </div>
-        <!-- /#page-content-wrapper -->
+                </div>
+            </div> <!--row-->
+    </div><!--container-->
+</div> <!--jumbotron-->
 
-    </div>
-    <!-- /#wrapper -->
-</div>
-
-</body>
