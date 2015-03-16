@@ -124,6 +124,31 @@
 	width: 100%
 }
 
+.select2-container .select2-choice, 
+.select2-dropdown-open.select2-drop-above .select2-choice, 
+.select2-dropdown-open.select2-drop-above .select2-choices, 
+.select2-container.select2-drop-above .select2-choice {
+	background-image: none;
+	background-color: transparent;
+	border-radius: 0px;
+	border-color: black;
+}
 
+.select2-container .select2-choice .select2-arrow {
+	background-image: none;
+	background: transparent;
+}
 
+.select2-drop-active, .select2-drop.select2-drop-above.select2-drop-active {
+	border-color: black;
+}
+
+.select2-drop {
+	border-radius: 0px;
+	border-color: black;
+}
+
+.select2-results .select2-highlighted {
+	background-color: black;
+}
 
