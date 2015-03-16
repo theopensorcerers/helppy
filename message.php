@@ -1,7 +1,13 @@
 <?php include "includes/header.html" ?>
 
+
+
+
+
 <div class="jumbotron">
 <div class="container contacts">
+
+
 
         <!-- Sidebar contacts/other users-->
         <div id="sidebar-wrapper">
