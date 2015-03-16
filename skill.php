@@ -89,17 +89,22 @@ if ($result = $db->query($query)) {
 
 			<div class="container">
 
-				 <div class="search-container">
-						<div class="search-box">
-							<div class="input-group search-container">
-								<input type="text" class="form-control" placeholder="I need help in...">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
-								</span>
+				 <div class="container">
+					 <div class="search-container">
+						<div class="space70">
+							<div class="search-box">
+								<div class="input-group search-container">
+									<input type="text" class="form-control" id="index_search" placeholder=" I need help in...">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
+									</span>
+								</div>
 							</div>
-						</div>
-				</div>
-				<div class="space70"></div>
+							<div class="space90"></div>
+						</div> 
+					</div>
+				</div> 
+				
 
 						
 				<h2><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?><small> can help you with </small><?php echo $skill['skill_name'];?></strong>

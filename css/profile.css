@@ -81,13 +81,12 @@
 }
 
 #request_skill_btn{
-    	background-color: #fff;
-    	color:#333;
     	border-radius: 0px;
+    	color:#333;
     	border-color:#333;
-    	margin-left:10px;
-    	margin-bottom: 30px;
-    	width:100%;
+    	margin-bottom:30px;
+    	background-color:#fff;
+    	width:200px;
     }
 
 #request_skill_btn:hover{

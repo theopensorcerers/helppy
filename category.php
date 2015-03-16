@@ -79,30 +79,24 @@ if ($result = $db->query($query)) {
 
 			<div class="container">
 
-				 <div class="search-container">
-					<div class="space70">
-						<div class="search-box">
-							<div class="input-group search-container">
-								<input type="text" class="form-control" placeholder="I need help in...">
-								<span class="input-group-btn">
-									<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
-								</span>
-							</div>
-						</div>
+				 <div class="container">
+					 <div class="search-container">
 						<div class="space70">
-						</div>
-					</div> 
-				</div>
+							<div class="search-box">
+								<div class="input-group search-container">
+									<input type="text" class="form-control" id="index_search" placeholder=" I need help in...">
+									<span class="input-group-btn">
+										<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
+									</span>
+								</div>
+							</div>
+							<div class="space90"></div>
+						</div> 
+					</div>
+				</div> 
 				<div class="row category">
-					<div class="container">
-					
-						<div class=" col-xs-12 col-md-2 skill <?php echo $category['category_color'];?>">
-						</div>
-					
-						<div class="col-xs-12 col-md-1">	
-						</div>
-
-						<div class="col-xs-12 col-md-9">
+					<div class="container <?php echo $category['category_color'];?>-border">
+						<div class="col-xs-12 col-md-12">
 							<h2><?php echo $category['category_name'];?>
 								<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small><br>
 								<br>
