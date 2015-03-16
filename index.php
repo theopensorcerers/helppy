@@ -85,7 +85,7 @@ if ($result = $db->query($query)) {
 						<div class="space70">
 							<div class="search-box">
 								<div class="input-group search-container">
-									<input type="text" class="form-control" placeholder="I need help in...">
+									<input type="text" class="form-control" id="index_search" placeholder="I need help in...">
 									<span class="input-group-btn">
 										<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
 									</span>
