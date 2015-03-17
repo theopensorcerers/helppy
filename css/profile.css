@@ -147,3 +147,14 @@
 	background-color: black;
 }
 
+.location{
+	min-width: 300px;
+	padding-left: 0px;
+}
+
+.location-details{
+	border-color: #333;
+	border-radius: 0px;
+	margin-bottom: 15px;
+}
+

@@ -429,9 +429,9 @@ if ($result = $db->query($query)) {
 						<div class="row">
 							<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
 						
-								<div class="form-group col-xs-12 col-md-4">
-									<input type="text" name="name" class="form-control" placeholder="Name of the location" >
-									<input type="text" id="postcode" name="postcode" class="form-control" placeholder="Postcode" >
+								<div class="form-group col-xs-12 col-md-4 location">
+									<input type="text" name="name" class="form-control location-details" placeholder="Name of the location" >
+									<input type="text" id="postcode" name="postcode" class="form-control location-details" placeholder="Postcode" >
 									<input type="hidden" id="spatial" name="spatial">
 									<input type="hidden" id="point" name="point">
 								</div>
