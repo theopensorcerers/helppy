@@ -155,14 +155,17 @@
 .location-details{
 	border-color: #333;
 	border-radius: 0px;
-	width: 218px;
+	margin-bottom: 15px;
 }
 
 .skills-details{
+	border-bottom: solid;
+	border-color: #333;
+	border-width: 1px;
 	padding-bottom: 20px;
 }
 
-#user_location_form{
-	margin-left: -15px;
-}
 
+#user_location_form {
+	margin-left: 0px;
+}
