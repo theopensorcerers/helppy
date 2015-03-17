@@ -95,7 +95,6 @@ if ($result = $db->query($query)) {
 					</div>
 				</div> 
 				<div class="row category">
-					<div class="container <?php echo $category['category_color'];?>-border">
 						<div class="col-xs-12 col-md-12">
 							<h2><?php echo $category['category_name'];?>
 								<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small><br>								
@@ -105,15 +104,18 @@ if ($result = $db->query($query)) {
 							<div class="space70">
 							</div>
 
-							<div class="row">
+							<div class="row category-results">
 								<?php foreach ($skills as $key => $skill) { ?>
-									<h3><a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" ><?php echo $skill['skill_name'];?></a>
-										<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?></small>
-									</h3>
-									<p><?php echo $skill['skill_description'];?></p>
-								<? } ?>
+									<div class="col-xs-6 col-md-3 skill-per-category <?php echo $category['category_color'];?>">
+										<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" ><h3><?php echo $skill['skill_name'];?></h3></a>
+											<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?></small>
+										
+										<p><?php echo $skill['skill_description'];?></p>
+									</div>
+									<? } ?>
+
 							</div>
-						</div>
+						
 
 					</div>
 				</div>

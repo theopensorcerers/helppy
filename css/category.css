@@ -27,3 +27,26 @@
 	border-left:150px solid #3C2673;
 	padding-left: 40px;
 }
+
+.skill-per-category  {
+	text-transform: uppercase;
+	color:#fff;
+	text-align: center;
+	border:solid;
+	border-width: 1px;
+	border-color:#333;
+
+}
+
+.skill-per-category:hover  {
+	text-transform: uppercase;
+	background-color:#333;
+	text-align: center;
+}
+
+.skill-per-category a {
+	text-transform: uppercase;
+	color:#fff;
+	text-decoration: none;
+}
+
