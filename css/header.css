@@ -88,6 +88,12 @@
 .navbar-nav .research-logo {
 	border-color: transparent;
 	background-color: transparent;
+	padding-bottom: 7px;
+}
+
+.navbar-nav .research-logo:focus {
+	color:#333;
+	background-color: #333;
 }
 
 @media (min-width: 768px) {
@@ -158,12 +164,21 @@
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
+ padding-left: 5px;
+ padding-top: 7px;
+ padding-bottom: 7px;
+}
+
+#header_search:focus{
+	background-color: #333;
+	color:#fff;
 }
 
 .header_search{
 	border-color: #333;
 	border:solid;
 	border-width:1px;
+	height:43px;
 }
 
 .header-search-icon:hover{
