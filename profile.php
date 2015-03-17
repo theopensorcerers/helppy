@@ -336,7 +336,7 @@ if ($result = $db->query($query)) {
 
 			<?php if ($my_profile) : ?>
 				<div class="space50"></div>
-				<div class="row">
+				<div class="row skills-details">
 					<div class="col-xs-12 col-md-6 add-skills">
 						<p class="text-left" ><strong>Add Skills</strong></p>
 						<div class="row personal_details" >
@@ -406,7 +406,7 @@ if ($result = $db->query($query)) {
 				</div>
 			<? endif; ?>
 
-			<div class="space70"></div>
+			<div class="space20"></div>
 			
 			<div class="row personal_details" >
 				<div class="col-xs-12 col-md-6">
