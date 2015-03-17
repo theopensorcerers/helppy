@@ -153,10 +153,20 @@
 }
 
 #header_search{
-	border-color: #333;
+	border-color: transparent;
 	outline: none;
   -webkit-box-shadow: none !important;
   -moz-box-shadow: none !important;
   box-shadow: none !important;
 }
+
+.header_search{
+	border-color: #333;
+	border:solid;
+	border-width:1px;
+}
+
+.header-search-icon:hover{
+	background-color: #333;
+	color:#fff;
 }
