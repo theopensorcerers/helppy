@@ -426,24 +426,25 @@ if ($result = $db->query($query)) {
 
 						<div class="space20"></div>
 
-						<div class="row">
-							<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
 						
-								<div class="form-group col-xs-12 col-md-4 location">
-									<input type="text" name="name" class="form-control location-details" placeholder="Name of the location" >
-									<input type="text" id="postcode" name="postcode" class="form-control location-details" placeholder="Postcode" >
+							<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
+								<div class="form-group location">
+								<ul class="list-inline">
+									<li><input type="text" name="name" class="form-control location-details" placeholder="Name of the location" ></li>
+									<li><input type="text" id="postcode" name="postcode" class="form-control location-details" placeholder="Postcode" ></li>
 									<input type="hidden" id="spatial" name="spatial">
 									<input type="hidden" id="point" name="point">
+								</ul>
 								</div>
 
-								<div class="form-group col-xs-12 col-md-1">
+								<div >
 									<button type="button" id='add' class="btn btn-default" onclick="codeAddress()">Add Location</button>
 								</div>
 							</form>
-						</div>
-
-						<div class="row">
-						<ul class="list-unstyled">
+					
+						<div class="space50"></div>
+						
+						<ul id="location" class="list-location">
 						<?php foreach ($userLocations as $key => $location) { ?>
 							<li>
 							<?php if ($my_profile) : ?>
@@ -455,12 +456,12 @@ if ($result = $db->query($query)) {
 							<? endif; ?>
 							
 								<a href="<?php echo $baseurl; ?>/location.php?locationID=<?php echo $location['locationID']; ?>" >
-									<h3><?php echo $location['location_name'];?>
+									<p><?php echo $location['location_name'];?>
 								</a>
 							</li>
 						<? } ?>
 						</ul>
-						</div>
+						
 					<? endif; ?>
 				</div>	
 			</div>
