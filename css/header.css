@@ -88,6 +88,10 @@
 .navbar-nav .research-logo {
 	border-color: transparent;
 	background-color: transparent;
+	height: 43px;
+	width: 48px;
+	margin: auto;
+	padding-bottom: 5px;
 }
 
 @media (min-width: 768px) {
@@ -145,7 +149,6 @@
 		display: block;
 		padding: 10px 15px;
 	}
-}
 
 
 #alerts {
@@ -160,10 +163,17 @@
   box-shadow: none !important;
 }
 
-.header_search{
+#header_search{
 	border-color: #333;
 	border:solid;
 	border-width:1px;
+	height:43px;
+	padding-left: 5px;
+}
+
+#header_search:focus{
+	background-color: #333;
+	color:#fff;
 }
 
 .header-search-icon:hover{
