@@ -336,70 +336,72 @@ if ($result = $db->query($query)) {
 
 			<?php if ($my_profile) : ?>
 				<div class="space50"></div>
-				<div class="col-xs-12 col-md-6 add-skills">
-					<p class="text-left" ><strong>Add Skills</strong></p>
-					<div class="row personal_details" >
-						<form id="addskills_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
-							<div class="form-group">
-								<select name="skillID" data-placeholder="Select a skill">
-									<!-- Loop through the categories -->
-								<?php foreach ($categories as $key => $category) { ?>
-									<optgroup label="<?php echo $category['category_name']; ?>">
-									<!-- For each category, add the associated skills -->
-									<?php foreach ($category['skills'] as $key => $skill) { ?>
-										<option value="<?php echo $skill['skillID']; ?>"><?php echo $skill['skill_name']; ?></option>
+				<div class="row">
+					<div class="col-xs-12 col-md-6 add-skills">
+						<p class="text-left" ><strong>Add Skills</strong></p>
+						<div class="row personal_details" >
+							<form id="addskills_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
+								<div class="form-group">
+									<select name="skillID" data-placeholder="Select a skill">
+										<!-- Loop through the categories -->
+									<?php foreach ($categories as $key => $category) { ?>
+										<optgroup label="<?php echo $category['category_name']; ?>">
+										<!-- For each category, add the associated skills -->
+										<?php foreach ($category['skills'] as $key => $skill) { ?>
+											<option value="<?php echo $skill['skillID']; ?>"><?php echo $skill['skill_name']; ?></option>
+										<? } ?>
+										</optgroup>
 									<? } ?>
-									</optgroup>
-								<? } ?>
-								</select>
-							</div>
-							
-							<div class="form-group">
-								<select name="levelID" data-placeholder="Select a skill level">
-								<?php foreach ($levels as $key => $level) { ?>
-									<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
-								<? } ?>
-								</select> 
-							</div>
-							<div class="form-group">
-								<button type="submit" id='add' class="btn btn-default">Add Skill</button>
-							</div>
-						</form>
+									</select>
+								</div>
+								
+								<div class="form-group">
+									<select name="levelID" data-placeholder="Select a skill level">
+									<?php foreach ($levels as $key => $level) { ?>
+										<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+									<? } ?>
+									</select> 
+								</div>
+								<div class="form-group">
+									<button type="submit" id='add' class="btn btn-default">Add Skill</button>
+								</div>
+							</form>
+						</div>
 					</div>
-				</div>
-				<div class="col-xs-12 col-md-6">
-					<div class="row new-skill" >
-						<p>Not finding a skill? You can add one</p>
-						<form id="create_skills_form" method="post" action="<?php echo $baseurl; ?>/php/skills/addskill.php" accept-charset="UTF-8">
-							<div class="form-group">
-								<select class="add-skill-dropdown" name="categoryID" data-placeholder="Select a category">
-								<?php foreach ($categories as $key => $category) { ?>
-									<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
-								<? } ?>
-								</select>
-							</div>
-							<div class="form-group">
-								<input type="text" name="skill_name" class="form-control details" placeholder="Skill name">
-							</div>
-							<div class="form-group">
-								<input type="text" name="skill_description" class="form-control details" placeholder="Description">
-							</div>
-							<div class="form-group">
-								<select name="levelID" data-placeholder="Select a skill level">
-								<?php foreach ($levels as $key => $level) { ?>
-									<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
-								<? } ?>
-								</select> 
-							</div>
-							<div class="form-group">
-								<button type="submit" id='add' class="btn btn-default">Add Skill</button>
-							</div>
-						</form>
-						<form id="create_skills_callback_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
-							<input type="hidden" name="skillID" value="">
-							<input type="hidden" name="levelID" value="">
-							<input type="hidden" name="userID" value="<?php echo $userID; ?>">
-						</form>
+					<div class="col-xs-12 col-md-6">
+						<div class="row new-skill" >
+							<p>Not finding a skill? You can add one</p>
+							<form id="create_skills_form" method="post" action="<?php echo $baseurl; ?>/php/skills/addskill.php" accept-charset="UTF-8">
+								<div class="form-group">
+									<select class="add-skill-dropdown" name="categoryID" data-placeholder="Select a category">
+									<?php foreach ($categories as $key => $category) { ?>
+										<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
+									<? } ?>
+									</select>
+								</div>
+								<div class="form-group">
+									<input type="text" name="skill_name" class="form-control details" placeholder="Skill name">
+								</div>
+								<div class="form-group">
+									<input type="text" name="skill_description" class="form-control details" placeholder="Description">
+								</div>
+								<div class="form-group">
+									<select name="levelID" data-placeholder="Select a skill level">
+									<?php foreach ($levels as $key => $level) { ?>
+										<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
+									<? } ?>
+									</select> 
+								</div>
+								<div class="form-group">
+									<button type="submit" id='add' class="btn btn-default">Add Skill</button>
+								</div>
+							</form>
+							<form id="create_skills_callback_form" method="post" action="<?php echo $baseurl; ?>/php/users/addskill.php" accept-charset="UTF-8">
+								<input type="hidden" name="skillID" value="">
+								<input type="hidden" name="levelID" value="">
+								<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+							</form>
+						</div>
 					</div>
 				</div>
 			<? endif; ?>
@@ -441,7 +443,7 @@ if ($result = $db->query($query)) {
 						</div>
 
 						<div class="row">
-						<ul class="unstyled">
+						<ul class="list-unstyled">
 						<?php foreach ($userLocations as $key => $location) { ?>
 							<li>
 							<?php if ($my_profile) : ?>

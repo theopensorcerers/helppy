@@ -98,10 +98,9 @@ if ($result = $db->query($query)) {
 					<div class="container <?php echo $category['category_color'];?>-border">
 						<div class="col-xs-12 col-md-12">
 							<h2><?php echo $category['category_name'];?>
-								<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small><br>
-								<br>
-								<p><?php echo $category['category_description'];?></p>
+								<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small><br>								
 							</h2>
+							<p><?php echo $category['category_description'];?></p>
 
 							<div class="space70">
 							</div>

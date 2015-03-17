@@ -116,7 +116,7 @@ if ($result = $db->query($query)) {
 
 				<?php foreach ($users as $key => $user) { ?>
 					<div class="row user">
-						<div class="col-xs-12 col-md-2">
+						<div class="col-xs-5 col-md-2">
 							<div class="space50"></div>
 							<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" >
 								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=mm">
