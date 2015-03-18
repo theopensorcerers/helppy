@@ -16,7 +16,4 @@ $db_dbase 	 = "helppy";
  * BASE URL
  */
 $baseurl	 = "http://localhost:8888";
-
 ?>
-
-
