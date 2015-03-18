@@ -109,8 +109,7 @@ if ($result = $db->query($query)) {
 									<div class="col-xs-6 col-md-3 skill-per-category <?php echo $category['category_color'];?>">
 										<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" ><h3><?php echo $skill['skill_name'];?></h3></a>
 											<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?></small>
-										
-										<p><?php echo $skill['skill_description'];?></p>
+										<div class="space20"></div>
 									</div>
 									<? } ?>
 

@@ -52,10 +52,10 @@ require_once 'php/defines.php';
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sign Up</a>
                 <div class="dropdown-menu form-group">
                   <form method="post" action="<?php echo $baseurl; ?>/php/users/signup.php" accept-charset="UTF-8">
-                    <input type="text" id="register_username" name="username" class="form-control" placeholder="Username" autofocus>
-                    <input type="email" id="register_email" name="email" class="form-control" placeholder="Email">
-                    <input type="password" id="register_password" name="password" class="form-control" placeholder="Password">
-                    <input type="password" id="register_passwordcheck" name="passwordcheck" class="form-control" placeholder="Confirm Password">
+                    <input type="text" id="register_username" name="username" class="form-control signup-login" placeholder="Username" autofocus>
+                    <input type="email" id="register_email" name="email" class="form-control signup-login" placeholder="Email">
+                    <input type="password" id="register_password" name="password" class="form-control signup-login" placeholder="Password">
+                    <input type="password" id="register_passwordcheck" name="passwordcheck" class="form-control signup-login" placeholder="Confirm Password">
                     <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
                   </form>
                 </div>
@@ -66,8 +66,8 @@ require_once 'php/defines.php';
                 </a>
                 <div class="dropdown-menu form-group">
                   <form id="login_form" method="post" action="<?php echo $baseurl; ?>/php/users/login.php" accept-charset="UTF-8">
-                    <input type="text" id="username" name="username" class="form-control" placeholder="Username" autofocus>
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password" >
+                    <input type="text" id="username" name="username" class="form-control signup-login" placeholder="Username" autofocus>
+                    <input type="password" id="password" name="password" class="form-control signup-login" placeholder="Password" >
                     <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
                   </form>
                 </div>
