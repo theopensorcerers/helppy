@@ -318,11 +318,11 @@ if ($result = $db->query($query)) {
 					<?php foreach ($userSkills as $key => $skill) { ?>
 						<div class="col-xs-6 col-md-3 skill <?php echo $skill['level_color']; ?>">
 						<?php if ($my_profile) : ?>
-							<form id="remove_skills_form" method="post" action="<?php echo $baseurl; ?>/php/users/remove_skill.php" accept-charset="UTF-8">
+							<form method="post" action="<?php echo $baseurl; ?>/php/users/remove_skill.php" accept-charset="UTF-8">
 								<input type="hidden" name="skillID" value="<?php echo $skill['skillID']; ?>">
 								<input type="hidden" name="levelID" value="<?php echo $skill['levelID']; ?>">
 								<input type="hidden" name="userID" value="<?php echo $userID; ?>">
-								<button type="submit" id='add' class="close"><span aria-hidden="true">&times;</span></button>
+								<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
 							</form>
 						<? endif; ?>
 							<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" >
@@ -425,43 +425,42 @@ if ($result = $db->query($query)) {
 					<?php if ($my_profile) : ?>
 
 						<div class="space20"></div>
+						
+						<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
+							<div class="form-group location">
+							<ul class="list-inline">
+								<li><input type="text" name="name" class="form-control location-details details" placeholder="Name of the location" ></li>
+								<li><input type="text" id="postcode" name="postcode" class="form-control location-details details" placeholder="Postcode" ></li>
+								<li><button type="button" id='add' class="btn btn-default details" onclick="codeAddress()">Add Location</button></li>
+								<input type="hidden" id="spatial" name="spatial">
+								<input type="hidden" id="point" name="point">
+							</ul>
+							</div>
+						</form>						
 
-						
-							<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
-								<div class="form-group location">
-								<ul class="list-inline">
-									<li><input type="text" name="name" class="form-control location-details" placeholder="Name of the location" ></li>
-									<li><input type="text" id="postcode" name="postcode" class="form-control location-details" placeholder="Postcode" ></li>
-									<input type="hidden" id="spatial" name="spatial">
-									<input type="hidden" id="point" name="point">
-								</ul>
-								</div>
+						<table class="table table-condensed table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Location</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+							<?php foreach ($userLocations as $key => $location) { ?>
+								<tr>
+									<td><?php echo $location['location_name'];?></td>
+									<td>
+										<form method="post" action="<?php echo $baseurl; ?>/php/users/remove_location.php" accept-charset="UTF-8">
+											<input type="hidden" name="locationID" value="<?php echo $location['locationID']; ?>">
+											<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+											<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
+										</form>
+									</td>
+								</tr>
+							<? } ?>
+							</tbody>
+						</table>
 
-								<div >
-									<button type="button" id='add' class="btn btn-default" onclick="codeAddress()">Add Location</button>
-								</div>
-							</form>
-					
-						<div class="space50"></div>
-						
-						<ul id="location" class="list-location">
-						<?php foreach ($userLocations as $key => $location) { ?>
-							<li>
-							<?php if ($my_profile) : ?>
-								<form id="remove_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/remove_location.php" accept-charset="UTF-8">
-									<input type="hidden" name="locationID" value="<?php echo $location['locationID']; ?>">
-									<input type="hidden" name="userID" value="<?php echo $userID; ?>">
-									<button type="submit" id='add' class="close"><span aria-hidden="true">&times;</span></button>
-								</form>
-							<? endif; ?>
-							
-								<a href="<?php echo $baseurl; ?>/location.php?locationID=<?php echo $location['locationID']; ?>" >
-									<p><?php echo $location['location_name'];?>
-								</a>
-							</li>
-						<? } ?>
-						</ul>
-						
 					<? endif; ?>
 				</div>	
 			</div>
