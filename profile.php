@@ -203,7 +203,35 @@ if ($result = $db->query($query)) {
 								</div>
 						</div>
 						<?php if (!$my_profile) : ?>
-							<a href="#menu-toggle" class="btn btn-default" id="request_skill_btn"><h4>Request a skill</h4></a>
+                        
+                        
+							<a href="#menu-toggle" data-toggle="dropdown" class="btn btn-default" id="request_skill_btn" ><h4>Request a skill</h4></a>
+                            
+                              
+                <ul class="dropdown-menu form-group" >
+                  
+                 Ask <?php echo $username ?> for help with  
+                 
+                <form method="post" action="<?php echo $baseurl; ?>/php/users/create_req.php" accept-charset="UTF-8">
+                 
+               <select name="reqskill" data-placeholder="Select a skill ">
+								<?php foreach ($userSkills as $key => $skill) { ?>
+									<option value="<?php echo $skill['skill_name']; ?>"><?php echo $skill['skill_name']; ?></option>
+								<? } ?>
+								</select>	
+				             
+		     
+                        
+                <div class="col-lg-12 write_message"> 
+                 
+						
+                <textarea autofocus name="body" class="form-control" rows="10"></textarea>
+                
+                <button type="submit" class="btn btn-default" id="send" >SEND</button> 
+                
+               </div> </form></ul>
+						
+
 						<? endif; ?>
 
 				</div>
