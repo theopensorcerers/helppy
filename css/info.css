@@ -1,0 +1,23 @@
+#info .title>h2{
+	color:black;
+	font-size: 25px;
+}
+
+#info .selection>h1{
+	font-family: 'Roboto', sans-serif;
+	font-weight: 600;
+	font-size: 30px;
+	color:#74b533;
+}
+
+#info a.title:hover{
+	color:black;	
+}
+
+#footer a.title:hover{
+	color:black;	
+}
+
+#footer .list-item{
+	color:black;	
+}

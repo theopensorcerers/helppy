@@ -18,12 +18,11 @@
 
 				<div id="info" class="row">
 				  <div class="col-xs-12 col-md-3">
-				  	
-				  	<div class="selection">
-				  		<h1>About Us</h1>
-				  	</div>
+				  	<a href="/about_us.php" class="title">
+				  		<h2>About Us</h2>
+				  	</a>
 				  	<a href="/our_values.php" class="title">
-				  		<h2 class="title">Our Values</h2>
+				  		<h2>Our Values</h2>
 				  	</a>
 				  	<a href="/how_it_works.php" class="title">
 				  		<h2>How it works</h2>
@@ -34,10 +33,9 @@
 				  	<a href="/privacy_policy.php" class="title">
 				  		<h2>Privacy Policy</h2>
 				  	</a>
-				  	<a href="/help.php" class="title">
-				  		<h2>Help</h2>
-				  	</a>
-
+				  	<div class="selection">
+				  		<h1>Help</h1>
+				  	</div>
 				  </div>
 				  <div class="col-xs-12 col-md-1">
 				  </div>
