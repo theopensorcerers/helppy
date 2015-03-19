@@ -215,7 +215,7 @@ if ($result = $db->query($query)) {
 							      		</div>
 							      			<div class="modal-body">
 												<div class="form-group">
-													<p>Select one of <?php echo $username ?>'s skills</p>
+													<p>Select a skill from <?php echo $username ?></p>
 								                		<form method="post" action="<?php echo $baseurl; ?>/php/users/create_req.php" accept-charset="UTF-8">
 								               				<select name="reqskill" data-placeholder="Select a skill ">
 															<?php foreach ($userSkills as $key => $skill) { ?>
@@ -232,20 +232,20 @@ if ($result = $db->query($query)) {
 									            	<div class="row request-skill-form">
 				                  						<div class="col-xs-8 col-sm-4">
 											               <select name="due-day" data-placeholder="Select a day ">
-																<option value="ALLOC">Day</option>
+																<option value="ALLOC" <input type="hidden">Day</option>
 						  										<option value="LOAD1">01</option>
 															</select>
 														</div>
 														<div class="col-xs-4 col-sm-4">
 															<select name="due-month" data-placeholder="Select a month ">
-																<option value="ALLOC">Month</option>
+																<option value="ALLOC"<input type="hidden">Month</option>
 						  										<option value="LOAD1">01</option>
 						  										<option value="LOAD2">02</option>
 															</select>
 														</div>
 														<div class="col-xs-4 col-sm-4">
 															<select name="due-month" data-placeholder="Select a month ">
-																<option value="ALLOC">Year</option>
+																<option value="ALLOC"<input type="hidden">Year</option>
 						  										<option value="LOAD1">01</option>
 						  										<option value="LOAD2">02</option>
 															</select>
