@@ -667,7 +667,7 @@ if ($result = $db->query($query)) {
 							<div class="form-group">
 								<select name="hourID" data-placeholder="Select a time">
 									<?php foreach ($hours as $key => $hour) { ?>
-										<option value="<?php echo $hour['hourID']; ?>"><?php echo $hour['hour_description'] ; ?></option>
+										<option value="<?php echo $hour['hourID']; ?>"><?php echo $hour['hour_description'] . " (" . $hour['hour_name'] . ")" ; ?></option>
 									<? } ?>
 								</select> 
 							</div>
