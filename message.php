@@ -73,3 +73,5 @@
     </div><!--container-->
 </div> <!--jumbotron-->
 
+<?php include "includes/footer.html" ?>
+
