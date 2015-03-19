@@ -227,8 +227,11 @@ if ($result = $db->query($query)) {
 					                <div class="col-lg-12 write_message"> 
 											
 					                <textarea autofocus name="body" class="form-control" rows="10"></textarea>
-						               </div> </form>
-									<? endif; ?>
+						               </div> 
+						               
+						           </form>
+
+									
 									</div>
 								</div>
 								      <div class="modal-footer">
@@ -240,7 +243,7 @@ if ($result = $db->query($query)) {
 								  </div>
 								</div>
 
-
+<? endif; ?>
                               
 				                 
 
