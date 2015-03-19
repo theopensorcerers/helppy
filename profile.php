@@ -184,14 +184,127 @@ if ($result = $db->query($query)) {
 	echo 'Unable to connect to the database';
 }
 
+// Days
+$days = array();
+$query = <<<EOF
+SELECT 
+	availability_day.dayID AS `dayID`,
+	availability_day.name AS `day_name`
+FROM
+	availability_day
+GROUP BY availability_day.dayID ;
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+		array_push($days, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
+// Hours
+$hours = array();
+$query = <<<EOF
+SELECT 
+	availability_hour.hourID AS `hourID`,
+	availability_hour.name AS `hour_name`,
+	availability_hour.description AS `hour_description`
+FROM
+	availability_hour
+GROUP BY availability_hour.hourID ;
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+		array_push($hours, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
+// User Availabilities
+$useravailability = array();
+$query = <<<EOF
+SELECT 
+	availability_day.dayID AS `dayID`,
+	availability_day.name AS `day_name`,
+	availability_hour.hourID AS `hourID`,
+	availability_hour.name AS `hour_name`,
+	availability_hour.description AS `hour_description`
+FROM
+	users
+		INNER JOIN
+	user_availability USING (userID)
+		INNER JOIN
+	availability_day USING (dayID)
+		INNER JOIN
+	availability_hour USING (hourID)
+WHERE
+	username  = '$username'
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+		array_push($useravailability, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
+// User feedback
+$userfeedback = array();
+$query = <<<EOF
+SELECT 
+	feedback.feedbackID AS `feedbackID`,
+	feedback.rating AS `rating`,
+	feedback.body AS `feedback`,
+    requests.requestID AS `requestID`,
+	requests.from AS `requester`,
+	requests.to AS `helper`,
+    skills.skillID AS `skillID`,
+    skills.name AS `skill_name`,
+    request_skills.skillD AS `skillID`
+FROM
+	users
+		INNER JOIN
+	user_requests USING (userID)
+		INNER JOIN 
+	requests USING (requestID)
+		INNER JOIN 
+    request_skills (requestID)
+    	INNER JOIN 
+    skills (skillsID)
+		INNER JOIN
+	feedback USING (feedbackID)
+WHERE
+	username  = '$username'
+GROUP BY requests.from
+EOF;
+if ($result = $db->query($query)) {
+	while ($row = $result->fetch_assoc()) {
+		array_push($userfeedback, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
 ?>
 
-<!-- Profile picure and progress bars -->
+
 <div class="jumbotron">
 	<div class="container">
 
 		<div class="space70"></div>
 			<div class="row">
+
+			<!-- Profile picure request button -->
+
 				<div class="col-xs-6 col-md-4">
 						<div class="thumbnail">
 							<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($userDetails['email'])))?>?s=360&d=mm">
@@ -203,7 +316,6 @@ if ($result = $db->query($query)) {
 								</div>
 						</div>
 						<?php if (!$my_profile) : ?>
-                        
                         
 							<a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#myModal" id="request_skill_btn" ><h4>Request a skill</h4></a>
 							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -243,13 +355,16 @@ if ($result = $db->query($query)) {
 								  </div>
 								</div>
 
-<? endif; ?>
+						<? endif; ?>
                               
 				                 
 
 				</div>
-				<div class="col-xs-12 col-md-1">
-				</div>
+
+				<div class="col-xs-12 col-md-1"></div>
+
+			<!-- progress bars -->
+
 				<div class="col-xs-12 col-md-7">
 					<p>I've helped others</p>
 					<div class="progress">
@@ -266,28 +381,12 @@ if ($result = $db->query($query)) {
 						<div class="progress-bar green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
 						</div>
 					</div>
-				<?php if (!$my_profile) : ?>
-					<div class="space20">
-						<div class="align-right">
-							<form method="post" action="<?php echo $baseurl; ?>/php/users/update.php" accept-charset="UTF-8">
-								<ul class="list-inline rating">
-									<li>
-										<button class="btn btn-green" type="submit">send green</button>
-									</li>
-									<li><i class="fa fa-leaf fa-2x"></i></li>
-									<li><i class="fa fa-leaf fa-2x"></i></li>
-									<li><i class="fa fa-leaf fa-2x"></i></li>
-									<li><i class="fa fa-leaf fa-2x black"></i></li>
-									<li><i class="fa fa-leaf fa-2x black"></i></li>
-								</ul>
-							</form>
-						</div>
-					</div>
-				<? endif; ?>
 				</div>
 			</div>
 
 			<div class="space50"></div>
+
+			<!-- Personal details -->
 			
 			<?php if ($my_profile) : ?>
 				<div class="row personal_details" >
@@ -353,6 +452,9 @@ if ($result = $db->query($query)) {
 				<div class="space20"></div>
 
 			<? endif; ?>
+
+			<!-- List skills -->
+
 				<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Skills</strong></p>
 				<div class="row skills_categories_list user_skills_list" >
 					<div class="row skill">
@@ -374,6 +476,8 @@ if ($result = $db->query($query)) {
 					<? } ?>
 					</div>
 				</div>
+
+			<!-- Add skills -->
 
 			<?php if ($my_profile) : ?>
 				<div class="space50"></div>
@@ -447,9 +551,14 @@ if ($result = $db->query($query)) {
 				</div>
 			<? endif; ?>
 
-			<div class="space20"></div>
+			<div class="space70"></div>
 			
+			<!-- Location and Availability -->
+
 			<div class="row personal_details" >
+
+				<!-- Location -->
+
 				<div class="col-xs-12 col-md-6">
 
 					<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Location</strong></p>
@@ -503,8 +612,80 @@ if ($result = $db->query($query)) {
 						</table>
 
 					<? endif; ?>
-				</div>	
+				</div>
+
+		
+
+				<!-- Availability -->
+
+				<div class="col-xs-12 col-md-6">
+					<div class="row new-skill">
+						<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Availabilities</strong></p>
+						
+						<form id="addAvailability_form" method="post" action="<?php echo $baseurl; ?>/php/users/addAvailability.php" accept-charset="UTF-8">
+							
+							<div class="form-group">
+								<select name="dayID" data-placeholder="Select a day">
+									<?php foreach ($days as $key => $day) { ?>
+										<option value="<?php echo $day['dayID']; ?>"><?php echo $day['day_name']; ?></option>
+									<? } ?>
+								</select>
+							</div>
+							
+							<div class="form-group">
+								<select name="hourID" data-placeholder="Select a time">
+									<?php foreach ($hours as $key => $hour) { ?>
+										<option value="<?php echo $hour['hourID']; ?>"><?php echo $hour['hour_description'] ; ?></option>
+									<? } ?>
+								</select> 
+							</div>
+							<div class="form-group">
+								<button type="submit" id='add' class="btn btn-default">Add availability</button>
+							</div>
+
+						</form>	
+						<div class="space50"></div>
+						<table class="table table-condensed table-striped table-hover">
+							<thead>
+								<tr>
+									<th>Availabilities</th>
+									<th></th>
+								</tr>
+							</thead>
+							<tbody>
+								<?php foreach ($useravailability as $key => $availability) { ?>
+									<tr>
+										<td><?php echo $availability['day_name'];?></td>
+										<td><?php echo $availability['hour_name'];?></td>
+										<td><?php echo $availability['hour_description'];?></td>
+										<td>
+											<form method="post" action="<?php echo $baseurl; ?>/php/users/remove_availability.php" accept-charset="UTF-8">
+												<input type="hidden" name="dayID" value="<?php echo $day['dayID']; ?>">
+												<input type="hidden" name="hourID" value="<?php echo $hour['hourID']; ?>">
+												<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+												<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
+											</form>
+										</td>
+									</tr>
+								<? } ?>
+							</tbody>
+						</table>
+					</div>
+				</div>
 			</div>
+
+			<div class="space70"></div>
+
+			<!-- Feedback -->
+
+			<div class="row personal_details" >
+				<div class="col-xs-12 col-md-12">
+					<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Feedback</strong></p>
+					
+				</div>
+			</div>
+
+			
 			
 				
 	</div>

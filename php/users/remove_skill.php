@@ -42,7 +42,7 @@ if ($result = $db->query($query)) {
     /* free result set */
     $result->close();
 } else {
-    echo json_encode(array("success" => false, "msg" => "Failed to add skill to database"));
+    echo json_encode(array("success" => false, "msg" => "Failed to remove skill to database"));
     return false;
     /* free result set */
     $result->close();
