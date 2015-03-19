@@ -324,27 +324,47 @@ if ($result = $db->query($query)) {
 							      <div class="modal-header">
 							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 							        <h4 class="modal-title" id="myModalLabel">Request a skill</h4>
-							      </div>
-							      <div class="modal-body">
-									<div class="form-group">
-									<p>Select one of <?php echo $username ?>'s skills</p>
-					                <form method="post" action="<?php echo $baseurl; ?>/php/users/create_req.php" accept-charset="UTF-8">
-					               	<select name="reqskill" data-placeholder="Select a skill ">
-													<?php foreach ($userSkills as $key => $skill) { ?>
-														<option value="<?php echo $skill['skill_name']; ?>"><?php echo $skill['skill_name']; ?></option>
-													<? } ?>
-													</select>
-									<div class="space10"></div>
-									<p>Add more details. What do you need?</p>	
-					                <div class="col-lg-12 write_message"> 
-											
-					                <textarea autofocus name="body" class="form-control" rows="10"></textarea>
-						               </div> 
-						               
-						           </form>
-
-									
-									</div>
+							      		</div>
+							      			<div class="modal-body">
+												<div class="form-group">
+													<p>Select a skill from <?php echo $username ?></p>
+								                		<form method="post" action="<?php echo $baseurl; ?>/php/users/create_req.php" accept-charset="UTF-8">
+								               				<select name="reqskill" data-placeholder="Select a skill ">
+															<?php foreach ($userSkills as $key => $skill) { ?>
+																<option value="<?php echo $skill['skill_name']; ?>"><?php echo $skill['skill_name']; ?></option>
+																<? } ?>
+															</select>
+												<div class="space10"></div>
+													<p>Add more details. What do you need?</p>	
+								                		<div class="col-lg-12 write_message"> 
+								                			<textarea autofocus name="body" class="form-control" rows="10"></textarea>
+									               		</div> 
+									            <div class="space10"></div>
+									            	<p>When do you need it for?</p>	
+									            	<div class="row request-skill-form">
+				                  						<div class="col-xs-8 col-sm-4">
+											               <select name="due-day" data-placeholder="Select a day ">
+																<option value="ALLOC" <input type="hidden">Day</option>
+						  										<option value="LOAD1">01</option>
+															</select>
+														</div>
+														<div class="col-xs-4 col-sm-4">
+															<select name="due-month" data-placeholder="Select a month ">
+																<option value="ALLOC"<input type="hidden">Month</option>
+						  										<option value="LOAD1">01</option>
+						  										<option value="LOAD2">02</option>
+															</select>
+														</div>
+														<div class="col-xs-4 col-sm-4">
+															<select name="due-month" data-placeholder="Select a month ">
+																<option value="ALLOC"<input type="hidden">Year</option>
+						  										<option value="LOAD1">01</option>
+						  										<option value="LOAD2">02</option>
+															</select>
+														</div>
+												</div>
+									           			</form>
+												</div>
 								</div>
 								      <div class="modal-footer">
 								      	<div class="space10"></div>
