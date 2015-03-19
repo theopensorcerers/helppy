@@ -205,34 +205,44 @@ if ($result = $db->query($query)) {
 						<?php if (!$my_profile) : ?>
                         
                         
-							<a href="#menu-toggle" data-toggle="dropdown" class="btn btn-default" id="request_skill_btn" ><h4>Request a skill</h4></a>
-                            
-                              
-                <ul class="dropdown-menu form-group" >
-                  
-                 Ask <?php echo $username ?> for help with  
-                 
-                <form method="post" action="<?php echo $baseurl; ?>/php/users/create_req.php" accept-charset="UTF-8">
-                 
-               <select name="reqskill" data-placeholder="Select a skill ">
-								<?php foreach ($userSkills as $key => $skill) { ?>
-									<option value="<?php echo $skill['skill_name']; ?>"><?php echo $skill['skill_name']; ?></option>
-								<? } ?>
-								</select>	
-				             
-		     
-                        
-                <div class="col-lg-12 write_message"> 
-                 
-						
-                <textarea autofocus name="body" class="form-control" rows="10"></textarea>
-                
-                <button type="submit" class="btn btn-default" id="send" >SEND</button> 
-                
-               </div> </form></ul>
-						
+							<a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#myModal" id="request_skill_btn" ><h4>Request a skill</h4></a>
+							<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+							  <div class="modal-dialog">
+							    <div class="modal-content request-lightbox">
+							      <div class="modal-header">
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							        <h4 class="modal-title" id="myModalLabel">Request a skill</h4>
+							      </div>
+							      <div class="modal-body">
+									<div class="form-group">
+									<p>Select one of <?php echo $username ?>'s skills</p>
+					                <form method="post" action="<?php echo $baseurl; ?>/php/users/create_req.php" accept-charset="UTF-8">
+					               	<select name="reqskill" data-placeholder="Select a skill ">
+													<?php foreach ($userSkills as $key => $skill) { ?>
+														<option value="<?php echo $skill['skill_name']; ?>"><?php echo $skill['skill_name']; ?></option>
+													<? } ?>
+													</select>
+									<div class="space10"></div>
+									<p>Add more details. What do you need?</p>	
+					                <div class="col-lg-12 write_message"> 
+											
+					                <textarea autofocus name="body" class="form-control" rows="10"></textarea>
+						               </div> </form>
+									<? endif; ?>
+									</div>
+								</div>
+								      <div class="modal-footer">
+								      	<div class="space10"></div>
+								        <a href="#menu-toggle" class="btn btn-default" id="request_skill_btn" ><h4>Send request</h4></a>
 
-						<? endif; ?>
+								      </div>
+								    </div>
+								  </div>
+								</div>
+
+
+                              
+				                 
 
 				</div>
 				<div class="col-xs-12 col-md-1">
