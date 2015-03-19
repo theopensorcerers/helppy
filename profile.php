@@ -263,26 +263,36 @@ SELECT
 	feedback.rating AS `rating`,
 	feedback.body AS `feedback`,
     requests.requestID AS `requestID`,
-	requests.from AS `requester`,
-	requests.to AS `helper`,
+	resquester.userID AS `requester_ID`,
+    resquester.username AS `requester_username`,
+    resquester.forename AS `requester_forename`,
+    resquester.surname AS `requester_surname`,
+    helper.userID AS `helper_ID`,
+    helper.username AS `helper_username`,
+    helper.forename AS `helper_forename`,
+    helper.surname AS `helper_surname`,
     skills.skillID AS `skillID`,
     skills.name AS `skill_name`,
-    request_skills.skillD AS `skillID`
+    request_skills.skillID AS `skillID`
 FROM
 	users
 		INNER JOIN
 	user_requests USING (userID)
 		INNER JOIN 
 	requests USING (requestID)
-		INNER JOIN 
-    request_skills (requestID)
-    	INNER JOIN 
-    skills (skillsID)
 		INNER JOIN
-	feedback USING (feedbackID)
+	users AS resquester ON (resquester.userID = requests.`to`)
+		INNER JOIN
+	users AS helper ON (helper.userID = requests.`from`)
+		INNER JOIN
+	request_skills ON (request_skills.requestID = requests.requestID)
+    	INNER JOIN 
+    skills USING (skillID)
+		INNER JOIN
+	feedback ON (feedback.requestID = requests.requestID)
 WHERE
-	username  = '$username'
-GROUP BY requests.from
+	users.username  = '$username'
+GROUP BY requests.requestID;
 EOF;
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
@@ -396,7 +406,7 @@ if ($result = $db->query($query)) {
 						<div class="progress-bar received" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
 						</div>
 					</div>
-					<p><?php echo ($my_profile ? 'My' : $userDetails['username']) ?> green</p>
+					<p>Rating</p>
 					<div class="progress">
 						<div class="progress-bar green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
 						</div>
@@ -606,7 +616,8 @@ if ($result = $db->query($query)) {
 								<input type="hidden" id="point" name="point">
 							</ul>
 							</div>
-						</form>						
+						</form>	
+
 
 						<table class="table table-condensed table-striped table-hover">
 							<thead>
@@ -641,7 +652,8 @@ if ($result = $db->query($query)) {
 				<div class="col-xs-12 col-md-6">
 					<div class="row new-skill">
 						<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Availabilities</strong></p>
-						
+
+						<?php if ($my_profile) : ?>
 						<form id="addAvailability_form" method="post" action="<?php echo $baseurl; ?>/php/users/addAvailability.php" accept-charset="UTF-8">
 							
 							<div class="form-group">
@@ -664,28 +676,34 @@ if ($result = $db->query($query)) {
 							</div>
 
 						</form>	
+						<? endif; ?>
+
 						<div class="space50"></div>
 						<table class="table table-condensed table-striped table-hover">
+							<?php if ($my_profile) : ?>
 							<thead>
 								<tr>
 									<th>Availabilities</th>
 									<th></th>
 								</tr>
 							</thead>
+							<? endif; ?>
 							<tbody>
 								<?php foreach ($useravailability as $key => $availability) { ?>
 									<tr>
 										<td><?php echo $availability['day_name'];?></td>
 										<td><?php echo $availability['hour_name'];?></td>
 										<td><?php echo $availability['hour_description'];?></td>
+										<?php if ($my_profile) : ?>
 										<td>
 											<form method="post" action="<?php echo $baseurl; ?>/php/users/remove_availability.php" accept-charset="UTF-8">
-												<input type="hidden" name="dayID" value="<?php echo $day['dayID']; ?>">
-												<input type="hidden" name="hourID" value="<?php echo $hour['hourID']; ?>">
+												<input type="hidden" name="dayID" value="<?php echo $availability['dayID']; ?>">
+												<input type="hidden" name="hourID" value="<?php echo $availability['hourID']; ?>">
 												<input type="hidden" name="userID" value="<?php echo $userID; ?>">
 												<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
 											</form>
 										</td>
+										<? endif; ?>
 									</tr>
 								<? } ?>
 							</tbody>
@@ -698,10 +716,41 @@ if ($result = $db->query($query)) {
 
 			<!-- Feedback -->
 
+			<!-- Feedback -->
 			<div class="row personal_details" >
 				<div class="col-xs-12 col-md-12">
 					<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Feedback</strong></p>
+					<?php foreach ($feedback as $key => $feedback) { ?>
+						<div class="row user">
+
+							<div class="col-xs-5 col-md-2">
+								<div class="space50"></div>
+								<a href="<?php echo $baseurl; ?>/helper/<?php echo $feedback['username']; ?>" >
+									<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($feedback['email'])))?>?s=200&d=mm">
+								</a>
+							</div>
+
+							<div class="col-xs-12 col-md-1"></div>
+
+							<div class="col-xs-12 col-md-9">
+								<h3>
+									<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['username']; ?>" ><?php echo $feedback['username'];?></a>
+								</h3>
+
+								<?php if ($userID == $feedback['toID']) : ?>
+									<p href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['username']; ?>"> ask for my help with <?php echo $skill['skill_name'];?> </a>
+								<?php elseif ($userID == $requester['fromID'])  : ?>
+									<p href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['username']; ?>"> helped me with <?php echo $skill['skill_name'];?> </a>
+								<? endif; ?>
 					
+								<p>
+									<?php echo substr($feedback['feedback'],0 ,500);?> ...
+								</p>
+
+							</div>
+						</div>
+						<hr>
+					<? } ?>
 				</div>
 			</div>
 
