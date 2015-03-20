@@ -41,7 +41,7 @@
                 </div>
                 <div class="modal-footer">
                     <div class="space10"></div>
-                    <input type="submit" class="btn btn-default" id="request_skill_btn"value="Send request">
+                    <input type="submit" class="btn btn-default" value="Send request">
                 </div>
             </form>
         </div>
