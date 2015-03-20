@@ -159,27 +159,8 @@
 	margin-top: 10px;
 }
 
-#header_search{
-	border-color: transparent;
-	outline: none;
-  -webkit-box-shadow: none !important;
-  -moz-box-shadow: none !important;
-  box-shadow: none !important;
- padding-left: 5px;
- padding-top: 7px;
- padding-bottom: 7px;
-}
-
-#header_search:focus{
-	background-color: #333;
-	color:#fff;
-}
-
-.header_search{
-	border-color: #333;
-	border:solid;
-	border-width:1px;
-	height:43px;
+#header-search-icon{
+	padding-bottom: 2px;
 }
 
 .header-search-icon:hover{
@@ -190,4 +171,8 @@
 .signup-login{
 	border-color: #333;
 	border-radius: 0px;
+}
+
+#header-search-box{
+	max-width: 400px;
 }

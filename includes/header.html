@@ -81,10 +81,14 @@ require_once 'php/defines.php';
         <?php else : ?>
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right loggedin">
-                <li class="input-group search-container header_search" >
-                  <input type="text" class="form-control-header showOnScreen" id="header_search" placeholder="I need help in..."/>
-                  <button class="research-logo showOnScreen header-search-icon" type="button"><i class="fa fa-search fa-2x" id="header-search-icon"></i></button>
-                </li>
+              <li class="input-group search-box" id="header-search-box" >
+                <div class="input-group search-container">
+                  <input type="text" class="form-control" id="index_search" placeholder=" I need help in...">
+                  <span class="input-group-btn">
+                  <button class="btn btn-default" type="button"><i class="fa fa-search fa-2x" id="header-search-icon"></i></button>
+                  </span>
+                </div>
+              </li>
               <li>
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <?php echo (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username'])
