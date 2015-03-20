@@ -318,6 +318,15 @@
     color: #fff;
 }
 
+
+.duration_input{
+    border-radius: 0px;
+    max-width: 100px;
+    border-color: #333;
+    border-width: 1px;
+
+}
+
 /* ADAPTATION OF http://antenna.io/ */
 
 .rating {

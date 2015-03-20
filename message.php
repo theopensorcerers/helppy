@@ -68,10 +68,31 @@
         <h4 class="modal-title" id="myModalLabel">Help completed!</h4>
       </div>
       <div class="modal-body">
-        <p>Duration</p>
-        <div>
-            <textarea autofocus name="body" class="form-control completed-form" rows="1"></textarea>
-        </div>
+            <p>Duration (a number of hours spent collaborating)</p>
+        
+            <div class="form-group ">
+  <label for="duration"></label>
+  <input type="number" class="form-control duration_input" id="usr" name="dur">
+</div>
+
+        <script>
+        $(document).ready(function() {
+            $('#stringLengthForm').formValidation({
+                framework: 'bootstrap',
+                dur: {
+                        validators: {
+                            stringLength: {
+                                max: 3,
+                                message: 'Duration should be a number of maximum 3 characters'
+                            }
+                        }
+                    }
+                }
+            });
+        });
+        </script>
+
+        
         <p>Feedback</p>
         <div > 
             <textarea autofocus name="body" class="form-control completed-form" rows="5"></textarea>
