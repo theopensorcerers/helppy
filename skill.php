@@ -10,6 +10,7 @@
 require 'php/db.php';
 
 $skillID = isset($_GET['skillID']) ? $_GET['skillID'] : $_POST['skillID'];
+$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL;
 
 // User skills
 $skill = array();
@@ -121,7 +122,12 @@ if ($result = $db->query($query)) {
 							<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" >
 								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=mm">
 							</a>
-							<a href="#menu-toggle" class="btn btn-default" id="request_skill_btn"><h4>Request a skill</h4></a>
+
+						<?php if ($user['userID'] != $userID && $userID != NULL) : ?>
+							<a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#request_skill_modal<?php if (isset($user['userID'])) { echo '_'.$user['userID'];}; ?>" ><h4>Request help</h4></a>
+							<!-- include the modal & form -->
+							<?php include "includes/request_skill_modal.php" ?>
+						<? endif; ?>
 
 						</div>
 						<div class="col-xs-12 col-md-1"></div>
