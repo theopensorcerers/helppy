@@ -33,15 +33,15 @@
                         <div class="space10"></div>
                         <p>When do you need it for?</p>
                         <div class="input-daterange input-group">
-                            <input name="request_start_date" class="request_datepicker input-sm form-control" type="text" />
-                            <span class="input-group-addon">to</span>
-                            <input name="request_end_date" class="request_datepicker input-sm form-control" type="text" />
+                            <input name="request_start_date" class="request_datepicker input-sm form-control date-request" type="text" />
+                            <span class="input-group-addon to-addon">to</span>
+                            <input name="request_end_date" class="request_datepicker input-sm form-control date-request" type="text" />
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <div class="space10"></div>
-                    <input type="submit" class="btn btn-default" value="Send request">
+                    <input type="submit" class="btn btn-default" id="request_skill_btn"value="Send request">
                 </div>
             </form>
         </div>
