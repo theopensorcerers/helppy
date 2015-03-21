@@ -121,24 +121,25 @@ if ($result = $db->query($query)) {
 							<div class="space50"></div>
 							<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" >
 								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=mm">
+								<div class="user-level-<?php echo $user['level_color'];?>">
+									<h3>
+										<?php echo $user['username'];?></br>
+										<small><?php echo $user['level_name'];?></small>
+									</h3>
+								</div>
 							</a>
-
-						<?php if ($user['userID'] != $userID && $userID != NULL) : ?>
+						</div>
+						<div class="col-xs-12 col-md-1"></div>
+						<div class="col-xs-12 col-md-9 user-description">
+							
+							<p>
+								<?php echo substr($user['user_description'],0 ,500);?> ...
+							</p>
+							<?php if ($user['userID'] != $userID && $userID != NULL) : ?>
 							<a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#request_skill_modal<?php if (isset($user['userID'])) { echo '_'.$user['userID'];}; ?>" ><h4>Request help</h4></a>
 							<!-- include the modal & form -->
 							<?php include "includes/request_skill_modal.php" ?>
 						<? endif; ?>
-
-						</div>
-						<div class="col-xs-12 col-md-1"></div>
-						<div class="col-xs-12 col-md-9">
-							<h3>
-								<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $user['username']; ?>" ><?php echo $user['username'];?></a>
-								<small class="level_<?php echo $user['level_color'];?>"><?php echo $user['level_name'];?></small>
-							</h3>
-							<p>
-								<?php echo substr($user['user_description'],0 ,500);?> ...
-							</p>
 							<p class="text-right">
 								<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $user['username']; ?>">see <?php echo $user['username'];?> profile</a>
 						</p>

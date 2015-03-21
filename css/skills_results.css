@@ -1,0 +1,51 @@
+.user-description{
+	padding-top: 40px;
+}
+
+.user h3{
+	text-transform: none;
+	color:#fff;
+	padding-bottom: 20px;
+}
+
+.user h3:hover{
+	text-decoration: none;
+}
+
+.user small{
+	color:#fff;
+	margin:auto;
+}
+
+.user-level-purple{
+	background-color: #AE5199;
+	width:200px;
+	text-align: center;
+}
+
+.user-level-green{
+	background-color: #95C11E;
+	width:200px;
+	text-align: center;
+}
+
+.user-level-orange{
+	background-color: #E88801;
+	width:200px;
+	text-align: center;
+}
+
+.user-level-red{
+	background-color: #E84234;
+	width:200px;
+	text-align: center;
+}
+
+.user-level-blue{
+	background-color: #4859A4;
+	width:200px;
+	text-align: center;
+}
+
+
+
