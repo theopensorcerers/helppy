@@ -67,18 +67,19 @@ if ($result = $db->query($query)) {
 ?>
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
-			<div class="text-center">
-				<a class="logo"> 
-					<img src="images/logo.png" >
-				</a> 
+			<div class="text-center index-img">
 				<p>
 					<br>
 					A free platform to collaborate, offer and receive skills
-					<p> <strong> FIND </strong> the skills you are missing <br>
-						<strong> GET </strong> the help needed <br>
-						<strong> FOSTER </strong> collaboration <br>
-						<strong> CREATE </strong> great projects 
-					</p>
+				</p>
+				<a class="logo"> 
+					<img src="images/helppy_index.png" >
+				</a> 
+				
+					<p> [<strong> FIND </strong> the skills you are missing ]
+						[<strong> GET </strong> the help needed ] 
+						[<strong> FOSTER </strong> collaboration ] 
+						[<strong> CREATE </strong> great projects ] 
 				</p>
 			 	<div class="container">
 					 <div class="search-container">
