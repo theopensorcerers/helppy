@@ -11,6 +11,8 @@
 require 'php/db.php';
 
 $username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
+$requestID = isset($_GET['requestID']) ? $_GET['requestID'] : NULL;
+
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 $my_profile = False;
 if (isset($_COOKIE['username']) || isset($_SESSION['username'])) {
@@ -35,15 +37,16 @@ if ($result = $db->query($query)) {
 }
 
 
-// User feedback
-$userfeedback = array();
+// User resquests
+$user_requests = array();
+$selected_request = array();;
 $query = <<<EOF
 SELECT 
-    feedback.feedbackID AS `feedbackID`,
-    feedback.rating AS `rating`,
-    feedback.duration AS `duration`,
-    feedback.body AS `feedback`,
     requests.requestID AS `requestID`,
+    DATE_FORMAT(requests.start_date,'%d/%m/%Y') AS `request_start_date`,
+    DATE_FORMAT(requests.end_date,'%d/%m/%Y') AS `request_end_date`,
+    requests.statusID AS `request_statusID`,
+    request_status.name AS `request_status`,
     resquester.userID AS `requester_ID`,
     resquester.username AS `requester_username`,
     resquester.forename AS `requester_forename`,
@@ -54,7 +57,12 @@ SELECT
     helper.surname AS `helper_surname`,
     skills.skillID AS `skillID`,
     skills.name AS `skill_name`,
-    request_skills.skillID AS `skillID`
+    request_skills.skillID AS `skillID`,
+    feedback.feedbackID AS `feedbackID`,
+    feedback.rating AS `rating`,
+    feedback.duration AS `duration`,
+    feedback.body AS `feedback`,
+    count(message.messageID) AS `messages`
 FROM
     users
         INNER JOIN
@@ -67,23 +75,73 @@ FROM
     users AS helper ON (helper.userID = requests.`from`)
         INNER JOIN
     request_skills ON (request_skills.requestID = requests.requestID)
+        INNER JOIN
+    request_status ON (request_status.statusID = requests.statusID)
         INNER JOIN 
     skills USING (skillID)
-        INNER JOIN
+        LEFT JOIN
+    message ON (message.requestID = requests.requestID)
+        LEFT JOIN
     feedback ON (feedback.requestID = requests.requestID)
 WHERE
     users.username  = '$username'
-GROUP BY requests.requestID;
+GROUP BY requests.requestID
+ORDER BY requests.start_date;
 EOF;
 if ($result = $db->query($query)) {
     while ($row = $result->fetch_assoc()) {
-        array_push($userfeedback, $row);
+        array_push($user_requests, $row);
     }
     /* free result set */
     $result->close();
 } else {
     echo 'Unable to connect to the database';
 }
+
+// if no requestID have been passed in the get string, set it to the first request
+if (!$requestID && $user_requests) {
+    $requestID = $user_requests[0]['requestID'];
+}
+
+
+$request_messages = array();
+$query = <<<EOF
+SELECT 
+    message.`from` AS `from`,
+    message.`to` AS `from`,
+    message.date AS `date`,
+    message.subject AS `subject`,
+    message.body AS `body`,
+    resquester.userID AS `requester_ID`,
+    resquester.username AS `requester_username`,
+    resquester.forename AS `requester_forename`,
+    resquester.surname AS `requester_surname`,
+    helper.userID AS `helper_ID`,
+    helper.username AS `helper_username`,
+    helper.forename AS `helper_forename`
+FROM
+    message
+        INNER JOIN
+    requests USING (requestID)
+        INNER JOIN
+    users AS resquester ON (resquester.userID = requests.`to`)
+        INNER JOIN
+    users AS helper ON (helper.userID = requests.`from`)
+WHERE
+    message.requestID = $requestID
+GROUP BY message.requestID
+ORDER BY message.date;
+EOF;
+if ($result = $db->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        array_push($request_messages, $row);
+    }
+    /* free result set */
+    $result->close();
+} else {
+    echo 'Unable to connect to the database';
+}
+
 
 ?>
 
@@ -101,41 +159,40 @@ if ($result = $db->query($query)) {
 
              <div class="row ">
                 <div class="col-xs-12 col-md-4 conversations">
+                    <span class="sidebar-brand">Conversations</span>
                     <ul class="sidebar-nav">
-                        <li class="sidebar-brand">
-                            <a href="#">Conversations</a>
-                        </li>
+                    <?php foreach ($user_requests as $key => $request) { ?>
+                        <? if ($request['requestID'] == $requestID) {
+                                $selected_request = $request;
+                            } 
+                        ?>
                         <li>
-                            <a href="#">User 1</a>
+                            <a href="message.php?requestID=<? echo $request['requestID'] ?>">
+                            <? echo $request['requester_username'] ?> | 
+                            <small><? echo $request['skill_name'] ?></small>
+                            </a>
                         </li>
-                        <li>
-                            <a href="#">User 2</a>
-                        </li>
-                        <li>
-                            <a href="#">User 3</a>
-                        </li>
-                        <li>
-                            <a href="#">User 4</a>
-                        </li>
-                        <li>
-                            <a href="#">User 5</a>
-                        </li>
-                        <li>
-                            <a href="#">User 6 </a>
-                        </li>
+                    <? } ?>
                     </ul>
                 </div>
                 <div class="col-xs-12 col-md-8 inbox">
                     <div class="col-lg-12 reply_request">
-                        <h1>Can you help User 1?</h1>
+                        <h1>Can you help <? echo $selected_request['requester_username']?>?</h1>
                     </div>
 
                     <div class="col-lg-12 reply_request">
                         <div class="request_details">
-                            <h4>Due Date</h4> <p>01/01/01</p>
+                            <h4>When</h4> 
+                            <p>
+                            <?php if ($selected_request['request_start_date'] != $selected_request['request_end_date']) : ?>
+                                <? echo $selected_request['request_start_date']?> to <? echo $selected_request['request_end_date']?>
+                            <? else: ?>
+                                <? echo $selected_request['request_start_date']?>
+                            <? endif; ?>
+                            </p>
                         </div> <!-- end of due date -->
                         <div class="request_details">
-                            <h4>Skill</h4> <p>php skill</p>
+                            <h4>Skill</h4> <p><? echo $selected_request['skill_name']?></p>
                         </div> <!-- end of skill -->
                         <div class="request_details">
                             <a href="#menu-toggle" class="btn btn-default" id="yesno_btn"><h4>yes</h4></a>
@@ -154,10 +211,11 @@ if ($result = $db->query($query)) {
                     </div>   
 
                     <div class="col-lg-12 message_history">
-                        <div class="message"><p>Hello could you help me with the frontend design of my website?</p></div>
-                        <div class="own_message"><p>Hi there, when do you need it for?</p></div>
-                        <div class="message"><p>I need it for next month</p></div>
-                        <div class="own_message"><p>That sounds like enought time to do it</p></div>
+                        <?php foreach ($request_messages as $key => $message) { ?>
+                            <div class="<? if ($message['from'] == $userID) { echo 'own_'; }; ?>message">
+                            <small><? echo $message['date']?></small>
+                            <p><? echo $message['body']?></p></div>
+                        <? } ?>
                     </div>
                     <div class="col-lg-12 write_message">
                         <textarea class="form-control" rows="6"></textarea>
