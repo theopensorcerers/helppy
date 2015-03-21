@@ -120,7 +120,7 @@ if ($result = $db->query($query)) {
 						<div class="col-xs-5 col-md-2">
 							<div class="space50"></div>
 							<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" >
-								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=mm">
+								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=https://marielabarzallo.files.wordpress.com/2015/03/default_thumbnail.jpg">
 								<div class="user-level-<?php echo $user['level_color'];?>">
 									<h3>
 										<?php echo $user['username'];?></br>
