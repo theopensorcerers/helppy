@@ -8,7 +8,7 @@
  * it dies if no id can be found.
  */
 require 'php/db.php';
-
+$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
 $skillID = isset($_GET['skillID']) ? $_GET['skillID'] : $_POST['skillID'];
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL;
 
@@ -133,7 +133,7 @@ if ($result = $db->query($query)) {
 						<div class="col-xs-12 col-md-9 user-description">
 							
 							<p>
-								<?php echo substr($user['user_description'],0 ,500);?> ...
+								<?php echo substr($user['user_description'],0 ,650);?> ...
 							</p>
 							<?php if ($user['userID'] != $userID && $userID != NULL) : ?>
 							<a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#request_skill_modal<?php if (isset($user['userID'])) { echo '_'.$user['userID'];}; ?>" ><h4>Request help</h4></a>

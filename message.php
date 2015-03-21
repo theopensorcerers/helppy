@@ -1,5 +1,93 @@
 <?php include "includes/header.html" ?>
 
+
+<?php
+
+/**
+ * Get user details based on a username 
+ * The script will present the details of the username passed in the GET, or try the session and cookie.
+ * it dies if no id can be found.
+ */
+require 'php/db.php';
+
+$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
+$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
+$my_profile = False;
+if (isset($_COOKIE['username']) || isset($_SESSION['username'])) {
+    $my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
+}
+$userDetails = array();
+
+// User details
+$userDetails = array();
+
+$query = "SELECT * FROM users WHERE username='$username'";
+if ($result = $db->query($query)) {
+    if ($row = $result->fetch_assoc()) {
+        $userDetails = $row;
+    } else {
+        echo "No user found for this id";
+    }
+    /* free result set */
+    $result->close();
+} else {
+    echo 'Unable to connect to the database';
+}
+
+
+// User feedback
+$userfeedback = array();
+$query = <<<EOF
+SELECT 
+    feedback.feedbackID AS `feedbackID`,
+    feedback.rating AS `rating`,
+    feedback.duration AS `duration`,
+    feedback.body AS `feedback`,
+    requests.requestID AS `requestID`,
+    resquester.userID AS `requester_ID`,
+    resquester.username AS `requester_username`,
+    resquester.forename AS `requester_forename`,
+    resquester.surname AS `requester_surname`,
+    helper.userID AS `helper_ID`,
+    helper.username AS `helper_username`,
+    helper.forename AS `helper_forename`,
+    helper.surname AS `helper_surname`,
+    skills.skillID AS `skillID`,
+    skills.name AS `skill_name`,
+    request_skills.skillID AS `skillID`
+FROM
+    users
+        INNER JOIN
+    user_requests USING (userID)
+        INNER JOIN 
+    requests USING (requestID)
+        INNER JOIN
+    users AS resquester ON (resquester.userID = requests.`to`)
+        INNER JOIN
+    users AS helper ON (helper.userID = requests.`from`)
+        INNER JOIN
+    request_skills ON (request_skills.requestID = requests.requestID)
+        INNER JOIN 
+    skills USING (skillID)
+        INNER JOIN
+    feedback ON (feedback.requestID = requests.requestID)
+WHERE
+    users.username  = '$username'
+GROUP BY requests.requestID;
+EOF;
+if ($result = $db->query($query)) {
+    while ($row = $result->fetch_assoc()) {
+        array_push($userfeedback, $row);
+    }
+    /* free result set */
+    $result->close();
+} else {
+    echo 'Unable to connect to the database';
+}
+
+?>
+
+
 <script type="text/javascript">
    $(function () {
       $('#example-c').barrating();
@@ -10,13 +98,12 @@
     <div class="container ">
 
         <div class="space70"></div>
+
              <div class="row ">
                 <div class="col-xs-12 col-md-4 conversations">
                     <ul class="sidebar-nav">
                         <li class="sidebar-brand">
-                            <a href="#">
-                                Conversations
-                            </a>
+                            <a href="#">Conversations</a>
                         </li>
                         <li>
                             <a href="#">User 1</a>
@@ -59,82 +146,26 @@
 
                         <!--Only active after the button Yes has been pushed and sends a review request to other user-->
                         <div class="request_details">
-                        <a href="#menu-toggle" data-toggle="modal" data-target="#myModal" class="btn btn-default" id="help_completed_btn"><h4>Help completed!</h4></a>
-                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content help-completed-lightbox">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Help completed!</h4>
-      </div>
-      <div class="modal-body">
-            <p>Duration (a number of hours spent collaborating)</p>
-        
-            <div class="form-group ">
-  <label for="duration"></label>
-  <input type="number" class="form-control duration_input" id="usr" name="dur">
-</div>
+                            <a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
 
-        <script>
-        $(document).ready(function() {
-            $('#stringLengthForm').formValidation({
-                framework: 'bootstrap',
-                dur: {
-                        validators: {
-                            stringLength: {
-                                max: 3,
-                                message: 'Duration should be a number of maximum 3 characters'
-                            }
-                        }
-                    }
-                }
-            });
-        });
-        </script>
+                            <?php include "includes/close_skill_modal.php" ?>
 
-        
-        <p>Feedback</p>
-        <div > 
-            <textarea autofocus name="body" class="form-control completed-form" rows="5"></textarea>
-        </div>
-        <p>Rate this helpper</p>
-        <div> 
-            <!-- RATING SYSTEM ADAPTATION OF http://antenna.io/-->
-            <div class="input select rating-c">
-                        <select id="example-c" name="rating" style="display: none;">
-                            <option value=""></option>
-                            <option value="1"><p>1</p></option>
-                            <option value="2"><p>2</p></option>
-                            <option value="3"><p>3</p></option>
-                            <option value="4"><p>4</p></option>
-                            <option value="5"><p>5</p></option>
-                        </select>
-            </div>
-        </div>
-
-      </div>
-
-      <div class="modal-footer">
-        <a href="#menu-toggle" class="btn btn-default " id="close-transaction-btn" ><h4>Close transaction</h4></a>      
-        </div>
-    </div>
-  </div>
-</div>
                         </div> <!-- end of help completed button-->
+                    </div>   
 
-                    </div>                
                     <div class="col-lg-12 message_history">
                         <div class="message"><p>Hello could you help me with the frontend design of my website?</p></div>
                         <div class="own_message"><p>Hi there, when do you need it for?</p></div>
                         <div class="message"><p>I need it for next month</p></div>
                         <div class="own_message"><p>That sounds like enought time to do it</p></div>
                     </div>
-                        <div class="col-lg-12 write_message">
+                    <div class="col-lg-12 write_message">
                         <textarea class="form-control" rows="6"></textarea>
                         <a href="#menu-toggle" class="btn btn-default" id="send_btn">Send message</a>
                     </div>
                 </div>
             </div> <!--row-->
+         
     </div><!--container-->
 </div> <!--jumbotron-->
 
