@@ -186,3 +186,7 @@
 	color:#333;
 	border-color: #333;
 }
+
+.select2-drop {
+	  margin-top: -15px;
+}
