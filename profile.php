@@ -317,7 +317,7 @@ if ($result = $db->query($query)) {
 
 				<div class="col-xs-6 col-md-4">
 					<div class="thumbnail">
-						<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($userDetails['email'])))?>?s=360&d=mm">
+						<img src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($userDetails['email'])))?>?s=360&d=https://marielabarzallo.files.wordpress.com/2015/03/helppy_avatar.jpg">
 						<div class="caption username">
 							<h3><strong><?php echo $userDetails['username'] ?></strong></h3>
 							<?php if ($my_profile) : ?>
