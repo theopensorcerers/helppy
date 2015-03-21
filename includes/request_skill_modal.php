@@ -4,10 +4,13 @@
         <div class="modal-content request-lightbox">
             <form method="post" action="<?php echo $baseurl; ?>/php/requests/create_request.php" accept-charset="UTF-8">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                     <h4 class="modal-title" id="request_skill_modal_label<?php if (isset($user['userID'])) { echo '_'.$user['userID'];}; ?>">Request help</h4>
                 </div>
                 <div class="modal-body">
+                
                     <div class="form-group">
                         <input name="helper_ID" type="hidden" value="<?php echo isset($userDetails['userID']) ? $userDetails['userID'] : $user['userID'] ?>">
                     <?php if (isset($userSkills)) : ?>

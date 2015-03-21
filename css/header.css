@@ -69,7 +69,7 @@
 }
 
 .navbar-nav .search-container .fa-search {
-	top: 4px;
+	top: 1px;
 	position: relative;
 }
 
@@ -160,7 +160,7 @@
 }
 
 #header-search-icon{
-	padding-bottom: 2px;
+	padding-bottom: 0px;
 }
 
 .header-search-icon:hover{
