@@ -43,30 +43,28 @@
 				  </div>
 				  <div class="col-xs-12 col-md-8">
 				  <p> 
-					Lorem ipsum dolor sit amet, sapien nam donec in, enim tortor venenatis luctus pede, rhoncus ligula maecenas faucibus, 
-					molestie vel, libero morbi taciti amet sit. Curabitur id quisque, arcu arcu faucibus vestibulum, sodales nam pede quam egestas penatibus, 
-					velit diam. Lectus ultricies sed ornare volutpat, sed tincidunt mauris. Dolor vel ante quam quam, ad erat vivamus etiam bibendum, nulla nibh erat, 
-					fringilla congue vestibulum. Mauris feugiat, non pede odio leo sodales, erat sit dictumst. Quisque hac pretium, lorem amet wisi volutpat amet, 
-					sed magna odio id tristique nibh. Vestibulum wisi lacus rhoncus felis. Ut pede rhoncus diam rhoncus sagittis duis, dapibus mollis. 
-					Lectus lectus vitae nullam enim tellus, posuere ullamcorper adipiscing donec, fermentum suspendisse ullamcorper, ipsum amet justo neque mauris enim eu, 
-					est aliquet volutpat et vestibulum vivamus. Turpis quis sit non nulla tortor, in suspendisse accumsan, sed erat elementum semper sit nulla integer, 
-					justo nec sit malesuada. Sit sit feugiat nunc pede, aliquam in quis taciti. Tempus turpis, est mi a, sodales vitae eu venenatis fusce justo, eu luctus sed metus purus velit.
-					<br>
-					<br>
-					Sit amet, duis rutrum, eu adipiscing phasellus nec est arcu varius. Enim sit nunc mauris blandit imperdiet pellentesque, vulputate placerat condimentum vivamus, 
-					natoque pellentesque amet fusce. Ac nulla porttitor vel, metus nulla, sit sed, nulla orci mollis aliquam turpis primis posuere. Augue nibh mollis quam vestibulum, 
-					elit eros, mauris blandit in lacinia risus in faucibus, curabitur facilisis quam ea nec pellentesque. Lorem vel cumque condimentum in sem donec, 
-					ut sed feugiat sem egestas neque placerat, eget bibendum blandit dignissim feugiat, curabitur odio lorem, libero nullam ligula odio tincidunt. 
-					Vestibulum faucibus euismod augue, tempor orci, mauris purus augue tincidunt, neque amet fusce. Dolor suspendisse a enim dui luctus.
-					<br>
-					<br>
-					Eget tristique eu molestie nibh enim, volutpat tristique vel duis suspendisse nunc lorem, nec sit tristique lectus aliquam dictum per, sed vestibulum ad. 
-					Tempor tempor habitasse luctus id. Sed morbi eu sit lobortis, duis risus euismod porta neque suspendisse, amet volutpat. Nulla consectetuer, 
-					hymenaeos vel tincidunt magna, quisque vestibulum, mauris non nisl amet elit venenatis dignissim, donec nulla. Hendrerit vitae, 
-					ut odio egestas nullam augue nonummy adipiscing, elit consequat, ultricies iaculis nibh vulputate mattis mattis. Integer sollicitudin sodales, 
-					montes magna hendrerit non a viverra, et diam sapien odio. Odio ligula, pellentesque nostra erat, vehicula sagittis congue duis magnis sapien, 
-					metus curae maecenas aliquam mollis suspendisse euismod, donec lacus mauris.
-					</p>
+					We imagine an environment of collaboration between people. The more hands helping each other, the better!</br>
+
+					Helppers get together and work on interdisciplinary projects by sharing their knowledge and skills.
+					Helppy is a community of people who care about learning from others, enjoy the process of creativity,
+					are excited to work with people from different disciplines and are interested in increasing their professional and social network.</p></br>
+					<h2>The story behind</h2></br>
+					<p> We are students of the Design Informatics masters programme at The University of Edinburgh. This course welcomes students with a wide variety of skills. 
+					We are often asked to come up with conceptual, technological and design approaches to data driven projects. 
+					In class, some people have brilliant programming skills but lack knowledge in design software or struggle with creative thinking, a new world to them. 
+					Whereas most designers in the course easily brainstorm, sketch and prototype ideas, but face problems when trying to realize them due to their 
+					lack of coding skills. The background diversity of this programme is what makes it rich, and collaboration between students is essential 
+					to make great projects. However we often find difficult to know how others can help us, what skills are available and who is willing 
+					to give share their time with a busy schedule. Which makes the task of asking for help hard and results in little collaboration.</br></br>
+					To address these issues the class developed an analogue approach, a ticket system. In which each student writes 3 of their 
+					skills on a piece of paper as detachable tickets and hangs them on a wall in the classroom. By grabbing tickets of our choice 
+					we can exchange help or services. However we believe this approach could grow making it easier for us to negotiate, communicate, 
+					offer and receive help. This is why we have created Helppy, an open source website that will hopefully expand to bigger contexts,
+					 better collaboration and greater projects. </p>
+
+
+
+					
 				  </div>
 				</div>
 			</div>
