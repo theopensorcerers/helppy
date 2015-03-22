@@ -234,7 +234,7 @@
     }
 
     .message{
-    	display: inline-block;
+    	display: block;
     	min-height: 50px;
     	margin-top: 10px;
     	margin-bottom: 10px;
@@ -245,7 +245,7 @@
     	min-height: 50px;
     	margin-top: 10px;
     	margin-bottom: 10px;
-    	background-color:#CBC9CA;
+    	background-color:lightgray;
     }
 
     .message_history .message, .own_message p{

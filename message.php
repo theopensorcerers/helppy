@@ -64,15 +64,11 @@ SELECT
     feedback.body AS `feedback`,
     count(message.messageID) AS `messages`
 FROM
-    users
+    requests
         INNER JOIN
-    user_requests USING (userID)
-        INNER JOIN 
-    requests USING (requestID)
+    users AS resquester ON (resquester.userID = requests.`from`)
         INNER JOIN
-    users AS resquester ON (resquester.userID = requests.`to`)
-        INNER JOIN
-    users AS helper ON (helper.userID = requests.`from`)
+    users AS helper ON (helper.userID = requests.`to`)
         INNER JOIN
     request_skills ON (request_skills.requestID = requests.requestID)
         INNER JOIN
@@ -84,12 +80,13 @@ FROM
         LEFT JOIN
     feedback ON (feedback.requestID = requests.requestID)
 WHERE
-    users.username  = '$username'
+    (helper.username  = '$username' OR resquester.username  = '$username')
 GROUP BY requests.requestID
 ORDER BY requests.start_date;
 EOF;
 if ($result = $db->query($query)) {
     while ($row = $result->fetch_assoc()) {
+        $row['requesting'] = ($row['requester_ID'] == $userID);
         array_push($user_requests, $row);
     }
     /* free result set */
@@ -108,17 +105,24 @@ $request_messages = array();
 $query = <<<EOF
 SELECT 
     message.`from` AS `from`,
-    message.`to` AS `from`,
+    message.`to` AS `to`,
     message.date AS `date`,
     message.subject AS `subject`,
-    message.body AS `body`,
+    REPLACE(message.body, '\r\n', '<br>') AS `body`,
+    message.status AS `message_status`,
     resquester.userID AS `requester_ID`,
     resquester.username AS `requester_username`,
     resquester.forename AS `requester_forename`,
     resquester.surname AS `requester_surname`,
     helper.userID AS `helper_ID`,
     helper.username AS `helper_username`,
-    helper.forename AS `helper_forename`
+    helper.forename AS `helper_forename`,
+    recipient.username AS `recipient_username`,
+    recipient.forename AS `recipient_forename`,
+    recipient.surname AS `recipient_surname`,
+    sender.username AS `sender_username`,
+    sender.forename AS `sender_forename`,
+    sender.surname AS `sender_surname`
 FROM
     message
         INNER JOIN
@@ -127,9 +131,13 @@ FROM
     users AS resquester ON (resquester.userID = requests.`to`)
         INNER JOIN
     users AS helper ON (helper.userID = requests.`from`)
+        INNER JOIN
+    users AS recipient ON (recipient.userID = message.`to`)
+        INNER JOIN
+    users AS sender ON (sender.userID = message.`from`)
 WHERE
     message.requestID = $requestID
-GROUP BY message.requestID
+GROUP BY message.messageID
 ORDER BY message.date;
 EOF;
 if ($result = $db->query($query)) {
@@ -159,25 +167,69 @@ if ($result = $db->query($query)) {
 
              <div class="row ">
                 <div class="col-xs-12 col-md-4 conversations">
-                    <span class="sidebar-brand">Conversations</span>
+                    <span class="sidebar-brand"><strong>Conversations</strong></span>
+
+                    <div class="space20"></div>
+                    <span class="sidebar-brand">I have been asked for help</span>
+                    <div class="space10"></div>
                     <ul class="sidebar-nav">
                     <?php foreach ($user_requests as $key => $request) { ?>
                         <? if ($request['requestID'] == $requestID) {
                                 $selected_request = $request;
                             } 
                         ?>
+                        <? if (!$request['requesting']) { ?>
                         <li>
                             <a href="message.php?requestID=<? echo $request['requestID'] ?>">
                             <? echo $request['requester_username'] ?> | 
                             <small><? echo $request['skill_name'] ?></small>
                             </a>
                         </li>
+                         <? } ?>
                     <? } ?>
                     </ul>
+
+                    <div class="space20"></div>
+                    <span class="sidebar-brand">I asked for help</span>
+                    <div class="space10"></div>
+                    <ul class="sidebar-nav">
+                    <?php foreach ($user_requests as $key => $request) { ?>
+                        <? if ($request['requesting']) { ?>
+                        <li>
+                            <a href="message.php?requestID=<? echo $request['requestID'] ?>">
+                            <? echo $request['helper_username'] ?> | 
+                            <small><? echo $request['skill_name'] ?></small>
+                            </a>
+                        </li>
+                        <? } ?>
+                    <? } ?>
+                    </ul>
+
+                    <div class="space20"></div>
+                    <span class="sidebar-brand">Past conversations</span>
+                    <div class="space10"></div>
+                    <ul class="sidebar-nav">
+                    <?php foreach ($user_requests as $key => $request) { ?>
+                        <? if ($request['request_statusID'] == '4') { ?>
+                        <li>
+                            <a href="message.php?requestID=<? echo $request['requestID'] ?>">
+                            <? if ($request['requesting']) { 
+                                echo $request['helper_username'];
+                            } else { 
+                                echo $request['requester_username']; 
+                            }; 
+                            ?> 
+                            | <small><? echo $request['skill_name'];s ?></small>
+                            </a>
+                        </li>
+                        <? } ?>
+                    <? } ?>
+                    </ul>
+
                 </div>
                 <div class="col-xs-12 col-md-8 inbox">
                     <div class="col-lg-12 reply_request">
-                        <h1>Can you help <? echo $selected_request['requester_username']?>?</h1>
+                        <h1><? if (!$selected_request['requesting']) { echo 'Can you help'; } else { echo 'Help from'; };  echo " ". $selected_request['requester_username']?>?</h1>
                     </div>
 
                     <div class="col-lg-12 reply_request">
@@ -211,15 +263,28 @@ if ($result = $db->query($query)) {
                     </div>   
 
                     <div class="col-lg-12 message_history">
-                        <?php foreach ($request_messages as $key => $message) { ?>
-                            <div class="<? if ($message['from'] == $userID) { echo 'own_'; }; ?>message">
-                            <small><? echo $message['date']?></small>
-                            <p><? echo $message['body']?></p></div>
-                        <? } ?>
+                            <ul class="list-unstyled">
+                            <?php foreach ($request_messages as $key => $message) { ?>
+                                <? $own_message = false;
+                                if ($message['from'] == $userID) { $own_message = true; }; ?>
+                                <li class="<? if ($own_message) { echo 'own_'; }; ?>message">
+                                    <small>from <? if ($own_message) { echo 'you'; } else { echo $message['sender_username']; } ?> on <? echo $message['date']; ?></small>
+                                    <p><? echo $message['body']?></p>
+                                </li>
+                             <? } ?>
+                            </ul>
                     </div>
                     <div class="col-lg-12 write_message">
-                        <textarea class="form-control" rows="6"></textarea>
-                        <a href="#menu-toggle" class="btn btn-default" id="send_btn">Send message</a>
+                        <form method="post" action="<?php echo $baseurl; ?>/php/requests/send_message.php" accept-charset="UTF-8">
+                            <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
+                            <?php if ($userID != $selected_request['requester_ID']) : ?>
+                                <input type="hidden" name="to" value="<?php echo $selected_request['requester_ID']; ?>">
+                            <? else: ?>
+                                <input type="hidden" name="to" value="<?php echo $selected_request['helper_ID']; ?>">
+                            <? endif; ?>
+                            <textarea autofocus name="message_body" class="form-control" rows="6"></textarea>
+                            <input type="submit" class="btn btn-default" id="send_btn" value="Send message">
+                        </form>
                     </div>
                 </div>
             </div> <!--row-->
