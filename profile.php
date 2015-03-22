@@ -563,10 +563,10 @@ if ($result = $db->query($query)) {
 						</form>	
 
 
-						<table class="table table-condensed table-striped table-hover">
+						<table class="table table-condensed table-striped table-hover" id="availability">
 							<thead>
 								<tr>
-									<th>Location</th>
+									<th>Locations</th>
 									<th></th>
 								</tr>
 							</thead>
@@ -595,7 +595,7 @@ if ($result = $db->query($query)) {
 
 				<div class="col-xs-12 col-md-6">
 					<div class="row new-skill">
-						<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Availabilities</strong></p>
+						<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Availability</strong></p>
 
 						<?php if ($my_profile) : ?>
 						<form id="addAvailability_form" method="post" action="<?php echo $baseurl; ?>/php/users/addAvailability.php" accept-charset="UTF-8">
@@ -623,11 +623,13 @@ if ($result = $db->query($query)) {
 						<? endif; ?>
 
 						<div class="space50"></div>
-						<table class="table table-condensed table-striped table-hover">
+						<table class="table table-condensed table-striped table-hover tb_available" id="availability">
 							<?php if ($my_profile) : ?>
 							<thead>
 								<tr>
-									<th>Availabilities</th>
+									<th>Availability times</th>
+									<th></th>
+									<th></th>
 									<th></th>
 								</tr>
 							</thead>
@@ -644,7 +646,7 @@ if ($result = $db->query($query)) {
 												<input type="hidden" name="dayID" value="<?php echo $availability['dayID']; ?>">
 												<input type="hidden" name="hourID" value="<?php echo $availability['hourID']; ?>">
 												<input type="hidden" name="userID" value="<?php echo $userID; ?>">
-												<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
+												<button type="submit" class="close available_btn"><span aria-hidden="true">&times;</span></button>
 											</form>
 										</td>
 										<? endif; ?>
