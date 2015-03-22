@@ -40,31 +40,48 @@
 				  <div class="col-xs-12 col-md-1">
 				  </div>
 				  <div class="col-xs-12 col-md-8">
+				  <h2>How Helppy Works</h2>
 				  <p> 
-					Lorem ipsum dolor sit amet, sapien nam donec in, enim tortor venenatis luctus pede, rhoncus ligula maecenas faucibus, 
-					molestie vel, libero morbi taciti amet sit. Curabitur id quisque, arcu arcu faucibus vestibulum, sodales nam pede quam egestas penatibus, 
-					velit diam. Lectus ultricies sed ornare volutpat, sed tincidunt mauris. Dolor vel ante quam quam, ad erat vivamus etiam bibendum, nulla nibh erat, 
-					fringilla congue vestibulum. Mauris feugiat, non pede odio leo sodales, erat sit dictumst. Quisque hac pretium, lorem amet wisi volutpat amet, 
-					sed magna odio id tristique nibh. Vestibulum wisi lacus rhoncus felis. Ut pede rhoncus diam rhoncus sagittis duis, dapibus mollis. 
-					Lectus lectus vitae nullam enim tellus, posuere ullamcorper adipiscing donec, fermentum suspendisse ullamcorper, ipsum amet justo neque mauris enim eu, 
-					est aliquet volutpat et vestibulum vivamus. Turpis quis sit non nulla tortor, in suspendisse accumsan, sed erat elementum semper sit nulla integer, 
-					justo nec sit malesuada. Sit sit feugiat nunc pede, aliquam in quis taciti. Tempus turpis, est mi a, sodales vitae eu venenatis fusce justo, eu luctus sed metus purus velit.
-					<br>
-					<br>
-					Sit amet, duis rutrum, eu adipiscing phasellus nec est arcu varius. Enim sit nunc mauris blandit imperdiet pellentesque, vulputate placerat condimentum vivamus, 
-					natoque pellentesque amet fusce. Ac nulla porttitor vel, metus nulla, sit sed, nulla orci mollis aliquam turpis primis posuere. Augue nibh mollis quam vestibulum, 
-					elit eros, mauris blandit in lacinia risus in faucibus, curabitur facilisis quam ea nec pellentesque. Lorem vel cumque condimentum in sem donec, 
-					ut sed feugiat sem egestas neque placerat, eget bibendum blandit dignissim feugiat, curabitur odio lorem, libero nullam ligula odio tincidunt. 
-					Vestibulum faucibus euismod augue, tempor orci, mauris purus augue tincidunt, neque amet fusce. Dolor suspendisse a enim dui luctus.
-					<br>
-					<br>
-					Eget tristique eu molestie nibh enim, volutpat tristique vel duis suspendisse nunc lorem, nec sit tristique lectus aliquam dictum per, sed vestibulum ad. 
-					Tempor tempor habitasse luctus id. Sed morbi eu sit lobortis, duis risus euismod porta neque suspendisse, amet volutpat. Nulla consectetuer, 
-					hymenaeos vel tincidunt magna, quisque vestibulum, mauris non nisl amet elit venenatis dignissim, donec nulla. Hendrerit vitae, 
-					ut odio egestas nullam augue nonummy adipiscing, elit consequat, ultricies iaculis nibh vulputate mattis mattis. Integer sollicitudin sodales, 
-					montes magna hendrerit non a viverra, et diam sapien odio. Odio ligula, pellentesque nostra erat, vehicula sagittis congue duis magnis sapien, 
-					metus curae maecenas aliquam mollis suspendisse euismod, donec lacus mauris.
-					</p>
+				  	Let’s keep it short:</br>
+					Frank spent several weeks coding a new computer game he created. However, he couldn’t help but 
+					notice that his idea was not as easy to understand as he expected. People didn’t understand 
+					how it worked or how to use it and lets face it, even he thought it looked bad… really bad.  
+					How could this game compete with all the other ones in the market if he lacked the skills 
+					to make it better?  And how on earth could a broke student like him pay someone to help him? </p>
+
+				<p>
+					He found Helppy and looked for graphics, and character design skills and found people who wanted 
+					to be a part of this project. He contacted them and worked with them until he finally finished his 
+					project. He appreciated these people’s willingness and realized he could also be there for 
+					someone else. So he posted all the skills he could offer to others. Since then he has been a part 
+					of various projects, from web design, to animation and even robotics.  He hasn’t ’spent a cent, he 
+					has met people from all backgrounds and has cultivated great friendships. 
+				</p>
+				<h2>To be a part of Helppy just follow these steps:</h2>
+				<ol>
+					<li><h3>Sign up:</h3> 
+					<p>You can explore which skills are available without signing up, but to request them or offer them 
+						you will have to take part of it.</a></p></li>
+					<li><h3>Set your profile:</h3> 
+					<p>Tell people what you can do, include links of your projects, add and remove skills, tell people 
+						when you are available to help or in which area you work.</p></li>
+					<li><h3>Search for skills:</h3> 
+					<p>You can always use the search bar or explore the site to see what is on offer.</p></li>
+					<li><h3>Request skills:</h3> 
+					<p>Just pushing a button you will be asking someone for help. Telling them when, how and in what.</p></li>
+					<li><h3>Receive requests:</h3> 
+					<p>You can also help others, all of us have something to offer!</p></li>
+					<li><h3>Close transactions:</h3> 
+					<p>Once you have collaborated in a project you can close a transaction. This means you can 
+						rate the people you worked with, give reviews for others to see. And more importantly set 
+						the time in hours you spent working together. </p></li>
+					<li><h3>Helppy is free:</h3> 
+					<p>This is a community built on a basis of trust and welfare. There is no need for money. 
+						However, the duration that you set when closing a transaction is displayed on your profile. 
+						We like to keep things transparent so everyone knows how much time you 
+						have helped others and how much you have been helped. Your ratings and reviews are always publicly visible.</p></li>
+				</ol>
+
 				  </div>
 				</div>
 			</div>

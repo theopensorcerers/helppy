@@ -40,30 +40,30 @@
 				  <div class="col-xs-12 col-md-1">
 				  </div>
 				  <div class="col-xs-12 col-md-8">
-				  <p> 
-					Lorem ipsum dolor sit amet, sapien nam donec in, enim tortor venenatis luctus pede, rhoncus ligula maecenas faucibus, 
-					molestie vel, libero morbi taciti amet sit. Curabitur id quisque, arcu arcu faucibus vestibulum, sodales nam pede quam egestas penatibus, 
-					velit diam. Lectus ultricies sed ornare volutpat, sed tincidunt mauris. Dolor vel ante quam quam, ad erat vivamus etiam bibendum, nulla nibh erat, 
-					fringilla congue vestibulum. Mauris feugiat, non pede odio leo sodales, erat sit dictumst. Quisque hac pretium, lorem amet wisi volutpat amet, 
-					sed magna odio id tristique nibh. Vestibulum wisi lacus rhoncus felis. Ut pede rhoncus diam rhoncus sagittis duis, dapibus mollis. 
-					Lectus lectus vitae nullam enim tellus, posuere ullamcorper adipiscing donec, fermentum suspendisse ullamcorper, ipsum amet justo neque mauris enim eu, 
-					est aliquet volutpat et vestibulum vivamus. Turpis quis sit non nulla tortor, in suspendisse accumsan, sed erat elementum semper sit nulla integer, 
-					justo nec sit malesuada. Sit sit feugiat nunc pede, aliquam in quis taciti. Tempus turpis, est mi a, sodales vitae eu venenatis fusce justo, eu luctus sed metus purus velit.
-					<br>
-					<br>
-					Sit amet, duis rutrum, eu adipiscing phasellus nec est arcu varius. Enim sit nunc mauris blandit imperdiet pellentesque, vulputate placerat condimentum vivamus, 
-					natoque pellentesque amet fusce. Ac nulla porttitor vel, metus nulla, sit sed, nulla orci mollis aliquam turpis primis posuere. Augue nibh mollis quam vestibulum, 
-					elit eros, mauris blandit in lacinia risus in faucibus, curabitur facilisis quam ea nec pellentesque. Lorem vel cumque condimentum in sem donec, 
-					ut sed feugiat sem egestas neque placerat, eget bibendum blandit dignissim feugiat, curabitur odio lorem, libero nullam ligula odio tincidunt. 
-					Vestibulum faucibus euismod augue, tempor orci, mauris purus augue tincidunt, neque amet fusce. Dolor suspendisse a enim dui luctus.
-					<br>
-					<br>
-					Eget tristique eu molestie nibh enim, volutpat tristique vel duis suspendisse nunc lorem, nec sit tristique lectus aliquam dictum per, sed vestibulum ad. 
-					Tempor tempor habitasse luctus id. Sed morbi eu sit lobortis, duis risus euismod porta neque suspendisse, amet volutpat. Nulla consectetuer, 
-					hymenaeos vel tincidunt magna, quisque vestibulum, mauris non nisl amet elit venenatis dignissim, donec nulla. Hendrerit vitae, 
-					ut odio egestas nullam augue nonummy adipiscing, elit consequat, ultricies iaculis nibh vulputate mattis mattis. Integer sollicitudin sodales, 
-					montes magna hendrerit non a viverra, et diam sapien odio. Odio ligula, pellentesque nostra erat, vehicula sagittis congue duis magnis sapien, 
-					metus curae maecenas aliquam mollis suspendisse euismod, donec lacus mauris.
+				  	<h2>Collaboration</h2>
+				  	<p> 
+						Two (or more) heads think better than one. Helppy is all about breaking the ice between people 
+						and avoiding the awkwardness of asking for help. We all need it sometimes, don’t we?
+					</p>
+					</br>
+					<h2>Generosity</h2>
+				  	<p> 
+						Most of us are willing to help anyone who asks us to, however we often feel in debt with those 
+						who do something nice for us. Lets put this out there: people are kind and willing to aid each 
+						other expecting nothing in return. 					
+					</p>
+					</br>
+					<h2>Curiosity</h2>
+				  	<p> 
+						We are driven by a strong desire to know and learn from others. And what better way to do it 
+						than by making stuff together. We never cease to be surprised of the old and welcome the new. 					
+					</p>
+					</br>
+					<h2>Friendship</h2>
+				  	<p> 
+						Sometimes the best connections come from unexpected situations. We believe in collaborative 
+						environments to foster relations. We want to be there for those who need us when stressed, when down, 
+						when happy, when creative… you name it!
 					</p>
 				  </div>
 				</div>
