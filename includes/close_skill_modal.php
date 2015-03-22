@@ -14,25 +14,26 @@
 
                     <p>Duration (a number of hours spent collaborating)</p>
                     <div class="form-group ">
+                        <input type="hidden" name="userID" value="<?php echo $userID; ?>">
+                        <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
                         <label for="duration"></label>
                         <input type="number" class="form-control duration_input"  name="duration">
                     </div>
 
                     <script>
-                    $(document).ready(function() {
-                        $('#stringLengthForm').formValidation({
-                            framework: 'bootstrap',
-                            duration: {
-                                    validators: {
-                                        stringLength: {
-                                            max: 3,
-                                            message: 'Duration should be a number of maximum 3 characters'
-                                        }
-                                    }
-                                }
-                            }
-                        });
-                    });
+                    // $(document).ready(function() {
+                    //     $('#stringLengthForm').formValidation({
+                    //         framework: 'bootstrap',
+                    //         duration: {
+                    //             validators: {
+                    //                 stringLength: {
+                    //                     max: 3,
+                    //                     message: 'Duration should be a number of maximum 3 characters'
+                    //                 }
+                    //             }
+                    //         }
+                    //     });
+                    // });
                     </script>
 
                     <p>Feedback</p>

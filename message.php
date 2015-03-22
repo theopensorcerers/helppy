@@ -82,7 +82,7 @@ FROM
 WHERE
     (helper.username  = '$username' OR resquester.username  = '$username')
 GROUP BY requests.requestID
-ORDER BY requests.start_date;
+ORDER BY requests.statusID ASC, requests.start_date;
 EOF;
 if ($result = $db->query($query)) {
     while ($row = $result->fetch_assoc()) {
@@ -174,18 +174,20 @@ if ($result = $db->query($query)) {
                     <div class="space10"></div>
                     <ul class="sidebar-nav">
                     <?php foreach ($user_requests as $key => $request) { ?>
-                        <? if ($request['requestID'] == $requestID) {
-                                $selected_request = $request;
-                            } 
-                        ?>
-                        <? if (!$request['requesting']) { ?>
-                        <li>
-                            <a href="message.php?requestID=<? echo $request['requestID'] ?>">
-                            <? echo $request['requester_username'] ?> | 
-                            <small><? echo $request['skill_name'] ?></small>
-                            </a>
-                        </li>
-                         <? } ?>
+                        <? if ($request['request_statusID'] != 4 && $request['request_statusID'] != 3) { ?>
+                            <? if ($request['requestID'] == $requestID) {
+                                    $selected_request = $request;
+                                } 
+                            ?>
+                            <? if (!$request['requesting']) { ?>
+                            <li>
+                                <a href="message.php?requestID=<? echo $request['requestID'] ?>">
+                                <? echo $request['requester_username'] ?> | 
+                                <small><? echo $request['skill_name'] ?></small>
+                                </a>
+                            </li>
+                            <? } ?>
+                        <? } ?>
                     <? } ?>
                     </ul>
 
@@ -194,13 +196,19 @@ if ($result = $db->query($query)) {
                     <div class="space10"></div>
                     <ul class="sidebar-nav">
                     <?php foreach ($user_requests as $key => $request) { ?>
-                        <? if ($request['requesting']) { ?>
-                        <li>
-                            <a href="message.php?requestID=<? echo $request['requestID'] ?>">
-                            <? echo $request['helper_username'] ?> | 
-                            <small><? echo $request['skill_name'] ?></small>
-                            </a>
-                        </li>
+                        <? if ($request['request_statusID'] != 4 && $request['request_statusID'] != 3) { ?>
+                            <? if ($request['requestID'] == $requestID) {
+                                    $selected_request = $request;
+                                } 
+                            ?>
+                            <? if ($request['requesting']) { ?>
+                            <li>
+                                <a href="message.php?requestID=<? echo $request['requestID'] ?>">
+                                <? echo $request['helper_username'] ?> | 
+                                <small><? echo $request['skill_name'] ?></small>
+                                </a>
+                            </li>
+                            <? } ?>
                         <? } ?>
                     <? } ?>
                     </ul>
@@ -210,7 +218,11 @@ if ($result = $db->query($query)) {
                     <div class="space10"></div>
                     <ul class="sidebar-nav">
                     <?php foreach ($user_requests as $key => $request) { ?>
-                        <? if ($request['request_statusID'] == '4') { ?>
+                        <? if ($request['request_statusID'] == 4 || $request['request_statusID'] == 3) { ?>
+                        <? if ($request['requestID'] == $requestID) {
+                                $selected_request = $request;
+                            } 
+                        ?>
                         <li>
                             <a href="message.php?requestID=<? echo $request['requestID'] ?>">
                             <? if ($request['requesting']) { 
@@ -229,7 +241,7 @@ if ($result = $db->query($query)) {
                 </div>
                 <div class="col-xs-12 col-md-8 inbox">
                     <div class="col-lg-12 reply_request">
-                        <h1><? if (!$selected_request['requesting']) { echo 'Can you help'; } else { echo 'Help from'; };  echo " ". $selected_request['requester_username']?>?</h1>
+                        <h1><? if (!$selected_request['requesting']) { echo 'Can you help'; echo " ". $selected_request['requester_username'];} else { echo 'Help from'; echo " ". $selected_request['helper_username'];}; ?>?</h1>
                     </div>
 
                     <div class="col-lg-12 reply_request">
@@ -246,20 +258,32 @@ if ($result = $db->query($query)) {
                         <div class="request_details">
                             <h4>Skill</h4> <p><? echo $selected_request['skill_name']?></p>
                         </div> <!-- end of skill -->
+
+
+                    <?php if ($selected_request['request_statusID'] == 1 && !$selected_request['requesting']) : ?>
                         <div class="request_details">
                             <a href="#menu-toggle" class="btn btn-default" id="yesno_btn"><h4>yes</h4></a>
                         </div> <!-- end of yes button-->
                         <div class="request_details">
                             <a href="#menu-toggle" class="btn btn-default" id="yesno_btn"><h4>no</h4></a>
                         </div> <!-- end of no button-->
+                    <?php elseif ($selected_request['request_statusID'] == 1 && $selected_request['requesting']) : ?>
+                        <div class="request_details">
+                            <h4>pending</h4>
+                        </div> <!-- end of yes button-->
+                    <?php elseif ($selected_request['request_statusID'] != '2') : ?>
 
+                    <?php elseif ($selected_request['request_statusID'] != '3') : ?>
+
+                    <?php elseif ($selected_request['request_statusID'] != '4') : ?>
                         <!--Only active after the button Yes has been pushed and sends a review request to other user-->
                         <div class="request_details">
                             <a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
-
                             <?php include "includes/close_skill_modal.php" ?>
 
                         </div> <!-- end of help completed button-->
+                    <? endif; ?>
+
                     </div>   
 
                     <div class="col-lg-12 message_history">
@@ -282,7 +306,7 @@ if ($result = $db->query($query)) {
                             <? else: ?>
                                 <input type="hidden" name="to" value="<?php echo $selected_request['helper_ID']; ?>">
                             <? endif; ?>
-                            <textarea autofocus name="message_body" class="form-control" rows="6"></textarea>
+                            <textarea name="message_body" class="form-control" rows="6"></textarea>
                             <input type="submit" class="btn btn-default" id="send_btn" value="Send message">
                         </form>
                     </div>

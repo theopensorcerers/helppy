@@ -184,6 +184,7 @@
 
     .request_details p{
     	margin:auto;
+        font-size: 18px;
     }
 
     #yesno_btn{
@@ -361,3 +362,5 @@
     border-color: #95C11E;
     color: white;
 }
+
+
