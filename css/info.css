@@ -21,3 +21,28 @@
 #footer .list-item a{
 	color:black;	
 }
+
+ul li h3{
+	font-weight: 400;
+	font-size: 20px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.info h2{
+	padding-top: 30px;
+	padding-bottom: 15px;
+}
+
+ul{
+	list-style-type: none;
+}
+
+.info strong{
+	font-weight: 400;
+	font-size: 25px;
+	padding-top: 40px;
+
+
+}
+	

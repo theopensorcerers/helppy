@@ -39,48 +39,46 @@
 				  </div>
 				  <div class="col-xs-12 col-md-1">
 				  </div>
-				  <div class="col-xs-12 col-md-8">
+				  <div class="col-xs-12 col-md-8 info">
 				  <p> 
-					<ul>
-						<li><h2>Communicate:</h2>
+						<h2>Communicate:</h2>
 
 						<p>Before starting a new project, make sure you agree with other helppers on working time, 
 							availability, skills or anything else you consider important. Helppy offers a messaging 
 							system with this purpose. Avoid possible conflicts by stating what you expect from each 
-							transaction from the beginning. </p></li>
+							transaction from the beginning. </p>
 
-						<li><h2>Examine other helppers profiles: </h2>
+						<h2>Examine other helppers profiles: </h2>
 
 						<p>Reviews, ratings and the time spent helping or being helped are there for a reason. Take
-						 advantage of these tools to make sure you will work with the best possible person for you. </p></li>
+						 advantage of these tools to make sure you will work with the best possible person for you. </p>
 
-						<li><h2>Give feedback: </h2>
+						<h2>Give feedback: </h2>
 
 						<p>If youve had a good experience with a helper, or (let's hope not) the opposite happens, the rest of the community 
-							deserves to know it. Let’s make Helppy a safe environment. </p></li>
+							deserves to know it. Let’s make Helppy a safe environment. </p>
 
-						<li><h2>Meet your helpper: </h2>
+						<h2>Meet your helpper: </h2>
 						<p>We encourage people to meet in person when possible. It is always good to know who will 
 							work with you, and sometimes your project will require meetings anyway. You can use 
 							the map on your profile page to mark the places you are comfortable working or meeting in. 
 							However, great friendships and collaborations can happen online too and Helppy is a great 
 							tool for this. </p>
 
-						<li><h2>Make smart choices: </h2>
+						<h2>Make smart choices: </h2>
 						<p>If you want to see your project grow, does your research and choose the right person to work with. 
 							Remember, not only the best rated helppers are good, there is always new talent coming in that 
-							might not have ratings yet but might be worth a try. </p></li>
+							might not have ratings yet but might be worth a try. </p>
 
-						<li><h2>Be careful with personal information: </h2>
+						<h2>Be careful with personal information: </h2>
 						 <p>You chose what to display on your profile’s description. Think twice before posting information 
-						 	such as telephone numbers or domestic addresses. </p></li>
+						 	such as telephone numbers or domestic addresses. </p>
 
-						<li><h2>Be nice: </h2>
+						<h2>Be nice: </h2>
 						<p>Don’t overwork your helpper. Remember this is a voluntary skill-sharing platform with the aim of 
 							building great projects together. Lets keep it friendly.
 						Give credit: Clearly state the help you have received in each project.  Helppers are not working 
-						for you, they are working with you and every project you finish is also theirs. </p></li>
-						</ul>
+						for you, they are working with you and every project you finish is also theirs. </p>
 					</p>
 				  </div>
 				</div>

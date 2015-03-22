@@ -39,26 +39,23 @@
 				  </div>
 				  <div class="col-xs-12 col-md-1">
 				  </div>
-				  <div class="col-xs-12 col-md-8">
+				  <div class="col-xs-12 col-md-8 info">
 				  	<h2>Collaboration</h2>
 				  	<p> 
 						Two (or more) heads think better than one. Helppy is all about breaking the ice between people 
 						and avoiding the awkwardness of asking for help. We all need it sometimes, don’t we?
 					</p>
-					</br>
 					<h2>Generosity</h2>
 				  	<p> 
 						Most of us are willing to help anyone who asks us to, however we often feel in debt with those 
 						who do something nice for us. Lets put this out there: people are kind and willing to aid each 
 						other expecting nothing in return. 					
 					</p>
-					</br>
 					<h2>Curiosity</h2>
 				  	<p> 
 						We are driven by a strong desire to know and learn from others. And what better way to do it 
 						than by making stuff together. We never cease to be surprised of the old and welcome the new. 					
 					</p>
-					</br>
 					<h2>Friendship</h2>
 				  	<p> 
 						Sometimes the best connections come from unexpected situations. We believe in collaborative 
