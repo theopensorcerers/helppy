@@ -41,8 +41,9 @@
 				  </div>
 				  <div class="col-xs-12 col-md-8">
 				  <p>If you have any enquiry, comment, suggestion or would like to report any 
-				  	innapropriate activity within the community. <br>
-					You can contact us at:</p>
+				  	innapropriate activity within the community. <br><br>
+					You can contact us at: <a href="mailto:theopensorcerers@gmail.com">theopensorcerers@gmail.com.</a>
+					This is a project in the making, we are looking for ways to improve it, so we are looking forward to here from you!</p>
 				  </div>
 				</div>
 			</div>
