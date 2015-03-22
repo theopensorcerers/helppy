@@ -56,8 +56,8 @@
 
 						<li><h2>Give feedback: </h2>
 
-						<p>If you have had a good experience with a helper, let the rest of the community know it.  
-						If the opposite happens, everyone deserves to know it. Let’s make Helppy a safe environment. </p></li>
+						<p>If youve had a good experience with a helper, or (let's hope not) the opposite happens, the rest of the community 
+							deserves to know it. Let’s make Helppy a safe environment. </p></li>
 
 						<li><h2>Meet your helpper: </h2>
 						<p>We encourage people to meet in person when possible. It is always good to know who will 
