@@ -10,7 +10,7 @@
 			<div class="container">
 				<div class="text-center">
 					<a class="logo"> 
-						<img src="images/logo.png" >
+						<img src="images/helppy_index.png" >
 					</a> 
 				</div>
 					
