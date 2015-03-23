@@ -260,29 +260,50 @@ if ($result = $db->query($query)) {
                         </div> <!-- end of skill -->
 
 
-                    <?php if ($selected_request['request_statusID'] == 1 && !$selected_request['requesting']) : ?>
-                        <div class="request_details">
-                            <a href="#menu-toggle" class="btn btn-default" id="yesno_btn"><h4>yes</h4></a>
-                        </div> <!-- end of yes button-->
-                        <div class="request_details">
-                            <a href="#menu-toggle" class="btn btn-default" id="yesno_btn"><h4>no</h4></a>
-                        </div> <!-- end of no button-->
-                    <?php elseif ($selected_request['request_statusID'] == 1 && $selected_request['requesting']) : ?>
-                        <div class="request_details">
-                            <h4>pending</h4>
-                        </div> <!-- end of yes button-->
-                    <?php elseif ($selected_request['request_statusID'] != '2') : ?>
-
-                    <?php elseif ($selected_request['request_statusID'] != '3') : ?>
-
-                    <?php elseif ($selected_request['request_statusID'] != '4') : ?>
-                        <!--Only active after the button Yes has been pushed and sends a review request to other user-->
-                        <div class="request_details">
-                            <a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
-                            <?php include "includes/close_skill_modal.php" ?>
-
-                        </div> <!-- end of help completed button-->
-                    <? endif; ?>
+                        <?php if ($selected_request['request_statusID'] == 1 && !$selected_request['requesting']) : ?>
+                            <form method="post" action="<?php echo $baseurl; ?>/php/requests/answer_request.php" accept-charset="UTF-8">
+                                <div class="request_details">
+                                    <input type="submit" class="btn btn-default" id="yesno_btn" value="Yes">
+                                </div> <!-- end of yes button-->
+                                <div class="request_details">
+                                    <input type="submit" class="btn btn-default" id="yesno_btn" value="No">
+                                </div> <!-- end of no button-->
+                                <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
+                                <input type="hidden" name="statusID" value="<?php echo $]; ?>">
+                            </form>
+                        <?php elseif ($selected_request['request_statusID'] == 1 && $selected_request['requesting']) : ?>
+                            <div class="request_details">
+                                <h4>Pending</h4>
+                            </div> 
+                        <?php elseif ($selected_request['request_statusID'] == 2 && !$selected_request['requesting']) : ?>
+                            <div class="request_details">
+                                <h4>Accepted</h4>
+                            </div> 
+                        <?php elseif ($selected_request['request_statusID'] == 2 && $selected_request['requesting']) : ?>
+                            <div class="request_details">
+                                <div class="request_details">
+                                    <h4>Accepted</h4>
+                                    <a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
+                                    <?php include "includes/close_skill_modal.php" ?>
+                                </div> 
+                            </div>
+                        <?php elseif ($selected_request['request_statusID'] == 3 && !$selected_request['requesting']) : ?>
+                            <div class="request_details">
+                                <h4>Refused</h4>
+                            </div> 
+                        <?php elseif ($selected_request['request_statusID'] == 3 && $selected_request['requesting']) : ?>
+                            <div class="request_details">
+                                <h4>Refused</h4>
+                            </div> 
+                        <?php elseif ($selected_request['request_statusID'] == 4 && !$selected_request['requesting']) : ?>
+                            <div class="request_details">
+                                <h4>Help completed</h4>
+                            </div> 
+                        <?php elseif ($selected_request['request_statusID'] == 4 && $selected_request['requesting']) : ?>
+                            <div class="request_details">
+                                <h4>Help completed</h4>
+                            </div> 
+                        <? endif; ?>
 
                     </div>   
 
@@ -317,4 +338,3 @@ if ($result = $db->query($query)) {
 </div> <!--jumbotron-->
 
 <?php include "includes/footer.html" ?>
-
