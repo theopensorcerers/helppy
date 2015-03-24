@@ -19,23 +19,20 @@ if ($userID == '' || $requestID == '' || $statusID == '' ) {
     return false;
 }
 
-$query = "UPDATE requests SET statusID = $statusID WHERE requestID = $requestID;";
-if ($result = $db->query($query)) {	
-  {if ($statusID = 2)
-	$db->commit();
-  echo json_encode(array("success" => true, "msg" => "Collaboration accepted (r. $requestID)", "href" => "/message.php"));
-  return true;
-  } else {
+$query = "UPDATE requests SET statusID = $statusID WHERE requestID = $requestID AND `to` = $userID;";
+if ($result = $db->query($query)) {
   $db->commit();
-  echo json_encode(array("success" => true, "msg" => "Collaboration refused (r. $requestID)", "href" => "/message.php"));
-  return true;
+  if ($statusID == 2) {
+    echo json_encode(array("success" => true, "msg" => "Collaboration accepted", "href" => "/message.php"));
+    return true;
+  } else {
+    echo json_encode(array("success" => true, "msg" => "Collaboration refused", "href" => "/message.php"));
+    return true;
   }
 
 } else {
   echo json_encode(array("success" => false, "msg" => "Failed to modify status to database <br>$db->error<pre><code>$query</code></pre>"));
   return false;
-  /* free result set */
-  $result->close();
 }	
 
 ?>

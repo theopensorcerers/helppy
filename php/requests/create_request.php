@@ -58,24 +58,18 @@ if ($result = $db->query($query)) {
 } else {
     echo json_encode(array("success" => false, "msg" => "Failed to add request to database <br>$db->error<pre><code>$query</code></pre>"));
     return false;
-    /* free result set */
-    $result->close();
 }	
 
 $query = "INSERT INTO `user_requests` (`userID`, `requestID`) VALUES ($userID, $requestID);";		
 if (!$result = $db->query($query)) {
     echo json_encode(array("success" => false, "msg" => "Failed to link request to user in the database <br>$db->error<pre><code>$query</code></pre>"));
     return false;
-    /* free result set */
-    $result->close();
 }
 
 $query = "INSERT INTO `request_skills` (`skillID`, `requestID`) VALUES ($skillID, $requestID);";       
 if (!$result = $db->query($query)) {
     echo json_encode(array("success" => false, "msg" => "Failed to link request to skill in the database <br>$db->error<pre><code>$query</code></pre>"));
     return false;
-    /* free result set */
-    $result->close();
 }
 
 
@@ -84,13 +78,9 @@ if ($result = $db->query($query)) {
 	$db->commit();
     echo json_encode(array("success" => true, "msg" => "Request added", "href" => "/message.php"));
    	return true;
-    /* free result set */
-    $result->close();
 } else {
     echo json_encode(array("success" => false, "msg" => "Failed to add message to the database <br>$db->error<pre><code>$query</code></pre>" ));
     return false;
-    /* free result set */
-    $result->close();
 }
 
 ?>

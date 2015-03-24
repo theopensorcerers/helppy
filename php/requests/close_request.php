@@ -29,8 +29,6 @@ if ($result = $db->query($query)) {
       echo json_encode(array("success" => false, "msg" => "You have already closed this collaboration"));
       return false;
   }
-  /* free result set */
-  $result->close();
 } 
 
 $subject = "Collaboration with [helppy] $username is finished";
@@ -43,20 +41,16 @@ if ($result = $db->query($query)) {
 } else {
   echo json_encode(array("success" => false, "msg" => "Failed to add feedback to database <br>$db->error<pre><code>$query</code></pre>"));
   return false;
-  /* free result set */
-  $result->close();
 }
 
 $query = "UPDATE requests SET statusID = $statusID WHERE requestID = $requestID;";
 if ($result = $db->query($query)) {	
 	$db->commit();
-  echo json_encode(array("success" => true, "msg" => "Collaboration closed (r. $requestID)", "href" => "/message.php"));
+  echo json_encode(array("success" => true, "msg" => "Collaboration closed", "href" => "/message.php"));
   return true;
 } else {
   echo json_encode(array("success" => false, "msg" => "Failed to modify status to database <br>$db->error<pre><code>$query</code></pre>"));
   return false;
-  /* free result set */
-  $result->close();
 }	
 
 ?>

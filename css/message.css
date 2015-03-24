@@ -187,16 +187,16 @@
         font-size: 18px;
     }
 
-    #yesno_btn{
+    .yesno_btn{
     	background-color: #fff;
     	color:#333;
     	border-radius: 0px;
     	border-color:#333;
     	margin-left:10px;
-    	margin-bottom: 30px;
+    	margin-bottom: 5px;
     }
 
-    #yesno_btn:hover{
+    .yesno_btn:hover{
     	background-color: #333;
     	color:#fff;
     	
@@ -231,7 +231,7 @@
     	min-height:300px;
     	border:solid,1px;
     	border-color: #333;
-    	margin-left: -15px;
+    	margin-top: 10px;
     }
 
     .message{
@@ -254,11 +254,6 @@
     	padding-top:10px;
     	padding-bottom: 10px;
 
-    }
-
-    .write_message{
-
-    	padding-left: 0px;
     }
 
     .write_message .form-control{

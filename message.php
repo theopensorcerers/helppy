@@ -261,16 +261,19 @@ if ($result = $db->query($query)) {
 
 
                         <?php if ($selected_request['request_statusID'] == 1 && !$selected_request['requesting']) : ?>
-                            <form method="post" action="<?php echo $baseurl; ?>/php/requests/answer_request.php" accept-charset="UTF-8">
-                                <div class="request_details">
-                                    <input type="submit" class="btn btn-default" id="yesno_btn" value="Yes">
-                                </div> <!-- end of yes button-->
-                                <div class="request_details">
-                                    <input type="submit" class="btn btn-default" id="yesno_btn" value="No">
-                                </div> <!-- end of no button-->
-                                <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
-                                <input type="hidden" name="statusID" value="<?php echo $]; ?>">
-                            </form>
+                            <div class="request_details ">
+                                <form method="post" action="<?php echo $baseurl; ?>/php/requests/answer_request.php" accept-charset="UTF-8" class="pull-right">
+                                    <input type="submit" class="btn btn-default yesno_btn" value="Yes">
+                                    <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
+                                    <input type="hidden" name="statusID" value="2">
+                                </form>
+                                <form method="post" action="<?php echo $baseurl; ?>/php/requests/answer_request.php" accept-charset="UTF-8" class="pull-left">
+                                    <input type="submit" class="btn btn-default yesno_btn" value="No">
+                                    <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
+                                    <input type="hidden" name="statusID" value="3">
+                                </form>
+                            </div>
+
                         <?php elseif ($selected_request['request_statusID'] == 1 && $selected_request['requesting']) : ?>
                             <div class="request_details">
                                 <h4>Pending</h4>

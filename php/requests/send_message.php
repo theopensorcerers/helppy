@@ -19,10 +19,12 @@ if ($userID == '' || $to == '' || $body == '' ) {
     return false;
 }
 
+$query = "SELECT messageID FROM message WHERE (requestID = $requestID AND body = '$body' AND `date` > DATE_SUB(NOW(), INTERVAL 3 MINUTE));";
 if ($result = $db->query($query)) {
   /* fetch object array */
   if ($row = $result->fetch_row()) {
-      echo json_encode(array("success" => false, "msg" => "You have already send this message"));
+      $result->close();
+      echo json_encode(array("success" => false, "msg" => "You have sent this message in the last 3 minutes, is this an accident?"));
       return false;
   }
   /* free result set */
@@ -37,13 +39,9 @@ if ($result = $db->query($query)) {
   $db->commit();
     echo json_encode(array("success" => true, "msg" => "Message added", "href" => "/message.php"));
     return true;
-    /* free result set */
-    $result->close();
 } else {
     echo json_encode(array("success" => false, "msg" => "Failed to add message to the database <br>$db->error<pre><code>$query</code></pre>" ));
     return false;
-    /* free result set */
-    $result->close();
 }
 
 ?>
