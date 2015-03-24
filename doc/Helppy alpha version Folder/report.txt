@@ -1,0 +1,101 @@
+ADOBE INDESIGN PRINTING INSTRUCTIONS FOR SERVICE PROVIDER REPORT
+
+PUBLICATION NAME: Helppy concept.indd
+
+PACKAGE DATE: 24/03/2015 09:39
+Creation Date: 24/03/2015
+Modification Date: 24/03/2015
+
+CONTACT INFORMATION
+
+Company Name: 
+Contact: 
+Address: 
+
+
+
+
+
+Phone: 
+Fax: 
+Email: 
+
+SPECIAL INSTRUCTIONS AND OTHER NOTES
+
+
+
+
+
+
+External Plug-ins 0
+Non Opaque Objects :On Page1, 6, 7, 8, 10, 12, 13, 14, 16, A
+
+FONTS
+17 Fonts Used; 0 Missing, 13 Embedded, 0 Incomplete, 0 Protected
+
+Fonts Packaged
+- Name: AvenirNext-Medium; Type: TrueType, Status: OK
+- Name: AvenirNext-Regular; Type: TrueType, Status: OK
+- Name: AvenirNext-UltraLight; Type: TrueType, Status: OK
+- Name: AvenirNext-UltraLight; Type: TrueType, Status: Embedded
+- Name: AvenirNext-UltraLightItalic; Type: TrueType, Status: OK
+- Name: CairoFont-0-0; Type: ???, Status: Embedded
+- Name: CairoFont-1-0; Type: ???, Status: Embedded
+- Name: DINAlternate-Bold; Type: TrueType, Status: Embedded
+- Name: DINNextLTPro-Bold; Type: Type 1, Status: Embedded
+- Name: DINNextLTPro-Light; Type: Type 1, Status: Embedded
+- Name: DINNextLTPro-Medium; Type: Type 1, Status: Embedded
+- Name: DINNextLTPro-Regular; Type: Type 1, Status: Embedded
+- Name: Helvetica; Type: TrueType, Status: Embedded
+- Name: Helvetica-Bold; Type: TrueType, Status: Embedded
+- Name: Helvetica-Oblique; Type: TrueType, Status: Embedded
+- Name: Roboto-Bold; Type: TrueType, Status: Embedded
+- Name: Roboto-Regular; Type: TrueType, Status: Embedded
+
+
+COLOURS AND INKS
+4 Process Inks; 0 Spot Inks
+
+- Name and Type: Process Cyan; Angle: 75.000; Lines/Inch: 70.000
+- Name and Type: Process Magenta; Angle: 15.000; Lines/Inch: 70.000
+- Name and Type: Process Yellow; Angle: 0.000; Lines/Inch: 70.000
+- Name and Type: Process Black; Angle: 45.000; Lines/Inch: 70.000
+
+
+LINKS AND IMAGES
+(Missing & Embedded Links Only)
+Links and Images: 34 Links Found; 0 Modified, 0 Missing 0 Inaccessible
+Images: 0 Embedded, 26 use RGB colour space
+
+
+PRINT SETTINGS
+PPD: Device Independent, (PostScript® File)
+Printing To: Prepress File
+Number of Copies: 1
+Reader Spreads: No
+Even/Odd Pages: Both
+Pages: All
+Proof: No
+Tiling: None
+Scale: 100%, 100%
+Page Position: Upper Left
+Print Layers: Visible & Printable Layers
+Printer's Marks: None
+Bleed: 0 mm, 0 mm, 0 mm, 0 mm
+Colour: Composite CMYK
+Trapping Mode: None
+Send Image Data: All
+OPI/DCS Image Replacement: No
+Page Size: A4
+Paper Dimensions: 0 mm x 0 mm
+Orientation: Landscape
+Negative: No
+Flip Mode: Off
+
+
+FILE PACKAGE LIST
+
+1. Helppy concept.indd; type: Adobe InDesign publication; size: 5484K
+2. Helppy concept.idml; type: InDesign Mark-up Document; size: 166K
+3. Helppy concept.pdf; type: Adobe Acrobat Document; size: 5427K
+4. Avenir Next.ttc; type: Font file; size: 5067K
