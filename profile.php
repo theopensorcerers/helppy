@@ -226,7 +226,7 @@ if ($result = $db->query($query)) {
 }
 
 // User Availabilities
-$useravailability = array();
+$userAvailability = array();
 $query = <<<EOF
 SELECT 
 	availability_day.dayID AS `dayID`,
@@ -247,7 +247,7 @@ WHERE
 EOF;
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
-		array_push($useravailability, $row);
+		array_push($userAvailability, $row);
 	}
 	/* free result set */
 	$result->close();
@@ -256,7 +256,7 @@ if ($result = $db->query($query)) {
 }
 
 // User feedback
-$userfeedback = array();
+$userFeedback = array();
 $query = <<<EOF
 SELECT 
 	feedback.feedbackID AS `feedbackID`,
@@ -265,12 +265,9 @@ SELECT
     requests.requestID AS `requestID`,
 	resquester.userID AS `requester_ID`,
     resquester.username AS `requester_username`,
+    resquester.email AS `requester_email`,
     resquester.forename AS `requester_forename`,
     resquester.surname AS `requester_surname`,
-    helper.userID AS `helper_ID`,
-    helper.username AS `helper_username`,
-    helper.forename AS `helper_forename`,
-    helper.surname AS `helper_surname`,
     skills.skillID AS `skillID`,
     skills.name AS `skill_name`,
     request_skills.skillID AS `skillID`
@@ -296,7 +293,7 @@ GROUP BY requests.requestID;
 EOF;
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
-		array_push($userfeedback, $row);
+		array_push($userFeedback, $row);
 	}
 	/* free result set */
 	$result->close();
@@ -635,7 +632,7 @@ if ($result = $db->query($query)) {
 							</thead>
 							<? endif; ?>
 							<tbody>
-								<?php foreach ($useravailability as $key => $availability) { ?>
+								<?php foreach ($userAvailability as $key => $availability) { ?>
 									<tr>
 										<td><?php echo $availability['day_name'];?></td>
 										<td><?php echo $availability['hour_name'];?></td>
@@ -665,13 +662,13 @@ if ($result = $db->query($query)) {
 			<div class="row personal_details" >
 				<div class="col-xs-12 col-md-12">
 					<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Feedback</strong></p>
-					<?php foreach ($userfeedback as $key => $feedback) { ?>
-						<div class="row user">
+					<?php foreach ($userFeedback as $key => $feedback) { ?>
+						<div class="row">
 
 							<div class="col-xs-5 col-md-2">
 								<div class="space50"></div>
-								<a href="<?php echo $baseurl; ?>/helper/<?php echo $feedback['username']; ?>" >
-									<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($feedback['email'])))?>?s=200&d=mm">
+								<a href="<?php echo $baseurl; ?>/helper/<?php echo $feedback['requester_username']; ?>" >
+									<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($feedback['requester_email'])))?>?s=200&d=mm">
 								</a>
 							</div>
 
@@ -679,19 +676,12 @@ if ($result = $db->query($query)) {
 
 							<div class="col-xs-12 col-md-9">
 								<h3>
-									<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['username']; ?>" ><?php echo $feedback['username'];?></a>
-								</h3>
-
-								<?php if ($userID == $feedback['toID']) : ?>
-									<p href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['username']; ?>"> ask for my help with <?php echo $skill['skill_name'];?> </a>
-								<?php elseif ($userID == $requester['fromID'])  : ?>
-									<p href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['username']; ?>"> helped me with <?php echo $skill['skill_name'];?> </a>
-								<? endif; ?>
-					
+									<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['requester_username']; ?>" ><?php echo $feedback['requester_username']; ?></a>
+									 <small>asked for my help with <?php echo $skill['skill_name'];?></small>
+								</h3>					
 								<p>
-									<?php echo substr($feedback['feedback'],0 ,500);?> ...
+									<?php echo $feedback['feedback'];?> ...
 								</p>
-
 							</div>
 						</div>
 						<hr>
