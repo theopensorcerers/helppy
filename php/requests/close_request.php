@@ -26,9 +26,12 @@ $query = "SELECT requestID FROM requests WHERE (requestID = $requestID AND statu
 if ($result = $db->query($query)) {
   /* fetch object array */
   if ($row = $result->fetch_row()) {
+      $result->close();
       echo json_encode(array("success" => false, "msg" => "You have already closed this collaboration"));
       return false;
   }
+  /* free result set */
+  $result->close();
 } 
 
 $subject = "Collaboration with [helppy] $username is finished";

@@ -163,8 +163,6 @@ if ($result = $db->query($query)) {
 <div class="jumbotron">
     <div class="container ">
 
-        <div class="space70"></div>
-
              <div class="row ">
                 <div class="col-xs-12 col-md-4 conversations">
                     <span class="sidebar-brand"><strong>Conversations</strong></span>
