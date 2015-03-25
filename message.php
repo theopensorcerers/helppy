@@ -282,9 +282,9 @@ if ($result = $db->query($query)) {
                             </div> 
                         <?php elseif ($selected_request['request_statusID'] == 2 && $selected_request['requesting']) : ?>
                             <div class="request_details">
-                                <div class="request_details">
+                                <div class="request_details ">
                                     <h4>Accepted</h4>
-                                    <a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
+                                    <a href="#menu-toggle" data-toggle="modal" class="btn btn-default pull-right" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
                                     <?php include "includes/close_skill_modal.php" ?>
                                 </div> 
                             </div>
