@@ -12,8 +12,8 @@ require 'php/db.php';
 
 $username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
 $requestID = isset($_GET['requestID']) ? $_GET['requestID'] : NULL;
+$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : (isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL);
 
-$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 $my_profile = False;
 if (isset($_COOKIE['username']) || isset($_SESSION['username'])) {
     $my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
@@ -229,7 +229,7 @@ if ($result = $db->query($query)) {
                                 echo $request['requester_username']; 
                             }; 
                             ?> 
-                            | <small><? echo $request['skill_name'];s ?></small>
+                            | <small><? echo $request['skill_name'];'s' ?></small>
                             </a>
                         </li>
                         <? } ?>

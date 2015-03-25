@@ -10,7 +10,8 @@
 require 'php/db.php';
 
 $username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
-$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
+$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : (isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL);
+
 $my_profile = False;
 if (isset($_COOKIE['username']) || isset($_SESSION['username'])) {
 	$my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
@@ -243,7 +244,7 @@ FROM
 		INNER JOIN
 	availability_hour USING (hourID)
 WHERE
-	username  = '$username'
+	username  = '$username';
 EOF;
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
@@ -272,15 +273,11 @@ SELECT
     skills.name AS `skill_name`,
     request_skills.skillID AS `skillID`
 FROM
-	users
+	requests
 		INNER JOIN
-	user_requests USING (userID)
-		INNER JOIN 
-	requests USING (requestID)
+	users AS resquester ON (resquester.userID = requests.`from`)
 		INNER JOIN
-	users AS resquester ON (resquester.userID = requests.`to`)
-		INNER JOIN
-	users AS helper ON (helper.userID = requests.`from`)
+	users AS helper ON (helper.userID = requests.`to`)
 		INNER JOIN
 	request_skills ON (request_skills.requestID = requests.requestID)
     	INNER JOIN 
@@ -288,12 +285,56 @@ FROM
 		INNER JOIN
 	feedback ON (feedback.requestID = requests.requestID)
 WHERE
-	users.username  = '$username'
+	helper.username = '$username'
 GROUP BY requests.requestID;
 EOF;
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
 		array_push($userFeedback, $row);
+	}
+	/* free result set */
+	$result->close();
+} else {
+	echo 'Unable to connect to the database';
+}
+
+// User stats
+$userStats = array();
+$query = <<<EOF
+SELECT 
+    ROUND(SUM(IF(helper.username = '$username',
+                feedback.rating,
+                NULL)) * 20 / COUNT(IF(helper.username = '$username',
+                requests.requestID,
+                NULL)),
+            2) AS `average_rating`,
+    ROUND(SUM(feedback.duration), 2) AS `sum_collaboration_duration`,
+    ROUND(SUM(IF(helper.username = '$username',
+                feedback.duration,
+                NULL)),
+            2) AS `sum_helper_duration`,
+    ROUND(SUM(IF(resquester.username = '$username',
+                feedback.duration,
+                NULL)),
+            2) AS `sum_requester_duration`
+FROM
+    requests
+    	INNER JOIN
+	users AS resquester ON (resquester.userID = requests.`from`)
+		INNER JOIN
+	users AS helper ON (helper.userID = requests.`to`)
+        INNER JOIN
+    feedback ON (feedback.requestID = requests.requestID)
+WHERE
+    (helper.username = '$username'
+        OR resquester.username = '$username');
+EOF;
+if ($result = $db->query($query)) {
+	if ($row = $result->fetch_assoc()) {
+		$userStats = $row;
+		$userStats['average_rating'] = $row['average_rating'] > 0 ? $row['average_rating'] : 1;
+		$userStats['average_help_given'] = $row['sum_collaboration_duration'] > 0 ? ($row['sum_helper_duration'] * 100 / $row['sum_collaboration_duration']) : 1;
+		$userStats['average_help_received'] = $row['sum_collaboration_duration'] > 0 ? ($row['sum_requester_duration'] * 100 / $row['sum_collaboration_duration']) : 1;
 	}
 	/* free result set */
 	$result->close();
@@ -322,7 +363,7 @@ if ($result = $db->query($query)) {
 							<? endif; ?>
 						</div>
 					</div>
-					<?php if (!$my_profile) : ?>
+					<?php if ($userDetails['userID'] != $userID && $userID != NULL) : ?>
                     
 					<a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#request_skill_modal" id="request_skill_btn" ><h4>Request a skill</h4></a>
 					<!-- include the modal & form -->
@@ -339,17 +380,17 @@ if ($result = $db->query($query)) {
 				<div class="col-xs-12 col-md-7">
 					<p>I've helped others</p>
 					<div class="progress">
-						<div class="progress-bar offered" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+						<div class="progress-bar offered" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $userStats['average_help_given'] ?>%;">
 						</div>
 					</div>
 					<p>Others have helped me</p>
 					<div class="progress">
-						<div class="progress-bar received" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 70%;">
+						<div class="progress-bar received" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $userStats['average_help_received'] ?>%;">
 						</div>
 					</div>
 					<p>Rating</p>
 					<div class="progress">
-						<div class="progress-bar green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 90%;">
+						<div class="progress-bar green" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: <?php echo $userStats['average_rating'] ?>%;">
 						</div>
 					</div>
 				</div>

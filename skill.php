@@ -8,9 +8,9 @@
  * it dies if no id can be found.
  */
 require 'php/db.php';
-$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
+$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : isset($_COOKIE['username']) ? $_COOKIE['username'] : (isset($_SESSION['username']) ? $_SESSION['username'] : NULL));
 $skillID = isset($_GET['skillID']) ? $_GET['skillID'] : $_POST['skillID'];
-$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
+$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : (isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL);
 
 // User skills
 $skill = array();
@@ -119,7 +119,7 @@ if ($result = $db->query($query)) {
 					<div class="row user">
 						<div class="col-xs-5 col-md-2">
 							<div class="space50"></div>
-							<a href="<?php echo $baseurl; ?>/helper/<?php echo $user['username']; ?>" >
+							<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $user['username']; ?>" >
 								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=https://marielabarzallo.files.wordpress.com/2015/03/default_thumbnail.jpg">
 								<div class="user-level-<?php echo $user['level_color'];?>">
 									<h3>
