@@ -284,9 +284,9 @@ if ($result = $db->query($query)) {
                             <div class="request_details">
                                 <div class="request_details ">
                                     <h4 class="accepted">Accepted</h4>
-                                    <a href="#menu-toggle" data-toggle="modal" class="btn btn-default pull-right" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
-                                    <?php include "includes/close_skill_modal.php" ?>
                                 </div> 
+                                                                    <a href="#menu-toggle" data-toggle="modal" class="btn btn-default pull-right" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
+                                    <?php include "includes/close_skill_modal.php" ?>
                             </div>
                         <?php elseif ($selected_request['request_statusID'] == 3 && !$selected_request['requesting']) : ?>
                             <div class="request_details">
