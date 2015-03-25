@@ -10,7 +10,7 @@
 require 'php/db.php';
 $username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
 $skillID = isset($_GET['skillID']) ? $_GET['skillID'] : $_POST['skillID'];
-$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL;
+$userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 
 // User skills
 $skill = array();
