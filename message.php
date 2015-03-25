@@ -274,27 +274,27 @@ if ($result = $db->query($query)) {
 
                         <?php elseif ($selected_request['request_statusID'] == 1 && $selected_request['requesting']) : ?>
                             <div class="request_details">
-                                <h4>Pending</h4>
+                                <h4 class="pending">Pending</h4>
                             </div> 
                         <?php elseif ($selected_request['request_statusID'] == 2 && !$selected_request['requesting']) : ?>
                             <div class="request_details">
-                                <h4>Accepted</h4>
+                                <h4 class="accepted">Accepted</h4>
                             </div> 
                         <?php elseif ($selected_request['request_statusID'] == 2 && $selected_request['requesting']) : ?>
                             <div class="request_details">
                                 <div class="request_details ">
-                                    <h4>Accepted</h4>
+                                    <h4 class="accepted">Accepted</h4>
+                                    <a href="#menu-toggle" data-toggle="modal" class="btn btn-default pull-right" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
+                                    <?php include "includes/close_skill_modal.php" ?>
                                 </div> 
-                                <a href="#menu-toggle" data-toggle="modal" class="btn btn-default pull-right" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
-                                <?php include "includes/close_skill_modal.php" ?>
                             </div>
                         <?php elseif ($selected_request['request_statusID'] == 3 && !$selected_request['requesting']) : ?>
                             <div class="request_details">
-                                <h4>Refused</h4>
+                                <h4 class="refused">Refused</h4>
                             </div> 
                         <?php elseif ($selected_request['request_statusID'] == 3 && $selected_request['requesting']) : ?>
                             <div class="request_details">
-                                <h4>Refused</h4>
+                                <h4 class="refused">Refused</h4>
                             </div> 
                         <?php elseif ($selected_request['request_statusID'] == 4 && !$selected_request['requesting']) : ?>
                             <div class="request_details">

@@ -359,3 +359,15 @@
 .own_message small{
     padding-left:7px;
 }
+
+.pending{
+    color:#E88801;
+}
+
+.accepted{
+    color:#95C11E;
+}
+
+.refused{
+    color:#E84234;
+}
