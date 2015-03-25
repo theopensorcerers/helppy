@@ -1,6 +1,7 @@
 <?php 
 session_start();
 require_once 'php/defines.php';
+require 'php/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,7 +79,32 @@ require_once 'php/defines.php';
               </li>
             </ul>
         </div>
-        <?php else : ?>
+        <?php else : 
+
+        $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : (isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL);
+        $count_new_messages = array();
+        $query = <<<EOF
+        SELECT 
+            COUNT(DISTINCT IF(message.`status` = 0,
+                    requestID,
+                    NULL)) AS `sum_new_message`
+        FROM
+            message
+        WHERE
+            `to` = $userID
+EOF;
+        if ($result = $db->query($query)) {
+          if ($row = $result->fetch_assoc()) {
+            $count_new_messages = $row['sum_new_message'];
+          }
+          /* free result set */
+          $result->close();
+        } else {
+          echo 'Unable to connect to the database';
+        }
+
+        ?>
+
         <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right loggedin">
 <!--               <li class="input-group search-box" id="header-search-box" >
@@ -104,9 +130,11 @@ require_once 'php/defines.php';
                 <a href="<?php echo $baseurl; ?>/message.php" class="showOnMobile">Inbox</a>
                 <button class="messagerie-logo showOnScreen" type="button" onclick="window.location = '<?php echo $baseurl; ?>/message.php';"><i class="fa fa-envelope-o fa-3x"></i></button>
               </li>
+            <?php if ($count_new_messages > 0): ?>
               <li>
-                <span class="badge showOnScreen">4</span>
+                <span class="badge showOnScreen"><?php echo $count_new_messages; ?></span>
               </li>
+              <?php endif; ?>
             </ul>
         </div> 
         <?php endif; ?>
