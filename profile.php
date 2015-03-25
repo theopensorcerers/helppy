@@ -621,7 +621,6 @@ if ($result = $db->query($query)) {
 
 						<div class="space50"></div>
 						<table class="table table-condensed table-striped table-hover tb_available" id="availability">
-							<?php if ($my_profile) : ?>
 							<thead>
 								<tr>
 									<th>Availability times</th>
@@ -630,7 +629,6 @@ if ($result = $db->query($query)) {
 									<th></th>
 								</tr>
 							</thead>
-							<? endif; ?>
 							<tbody>
 								<?php foreach ($userAvailability as $key => $availability) { ?>
 									<tr>
@@ -638,14 +636,16 @@ if ($result = $db->query($query)) {
 										<td><?php echo $availability['hour_name'];?></td>
 										<td><?php echo $availability['hour_description'];?></td>
 										<?php if ($my_profile) : ?>
-										<td>
-											<form method="post" action="<?php echo $baseurl; ?>/php/users/remove_availability.php" accept-charset="UTF-8">
-												<input type="hidden" name="dayID" value="<?php echo $availability['dayID']; ?>">
-												<input type="hidden" name="hourID" value="<?php echo $availability['hourID']; ?>">
-												<input type="hidden" name="userID" value="<?php echo $userID; ?>">
-												<button type="submit" class="close available_btn"><span aria-hidden="true">&times;</span></button>
-											</form>
-										</td>
+											<td>
+												<form method="post" action="<?php echo $baseurl; ?>/php/users/remove_availability.php" accept-charset="UTF-8">
+													<input type="hidden" name="dayID" value="<?php echo $availability['dayID']; ?>">
+													<input type="hidden" name="hourID" value="<?php echo $availability['hourID']; ?>">
+													<input type="hidden" name="userID" value="<?php echo $userID; ?>">
+													<button type="submit" class="close available_btn"><span aria-hidden="true">&times;</span></button>
+												</form>
+											</td>
+										<? else : ?>
+											<td></td>
 										<? endif; ?>
 									</tr>
 								<? } ?>
@@ -677,7 +677,7 @@ if ($result = $db->query($query)) {
 							<div class="col-xs-12 col-md-9">
 								<h3>
 									<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['requester_username']; ?>" ><?php echo $feedback['requester_username']; ?></a>
-									 <small>asked for my help with <?php echo $skill['skill_name'];?></small>
+									 <small>asked for my help with <?php echo $feedback['skill_name'];?></small>
 								</h3>					
 								<p>
 									<?php echo $feedback['feedback'];?> ...
