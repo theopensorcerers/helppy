@@ -357,4 +357,6 @@
     color: white;
 }
 
-
+.own_message small{
+    padding-left:7px;
+}
