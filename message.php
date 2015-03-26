@@ -190,7 +190,7 @@ if ($result = $db->query($query)) {
                                 <a href="message.php?requestID=<? echo $request['requestID'] ?>">
                                 <? echo $request['requester_username'] ?> | 
                                 <small><? echo $request['skill_name'] ?></small>
-                                <span class="badge"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
+                                <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                                 </a>
                             </li>
                             <? } ?>
@@ -213,7 +213,7 @@ if ($result = $db->query($query)) {
                                 <a href="message.php?requestID=<? echo $request['requestID'] ?>">
                                 <? echo $request['helper_username'] ?> | 
                                 <small><? echo $request['skill_name'] ?></small>
-                                <span class="badge"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
+                                <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                                 </a>
                             </li>
                             <? } ?>
@@ -240,7 +240,7 @@ if ($result = $db->query($query)) {
                             }; 
                             ?> 
                             | <small><?php echo $request['skill_name'];'s' ?></small>
-                            <span class="badge"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
+                            <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                             </a>
                         </li>
                         <? } ?>

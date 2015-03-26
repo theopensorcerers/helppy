@@ -371,3 +371,9 @@
 .refused{
     color:#E84234;
 }
+
+.message_unread{
+  display: inline;
+  background-color: #74b533;
+  margin-left: 10px;
+}
