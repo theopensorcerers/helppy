@@ -62,7 +62,10 @@ SELECT
     feedback.rating AS `rating`,
     feedback.duration AS `duration`,
     feedback.body AS `feedback`,
-    count(message.messageID) AS `messages`
+    count(message.messageID) AS `messages`,
+    COUNT(DISTINCT IF(message.`status` = 0 AND helper.username  = '$username',
+            message.requestID,
+            NULL)) AS `sum_new_message`
 FROM
     requests
         INNER JOIN
@@ -154,9 +157,6 @@ if ($result = $db->query($query)) {
 $query = "UPDATE message SET `status`='1' WHERE requestID = $requestID AND `to` = $userID;";
 if ($result = $db->query($query)) {
     $db->commit();
-} else {
-    echo "Failed to mark message as read";
-    return false;
 }
 
 ?>
@@ -190,6 +190,7 @@ if ($result = $db->query($query)) {
                                 <a href="message.php?requestID=<? echo $request['requestID'] ?>">
                                 <? echo $request['requester_username'] ?> | 
                                 <small><? echo $request['skill_name'] ?></small>
+                                <span class="badge"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                                 </a>
                             </li>
                             <? } ?>
@@ -212,6 +213,7 @@ if ($result = $db->query($query)) {
                                 <a href="message.php?requestID=<? echo $request['requestID'] ?>">
                                 <? echo $request['helper_username'] ?> | 
                                 <small><? echo $request['skill_name'] ?></small>
+                                <span class="badge"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                                 </a>
                             </li>
                             <? } ?>
@@ -237,7 +239,8 @@ if ($result = $db->query($query)) {
                                 echo $request['requester_username']; 
                             }; 
                             ?> 
-                            | <small><? echo $request['skill_name'];'s' ?></small>
+                            | <small><?php echo $request['skill_name'];'s' ?></small>
+                            <span class="badge"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                             </a>
                         </li>
                         <? } ?>
