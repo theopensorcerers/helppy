@@ -23,10 +23,10 @@ $query = "UPDATE requests SET statusID = $statusID WHERE requestID = $requestID 
 if ($result = $db->query($query)) {
   $db->commit();
   if ($statusID == 2) {
-    echo json_encode(array("success" => true, "msg" => "Collaboration accepted", "href" => "/message.php"));
+    echo json_encode(array("success" => true, "msg" => "Collaboration accepted", "href" => "window.location"));
     return true;
   } else {
-    echo json_encode(array("success" => true, "msg" => "Collaboration refused", "href" => "/message.php"));
+    echo json_encode(array("success" => true, "msg" => "Collaboration refused", "href" => "window.location"));
     return true;
   }
 

@@ -63,7 +63,7 @@ SELECT
     feedback.duration AS `duration`,
     feedback.body AS `feedback`,
     count(message.messageID) AS `messages`,
-    COUNT(DISTINCT IF(message.`status` = 0 AND helper.username  = '$username',
+    COUNT(DISTINCT IF(message.`status` = 0 AND message.`to`  = '$userID',
             message.messageID,
             NULL)) AS `sum_new_message`
 FROM

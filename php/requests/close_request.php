@@ -49,7 +49,7 @@ if ($result = $db->query($query)) {
 $query = "UPDATE requests SET statusID = $statusID WHERE requestID = $requestID;";
 if ($result = $db->query($query)) {	
 	$db->commit();
-  echo json_encode(array("success" => true, "msg" => "Collaboration closed", "href" => "/message.php"));
+  echo json_encode(array("success" => true, "msg" => "Collaboration closed", "href" => "window.location"));
   return true;
 } else {
   echo json_encode(array("success" => false, "msg" => "Failed to modify status to database <br>$db->error<pre><code>$query</code></pre>"));

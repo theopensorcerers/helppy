@@ -9,7 +9,7 @@
  */
 require 'php/db.php';
 
-$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
+$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : isset($_SESSION['username']) ? $_SESSION['username'] : NULL);
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : (isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL);
 
 $my_profile = False;
