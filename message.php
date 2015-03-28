@@ -10,15 +10,17 @@
  */
 require 'php/db.php';
 
-$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : $_SESSION['username']);
+$username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : (isset($_SESSION['username']) ? $_SESSION['username'] : NULL));
 $requestID = isset($_GET['requestID']) ? $_GET['requestID'] : NULL;
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : (isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL);
 
 $my_profile = False;
-if (isset($_COOKIE['username']) || isset($_SESSION['username'])) {
-    $my_profile = ($username == $_COOKIE['username'] || $username == $_SESSION['username']);
+if (isset($_COOKIE['username'])) {
+    $my_profile = ($username == $_COOKIE['username']);
 }
-$userDetails = array();
+elseif (isset($_SESSION['username'])) {
+    $my_profile = ($username == $_SESSION['username']);
+}
 
 // User details
 $userDetails = array();
