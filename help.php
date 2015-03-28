@@ -18,19 +18,19 @@
 
 				<div id="info" class="row">
 				  <div class="col-xs-12 col-md-3">
-				  	<a href="?php echo $baseurl; ?>/about_us.php" class="title">
+				  	<a href="<?php echo $baseurl; ?>/about_us.php" class="title">
 				  		<h2>About Us</h2>
 				  	</a>
-				  	<a href="?php echo $baseurl; ?>/our_values.php" class="title">
+				  	<a href="<?php echo $baseurl; ?>/our_values.php" class="title">
 				  		<h2>Our Values</h2>
 				  	</a>
-				  	<a href="?php echo $baseurl; ?>/how_it_works.php" class="title">
+				  	<a href="<?php echo $baseurl; ?>/how_it_works.php" class="title">
 				  		<h2>How it works</h2>
 				  	</a>
-				  	<a href="?php echo $baseurl; ?>/safety.php" class="title">
+				  	<a href="<?php echo $baseurl; ?>/safety.php" class="title">
 				  		<h2>Safety</h2>
 				  	</a>
-				  	<a href="?php echo $baseurl; ?>/privacy_policy.php" class="title">
+				  	<a href="<?php echo $baseurl; ?>/privacy_policy.php" class="title">
 				  		<h2>Privacy Policy</h2>
 				  	</a>
 				  	<div class="selection">
