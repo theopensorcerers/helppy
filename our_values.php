@@ -1,4 +1,4 @@
-<?php $page = 'home'; ?>
+f<?php $page = 'home'; ?>
 <?php include "includes/header.html" ?>
 
 
@@ -18,22 +18,22 @@
 
 				<div id="info" class="row">
 				  <div class="col-xs-12 col-md-3">
-				  	<a href="/about_us.php" id="info" class="title">
+				  	<a href="?php echo $baseurl; ?>/about_us.php" id="info" class="title">
 				  		<h2>About Us</h2>
 				  	</a>
 				  	<div class="selection">
 				  		<h1>Our Values</h1>
 				  	</div>
-				  	<a href="/how_it_works.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/how_it_works.php" class="title">
 				  		<h2>How it works</h2>
 				  	</a>
-				  	<a href="/safety.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/safety.php" class="title">
 				  		<h2>Safety</h2>
 				  	</a>
-				  	<a href="/privacy_policy.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/privacy_policy.php" class="title">
 				  		<h2>Privacy Policy</h2>
 				  	</a>
-				  	<a href="/help.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/help.php" class="title">
 				  		<h2>Help</h2>
 				  	</a>
 				  </div>

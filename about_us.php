@@ -22,19 +22,19 @@
 				  	<div class="selection">
 				  		<h1>About Us</h1>
 				  	</div>
-				  	<a href="/our_values.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/our_values.php" class="title">
 				  		<h2 class="title">Our Values</h2>
 				  	</a>
-				  	<a href="/how_it_works.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/how_it_works.php" class="title">
 				  		<h2>How it works</h2>
 				  	</a>
-				  	<a href="/safety.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/safety.php" class="title">
 				  		<h2>Safety</h2>
 				  	</a>
-				  	<a href="/privacy_policy.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/privacy_policy.php" class="title">
 				  		<h2>Privacy Policy</h2>
 				  	</a>
-				  	<a href="/help.php" class="title">
+				  	<a href="?php echo $baseurl; ?>/help.php" class="title">
 				  		<h2>Help</h2>
 				  	</a>
 
