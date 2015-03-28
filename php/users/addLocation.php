@@ -47,7 +47,7 @@ if ($result = $db->query($query)) {
     $db->commit();
     // commit both inserts
 
-  	echo json_encode(array("success" => true, "msg" => "Location added", "href" => "./profile.php"));
+  	echo json_encode(array("success" => true, "msg" => "Location added", "href" => "$baseurl/profile.php"));
 
     return true;
     /* free result set */

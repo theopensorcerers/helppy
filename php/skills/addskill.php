@@ -53,7 +53,7 @@ if ($result = $db->query($query)) {
                                                  "#create_skills_callback_form input[name='levelID']" => $levelID)));
     } 
     else {
-      echo json_encode(array("success" => true, "msg" => "Skill added", "href" => "./profile.php"));
+      echo json_encode(array("success" => true, "msg" => "Skill added", "href" => "$baseurl/profile.php"));
     }
 
     return true;
