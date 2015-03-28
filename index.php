@@ -81,13 +81,14 @@ if ($result = $db->query($query)) {
 						[<strong> FOSTER </strong> collaboration ] 
 						[<strong> CREATE </strong> great projects ] 
 				</p>
+				<!-- search container -->
 			 	<div class="container">
 					 <div class="search-container">
 						<div class="space70">
 							<div class="search-box">
 								<div class="input-group search-container">
 									<input type="text" 
-											class="form-control search" 
+											class="form-control search-input" 
 											id="index_search" 
 											placeholder=" I need help in..."
 											data-action="<?php echo $baseurl; ?>/php/search.php"
@@ -95,14 +96,15 @@ if ($result = $db->query($query)) {
 									<span class="input-group-btn">
 										<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
 									</span>
-									<ul id="suggestions"></ul>
 								</div>
+								<ul class="list-unstyled search-results"></ul>
 							</div>
 							<div class="space20"></div>
 						</div> 
 					</div>
 				</div> 
 			 </div>
+			 <!-- load the search plugin -->
 			 <script type="text/javascript" src="<?php echo $baseurl; ?>/js/search.js"></script>
 		</div>
 		

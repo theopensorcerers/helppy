@@ -89,22 +89,30 @@ if ($result = $db->query($query)) {
 		<div class="jumbotron">
 
 			<div class="container">
-
-				 <div class="container">
+				<!-- search container -->
+				<div class="container">
 					 <div class="search-container">
 						<div class="space70">
 							<div class="search-box">
 								<div class="input-group search-container">
-									<input type="text" class="form-control" id="index_search" placeholder=" I need help in...">
+									<input type="text" 
+											class="form-control search-input" 
+											id="index_search" 
+											placeholder=" I need help in..."
+											data-action="<?php echo $baseurl; ?>/php/search.php"
+											data-method="GET">
 									<span class="input-group-btn">
 										<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
 									</span>
 								</div>
+								<ul class="list-unstyled search-results"></ul>
 							</div>
 							<div class="space90"></div>
 						</div> 
 					</div>
-				</div> 
+				</div>
+				<!-- load the search plugin -->
+			 	<script type="text/javascript" src="<?php echo $baseurl; ?>/js/search.js"></script>
 				
 
 						

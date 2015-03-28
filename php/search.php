@@ -15,22 +15,22 @@ $where_clauses = array();
 $query = <<<EOF
 SELECT 
     categories.categoryID AS `categoryID`,
-    categories.name AS `category_name`
+    categories.name AS `label`
 FROM
     categories
 WHERE 
 EOF;
 // loop through the search terms and add a new clause for each term
 foreach ($search_terms as &$term) {
-	array_push($where_clauses, " (categories.name LIKE '%".$term."%' OR categories.description LIKE '%".$term."%') ");
+	array_push($where_clauses, " (categories.name LIKE '%".$term."%' OR categories.description = '".$term."') ");
 };
 // for categories we use OR between clauses because we want a wide search
-$query .= implode(' OR ', $where_clauses);
+$query .= implode(' AND ', $where_clauses);
 $query .= " GROUP BY categories.categoryID;";
 
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
-		$row['url'] = $baseurl."/category.php?categoryID=".$row['categoryID'];
+		$row['href'] = $baseurl."/category.php?categoryID=".$row['categoryID'];
 		array_push($categories_research, $row);
 	}
 	/* free result set */
@@ -45,7 +45,7 @@ $where_clauses = array();
 $query = <<<EOF
 SELECT 
     skills.skillID AS `skillID`,
-    skills.name AS `skill_name`
+    skills.name AS `label`
 FROM
     skills
 WHERE 
@@ -55,12 +55,12 @@ foreach ($search_terms as &$term) {
 	array_push($where_clauses, "((skills.name LIKE '%".$term."%' OR skills.description LIKE '%".$term."%') AND disabled IS NULL)");
 };
 // for skills we use OR between clauses because we want a wide search
-$query .= implode(' OR ', $where_clauses);
+$query .= implode(' AND ', $where_clauses);
 $query .= " GROUP BY skills.skillID;";
 
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
-		$row['url'] = $baseurl."/skill.php?skillID=".$row['skillID'];
+		$row['href'] = $baseurl."/skill.php?skillID=".$row['skillID'];
 		array_push($skills_research, $row);
 	}
 	/* free result set */
@@ -75,7 +75,8 @@ $where_clauses = array();
 $query = <<<EOF
 SELECT 
     users.userID AS `userID`,
-    users.username AS `username`
+    users.username AS `username`,
+    users.username AS `label`
 FROM
     users
 WHERE 
@@ -90,7 +91,7 @@ $query .= " GROUP BY users.userID;";
 
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
-		$row['url'] = $baseurl."/profile.php?username=".$row['username'];
+		$row['href'] = $baseurl."/profile.php?username=".$row['username'];
 		array_push($users_research, $row);
 	}
 	/* free result set */
@@ -105,11 +106,16 @@ $results = array();
 $results["users"] 		=  $users_research;
 $results["categories"] 	=  $categories_research;
 $results["skills"] 		=  $skills_research;
+$count_users = count($results['users']);
+$count_categories = count($results['categories']);
+$count_skills = count($results['skills']);
 
 echo json_encode(array("success" => true, 
-						"msg" => count($results['categories'])." categories(s), ".count($results['skills'])." skills(s) and ".count($results['users'])." users(s) found", 
+						"msg" => "<i class='fa fa-cube fa-2'></i> $count_categories categor".(($count_categories > 1) ? 'ies':'y').
+						", <i class='fa fa-diamond fa-2'></i> $count_skills skill".(($count_skills > 1) ? 's':'').
+						" and <i class='fa fa-user fa-2'></i> $count_users user".(($count_users > 1) ? 's':'')." found", 
+						"count_results" => $count_users+$count_categories+$count_skills,
 						"results" => $results,
-						"search_input" => $search_input ,
 						"search_terms" => $search_terms));
 return true;
 

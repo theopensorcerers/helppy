@@ -105,3 +105,15 @@
 
 }
 
+.search-container .search-results {
+	position: relative;
+	text-align: left;
+	background-color: #eee;
+}
+
+.search-container .search-results li {
+	padding: 10px;
+	margin-bottom: 5px;
+	border-bottom: 1px solid lightgray;
+
+}
