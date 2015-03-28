@@ -86,10 +86,16 @@ if ($result = $db->query($query)) {
 						<div class="space70">
 							<div class="search-box">
 								<div class="input-group search-container">
-									<input type="text" class="form-control" id="index_search" placeholder=" I need help in...">
+									<input type="text" 
+											class="form-control search" 
+											id="index_search" 
+											placeholder=" I need help in..."
+											data-action="<?php echo $baseurl; ?>/php/search.php"
+											data-method="GET">
 									<span class="input-group-btn">
 										<button class="btn btn-default" type="button"><i class="fa fa-search fa-2x"></i></button>
 									</span>
+									<ul id="suggestions"></ul>
 								</div>
 							</div>
 							<div class="space20"></div>
@@ -97,6 +103,7 @@ if ($result = $db->query($query)) {
 					</div>
 				</div> 
 			 </div>
+			 <script type="text/javascript" src="<?php echo $baseurl; ?>/js/search.js"></script>
 		</div>
 		
 		<div class="container skills_categories_list">
