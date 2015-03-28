@@ -577,7 +577,7 @@ if ($result = $db->query($query)) {
 
 					<p class="text-left" ><strong><?php if ($my_profile) echo "My " ?>Location</strong></p>
 					<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyApOJOQG01-hx1Ik41Zw41Lb2oizvdK7RE"></script>
-					<script src="/js/geocode_users.js"></script>
+					<script src="./js/geocode_users.js"></script>
 					<script type="text/javascript">
 						<?php foreach ($userLocations as $key => $location) { ?>
 							// Add the GeoJSON objects to the locations array
