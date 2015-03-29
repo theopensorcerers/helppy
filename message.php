@@ -250,6 +250,7 @@ if ($result = $db->query($query)) {
 
                 </div>
                 <div class="col-xs-12 col-md-8 inbox">
+                    <?php if ($selected_request) : ?>
                         <div class="col-lg-12 reply_request">
                             <h1><? if (!$selected_request['requesting']) { echo 'Can you help'; echo " ". $selected_request['requester_username'];} else { echo 'Help from'; echo " ". $selected_request['helper_username'];}; ?>?</h1>
                         </div>
@@ -344,6 +345,7 @@ if ($result = $db->query($query)) {
                                 <input type="submit" class="btn btn-default" id="send_btn" value="Send message">
                             </form>
                         </div>
+                    <? endif; ?>
                 </div>
             </div> <!--row-->
          
