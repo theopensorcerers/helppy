@@ -43,9 +43,9 @@
 				  <h2>How Helppy Works</h2>
 				  
 					<p>
-					Frank spent several weeks coding a new computer game he created. However, he couldn’t help but 
-					notice that his idea was not as easy to understand as he expected. People didn’t understand 
-					how it worked or how to use it and lets face it, even he thought it looked bad… really bad.  
+					Frank spent several weeks coding a new computer game he created. However, he noticed
+					his idea was not as easy to understand as he expected. People didn’t know 
+					to use it, and lets face it, even he thought it looked bad… really bad.  
 					How could this game compete with all the other ones in the market if he lacked the skills 
 					to make it better?  And how on earth could a broke student like him pay someone to help him? </p>
 
@@ -54,7 +54,7 @@
 					to be a part of this project. He contacted them and worked with them until he finally finished his 
 					project. He appreciated these people’s willingness and realized he could also be there for 
 					someone else. So he posted all the skills he could offer to others. Since then he has been a part 
-					of various projects, from web design, to animation and even robotics.  He hasn’t ’spent a cent, he 
+					of various projects, from web design, to animation and even robotics.  He hasn’t spent a penny, he 
 					has met people from all backgrounds and has cultivated great friendships. 
 				</p>
 				<h2>To be a part of Helppy just follow these steps:</h2>
