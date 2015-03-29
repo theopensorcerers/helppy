@@ -172,8 +172,7 @@ if ($result = $db->query($query)) {
 
 <div class="jumbotron">
     <div class="container ">
-
-             <div class="row ">
+        <div class="row">
                 <div class="col-xs-12 col-md-4 conversations">
                     <span class="sidebar-brand"><strong>Conversations</strong></span>
 
@@ -251,100 +250,100 @@ if ($result = $db->query($query)) {
 
                 </div>
                 <div class="col-xs-12 col-md-8 inbox">
-                    <div class="col-lg-12 reply_request">
-                        <h1><? if (!$selected_request['requesting']) { echo 'Can you help'; echo " ". $selected_request['requester_username'];} else { echo 'Help from'; echo " ". $selected_request['helper_username'];}; ?>?</h1>
-                    </div>
+                        <div class="col-lg-12 reply_request">
+                            <h1><? if (!$selected_request['requesting']) { echo 'Can you help'; echo " ". $selected_request['requester_username'];} else { echo 'Help from'; echo " ". $selected_request['helper_username'];}; ?>?</h1>
+                        </div>
 
-                    <div class="col-lg-12 reply_request">
-                        <div class="request_details">
-                            <h4>When</h4> 
-                            <p>
-                            <?php if ($selected_request['request_start_date'] != $selected_request['request_end_date']) : ?>
-                                <? echo $selected_request['request_start_date']?> to <? echo $selected_request['request_end_date']?>
-                            <? else: ?>
-                                <? echo $selected_request['request_start_date']?>
-                            <? endif; ?>
-                            </p>
-                        </div> <!-- end of due date -->
-                        <div class="request_details">
-                            <h4>Skill</h4> <p><? echo $selected_request['skill_name']?></p>
-                        </div> <!-- end of skill -->
-
-
-                        <?php if ($selected_request['request_statusID'] == 1 && !$selected_request['requesting']) : ?>
-                            <div class="request_details ">
-                                <form method="post" action="<?php echo $baseurl; ?>/php/requests/answer_request.php" accept-charset="UTF-8" class="pull-right">
-                                    <input type="submit" class="btn btn-default yesno_btn" value="Yes">
-                                    <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
-                                    <input type="hidden" name="statusID" value="2">
-                                </form>
-                                <form method="post" action="<?php echo $baseurl; ?>/php/requests/answer_request.php" accept-charset="UTF-8" class="pull-left">
-                                    <input type="submit" class="btn btn-default yesno_btn" value="No">
-                                    <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
-                                    <input type="hidden" name="statusID" value="3">
-                                </form>
-                            </div>
-
-                        <?php elseif ($selected_request['request_statusID'] == 1 && $selected_request['requesting']) : ?>
+                        <div class="col-xs-12 reply_request">
                             <div class="request_details">
-                                <h4 class="pending">Pending</h4>
-                            </div> 
-                        <?php elseif ($selected_request['request_statusID'] == 2 && !$selected_request['requesting']) : ?>
+                                <h4>When</h4> 
+                                <p>
+                                <?php if ($selected_request['request_start_date'] != $selected_request['request_end_date']) : ?>
+                                    <? echo $selected_request['request_start_date']?> to <? echo $selected_request['request_end_date']?>
+                                <? else: ?>
+                                    <? echo $selected_request['request_start_date']?>
+                                <? endif; ?>
+                                </p>
+                            </div> <!-- end of due date -->
                             <div class="request_details">
-                                <h4 class="accepted">Accepted</h4>
-                            </div> 
-                        <?php elseif ($selected_request['request_statusID'] == 2 && $selected_request['requesting']) : ?>
-                            <div class="request_details">
+                                <h4>Skill</h4> <p><? echo $selected_request['skill_name']?></p>
+                            </div> <!-- end of skill -->
+
+
+                            <?php if ($selected_request['request_statusID'] == 1 && !$selected_request['requesting']) : ?>
                                 <div class="request_details ">
+                                    <form method="post" action="<?php echo $baseurl; ?>/php/requests/answer_request.php" accept-charset="UTF-8" class="pull-right">
+                                        <input type="submit" class="btn btn-default yesno_btn" value="Yes">
+                                        <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
+                                        <input type="hidden" name="statusID" value="2">
+                                    </form>
+                                    <form method="post" action="<?php echo $baseurl; ?>/php/requests/answer_request.php" accept-charset="UTF-8" class="pull-left">
+                                        <input type="submit" class="btn btn-default yesno_btn" value="No">
+                                        <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
+                                        <input type="hidden" name="statusID" value="3">
+                                    </form>
+                                </div>
+
+                            <?php elseif ($selected_request['request_statusID'] == 1 && $selected_request['requesting']) : ?>
+                                <div class="request_details">
+                                    <h4 class="pending">Pending</h4>
+                                </div> 
+                            <?php elseif ($selected_request['request_statusID'] == 2 && !$selected_request['requesting']) : ?>
+                                <div class="request_details">
                                     <h4 class="accepted">Accepted</h4>
                                 </div> 
-                                    <a href="#menu-toggle" data-toggle="modal" class="btn btn-default pull-right" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
-                                    <?php include "includes/close_skill_modal.php" ?>
-                            </div>
-                        <?php elseif ($selected_request['request_statusID'] == 3 && !$selected_request['requesting']) : ?>
-                            <div class="request_details">
-                                <h4 class="refused">Refused</h4>
-                            </div> 
-                        <?php elseif ($selected_request['request_statusID'] == 3 && $selected_request['requesting']) : ?>
-                            <div class="request_details">
-                                <h4 class="refused">Refused</h4>
-                            </div> 
-                        <?php elseif ($selected_request['request_statusID'] == 4 && !$selected_request['requesting']) : ?>
-                            <div class="request_details">
-                                <h4>Help completed</h4>
-                            </div> 
-                        <?php elseif ($selected_request['request_statusID'] == 4 && $selected_request['requesting']) : ?>
-                            <div class="request_details">
-                                <h4>Help completed</h4>
-                            </div> 
-                        <? endif; ?>
-
-                    </div>   
-
-                    <div class="col-lg-12 message_history">
-                            <ul class="list-unstyled">
-                            <?php foreach ($request_messages as $key => $message) { ?>
-                                <? $own_message = false;
-                                if ($message['from'] == $userID) { $own_message = true; }; ?>
-                                <li class="<? if ($own_message) { echo 'own_'; }; ?>message">
-                                    <small>from <? if ($own_message) { echo 'you'; } else { echo $message['sender_username']; } ?> on <? echo $message['date']; ?></small>
-                                    <p><? echo $message['body']?></p>
-                                </li>
-                             <? } ?>
-                            </ul>
-                    </div>
-                    <div class="col-lg-12 write_message">
-                        <form method="post" action="<?php echo $baseurl; ?>/php/requests/send_message.php" accept-charset="UTF-8">
-                            <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
-                            <?php if ($userID != $selected_request['requester_ID']) : ?>
-                                <input type="hidden" name="to" value="<?php echo $selected_request['requester_ID']; ?>">
-                            <? else: ?>
-                                <input type="hidden" name="to" value="<?php echo $selected_request['helper_ID']; ?>">
+                            <?php elseif ($selected_request['request_statusID'] == 2 && $selected_request['requesting']) : ?>
+                                <div class="request_details">
+                                    <div class="request_details ">
+                                        <h4 class="accepted">Accepted</h4>
+                                    </div> 
+                                        <a href="#menu-toggle" data-toggle="modal" class="btn btn-default pull-right" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
+                                        <?php include "includes/close_skill_modal.php" ?>
+                                </div>
+                            <?php elseif ($selected_request['request_statusID'] == 3 && !$selected_request['requesting']) : ?>
+                                <div class="request_details">
+                                    <h4 class="refused">Refused</h4>
+                                </div> 
+                            <?php elseif ($selected_request['request_statusID'] == 3 && $selected_request['requesting']) : ?>
+                                <div class="request_details">
+                                    <h4 class="refused">Refused</h4>
+                                </div> 
+                            <?php elseif ($selected_request['request_statusID'] == 4 && !$selected_request['requesting']) : ?>
+                                <div class="request_details">
+                                    <h4>Help completed</h4>
+                                </div> 
+                            <?php elseif ($selected_request['request_statusID'] == 4 && $selected_request['requesting']) : ?>
+                                <div class="request_details">
+                                    <h4>Help completed</h4>
+                                </div> 
                             <? endif; ?>
-                            <textarea name="message_body" class="form-control" rows="6"></textarea>
-                            <input type="submit" class="btn btn-default" id="send_btn" value="Send message">
-                        </form>
-                    </div>
+
+                        </div>   
+
+                        <div class="col-xs-12 message_history">
+                                <ul class="list-unstyled">
+                                <?php foreach ($request_messages as $key => $message) { ?>
+                                    <? $own_message = false;
+                                    if ($message['from'] == $userID) { $own_message = true; }; ?>
+                                    <li class="<? if ($own_message) { echo 'own_'; }; ?>message">
+                                        <small>from <? if ($own_message) { echo 'you'; } else { echo $message['sender_username']; } ?> on <? echo $message['date']; ?></small>
+                                        <p><? echo $message['body']?></p>
+                                    </li>
+                                 <? } ?>
+                                </ul>
+                        </div>
+                        <div class="col-xs-12 write_message">
+                            <form method="post" action="<?php echo $baseurl; ?>/php/requests/send_message.php" accept-charset="UTF-8">
+                                <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
+                                <?php if ($userID != $selected_request['requester_ID']) : ?>
+                                    <input type="hidden" name="to" value="<?php echo $selected_request['requester_ID']; ?>">
+                                <? else: ?>
+                                    <input type="hidden" name="to" value="<?php echo $selected_request['helper_ID']; ?>">
+                                <? endif; ?>
+                                <textarea name="message_body" class="form-control" rows="6"></textarea>
+                                <input type="submit" class="btn btn-default" id="send_btn" value="Send message">
+                            </form>
+                        </div>
                 </div>
             </div> <!--row-->
          

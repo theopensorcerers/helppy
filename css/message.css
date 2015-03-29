@@ -282,6 +282,7 @@
     border:solid;
     border-color: #333;
     border-width:1px;
+    margin-top: 66px
 }
 .message_history{
     border-top: solid;
@@ -377,3 +378,4 @@
   background-color: #74b533;
   margin-left: 10px;
 }
+
