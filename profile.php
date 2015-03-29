@@ -711,7 +711,7 @@ if ($result = $db->query($query)) {
 							<div class="col-xs-5 col-md-2">
 								<div class="space50"></div>
 								<a href="<?php echo $baseurl; ?>/helper/<?php echo $feedback['requester_username']; ?>" >
-									<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($feedback['requester_email'])))?>?s=200&d=mm">
+									<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($feedback['requester_email'])))?>?s=200&d=https://marielabarzallo.files.wordpress.com/2015/03/default_thumbnail.jpg">
 								</a>
 							</div>
 
