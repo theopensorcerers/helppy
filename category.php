@@ -14,7 +14,7 @@ $categoryID = isset($_GET['categoryID']) ? $_GET['categoryID'] : $_POST['categor
 $category = array();
 $query = <<<EOF
 SELECT 
-    count(skills.skillID) AS `skillIs_count`,
+    count(DISTINCT skills.skillID) AS `skillIs_count`,
     categories.categoryID AS `categoryID`,
     categories.name AS `category_name`,
     categories.color AS `category_color`,
@@ -49,7 +49,7 @@ SELECT
     categories.categoryID AS `categoryID`,
     skills.name AS `skill_name`,
     skills.description AS `skill_description`,
-    COUNT(userID) AS `count_users`
+    COUNT(DISTINCT userID) AS `count_users`
 FROM
     skills
         INNER JOIN

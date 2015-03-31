@@ -12,7 +12,7 @@ require 'php/db.php';
 $categories = array();
 $query = <<<EOF
 SELECT 
-    count(skills.skillID) AS `skillIs_count`,
+    count(DISTINCT skills.skillID) AS `skillIs_count`,
     categories.categoryID AS `categoryID`,
     categories.name AS `category_name`,
     categories.color AS `category_color`,
