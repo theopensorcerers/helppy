@@ -1,6 +1,7 @@
 Options +FollowSymLinks
 RewriteEngine On
- 
+php_value short_open_tag 1
+
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
