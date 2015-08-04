@@ -5,7 +5,6 @@ php_value short_open_tag 1
 RewriteCond %{SCRIPT_FILENAME} !-d
 RewriteCond %{SCRIPT_FILENAME} !-f
 
-
 RewriteRule ^profile/(.+)*$ ./profile.php?username=$1
 RewriteRule ^helper/(.+)*$ ./profile.php?username=$1
 
