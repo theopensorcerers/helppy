@@ -13,12 +13,13 @@ $search_terms = explode(" ", $search_input);
 $categories_research = array();
 $where_clauses = array();
 $query = <<<EOF
-SELECT 
+SELECT
     categories.categoryID AS `categoryID`,
+    categories.machine_name AS `machine_name`,
     categories.name AS `label`
 FROM
     categories
-WHERE 
+WHERE
 EOF;
 // loop through the search terms and add a new clause for each term
 foreach ($search_terms as &$term) {
@@ -30,7 +31,7 @@ $query .= " GROUP BY categories.categoryID;";
 
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
-		$row['href'] = $baseurl."/category.php?categoryID=".$row['categoryID'];
+		$row['href'] = $baseurl."/category/".$row['machine_name'];
 		array_push($categories_research, $row);
 	}
 	/* free result set */
@@ -43,12 +44,13 @@ if ($result = $db->query($query)) {
 $skills_research = array();
 $where_clauses = array();
 $query = <<<EOF
-SELECT 
+SELECT
     skills.skillID AS `skillID`,
+    skills.machine_name AS `machine_name`,
     skills.name AS `label`
 FROM
     skills
-WHERE 
+WHERE
 EOF;
 // loop through the search terms and add a new clause for each term
 foreach ($search_terms as &$term) {
@@ -60,7 +62,7 @@ $query .= " GROUP BY skills.skillID;";
 
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
-		$row['href'] = $baseurl."/skill.php?skillID=".$row['skillID'];
+		$row['href'] = $baseurl."/skill/".$row['machine_name'];
 		array_push($skills_research, $row);
 	}
 	/* free result set */
@@ -73,13 +75,13 @@ if ($result = $db->query($query)) {
 $users_research = array();
 $where_clauses = array();
 $query = <<<EOF
-SELECT 
+SELECT
     users.userID AS `userID`,
     users.username AS `username`,
     users.username AS `label`
 FROM
     users
-WHERE 
+WHERE
 EOF;
 // loop through the search terms and add a new clause for each term
 foreach ($search_terms as &$term) {
@@ -91,7 +93,7 @@ $query .= " GROUP BY users.userID;";
 
 if ($result = $db->query($query)) {
 	while ($row = $result->fetch_assoc()) {
-		$row['href'] = $baseurl."/profile.php?username=".$row['username'];
+		$row['href'] = $baseurl."/profile/".$row['username'];
 		array_push($users_research, $row);
 	}
 	/* free result set */
@@ -110,10 +112,10 @@ $count_users = count($results['users']);
 $count_categories = count($results['categories']);
 $count_skills = count($results['skills']);
 
-echo json_encode(array("success" => true, 
+echo json_encode(array("success" => true,
 						"msg" => "<i class='fa fa-cube fa-2'></i> $count_categories categor".(($count_categories > 1) ? 'ies':'y').
 						", <i class='fa fa-diamond fa-2'></i> $count_skills skill".(($count_skills > 1) ? 's':'').
-						" and <i class='fa fa-user fa-2'></i> $count_users user".(($count_users > 1) ? 's':'')." found", 
+						" and <i class='fa fa-user fa-2'></i> $count_users user".(($count_users > 1) ? 's':'')." found",
 						"count_results" => $count_users+$count_categories+$count_skills,
 						"results" => $results,
 						"search_terms" => $search_terms));

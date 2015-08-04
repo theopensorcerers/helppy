@@ -8,11 +8,11 @@ RewriteCond %{SCRIPT_FILENAME} !-f
 RewriteRule ^profile/(.+)*$ ./profile.php?username=$1
 RewriteRule ^helper/(.+)*$ ./profile.php?username=$1
 
-RewriteRule ^skill/(.+)*$ ./skill.php?skillID=$1
-RewriteRule ^skills/(.+)*$ ./skill.php?skillID=$1
+RewriteRule ^skill/(.+)*$ ./skill.php?machine_name=$1
+RewriteRule ^skills/(.+)*$ ./skill.php?machine_name=$1
 
-RewriteRule ^category/(.+)*$ ./category.php?categoryID=$1
-RewriteRule ^categories/(.+)*$ ./category.php?categoryID=$1
+RewriteRule ^category/(.*)$ ./category.php?machine_name=$1
+RewriteRule ^categories/(.*)$ ./category.php?machine_name=$1
 
 RewriteRule ^message/(.+)*$ ./message.php?requestID=$1
 RewriteRule ^messages/(.+)*$ ./message.php?requestID=$1

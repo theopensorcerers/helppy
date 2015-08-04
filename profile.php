@@ -3,7 +3,7 @@
 
 <?php
 /**
- * Get user details based on a username 
+ * Get user details based on a username
  * The script will present the details of the username passed in the GET, or try the session and cookie.
  * it dies if no id can be found.
  */
@@ -40,7 +40,7 @@ if ($result = $db->query($query)) {
 // User skills
 $userSkills = array();
 $query = <<<EOF
-SELECT 
+SELECT
 	skills.skillID AS `skillID`,
 	skill_categories.categoryID AS `categoryID`,
 	user_skills.levelID AS `levelID`,
@@ -81,7 +81,7 @@ if ($result = $db->query($query)) {
 // Categories
 $categories = array();
 $query = <<<EOF
-SELECT 
+SELECT
 	count(skills.skillID) AS `skillIs_count`,
 	categories.categoryID AS `categoryID`,
 	categories.name AS `category_name`,
@@ -111,8 +111,8 @@ foreach ($categories as $key => $category) {
 	$categories[$key]['skills'] = array();
 	$categoryID = $category['categoryID'];
 	$query = <<<EOF
-SELECT 
-	skills.skillID AS `skillID`, 
+SELECT
+	skills.skillID AS `skillID`,
 	skills.name AS `skill_name`
 FROM
 	skills
@@ -140,7 +140,7 @@ EOF;
 // Skills levels
 $levels = array();
 $query = <<<EOF
-SELECT 
+SELECT
 	level.levelID AS `levelID`,
 	level.name AS `level_name`,
 	level.description AS `level_description`,
@@ -162,7 +162,7 @@ if ($result = $db->query($query)) {
 // User locations
 $userLocations = array();
 $query = <<<EOF
-SELECT 
+SELECT
 	locations.locationID AS `locationID`,
 	user_locations.name AS `location_name`,
 	locations.`spatial` AS `spatial`,
@@ -190,7 +190,7 @@ if ($result = $db->query($query)) {
 // Days
 $days = array();
 $query = <<<EOF
-SELECT 
+SELECT
 	availability_day.dayID AS `dayID`,
 	availability_day.name AS `day_name`
 FROM
@@ -210,7 +210,7 @@ if ($result = $db->query($query)) {
 // Hours
 $hours = array();
 $query = <<<EOF
-SELECT 
+SELECT
 	availability_hour.hourID AS `hourID`,
 	availability_hour.name AS `hour_name`,
 	availability_hour.description AS `hour_description`
@@ -231,7 +231,7 @@ if ($result = $db->query($query)) {
 // User Availabilities
 $userAvailability = array();
 $query = <<<EOF
-SELECT 
+SELECT
 	availability_day.dayID AS `dayID`,
 	availability_day.name AS `day_name`,
 	availability_hour.hourID AS `hourID`,
@@ -261,7 +261,7 @@ if ($result = $db->query($query)) {
 // User feedback
 $userFeedback = array();
 $query = <<<EOF
-SELECT 
+SELECT
 	feedback.feedbackID AS `feedbackID`,
 	feedback.rating AS `rating`,
 	feedback.body AS `feedback`,
@@ -282,7 +282,7 @@ FROM
 	users AS helper ON (helper.userID = requests.`to`)
 		INNER JOIN
 	request_skills ON (request_skills.requestID = requests.requestID)
-    	INNER JOIN 
+    	INNER JOIN
     skills USING (skillID)
 		INNER JOIN
 	feedback ON (feedback.requestID = requests.requestID)
@@ -303,7 +303,7 @@ if ($result = $db->query($query)) {
 // User stats
 $userStats = array();
 $query = <<<EOF
-SELECT 
+SELECT
     ROUND(SUM(IF(helper.username = '$username',
                 feedback.rating,
                 NULL)) * 20 / COUNT(IF(helper.username = '$username',
@@ -366,12 +366,12 @@ if ($result = $db->query($query)) {
 						</div>
 					</div>
 					<?php if ($userDetails['userID'] != $userID && $userID != NULL) : ?>
-                    
+
 					<a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#request_skill_modal" id="request_skill_btn" ><h4>Request a skill</h4></a>
 					<!-- include the modal & form -->
 					<?php include "includes/request_skill_modal.php" ?>
 
-					<? endif; ?>    
+					<? endif; ?>
 
 				</div>
 
@@ -401,7 +401,7 @@ if ($result = $db->query($query)) {
 			<div class="space50"></div>
 
 			<!-- Personal details -->
-			
+
 			<?php if ($my_profile) : ?>
 				<div class="row personal_details" >
 					<p class="text-left" ><strong>Personal Details</strong></p>
@@ -482,7 +482,7 @@ if ($result = $db->query($query)) {
 								<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
 							</form>
 						<? endif; ?>
-							<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" >
+							<a href="<?php echo $baseurl; ?>/skill/<?php echo $skill['machine_name']; ?>" >
 								<h3><?php echo $skill['skill_name'];?>
 								<small><br><?php echo $skill['level_name'];?></small></h3>
 							</a>
@@ -513,13 +513,13 @@ if ($result = $db->query($query)) {
 									<? } ?>
 									</select>
 								</div>
-								
+
 								<div class="form-group">
 									<select name="levelID" data-placeholder="Select a skill level">
 									<?php foreach ($levels as $key => $level) { ?>
 										<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
 									<? } ?>
-									</select> 
+									</select>
 								</div>
 								<div class="form-group">
 									<button type="submit" id='add' class="btn btn-default">Add Skill</button>
@@ -549,7 +549,7 @@ if ($result = $db->query($query)) {
 									<?php foreach ($levels as $key => $level) { ?>
 										<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
 									<? } ?>
-									</select> 
+									</select>
 								</div>
 								<div class="form-group">
 									<button type="submit" id='add' class="btn btn-default">Add Skill</button>
@@ -566,7 +566,7 @@ if ($result = $db->query($query)) {
 			<? endif; ?>
 
 			<div class="space70"></div>
-			
+
 			<!-- Location and Availability -->
 
 			<div class="row personal_details" >
@@ -589,7 +589,7 @@ if ($result = $db->query($query)) {
 					<?php if ($my_profile) : ?>
 
 						<div class="space20"></div>
-						
+
 						<form id="user_location_form" method="post" action="<?php echo $baseurl; ?>/php/users/addLocation.php" accept-charset="UTF-8">
 							<div class="form-group location">
 							<ul class="list-inline">
@@ -600,7 +600,7 @@ if ($result = $db->query($query)) {
 								<input type="hidden" id="point" name="point">
 							</ul>
 							</div>
-						</form>	
+						</form>
 
 
 						<table class="table table-condensed table-striped table-hover" id="availability">
@@ -629,7 +629,7 @@ if ($result = $db->query($query)) {
 					<? endif; ?>
 				</div>
 
-		
+
 
 				<!-- Availability -->
 
@@ -639,7 +639,7 @@ if ($result = $db->query($query)) {
 
 						<?php if ($my_profile) : ?>
 						<form id="addAvailability_form" method="post" action="<?php echo $baseurl; ?>/php/users/addAvailability.php" accept-charset="UTF-8">
-							
+
 							<div class="form-group">
 								<select name="dayID" data-placeholder="Select a day">
 									<?php foreach ($days as $key => $day) { ?>
@@ -647,19 +647,19 @@ if ($result = $db->query($query)) {
 									<? } ?>
 								</select>
 							</div>
-							
+
 							<div class="form-group">
 								<select name="hourID" data-placeholder="Select a time">
 									<?php foreach ($hours as $key => $hour) { ?>
 										<option value="<?php echo $hour['hourID']; ?>"><?php echo $hour['hour_description'] . " (" . $hour['hour_name'] . ")" ; ?></option>
 									<? } ?>
-								</select> 
+								</select>
 							</div>
 							<div class="form-group">
 								<button type="submit" id='add' class="btn btn-default">Add availability</button>
 							</div>
 
-						</form>	
+						</form>
 						<? endif; ?>
 
 						<div class="space50"></div>
@@ -719,9 +719,9 @@ if ($result = $db->query($query)) {
 
 							<div class="col-xs-12 col-md-9">
 								<h3>
-									<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $feedback['requester_username']; ?>" ><?php echo $feedback['requester_username']; ?></a>
+									<a href="<?php echo $baseurl; ?>/profile/<?php echo $feedback['requester_username']; ?>" ><?php echo $feedback['requester_username']; ?></a>
 									 <small>asked for my help with <?php echo $feedback['skill_name'];?></small>
-								</h3>					
+								</h3>
 								<p>
 									<?php echo $feedback['feedback'];?> ...
 								</p>
@@ -732,14 +732,14 @@ if ($result = $db->query($query)) {
 				</div>
 			</div>
 
-			
-			
-				
+
+
+
 	</div>
 
 	<div class="space20"></div>
 
-		 
+
 </div>
 
 

@@ -76,7 +76,7 @@ if (!$result = $db->query($query)) {
 $query = "INSERT INTO `message` (`requestID`, `from`, `to`, `subject`, `body`) VALUES ($requestID, $userID, $to, '$subject', '$body');";
 if ($result = $db->query($query)) {
 	$db->commit();
-    echo json_encode(array("success" => true, "msg" => "Request added", "href" => "$baseurl/message.php?requestID=$requestID"));
+    echo json_encode(array("success" => true, "msg" => "Request added", "href" => "$baseurl/message/$requestID"));
    	return true;
 } else {
     echo json_encode(array("success" => false, "msg" => "Failed to add message to the database <br>$db->error<pre><code>$query</code></pre>" ));

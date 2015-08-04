@@ -4,7 +4,7 @@
 <?php
 
 /**
- * Get user details based on a username 
+ * Get user details based on a username
  * The script will present the details of the username passed in the GET, or try the session and cookie.
  * it dies if no id can be found.
  */
@@ -43,7 +43,7 @@ if ($result = $db->query($query)) {
 $user_requests = array();
 $selected_request = array();;
 $query = <<<EOF
-SELECT 
+SELECT
     requests.requestID AS `requestID`,
     DATE_FORMAT(requests.start_date,'%d/%m/%Y') AS `request_start_date`,
     DATE_FORMAT(requests.end_date,'%d/%m/%Y') AS `request_end_date`,
@@ -78,7 +78,7 @@ FROM
     request_skills ON (request_skills.requestID = requests.requestID)
         INNER JOIN
     request_status ON (request_status.statusID = requests.statusID)
-        INNER JOIN 
+        INNER JOIN
     skills USING (skillID)
         LEFT JOIN
     message ON (message.requestID = requests.requestID)
@@ -108,7 +108,7 @@ if (!$requestID && $user_requests) {
 
 $request_messages = array();
 $query = <<<EOF
-SELECT 
+SELECT
     message.`from` AS `from`,
     message.`to` AS `to`,
     message.date AS `date`,
@@ -184,12 +184,12 @@ if ($result = $db->query($query)) {
                         <? if ($request['request_statusID'] != 4 && $request['request_statusID'] != 3) { ?>
                             <? if ($request['requestID'] == $requestID) {
                                     $selected_request = $request;
-                                } 
+                                }
                             ?>
                             <? if (!$request['requesting']) { ?>
                             <li>
-                                <a href="message.php?requestID=<? echo $request['requestID'] ?>">
-                                <? echo $request['requester_username'] ?> | 
+                                <a href="/message/<? echo $request['requestID'] ?>">
+                                <? echo $request['requester_username'] ?> |
                                 <small><? echo $request['skill_name'] ?></small>
                                 <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                                 </a>
@@ -207,12 +207,12 @@ if ($result = $db->query($query)) {
                         <? if ($request['request_statusID'] != 4 && $request['request_statusID'] != 3) { ?>
                             <? if ($request['requestID'] == $requestID) {
                                     $selected_request = $request;
-                                } 
+                                }
                             ?>
                             <? if ($request['requesting']) { ?>
                             <li>
-                                <a href="message.php?requestID=<? echo $request['requestID'] ?>">
-                                <? echo $request['helper_username'] ?> | 
+                                <a href="/message/<? echo $request['requestID'] ?>">
+                                <? echo $request['helper_username'] ?> |
                                 <small><? echo $request['skill_name'] ?></small>
                                 <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                                 </a>
@@ -230,16 +230,16 @@ if ($result = $db->query($query)) {
                         <? if ($request['request_statusID'] == 4 || $request['request_statusID'] == 3) { ?>
                         <? if ($request['requestID'] == $requestID) {
                                 $selected_request = $request;
-                            } 
+                            }
                         ?>
                         <li>
-                            <a href="message.php?requestID=<? echo $request['requestID'] ?>">
-                            <? if ($request['requesting']) { 
+                            <a href="/message/<? echo $request['requestID'] ?>">
+                            <? if ($request['requesting']) {
                                 echo $request['helper_username'];
-                            } else { 
-                                echo $request['requester_username']; 
-                            }; 
-                            ?> 
+                            } else {
+                                echo $request['requester_username'];
+                            };
+                            ?>
                             | <small><?php echo $request['skill_name'];'s' ?></small>
                             <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                             </a>
@@ -257,7 +257,7 @@ if ($result = $db->query($query)) {
 
                         <div class="col-xs-12 reply_request">
                             <div class="request_details">
-                                <h4>When</h4> 
+                                <h4>When</h4>
                                 <p>
                                 <?php if ($selected_request['request_start_date'] != $selected_request['request_end_date']) : ?>
                                     <? echo $selected_request['request_start_date']?> to <? echo $selected_request['request_end_date']?>
@@ -288,38 +288,38 @@ if ($result = $db->query($query)) {
                             <?php elseif ($selected_request['request_statusID'] == 1 && $selected_request['requesting']) : ?>
                                 <div class="request_details">
                                     <h4 class="pending">Pending</h4>
-                                </div> 
+                                </div>
                             <?php elseif ($selected_request['request_statusID'] == 2 && !$selected_request['requesting']) : ?>
                                 <div class="request_details">
                                     <h4 class="accepted">Accepted</h4>
-                                </div> 
+                                </div>
                             <?php elseif ($selected_request['request_statusID'] == 2 && $selected_request['requesting']) : ?>
                                 <div class="request_details">
                                     <div class="request_details ">
                                         <h4 class="accepted">Accepted</h4>
-                                    </div> 
+                                    </div>
                                         <a href="#menu-toggle" data-toggle="modal" class="btn btn-default pull-right" data-target="#close_skill_modal" id="help_completed_btn"><h4>Help completed!</h4></a>
                                         <?php include "includes/close_skill_modal.php" ?>
                                 </div>
                             <?php elseif ($selected_request['request_statusID'] == 3 && !$selected_request['requesting']) : ?>
                                 <div class="request_details">
                                     <h4 class="refused">Refused</h4>
-                                </div> 
+                                </div>
                             <?php elseif ($selected_request['request_statusID'] == 3 && $selected_request['requesting']) : ?>
                                 <div class="request_details">
                                     <h4 class="refused">Refused</h4>
-                                </div> 
+                                </div>
                             <?php elseif ($selected_request['request_statusID'] == 4 && !$selected_request['requesting']) : ?>
                                 <div class="request_details">
                                     <h4>Help completed</h4>
-                                </div> 
+                                </div>
                             <?php elseif ($selected_request['request_statusID'] == 4 && $selected_request['requesting']) : ?>
                                 <div class="request_details">
                                     <h4>Help completed</h4>
-                                </div> 
+                                </div>
                             <? endif; ?>
 
-                        </div>   
+                        </div>
 
                         <div class="col-xs-12 message_history">
                                 <ul class="list-unstyled">
@@ -348,7 +348,7 @@ if ($result = $db->query($query)) {
                     <? endif; ?>
                 </div>
             </div> <!--row-->
-         
+
     </div><!--container-->
 </div> <!--jumbotron-->
 

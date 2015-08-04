@@ -3,19 +3,36 @@
 
 <?php
 /**
- * Get user details based on a username 
+ * Get user details based on a username
  * The script will present the details of the username passed in the GET, or try the session and cookie.
  * it dies if no id can be found.
  */
 require 'php/db.php';
 $username = isset($_GET['username']) ? $_GET['username'] : (isset($_COOKIE['username']) ? $_COOKIE['username'] : (isset($_SESSION['username']) ? $_SESSION['username'] : NULL));
-$skillID = isset($_GET['skillID']) ? $_GET['skillID'] : $_POST['skillID'];
+$skillID = isset($_GET['skillID']) ? $_GET['skillID'] : NULL;
+$machine_name = isset($_GET['machine_name']) ? $_GET['machine_name'] : NULL;
 $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : (isset($_SESSION['userID']) ? $_SESSION['userID'] : NULL);
+
+// use the machine_name to get the id
+if ($machine_name) {
+  $query = "SELECT skillID FROM skills WHERE machine_name='$machine_name'";
+  if ($result = $db->query($query)) {
+  	if ($row = $result->fetch_assoc()) {
+  		$skillID = $row['skillID'];
+  	} else {
+  		echo "No skillID found for this machine_name";
+  	}
+  	/* free result set */
+  	$result->close();
+  } else {
+  	echo 'Unable to connect to the database';
+  }
+}
 
 // User skills
 $skill = array();
 $query = <<<EOF
-SELECT 
+SELECT
     skills.skillID AS `skillID`,
     categories.categoryID AS `categoryID`,
     skills.name AS `skill_name`,
@@ -47,7 +64,7 @@ if ($result = $db->query($query)) {
 // User
 $users = array();
 $query = <<<EOF
-SELECT 
+SELECT
     skills.skillID AS `skillID`,
     users.userID AS `userID`,
     users.username AS `username`,
@@ -95,9 +112,9 @@ if ($result = $db->query($query)) {
 						<div class="space70">
 							<div class="search-box">
 								<div class="input-group search-container">
-									<input type="text" 
-											class="form-control search-input" 
-											id="index_search" 
+									<input type="text"
+											class="form-control search-input"
+											id="index_search"
 											placeholder=" I need help in..."
 											data-action="<?php echo $baseurl; ?>/php/search.php"
 											data-method="GET">
@@ -108,14 +125,14 @@ if ($result = $db->query($query)) {
 								<ul class="list-unstyled search-results"></ul>
 							</div>
 							<div class="space90"></div>
-						</div> 
+						</div>
 					</div>
 				</div>
 				<!-- load the search plugin -->
 			 	<script type="text/javascript" src="<?php echo $baseurl; ?>/js/search.js"></script>
-				
 
-						
+
+
 				<h2><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?><small> can help you with </small><?php echo $skill['skill_name'];?></strong>
 					<br>
 					<p><?php echo substr($skill['skill_description'], 200, 0);?></p>
@@ -127,7 +144,7 @@ if ($result = $db->query($query)) {
 					<div class="row user">
 						<div class="col-xs-5 col-md-2">
 							<div class="space50"></div>
-							<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $user['username']; ?>" >
+							<a href="<?php echo $baseurl; ?>/profile/<?php echo $user['username']; ?>" >
 								<img class="thumbnail pull-left" src="http://www.gravatar.com/avatar/<?php echo md5(strtolower(trim($user['email'])))?>?s=200&d=https://marielabarzallo.files.wordpress.com/2015/03/default_thumbnail.jpg">
 								<div class="user-level-<?php echo $user['level_color'];?>">
 									<h3>
@@ -139,7 +156,7 @@ if ($result = $db->query($query)) {
 						</div>
 						<div class="col-xs-12 col-md-1"></div>
 						<div class="col-xs-12 col-md-9 user-description">
-							
+
 							<p>
 								<?php echo substr($user['user_description'],0 ,650);?> ...
 							</p>
@@ -149,7 +166,7 @@ if ($result = $db->query($query)) {
 							<?php include "includes/request_skill_modal.php" ?>
 						<? endif; ?>
 							<p class="text-right">
-								<a href="<?php echo $baseurl; ?>/profile.php?username=<?php echo $user['username']; ?>">see <?php echo $user['username'];?> profile</a>
+								<a href="<?php echo $baseurl; ?>/profile/<?php echo $user['username']; ?>">see <?php echo $user['username'];?> profile</a>
 						</p>
 
 						</div>

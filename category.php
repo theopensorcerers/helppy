@@ -3,17 +3,34 @@
 
 <?php
 /**
- * Get user details based on a username 
+ * Get user details based on a username
  * The script will present the details of the username passed in the GET, or try the session and cookie.
  * it dies if no id can be found.
  */
 require 'php/db.php';
 
-$categoryID = isset($_GET['categoryID']) ? $_GET['categoryID'] : $_POST['categoryID'];
+$categoryID = isset($_GET['categoryID']) ? $_GET['categoryID'] : NULL;
+$machine_name = isset($_GET['machine_name']) ? $_GET['machine_name'] : NULL;
+
+// use the machine_name to get the id
+if ($machine_name) {
+  $query = "SELECT categoryID FROM categories WHERE machine_name='$machine_name'";
+  if ($result = $db->query($query)) {
+  	if ($row = $result->fetch_assoc()) {
+  		$categoryID = $row['categoryID'];
+  	} else {
+  		echo "No categoryID found for this machine_name";
+  	}
+  	/* free result set */
+  	$result->close();
+  } else {
+  	echo 'Unable to connect to the database';
+  }
+}
 
 $category = array();
 $query = <<<EOF
-SELECT 
+SELECT
     count(DISTINCT skills.skillID) AS `skillIs_count`,
     categories.categoryID AS `categoryID`,
     categories.name AS `category_name`,
@@ -44,7 +61,7 @@ if ($result = $db->query($query)) {
 // User skills
 $skills = array();
 $query = <<<EOF
-SELECT 
+SELECT
     skills.skillID AS `skillID`,
     categories.categoryID AS `categoryID`,
     skills.name AS `skill_name`,
@@ -86,9 +103,9 @@ if ($result = $db->query($query)) {
 							<div class="space70">
 								<div class="search-box">
 									<div class="input-group search-container">
-										<input type="text" 
-												class="form-control search-input" 
-												id="index_search" 
+										<input type="text"
+												class="form-control search-input"
+												id="index_search"
 												placeholder=" I need help in..."
 												data-action="<?php echo $baseurl; ?>/php/search.php"
 												data-method="GET">
@@ -99,16 +116,16 @@ if ($result = $db->query($query)) {
 									<ul class="list-unstyled search-results"></ul>
 								</div>
 								<div class="space90"></div>
-							</div> 
+							</div>
 						</div>
-					</div> 
+					</div>
 				 </div>
 				 <!-- load the search plugin -->
-				 <script type="text/javascript" src="<?php echo $baseurl; ?>/js/search.js"></script>				 
+				 <script type="text/javascript" src="<?php echo $baseurl; ?>/js/search.js"></script>
 				<div class="row category">
 						<div class="col-xs-12 col-md-12">
 							<h2><?php echo $category['category_name'];?>
-								<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small><br>								
+								<small>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small><br>
 							</h2>
 							<p><?php echo $category['category_description'];?></p>
 
@@ -118,21 +135,21 @@ if ($result = $db->query($query)) {
 							<div class="row category-results">
 								<?php foreach ($skills as $key => $skill) { ?>
 									<div class="col-xs-6 col-md-3 skill-per-category <?php echo $category['category_color'];?>">
-										<a href="<?php echo $baseurl; ?>/skill.php?skillID=<?php echo $skill['skillID']; ?>" ><h3><?php echo $skill['skill_name'];?></h3></a>
+										<a href="<?php echo $baseurl; ?>/skill/<?php echo $skill['machine_name']; ?>" ><h3><?php echo $skill['skill_name'];?></h3></a>
 											<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?></small>
 										<div class="space20"></div>
 									</div>
 									<? } ?>
 
 							</div>
-						
+
 
 					</div>
 				</div>
 
 			</div>
 
-		</div> 
-		
+		</div>
+
 
 <?php include "includes/footer.html" ?>
