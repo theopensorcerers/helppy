@@ -7,7 +7,7 @@
     margin-top: 100px;
 /*    margin-left:100px;*/
 	position: relative;
-    
+
 }
 
 .sidebar-brand{
@@ -37,7 +37,6 @@
 
 #sidebar-wrapper > .sidebar-nav {
 	position: relative;
-	rig
 }
 
 #wrapper.toggled #sidebar-wrapper {
@@ -197,7 +196,7 @@
 
     .yesno_btn:hover{
     	background-color: #333;
-    	color:#fff;    	
+    	color:#fff;
     }
 
     #help_completed_btn{
@@ -215,7 +214,7 @@
 
     #help_completed_btn:hover{
         background-color: #333;
-        color:#fff;      
+        color:#fff;
     }
 
     .request hr{
@@ -275,7 +274,7 @@
     #send_btn:hover{
     	background-color: #fff;
     	color:#333;
-    	
+
     }
 
 .inbox{
@@ -378,4 +377,3 @@
   background-color: #74b533;
   margin-left: 10px;
 }
-
