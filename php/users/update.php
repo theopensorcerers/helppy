@@ -18,7 +18,7 @@ $userID = isset($_COOKIE['userID']) ? $_COOKIE['userID'] : $_SESSION['userID'];
 
 // validate that password fields have all been entered
 if ($current_password && ($new_password != $new_password2)) {
-    echo json_encode(array("success" => false, "msg" => "your passwords do not match"));
+    echo json_encode(array("success" => false, "msg" => "The new passwords provided do not match"));
     return false;
 }
 
@@ -45,22 +45,18 @@ if ($result = $db->query($query)) {
 if ($current_password && ($new_password == $new_password2)) {
     $query = "SELECT password FROM users WHERE password='$current_password' AND userID='$userID'";
     if ($result = $db->query($query)) {
-
         /* fetch object array */
         if ($row = $result->fetch_assoc()) {
-            if ($row['password'] == $current_password) {
-                // Update the password
-                $query = "UPDATE users SET password = '$new_password';";
-                $result = $db->query($query);
-                echo json_encode(array("success" => true, "msg" => "Password updated"));
-            }
-            else {
-                echo json_encode(array("success" => false, "msg" => "The current password provided doesn't match your password"));
-                return false;
-            }
+            // Update the password
+            $query = "UPDATE users SET password = '$new_password';";
+            $result = $db->query($query);
+            echo json_encode(array("success" => true, "msg" => "Password updated"));
+            /* free result set */
+            $result->close();
+        } else {
+            echo json_encode(array("success" => false, "msg" => "The current password provided doesn't match your password"));
+            return false;
         }
-        /* free result set */
-        $result->close();
     }
 }
 
