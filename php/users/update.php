@@ -10,6 +10,7 @@ $forename = $db->real_escape_string(isset($_GET['forename']) ? $_GET['forename']
 $surname = $db->real_escape_string(isset($_GET['surname']) ? $_GET['surname'] : $_POST['surname']);
 $email = $db->real_escape_string(isset($_GET['email']) ? $_GET['email'] : $_POST['email']);
 $current_password = md5(isset($_GET['current_password']) ? $_GET['current_password'] : $_POST['current_password']);
+$new_password_clear = isset($_GET['new_password']) ? $_GET['new_password'] : $_POST['new_password'];
 $new_password = md5(isset($_GET['new_password']) ? $_GET['new_password'] : $_POST['new_password']);
 $new_password2 = md5(isset($_GET['new_password2']) ? $_GET['new_password2'] : $_POST['new_password2']);
 $description = $db->real_escape_string(isset($_GET['description']) ? $_GET['description'] : $_POST['description']);
@@ -42,16 +43,54 @@ if ($result = $db->query($query)) {
 }
 
 // Update the password if the 3 fields have been provided correctly
-if ($current_password && ($new_password == $new_password2)) {
-    $query = "SELECT password FROM users WHERE password='$current_password' AND userID='$userID'";
+if ($current_password && (strlen($new_password_clear) > 3 && $new_password == $new_password2)) {
+    $query = "SELECT username, email, forename, surname, password FROM users WHERE password='$current_password' AND userID='$userID'";
     if ($result = $db->query($query)) {
         /* fetch object array */
         if ($row = $result->fetch_assoc()) {
+            $username = $row['username'];
+            $to = $row['email'];
             // Update the password
             $query = "UPDATE users SET password = '$new_password' WHERE userID='$userID';";
             $result = $db->query($query);
             $db->commit();
             echo json_encode(array("success" => true, "msg" => "Password updated"));
+
+            // prepare an email reminder
+            $headers = "MIME-Version: 1.0" . "\r\n";
+            $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+            $headers .= 'From: <noreply@helppy.org.uk>' . "\r\n";
+            $subject = "Helppy - Password Reminder";
+            $message = "
+            <html>
+              <head>
+                <title>Helppy - Password Reminder</title>
+              </head>
+              <body>
+                <p>
+                  Hi $forename $surname,<br>
+                  Someone, (hopefully you), has updated or reset the password for the account associated with this email.
+                </p>
+                <table>
+                  <tr>
+                    <th>Username</th>
+                    <td><pre>$username</pre></td>
+                  </tr>
+                  <tr>
+                    <th>Password</th>
+                    <td><pre>$new_password_clear</pre></td>
+                  </tr>
+                </table>
+                <p>
+                  Looking forward to see you soon on Helppy!
+                </p>
+              </body>
+            </html>
+            ";
+
+            // send the email
+            mail($to,$subject,$message,$headers);
+
             return true;
         } else {
             echo json_encode(array("success" => false, "msg" => "The current password provided doesn't match your password"));
