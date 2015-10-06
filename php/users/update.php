@@ -48,7 +48,7 @@ if ($current_password && ($new_password == $new_password2)) {
         /* fetch object array */
         if ($row = $result->fetch_assoc()) {
             // Update the password
-            $query = "UPDATE users SET password = '$new_password';";
+            $query = "UPDATE users SET password = '$new_password' WHERE userID='$userID';";
             $result = $db->query($query);
             $db->commit();
             echo json_encode(array("success" => true, "msg" => "Password updated"));
