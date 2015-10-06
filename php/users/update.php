@@ -50,9 +50,9 @@ if ($current_password && ($new_password == $new_password2)) {
             // Update the password
             $query = "UPDATE users SET password = '$new_password';";
             $result = $db->query($query);
+            $db->commit();
             echo json_encode(array("success" => true, "msg" => "Password updated"));
-            /* free result set */
-            $result->close();
+            return true;
         } else {
             echo json_encode(array("success" => false, "msg" => "The current password provided doesn't match your password"));
             return false;
