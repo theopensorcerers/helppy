@@ -31,7 +31,7 @@ if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
 // validate that the email is not taken by someone else
 $query = "SELECT userID FROM users WHERE email='$email' AND userID !='$userID'";
 if ($result = $db->query($query)) {
-    
+
     /* fetch object array */
     if ($row = $result->fetch_row()) {
         echo json_encode(array("success" => false, "msg" => "This email is already registered."));
@@ -45,7 +45,7 @@ if ($result = $db->query($query)) {
 if ($current_password && ($new_password == $new_password2)) {
     $query = "SELECT password FROM users WHERE password='$current_password' AND userID='$userID'";
     if ($result = $db->query($query)) {
-        
+
         /* fetch object array */
         if ($row = $result->fetch_assoc()) {
             if ($row['password'] == $current_password) {
@@ -71,19 +71,8 @@ if ($result = $db->query($query)) {
     echo json_encode(array("success" => true, "msg" => "Details updated", "href" => "window.location"));
     return true;
 } else {
-    echo json_encode(array("success" => true, "msg" => "Failed to update details"));
-    /* free result set */
-    $result->close();
+    echo json_encode(array("success" => false, "msg" => "Failed to update details"));
     return false;
 }
 
 ?>
-
-
-
-
-
-
-
-
-
