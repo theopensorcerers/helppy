@@ -76,7 +76,7 @@ if ($result = $db->query($query)) {
             PS: You can change this generated password from your profile page.
           </p>
           <p>
-            Looking forward to see you soon on <a href=\"http://helppy.org.uk\">Helppy.org.uk</a>!
+            Looking forward to seeing you soon on <a href=\"http://helppy.org.uk\">Helppy.org.uk</a>!
           </p>
         </body>
       </html>

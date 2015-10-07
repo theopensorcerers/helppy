@@ -82,7 +82,7 @@ if ($current_password && (strlen($new_password_clear) > 3 && $new_password == $n
                   </tr>
                 </table>
                 <p>
-                  Looking forward to see you soon on <a href=\"http://helppy.org.uk\">Helppy.org.uk</a>!
+                  Looking forward to seeing you soon on <a href=\"http://helppy.org.uk\">Helppy.org.uk</a>!
                 </p>
               </body>
             </html>
