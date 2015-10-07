@@ -69,7 +69,7 @@ if ($current_password && (strlen($new_password_clear) > 3 && $new_password == $n
               <body>
                 <p>
                   Hi $forename $surname,<br>
-                  Someone, (hopefully you), has updated or reset the password for the account associated with this email.
+                  Someone, (hopefully you), has updated the password for the account associated with this email.
                 </p>
                 <table>
                   <tr>
@@ -82,7 +82,7 @@ if ($current_password && (strlen($new_password_clear) > 3 && $new_password == $n
                   </tr>
                 </table>
                 <p>
-                  Looking forward to see you soon on Helppy!
+                  Looking forward to see you soon on <a href=\"http://helppy.org.uk\">Helppy.org.uk</a>!
                 </p>
               </body>
             </html>

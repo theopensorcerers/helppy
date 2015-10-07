@@ -41,20 +41,23 @@
 
 .navbar .dropdown-menu.form-group .form-control {
 	margin-bottom: 5px;
-	
+
 }
 
 
-.navbar .btn.btn-primary {
+.navbar .btn {
 	border-radius: 0px;
 	border-color: transparent;
+}
+
+.navbar .btn.btn-primary {
 	color: white;
 	background-color: black;
 	text-transform: uppercase;
 }
 
 .navbar .badge {
-	margin-right: 10px; 
+	margin-right: 10px;
 	margin-left: -20px;
 	margin-top: 25px;
 	background-color: #74b533;
@@ -106,7 +109,7 @@
 
 @media (max-width: 999px) {
 	.navbar .container {
-		
+
 	}
 }
 

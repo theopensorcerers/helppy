@@ -65,7 +65,7 @@ require 'php/db.php';
                   </form>
                 </div>
               </li>
-              <li class="dropdown">
+              <li class="dropdown login-group">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                   Login <span class="sr-only">(current)</span>
                 </a>
@@ -75,6 +75,28 @@ require 'php/db.php';
                     <input type="password" id="password" name="password" class="form-control signup-login" placeholder="Password" >
                     <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
                   </form>
+                  <p><button class="btn btn-secondary btn-block" type="button" name="button" data-toggle="modal" data-target="#passwordResetModal"">Forgotten password?</button></p>
+                </div>
+
+                <div id="passwordResetModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <form id="resetForm" method="post" action="<?php echo $baseurl; ?>/php/users/reset_password.php" accept-charset="UTF-8">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Password Reset</h4>
+                      </div>
+                      <div class="modal-body">
+                          <input type="text" id="reset_email" name="email" class="form-control signup-login" placeholder="Email" autofocus>
+                      </div>
+                      <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Close</button>
+                        <input class="btn btn-primary" type="submit" id="reset-password" value="Reset Password" data-dismiss="modal">
+                      </div>
+                      </form>
+                    </div>
+
+                  </div>
                 </div>
               </li>
             </ul>
