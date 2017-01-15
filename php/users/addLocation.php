@@ -27,10 +27,10 @@ if ($result = $db->query($query)) {
   }
   /* free result set */
   $result->close();
-} 
+}
 else {
 	$query = "INSERT INTO locations (`postcode`, `spatial`, `point`) VALUES ('$postcode', '$spatial', GeomFromText( '$point'))";
-	if ($result = $db->query($query)) {    
+	if ($result = $db->query($query)) {
 	    $locationID = $db->insert_id;
 	    // defer commit, do not return success yet
 	} else {
@@ -58,3 +58,5 @@ if ($result = $db->query($query)) {
     /* free result set */
     $result->close();
 }
+
+?>

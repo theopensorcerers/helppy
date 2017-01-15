@@ -181,22 +181,22 @@ if ($result = $db->query($query)) {
                     <div class="space10"></div>
                     <ul class="sidebar-nav">
                     <?php foreach ($user_requests as $key => $request) { ?>
-                        <? if ($request['request_statusID'] != 4 && $request['request_statusID'] != 3) { ?>
-                            <? if ($request['requestID'] == $requestID) {
+                        <?php if ($request['request_statusID'] != 4 && $request['request_statusID'] != 3) { ?>
+                            <?php if ($request['requestID'] == $requestID) {
                                     $selected_request = $request;
                                 }
                             ?>
-                            <? if (!$request['requesting']) { ?>
+                            <?php if (!$request['requesting']) { ?>
                             <li>
-                                <a href="/message/<? echo $request['requestID'] ?>">
-                                <? echo $request['requester_username'] ?> |
-                                <small><? echo $request['skill_name'] ?></small>
+                                <a href="/message/<?php echo $request['requestID'] ?>">
+                                <?php echo $request['requester_username'] ?> |
+                                <small><?php echo $request['skill_name'] ?></small>
                                 <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                                 </a>
                             </li>
-                            <? } ?>
-                        <? } ?>
-                    <? } ?>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
                     </ul>
 
                     <div class="space20"></div>
@@ -204,22 +204,22 @@ if ($result = $db->query($query)) {
                     <div class="space10"></div>
                     <ul class="sidebar-nav">
                     <?php foreach ($user_requests as $key => $request) { ?>
-                        <? if ($request['request_statusID'] != 4 && $request['request_statusID'] != 3) { ?>
-                            <? if ($request['requestID'] == $requestID) {
+                        <?php if ($request['request_statusID'] != 4 && $request['request_statusID'] != 3) { ?>
+                            <?php if ($request['requestID'] == $requestID) {
                                     $selected_request = $request;
                                 }
                             ?>
-                            <? if ($request['requesting']) { ?>
+                            <?php if ($request['requesting']) { ?>
                             <li>
-                                <a href="/message/<? echo $request['requestID'] ?>">
-                                <? echo $request['helper_username'] ?> |
-                                <small><? echo $request['skill_name'] ?></small>
+                                <a href="/message/<?php echo $request['requestID'] ?>">
+                                <?php echo $request['helper_username'] ?> |
+                                <small><?php echo $request['skill_name'] ?></small>
                                 <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                                 </a>
                             </li>
-                            <? } ?>
-                        <? } ?>
-                    <? } ?>
+                            <?php } ?>
+                        <?php } ?>
+                    <?php } ?>
                     </ul>
 
                     <div class="space20"></div>
@@ -227,14 +227,14 @@ if ($result = $db->query($query)) {
                     <div class="space10"></div>
                     <ul class="sidebar-nav">
                     <?php foreach ($user_requests as $key => $request) { ?>
-                        <? if ($request['request_statusID'] == 4 || $request['request_statusID'] == 3) { ?>
-                        <? if ($request['requestID'] == $requestID) {
+                        <?php if ($request['request_statusID'] == 4 || $request['request_statusID'] == 3) { ?>
+                        <?php if ($request['requestID'] == $requestID) {
                                 $selected_request = $request;
                             }
                         ?>
                         <li>
-                            <a href="/message/<? echo $request['requestID'] ?>">
-                            <? if ($request['requesting']) {
+                            <a href="/message/<?php echo $request['requestID'] ?>">
+                            <?php if ($request['requesting']) {
                                 echo $request['helper_username'];
                             } else {
                                 echo $request['requester_username'];
@@ -244,15 +244,15 @@ if ($result = $db->query($query)) {
                             <span class="badge message_unread"><?php if ($request['sum_new_message'] > 0) { echo $request['sum_new_message']; }; ?></span>
                             </a>
                         </li>
-                        <? } ?>
-                    <? } ?>
+                        <?php } ?>
+                    <?php } ?>
                     </ul>
 
                 </div>
                 <div class="col-xs-12 col-md-8 inbox">
                     <?php if ($selected_request) : ?>
                         <div class="col-lg-12 reply_request">
-                            <h1><? if (!$selected_request['requesting']) { echo 'Can you help'; echo " ". $selected_request['requester_username'];} else { echo 'Help from'; echo " ". $selected_request['helper_username'];}; ?>?</h1>
+                            <h1><?php if (!$selected_request['requesting']) { echo 'Can you help'; echo " ". $selected_request['requester_username'];} else { echo 'Help from'; echo " ". $selected_request['helper_username'];}; ?>?</h1>
                         </div>
 
                         <div class="col-xs-12 reply_request">
@@ -260,14 +260,14 @@ if ($result = $db->query($query)) {
                                 <h4>When</h4>
                                 <p>
                                 <?php if ($selected_request['request_start_date'] != $selected_request['request_end_date']) : ?>
-                                    <? echo $selected_request['request_start_date']?> to <? echo $selected_request['request_end_date']?>
-                                <? else: ?>
-                                    <? echo $selected_request['request_start_date']?>
-                                <? endif; ?>
+                                    <?php echo $selected_request['request_start_date']?> to <?php echo $selected_request['request_end_date']?>
+                                <?php else: ?>
+                                    <?php echo $selected_request['request_start_date']?>
+                                <?php endif; ?>
                                 </p>
                             </div> <!-- end of due date -->
                             <div class="request_details">
-                                <h4>Skill</h4> <p><? echo $selected_request['skill_name']?></p>
+                                <h4>Skill</h4> <p><?php echo $selected_request['skill_name']?></p>
                             </div> <!-- end of skill -->
 
 
@@ -317,20 +317,20 @@ if ($result = $db->query($query)) {
                                 <div class="request_details">
                                     <h4>Help completed</h4>
                                 </div>
-                            <? endif; ?>
+                            <?php endif; ?>
 
                         </div>
 
                         <div class="col-xs-12 message_history">
                                 <ul class="list-unstyled">
                                 <?php foreach ($request_messages as $key => $message) { ?>
-                                    <? $own_message = false;
+                                    <?php $own_message = false;
                                     if ($message['from'] == $userID) { $own_message = true; }; ?>
-                                    <li class="<? if ($own_message) { echo 'own_'; }; ?>message">
-                                        <small>from <? if ($own_message) { echo 'you'; } else { echo $message['sender_username']; } ?> on <? echo $message['date']; ?></small>
-                                        <p><? echo $message['body']?></p>
+                                    <li class="<?php if ($own_message) { echo 'own_'; }; ?>message">
+                                        <small>from <?php if ($own_message) { echo 'you'; } else { echo $message['sender_username']; } ?> on <?php echo $message['date']; ?></small>
+                                        <p><?php echo $message['body']?></p>
                                     </li>
-                                 <? } ?>
+                                 <?php } ?>
                                 </ul>
                         </div>
                         <div class="col-xs-12 write_message">
@@ -338,14 +338,14 @@ if ($result = $db->query($query)) {
                                 <input type="hidden" name="requestID" value="<?php echo $selected_request['requestID']; ?>">
                                 <?php if ($userID != $selected_request['requester_ID']) : ?>
                                     <input type="hidden" name="to" value="<?php echo $selected_request['requester_ID']; ?>">
-                                <? else: ?>
+                                <?php else: ?>
                                     <input type="hidden" name="to" value="<?php echo $selected_request['helper_ID']; ?>">
-                                <? endif; ?>
+                                <?php endif; ?>
                                 <textarea name="message_body" class="form-control" rows="6"></textarea>
                                 <input type="submit" class="btn btn-default" id="send_btn" value="Send message">
                             </form>
                         </div>
-                    <? endif; ?>
+                    <?php endif; ?>
                 </div>
             </div> <!--row-->
 

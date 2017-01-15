@@ -362,7 +362,7 @@ if ($result = $db->query($query)) {
 							<h3><strong><?php echo $userDetails['username'] ?></strong></h3>
 							<?php if ($my_profile) : ?>
 								Use <a href="http://en.gravatar.com to add a profile picture">Gravatar</a> to add a profile picture
-							<? endif; ?>
+							<?php endif; ?>
 						</div>
 					</div>
 					<?php if ($userDetails['userID'] != $userID && $userID != NULL) : ?>
@@ -371,7 +371,7 @@ if ($result = $db->query($query)) {
 					<!-- include the modal & form -->
 					<?php include "includes/request_skill_modal.php" ?>
 
-					<? endif; ?>
+					<?php endif; ?>
 
 				</div>
 
@@ -410,15 +410,15 @@ if ($result = $db->query($query)) {
 							<div class="col-xs-12 col-md-8">
 								<div class="form-group">
 									<label for="forename">Forename</label>
-									<input type="text" name="forename" class="form-control details" placeholder="Forename" value="<? echo $userDetails['forename'] ?>">
+									<input type="text" name="forename" class="form-control details" placeholder="Forename" value="<?php echo $userDetails['forename'] ?>">
 								</div>
 								<div class="form-group">
 									<label for="surname">Surname</label>
-									<input type="text" name="surname" class="form-control details" placeholder="Surname" value="<? echo $userDetails['surname'] ?>">
+									<input type="text" name="surname" class="form-control details" placeholder="Surname" value="<?php echo $userDetails['surname'] ?>">
 								</div>
 								<div class="form-group">
 									<label for="email">Email address</label>
-									<input type="email" name="email" class="form-control details" placeholder="Enter email" value="<? echo $userDetails['email'] ?>">
+									<input type="email" name="email" class="form-control details" placeholder="Enter email" value="<?php echo $userDetails['email'] ?>">
 								</div>
 							</div>
 							<div class="col-xs-12 col-md-4">
@@ -437,7 +437,7 @@ if ($result = $db->query($query)) {
 							</div>
 							<div class="col-xs-12 col-md-12">
 								<label for="description">Bio</label>
-								<textarea name="description" class="form-control details" rows="5" placeholder="A few words about you"><? echo $userDetails['description'] ?></textarea>
+								<textarea name="description" class="form-control details" rows="5" placeholder="A few words about you"><?php echo $userDetails['description'] ?></textarea>
 								<div class="space10"></div>
 								<button type="submit" id='add' class="btn btn-default pull-right">Update details</button>
 							</div>
@@ -446,26 +446,26 @@ if ($result = $db->query($query)) {
 				</div>
 
 				<div class="space20"></div>
-			<? else : ?>
+			<?php else : ?>
 
 				<div class="row personal_details" >
 					<p class="text-left" ><strong>Personal Details</strong></p>
 					<div class="row">
 							<div class="col-xs-12 col-md-3">
 								<p class="lead">
-									<? echo $userDetails['forename']; ?>
-									<? echo substr($userDetails['surname'], 0, 1); ?>.
+									<?php echo $userDetails['forename']; ?>
+									<?php echo substr($userDetails['surname'], 0, 1); ?>.
 								</p>
 							</div>
 							<div class="col-xs-12 col-md-9">
-								<p class="lead"><? echo $userDetails['description']; ?></p>
+								<p class="lead"><?php echo $userDetails['description']; ?></p>
 							</div>
 					</div>
 				</div>
 
 				<div class="space20"></div>
 
-			<? endif; ?>
+			<?php endif; ?>
 
 			<!-- List skills -->
 
@@ -481,13 +481,13 @@ if ($result = $db->query($query)) {
 								<input type="hidden" name="userID" value="<?php echo $userID; ?>">
 								<button type="submit" class="close"><span aria-hidden="true">&times;</span></button>
 							</form>
-						<? endif; ?>
+						<?php endif; ?>
 							<a href="<?php echo $baseurl; ?>/skill/<?php echo $skill['machine_name']; ?>" >
 								<h3><?php echo $skill['skill_name'];?>
 								<small><br><?php echo $skill['level_name'];?></small></h3>
 							</a>
 						</div>
-					<? } ?>
+					<?php } ?>
 					</div>
 				</div>
 
@@ -508,9 +508,9 @@ if ($result = $db->query($query)) {
 										<!-- For each category, add the associated skills -->
 										<?php foreach ($category['skills'] as $key => $skill) { ?>
 											<option value="<?php echo $skill['skillID']; ?>"><?php echo $skill['skill_name']; ?></option>
-										<? } ?>
+										<?php } ?>
 										</optgroup>
-									<? } ?>
+									<?php } ?>
 									</select>
 								</div>
 
@@ -518,7 +518,7 @@ if ($result = $db->query($query)) {
 									<select name="levelID" data-placeholder="Select a skill level">
 									<?php foreach ($levels as $key => $level) { ?>
 										<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
-									<? } ?>
+									<?php } ?>
 									</select>
 								</div>
 								<div class="form-group">
@@ -535,7 +535,7 @@ if ($result = $db->query($query)) {
 									<select class="add-skill-dropdown" name="categoryID" data-placeholder="Select a category">
 									<?php foreach ($categories as $key => $category) { ?>
 										<option value="<?php echo $category['categoryID']; ?>"><?php echo $category['category_name']; ?></option>
-									<? } ?>
+									<?php } ?>
 									</select>
 								</div>
 								<div class="form-group">
@@ -548,7 +548,7 @@ if ($result = $db->query($query)) {
 									<select name="levelID" data-placeholder="Select a skill level">
 									<?php foreach ($levels as $key => $level) { ?>
 										<option value="<?php echo $level['levelID']; ?>"><?php echo $level['level_name']; ?></option>
-									<? } ?>
+									<?php } ?>
 									</select>
 								</div>
 								<div class="form-group">
@@ -563,7 +563,7 @@ if ($result = $db->query($query)) {
 						</div>
 					</div>
 				</div>
-			<? endif; ?>
+			<?php endif; ?>
 
 			<div class="space70"></div>
 
@@ -582,7 +582,7 @@ if ($result = $db->query($query)) {
 						<?php foreach ($userLocations as $key => $location) { ?>
 							// Add the GeoJSON objects to the locations array
 							locations.push(<?php echo $location['spatial']; ?>);
-						<? } ?>
+						<?php } ?>
 					</script>
 					<div id="map-canvas"></div>
 
@@ -622,11 +622,11 @@ if ($result = $db->query($query)) {
 										</form>
 									</td>
 								</tr>
-							<? } ?>
+							<?php } ?>
 							</tbody>
 						</table>
 
-					<? endif; ?>
+					<?php endif; ?>
 				</div>
 
 
@@ -644,7 +644,7 @@ if ($result = $db->query($query)) {
 								<select name="dayID" data-placeholder="Select a day">
 									<?php foreach ($days as $key => $day) { ?>
 										<option value="<?php echo $day['dayID']; ?>"><?php echo $day['day_name']; ?></option>
-									<? } ?>
+									<?php } ?>
 								</select>
 							</div>
 
@@ -652,7 +652,7 @@ if ($result = $db->query($query)) {
 								<select name="hourID" data-placeholder="Select a time">
 									<?php foreach ($hours as $key => $hour) { ?>
 										<option value="<?php echo $hour['hourID']; ?>"><?php echo $hour['hour_description'] . " (" . $hour['hour_name'] . ")" ; ?></option>
-									<? } ?>
+									<?php } ?>
 								</select>
 							</div>
 							<div class="form-group">
@@ -660,7 +660,7 @@ if ($result = $db->query($query)) {
 							</div>
 
 						</form>
-						<? endif; ?>
+						<?php endif; ?>
 
 						<div class="space50"></div>
 						<table class="table table-condensed table-striped table-hover tb_available" id="availability">
@@ -687,11 +687,11 @@ if ($result = $db->query($query)) {
 													<button type="submit" class="close available_btn"><span aria-hidden="true">&times;</span></button>
 												</form>
 											</td>
-										<? else : ?>
+										<?php else : ?>
 											<td></td>
-										<? endif; ?>
+										<?php endif; ?>
 									</tr>
-								<? } ?>
+								<?php } ?>
 							</tbody>
 						</table>
 					</div>
@@ -728,7 +728,7 @@ if ($result = $db->query($query)) {
 							</div>
 						</div>
 						<hr>
-					<? } ?>
+					<?php } ?>
 				</div>
 			</div>
 

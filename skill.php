@@ -164,7 +164,7 @@ if ($result = $db->query($query)) {
 							<a href="#menu-toggle" data-toggle="modal" class="btn btn-default" data-target="#request_skill_modal<?php if (isset($user['userID'])) { echo '_'.$user['userID'];}; ?>" ><h4>Request help</h4></a>
 							<!-- include the modal & form -->
 							<?php include "includes/request_skill_modal.php" ?>
-						<? endif; ?>
+						<?php endif; ?>
 							<p class="text-right">
 								<a href="<?php echo $baseurl; ?>/profile/<?php echo $user['username']; ?>">see <?php echo $user['username'];?> profile</a>
 						</p>
@@ -172,7 +172,7 @@ if ($result = $db->query($query)) {
 						</div>
 					</div>
 					<hr>
-				<? } ?>
+				<?php } ?>
 			</div>
 		</div>
 

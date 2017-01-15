@@ -139,7 +139,7 @@ if ($result = $db->query($query)) {
 											<small><?php echo $skill['count_users'];?> helper<?php if ($skill['count_users'] > 1) echo "s";?></small>
 										<div class="space20"></div>
 									</div>
-									<? } ?>
+									<?php } ?>
 
 							</div>
 

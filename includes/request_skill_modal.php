@@ -22,13 +22,13 @@
                             <option value="<?php echo $skill['skillID']; ?>">
                                 <?php echo $skill[ 'skill_name'] . " (".$skill[ 'level_name']. ")"; ?>
                             </option>
-                            <? } ?>
+                            <?php } ?>
                         </select>
-                    <? else : ?>
+                    <?php else : ?>
                         <p>Get help in <?php echo $skill['skill_name'];?> from <?php echo $user['username'] ?>
                         </p>
                         <input name="request_skill_ID" type="hidden" value="<?php echo $user['skillID'] ?>">
-                    <? endif; ?>
+                    <?php endif; ?>
                         <p>Add more details. What do you need?</p>
                         <div class="col-lg-12 write_message">
                             <textarea autofocus name="request_body" class="form-control" rows="10"></textarea>

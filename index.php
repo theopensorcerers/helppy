@@ -119,7 +119,7 @@ if ($result = $db->query($query)) {
 						<small><br>(<?php echo $category['skillIs_count'];?> skill<?php if ($category['skillIs_count'] > 1) echo "s";?>)</small></h3>
 					</a>
 					</div>
-				<? } ?>
+				<?php } ?>
 			</div>
 
 			<hr>
